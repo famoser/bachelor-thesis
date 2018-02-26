@@ -1,0 +1,5 @@
+client: 
+	iperf -c 192.168.11.151 -w 1024k
+
+server: 
+	iperf -s -w 1024k
