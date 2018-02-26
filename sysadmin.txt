@@ -11,4 +11,4 @@ setup linux:
 		reboot
 	configure ubuntu:
 		wait for updates to be finished
-		`sudo apt install iperf
+		`sudo apt install iperf`
