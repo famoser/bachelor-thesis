@@ -15,6 +15,7 @@ print('starting capture at port ' + str(port))
 
 harUrl = 'http://localhost:8080/proxy/' + str(port) + '/har'
 harData = '{"captureHeaders":true, "captureCookies":true}'
+harData = '{}'
 response = request.put(harUrl, harData)
 assert (response.status_code == 204)
 
