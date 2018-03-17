@@ -1,0 +1,2 @@
+download from github  
+analyze har with http://www.softwareishard.com/har/viewer/
