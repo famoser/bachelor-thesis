@@ -1,12 +1,14 @@
 import os
 import json
 
+
 def sizeof_fmt(num, suffix='B'):
-    for unit in ['','Ki','Mi','Gi','Ti','Pi','Ei','Zi']:
+    for unit in ['', 'Ki', 'Mi', 'Gi', 'Ti', 'Pi', 'Ei', 'Zi']:
         if abs(num) < 1024.0:
             return "%3.1f%s%s" % (num, unit, suffix)
         num /= 1024.0
     return "%.1f%s%s" % (num, 'Yi', suffix)
+
 
 json_files = [pos_json for pos_json in os.listdir(".") if pos_json.endswith('.json')]
 

@@ -1,11 +1,29 @@
 import requests as request
 import datetime
 import json
+import os
 
+from subprocess import check_output
+
+
+def start_browser_proxy():
+    os.system("../libs/browsermob-proxy-2.1.4/bin/browsermob-proxy")
+
+
+def end_browser_proxy():
+    while 1:
+        pid = check_output(["pidof", "-s", "/bin/sh ../libs/browsermob-proxy-2.1.4/bin/browsermob-proxy"])
+        if pid == 0:
+            break
+        os.system("kill " + str(pid))
+        print("killed " + str(pid))
+
+end_browser_proxy()
+start_browser_proxy()
 print('start proxy at default port')
 
 startUrl = 'http://localhost:8080/proxy'
-startData = '{}'
+startData = '{"port": 8081}'
 response = request.post(startUrl, startData)
 startResponse = json.loads(response.content)
 port = startResponse["port"]
@@ -32,3 +50,5 @@ assert (response.status_code == 200)
 stopUrl = 'http://localhost:8080/proxy/' + str(port)
 response = request.delete(stopUrl)
 assert (response.status_code == 200)
+
+end_browser_proxy()
