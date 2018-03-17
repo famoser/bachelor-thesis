@@ -19,7 +19,8 @@
   },
   "web_accessible_resources": [
     "get_manifest.js",
-    "cadmium-playercore-5.0008.544.011-1080p.js"
+    "cadmium-playercore-5.0008.544.011-1080p.js",
+	"cadmium-playercore-2018-03-17.js"
   ],
   "permissions": [
     "webRequest",

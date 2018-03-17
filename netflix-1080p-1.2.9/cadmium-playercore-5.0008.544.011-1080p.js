@@ -23902,6 +23902,15 @@ var o7z = {
                     });
                     v.addEventListener(Gh, function(a) {
 						console.log("HI MOM");
+						window.jumper = a;
+						window.jumpTo = function(e) {
+							var a = window.jumper;
+							a.kq = e;
+							a.cause = 2;
+							console.log(a);
+							console.log("trying to reposition");
+							a.cause !== Kk && (y.kta && a.cause === ej && v.$g.DL(), a.cause !== rg && (!v.$c.Jf && v.Jna(a.kq) ? (aa.trace("Repositioned. Skipping from " + a.By + " to " + a.kq), v.La.dGa(a.kq), v.La.play()) : (aa.trace("Repositioned. Seeking from " + a.By + " to " + a.kq), v.La.seek(a.kq))));
+						}
                         console.log(a);
 						a.kq = skip_global;
                         console.log(a);
