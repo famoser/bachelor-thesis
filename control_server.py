@@ -1,4 +1,4 @@
-from flask import Flask
+import flask
 import subprocess
 import requests
 import datetime
@@ -7,7 +7,7 @@ import os
 browsermob_executable = "libs/browsermob-proxy-2.1.4/bin/browsermob-proxy"
 port = "8081"
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
 
 @app.route("/start")
@@ -63,6 +63,9 @@ def stop():
 
 @app.route("/start/capture")
 def start_capture():
+    capture_mode = flask.request.args.get('capture_mode')
+    video_id = flask.request.args.get('video_id')
+
     har_url = 'http://localhost:8080/proxy/' + str(port) + '/har'
     har_data = '{}'  # '{"captureHeaders":true, "captureCookies":true}'
     response = requests.put(har_url, har_data)
