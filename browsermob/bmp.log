@@ -1,0 +1,18 @@
+[INFO  2018-03-17T20:44:35,093 net.lightbody.bmp.proxy.Main] (main) Starting BrowserMob Proxy version 2.1.4 
+[INFO  2018-03-17T20:44:35,125 org.eclipse.jetty.util.log] (main) jetty-7.x.y-SNAPSHOT 
+[INFO  2018-03-17T20:44:35,158 org.eclipse.jetty.util.log] (main) started o.e.j.s.ServletContextHandler{/,null} 
+[WARN  2018-03-17T20:44:35,299 org.eclipse.jetty.util.log] (main) FAILED SelectChannelConnector@0.0.0.0:8080: j[INFO  2018-03-17T20:45:41,280 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-17) Starting proxy at address: 0.0.0.0/0.0.0.0:8081 
+[INFO  2018-03-17T20:45:41,305 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-17) Proxy listening with TCP transport 
+[INFO  2018-03-17T20:45:41,364 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-17) Proxy started at address: /0:0:0:0:0:0:0:0:8081 
+.bind(Net.java:433) ~[?:1.8.0_162]
+	at sun.nio.ch.Net.bind(Net.java:425) ~[?:1.8.0_162]
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223) ~[?:1.8.0_162]
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74) ~[?:1.8.0_162]
+	at org.eclipse.jetty.server.nio.SelectChannelConnector.open(SelectChannelConnector.java:162) ~[browsermob-dist-2.1.4.jar:?]
+	at org.eclipse.jetty.server.AbstractConnector.doStart(AbstractConnector.java:356) ~[browsermob-dist-2.1.4.jar:?]
+	at org.eclipse.jetty.server.nio.SelectChannelConnector.doStart(SelectChannelConnector.java:240) ~[browsermob-dist-2.1.4.jar:?]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:55) ~[browsermob-dist-2.1.4.jar:?]
+	at org.eclipse.jetty.server.Server.doStart(Server.java:269) ~[browsermob-dist-2.1.4.jar:?]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:55) ~[browsermob-dist-2.1.4.jar:?]
+	at net.lightbody.bmp.proxy.Main.main(Main.java:64) [browsermob-dist-2.1.4.jar:?]
+
