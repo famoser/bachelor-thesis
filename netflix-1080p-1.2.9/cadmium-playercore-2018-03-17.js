@@ -23941,14 +23941,9 @@ var W1d = {
                         a.cause !== vg && a.cause !== Pk && v.La.stop();
                     });
                     v.addEventListener(Ih, function(a) {
-						console.log("hi mom");
-						console.log(a);
-						window.jumpTo = function(e) {
-							a.cause = 2;
-							a.Eq = e;
-							a.cause !== Pk && (y.Dua && a.cause === gj && v.mh.fM(), a.cause !== vg && (!v.bd.Uf && v.Ooa(a.Eq) ? (T.trace("Repositioned. Skipping from " + a.hz + " to " + a.Eq), v.La.BHa(a.Eq), v.La.play()) : (T.trace("Repositioned. Seeking from " + a.hz + " to " + a.Eq), v.La.seek(a.Eq))));
-						}
-						console.trace();
+                        //hi mom
+                        console.log("changed");
+                        window.lastSeekInfo = a;
                         a.cause !== Pk && (y.Dua && a.cause === gj && v.mh.fM(), a.cause !== vg && (!v.bd.Uf && v.Ooa(a.Eq) ? (T.trace("Repositioned. Skipping from " + a.hz + " to " + a.Eq), v.La.BHa(a.Eq), v.La.play()) : (T.trace("Repositioned. Seeking from " + a.hz + " to " + a.Eq), v.La.seek(a.Eq))));
                     });
                     a.addEventListener("segmentStarting", function(a) {
