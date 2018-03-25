@@ -1,16 +1,16 @@
 import requests as request
 import datetime
-import os
 import psutil
 import subprocess
 import time
+from selenium import webdriver
 
 port = 8081
 
 
 def start_browser_proxy():
     subprocess.Popen(["../libs/browsermob-proxy-2.1.4/bin/browsermob-proxy"])
-    i = 5
+    i = 3
     while i > 0:
         print("waiting " + str(i))
         time.sleep(1)
@@ -65,11 +65,35 @@ def end_capture():
     print('stopped at port ' + str(port))
 
 
+def start_browser(netflix_id, rate):
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--proxy-server=%s' % "127.0.0.1:" + str(port))
+    chrome_options.add_extension('../netflix-1080p-1.2.9.crx')
+
+    chrome = webdriver.Chrome(chrome_options=chrome_options)
+    chrome.get('https://www.netflix.com/watch/' + netflix_id + '?rate=' + rate)
+
+    chrome.execute_script("fasterPlayback()")
+    i = 20
+    while i > 0:
+        print(chrome.execute_script("return stillActive()"))
+        time.sleep(5)
+        i -= 0
+
+    return chrome
+
+
+def end_browser(browser):
+    browser.close()
+
+
 end_browser_proxy()
 start_browser_proxy()
 start_capture()
+chrome = start_browser("80018499", "1")
 
 input("press enter to stop capture & save file")
 
+end_browser(chrome)
 end_capture()
 end_browser_proxy()

@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Netflix 1080p",
-  "description": "Forces 1080p playback for Netflix.",
+  "description": "Forces 1080p playback for Netflixx.",
   "version": "1.2.9",
   "author": "truedread",
   "content_scripts": [{
@@ -11,7 +11,7 @@
       "*://netflix.com/watch/*",
       "*://www.netflix.com/watch/*"
     ],
-    "js": ["content_script.js"],
+    "js": ["jquery-3.3.1.min.js", "content_script.js", "capture.js"],
     "run_at": "document_start"
   }],
   "background": {

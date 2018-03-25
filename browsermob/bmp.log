@@ -1,11 +1,13 @@
-[INFO  2018-03-25T20:21:45,489 net.lightbody.bmp.proxy.Main] (main) Starting BrowserMob Proxy version 2.1.4 
-[INFO  2018-03-25T20:21:45,532 org.eclipse.jetty.util.log] (main) jetty-7.x.y-SNAPSHOT 
-[INFO  2018-03-25T20:21:45,569 org.eclipse.jetty.util.log] (main) started o.e.j.s.ServletContextHandler{/,null} 
-[INFO  2018-03-25T20:21:45,707 org.eclipse.jetty.util.log] (main) Started SelectChannelConnector@0.0.0.0:8080 
-[INFO  2018-03-25T20:21:50,194 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-19) Starting proxy at address: 0.0.0.0/0.0.0.0:8081 
-[INFO  2018-03-25T20:21:50,209 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-19) Proxy listening with TCP transport 
-[INFO  2018-03-25T20:21:50,259 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-19) Proxy started at address: /0:0:0:0:0:0:0:0:8081 
-[INFO  2018-03-25T20:21:51,593 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-16) Shutting down proxy server gracefully 
-[INFO  2018-03-25T20:21:51,593 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-16) Closing all channels (graceful) 
-[INFO  2018-03-25T20:21:51,600 org.littleshoot.proxy.impl.ServerGroup] (qtp1489933928-16) Shutting down server group event loops (graceful) 
-[INFO  2018-03-25T20:21:53,820 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-16) Done shutting down proxy server 
+[INFO  2018-03-25T22:26:46,056 net.lightbody.bmp.proxy.Main] (main) Starting BrowserMob Proxy version 2.1.4 
+[INFO  2018-03-25T22:26:46,094 org.eclipse.jetty.util.log] (main) jetty-7.x.y-SNAPSHOT 
+[INFO  2018-03-25T22:26:46,130 org.eclipse.jetty.util.log] (main) started o.e.j.s.ServletContextHandler{/,null} 
+[INFO  2018-03-25T22:26:46,273 org.eclipse.jetty.util.log] (main) Started SelectChannelConnector@0.0.0.0:8080 
+[INFO  2018-03-25T22:26:48,628 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-19) Starting proxy at address: 0.0.0.0/0.0.0.0:8081 
+[INFO  2018-03-25T22:26:48,647 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-19) Proxy listening with TCP transport 
+[INFO  2018-03-25T22:26:48,697 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-19) Proxy started at address: /0:0:0:0:0:0:0:0:8081 
+[INFO  2018-03-25T22:30:01,263 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-0-ProxyToServerWorker-7) (HANDSHAKING) [id: 0x84f86420, L:0.0.0.0/0.0.0.0:34600 ! R:pagead2.googlesyndication.com/172.217.19.162:443]: Connection to upstream server failed java.nio.channels.ClosedChannelException: null
+	at io.netty.handler.ssl.SslHandler.channelInactive(...)(Unknown Source) ~[browsermob-dist-2.1.4.jar:?]
+
+[INFO  2018-03-25T22:30:01,301 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-0-ProxyToServerWorker-6) (HANDSHAKING) [id: 0x4fe366e0, L:0.0.0.0/0.0.0.0:34918 ! R:www.netflix.com/52.49.4.187:443]: Connection to upstream server failed java.nio.channels.ClosedChannelException: null
+	at io.netty.handler.ssl.SslHandler.channelInactive(...)(Unknown Source) ~[browsermob-dist-2.1.4.jar:?]
+
