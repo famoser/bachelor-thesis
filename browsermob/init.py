@@ -2,30 +2,50 @@ import requests as request
 import datetime
 import os
 import psutil
+import subprocess
+import time
 
 port = 8081
 
 
 def start_browser_proxy():
-    os.system("../libs/browsermob-proxy-2.1.4/bin/browsermob-proxy")
+    subprocess.Popen(["../libs/browsermob-proxy-2.1.4/bin/browsermob-proxy"])
+    i = 5
+    while i > 0:
+        print("waiting " + str(i))
+        time.sleep(1)
+        i -= 1
 
 
 def end_browser_proxy():
+    found = None
+    dictionary = {}
     for process in psutil.process_iter():
-        if process.name() == 'browsermob-prox':
-            process.kill()
+        dictionary[process.pid] = process
+
+    for pid in sorted(dictionary):
+        if 'browsermob-prox' in dictionary[pid].name():
+            dictionary[pid].kill()
+            found = True
+            print("found & killed old process")
+        if "java" in dictionary[pid].name() and found:
+            dictionary[pid].kill()
+            print("found & killed old java process")
+            return
 
 
 def start_capture():
     startUrl = 'http://localhost:8080/proxy'
     startData = '{"port": ' + str(port) + '}'
     response = request.post(startUrl, startData)
+
     assert (response.status_code == 200)
     print("initialized at port " + str(port))
 
     harUrl = 'http://localhost:8080/proxy/' + str(port) + '/har'
     harData = '{}'
     response = request.put(harUrl, harData)
+    print(response.status_code)
     assert (response.status_code == 204)
     print('started capture at port ' + str(port))
 
