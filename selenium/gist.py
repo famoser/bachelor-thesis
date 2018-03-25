@@ -1,7 +1,12 @@
-from selenium.webdriver import Firefox
-import config
+from selenium import webdriver
 
-driver = Firefox(executable_path=config.FIREFOX_EXECUTABLE)
-driver.get('https://www.youtube.com/watch?v=dT5ALH3ICTc')
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--proxy-server=%s' % "127.0.0.1:8081")
+chrome_options.add_extension('../netflix-1080p-1.2.9.crx')
 
-print(driver.execute_script("return document.getElementById('movie_player').getAvailableQualityLevels()"))
+chrome = webdriver.Chrome(chrome_options=chrome_options)
+
+
+chrome.get('https://www.youtube.com/watch?v=dT5ALH3ICTc')
+
+print(chrome.execute_script("return document.getElementById('movie_player').getAvailableQualityLevels()"))

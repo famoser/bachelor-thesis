@@ -46265,8 +46265,15 @@ var W1d = {
                 a = /CrOS/.test(a.userAgent);
                 this.Lna = this.ex = u.ev.wW;
                 this.kn = [E.vm.VV];
+                /*
                 this.Fo = [E.V.hB, E.V.iB];
                 a && this.Fo.push(E.V.vI);
+                */
+                this.Fo = [E.V.ida];
+                //this.Fo = [E.V.hB];
+                //this.Fo = [E.V.iB];
+                //this.Fo = [E.V.vI];
+                console.log(this.Fo);
                 this.hr = [E.Sr.dI, E.Sr.Jha, E.Sr.Mr];
                 this.Jd = m.Ab.Oia;
                 this.LN = !0;
