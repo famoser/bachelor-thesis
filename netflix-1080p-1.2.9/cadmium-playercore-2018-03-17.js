@@ -2,7 +2,7 @@ currentSecond = 15;
 lastTimeAccessed = Date.now();
 timeout = 3000;
 jumpToNext = function seekToNext() {
-    currentSecond += 10;
+    currentSecond += 60;
     seek(currentSecond * 1000);
     lastTimeAccessed = Date.now();
     console.log("skipped");
