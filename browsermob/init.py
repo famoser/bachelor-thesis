@@ -3,9 +3,8 @@ import datetime
 import psutil
 import subprocess
 import time
+import json
 from selenium import webdriver
-
-port = 8081
 
 
 def start_browser_proxy():
@@ -39,6 +38,7 @@ def start_capture():
     startData = '{"port": ' + str(port) + '}'
     response = request.post(startUrl, startData)
 
+    port = json.load(response.content)["port"]
     assert (response.status_code == 200)
     print("initialized at port " + str(port))
 
@@ -49,11 +49,30 @@ def start_capture():
     assert (response.status_code == 204)
     print('started capture at port ' + str(port))
 
+    return port
 
-def end_capture():
+def play_in_browser(netflix_id, rate, port):
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--proxy-server=%s' % "127.0.0.1:" + str(port))
+    chrome_options.add_extension('../netflix-1080p-1.2.9.crx')
+
+    chrome = webdriver.Chrome(chrome_options=chrome_options)
+    chrome.get('https://www.netflix.com/watch/' + str(netflix_id) + '?rate=' + str(rate))
+
+    chrome.execute_script("fasterPlayback()")
+    i = 20
+    while i > 0:
+        print(chrome.execute_script("return stillActive()"))
+        time.sleep(5)
+        i -= 0
+
+    browser.close()
+
+
+def end_capture(netflix_id, rate, port):
     saveUrl = 'http://localhost:8080/proxy/' + str(port) + '/har'
     response = request.get(saveUrl)
-    fileName = datetime.datetime.now().isoformat()
+    fileName = str(netflix_id) + '_' + str(rate) + "_ " + datetime.datetime.now().isoformat()
     with open(fileName + '.json', "w") as text_file:
         print(response.content.decode(), file=text_file)
     assert (response.status_code == 200)
@@ -65,35 +84,16 @@ def end_capture():
     print('stopped at port ' + str(port))
 
 
-def start_browser(netflix_id, rate):
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument('--proxy-server=%s' % "127.0.0.1:" + str(port))
-    chrome_options.add_extension('../netflix-1080p-1.2.9.crx')
-
-    chrome = webdriver.Chrome(chrome_options=chrome_options)
-    chrome.get('https://www.netflix.com/watch/' + netflix_id + '?rate=' + rate)
-
-    chrome.execute_script("fasterPlayback()")
-    i = 20
-    while i > 0:
-        print(chrome.execute_script("return stillActive()"))
-        time.sleep(5)
-        i -= 0
-
-    return chrome
-
-
-def end_browser(browser):
-    browser.close()
-
-
 end_browser_proxy()
 start_browser_proxy()
-start_capture()
-chrome = start_browser("80018499", "1")
 
-input("press enter to stop capture & save file")
+rate = 1
+netflix_ids = [80018499]
+for netflix_id in netflix_ids:
+	while rate <= 4:
+		port = start_capture()
+		chrome = play_in_browser(netflix_id, rate, port)
+		end_capture(netflix_id, rate, port)
 
-end_browser(chrome)
-end_capture()
+
 end_browser_proxy()
