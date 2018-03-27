@@ -6,6 +6,8 @@ import time
 import json
 from selenium import webdriver
 
+chrome = None
+
 
 def start_browser_proxy():
     subprocess.Popen(["../libs/browsermob-proxy-2.1.4/bin/browsermob-proxy"])
@@ -52,8 +54,14 @@ def start_capture():
     return port
 
 
+cookies = None
+
+
 def play_in_browser(netflix_id, rate, port):
     video_url = 'https://www.netflix.com/watch/' + str(netflix_id) + '?rate=' + str(rate)
+
+    global cookies
+
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--proxy-server=%s' % "127.0.0.1:" + str(port))
     chrome_options.add_extension('../netflix-1080p-1.2.9.crx')
@@ -95,6 +103,8 @@ def play_in_browser(netflix_id, rate, port):
     except:
         time.sleep(5)
 
+    cookies = chrome.get_cookies()
+
     chrome.execute_script("fasterPlayback()")
     i = 200
     while i > 0:
@@ -104,7 +114,6 @@ def play_in_browser(netflix_id, rate, port):
         time.sleep(5)
         i -= 1
 
-    chrome.close()
     return True
 
 
@@ -153,13 +162,15 @@ start_browser_proxy()
 netflix_ids = [80111448]
 no_errors = True
 for netflix_id in netflix_ids:
-    rate = 3
+    rate = 1
     while rate <= 4 and no_errors:
         port = start_capture()
         no_errors = no_errors and play_in_browser(netflix_id, rate, port)
         end_capture(netflix_id, rate, port)
         rate += 1
 
+if chrome is None:
+    chrome.close()
 
 end_browser_proxy()
 
