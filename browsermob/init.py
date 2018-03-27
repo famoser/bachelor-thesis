@@ -6,9 +6,6 @@ import time
 import json
 from selenium import webdriver
 
-chrome = None
-
-
 def start_browser_proxy():
     subprocess.Popen(["../libs/browsermob-proxy-2.1.4/bin/browsermob-proxy"])
     i = 3
@@ -67,6 +64,11 @@ def play_in_browser(netflix_id, rate, port):
     chrome_options.add_extension('../netflix-1080p-1.2.9.crx')
 
     chrome = webdriver.Chrome(chrome_options=chrome_options)
+
+    if cookies is not None:
+        for cookie in cookies:
+            chrome.add_cookie(cookie)
+
     chrome.get(video_url)
 
     trying_to_login = False
