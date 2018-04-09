@@ -24256,6 +24256,10 @@ var W1d = {
                         a.cause !== vg && a.cause !== Pk && v.La.stop();
                     });
                     v.addEventListener(Ih, function (a) {
+                        if (a.cause == 1) {
+                            //ignore; this happens when the video starts playing, as it remembers the position you stopped playing
+                            console.log("started playing)");
+                        }
                         //hi mom
                         window.lastSeekInfo = a;
                         a.cause !== Pk && (y.Dua && a.cause === gj && v.mh.fM(), a.cause !== vg && (!v.bd.Uf && v.Ooa(a.Eq) ? (T.trace("Repositioned. Skipping from " + a.hz + " to " + a.Eq), v.La.BHa(a.Eq), v.La.play()) : (T.trace("Repositioned. Seeking from " + a.hz + " to " + a.Eq), v.La.seek(a.Eq))));
@@ -24488,7 +24492,20 @@ var W1d = {
                 v.ED = 0 <= nj.indexOf("cast") ? la.get(Yg) : void 0;
                 b = h(v);
                 v.log = b;
+                console.v = v;
+                //hi mom
                 var T = v.log.Ira();
+                replacement = function (text, args) {
+                    console.log(text);
+                    console.log(args);
+                };
+                T.error = replacement;
+                T.fatal = replacement;
+                T.info = replacement;
+                T.log = replacement;
+                T.trace = replacement;
+                T.warn = replacement;
+                window.T = T;
                 Mh || (Mh = b);
                 v.QT = 0;
                 v.AS = 0;
@@ -27159,6 +27176,8 @@ var W1d = {
                         }), c && a.push(c);
                     } catch (ye) {
                     }
+                    //hi mom
+                    console.analytics = a;
                     return a;
                 }
 

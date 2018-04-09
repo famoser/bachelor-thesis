@@ -71,6 +71,8 @@ def play_in_browser(netflix_id, rate, port):
 
     chrome.get(video_url)
 
+    input()
+
     trying_to_login = False
     try:
         login_link = chrome.find_element_by_class_name("authLinks")
@@ -106,6 +108,9 @@ def play_in_browser(netflix_id, rate, port):
         time.sleep(5)
 
     cookies = chrome.get_cookies()
+
+    print(cookies)
+    input()
 
     chrome.execute_script("fasterPlayback()")
     i = 200
@@ -170,9 +175,6 @@ for netflix_id in netflix_ids:
         no_errors = no_errors and play_in_browser(netflix_id, rate, port)
         end_capture(netflix_id, rate, port)
         rate += 1
-
-if chrome is None:
-    chrome.close()
 
 end_browser_proxy()
 
