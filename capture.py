@@ -13,8 +13,10 @@ capture_version = "1"
 browsermob_dir = "tools/browsermob-proxy-2.1.4"
 netflix_extension_path = "tools/netflix-1080p-1.2.9.crx"
 config_dir = "."
+capture_speed = "120"
 
-cookie_file_name= "cookies.pkl"
+cookie_file_name = "cookies.pkl"
+
 
 def start_browser_proxy():
     subprocess.Popen([browsermob_dir + "/bin/browsermob-proxy"])
@@ -62,18 +64,20 @@ def start_capture():
 
 
 cookies = None
+chrome = None
 
 
 def play_in_browser(netflix_id, rate, port):
     video_url = 'https://www.netflix.com/watch/' + str(netflix_id) + '?rate=' + str(rate)
 
-    global cookies
+    global chrome, cookies
 
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument('--proxy-server=%s' % "127.0.0.1:" + str(port))
-    chrome_options.add_extension(netflix_extension_path)
+    if chrome is None:
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument('--proxy-server=%s' % "127.0.0.1:" + str(port))
+        chrome_options.add_extension(netflix_extension_path)
 
-    chrome = webdriver.Chrome(chrome_options=chrome_options)
+        chrome = webdriver.Chrome(chrome_options=chrome_options)
 
     chrome.get(video_url)
 
@@ -113,22 +117,23 @@ def play_in_browser(netflix_id, rate, port):
         else:
             print("already logged in")
 
-    try:
-        'check for fatal error && sleeps 5 seconds if not'
-        if selenium_try_find_element_by_class(chrome, "nfp-fatal-error-view") is None:
-            chrome.close()
-            return True
-    except:
-        time.sleep(5)
+    'check for fatal error && sleeps 5 seconds if not'
+    if selenium_try_find_element_by_class(chrome, "nfp-fatal-error-view") is not None:
+        print("error view found, aborting")
+        return True
 
     cookies = chrome.get_cookies()
     pickle.dump(cookies, open(cookie_path, "wb"))
 
-    chrome.execute_script("fasterPlayback(30)")
+    chrome.execute_script("fasterPlayback(" + capture_speed + ")")
     i = 200
     while i > 0:
         if not chrome.execute_script("return stillActive()"):
             break
+
+        if selenium_try_find_element_by_class(chrome, "nfp-fatal-error-view", 1) is not None:
+            print("error view found, aborting")
+            return True
 
         time.sleep(5)
         i -= 1
@@ -136,24 +141,23 @@ def play_in_browser(netflix_id, rate, port):
     return True
 
 
-def selenium_try_find_element_by_id(driver, element_id):
-    retries = 5
+def selenium_try_find_element_by_id(driver, element_id, retries = 5):
     while retries > 0:
         try:
             return driver.find_element_by_id(element_id)
-        finally:
+        except:
+            # don't care, just retry
             time.sleep(1)
             retries -= 1
     return None
 
 
-def selenium_try_find_element_by_class(driver, element_id):
-    retries = 5
+def selenium_try_find_element_by_class(driver, element_id, retries = 5):
     while retries > 0:
         try:
-            element = driver.find_element_by_class_name(element_id)
-            return element
-        finally:
+            return driver.find_element_by_class_name(element_id)
+        except:
+            # don't care, just retry
             time.sleep(1)
             retries -= 1
     return None
@@ -192,3 +196,6 @@ end_browser_proxy()
 
 if not no_errors:
     print("something failed; stopped capture early")
+
+if chrome is not None:
+    chrome.close()
