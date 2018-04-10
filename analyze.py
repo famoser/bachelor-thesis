@@ -5,6 +5,7 @@ captures_dir = "capture"
 capture_version = "1"
 analyze_dir = "analyze"
 
+
 def sizeof_fmt(num, suffix='B'):
     for unit in ['', 'Ki', 'Mi', 'Gi', 'Ti', 'Pi', 'Ei', 'Zi']:
         if abs(num) < 1024.0:
@@ -13,7 +14,9 @@ def sizeof_fmt(num, suffix='B'):
     return "%.1f%s%s" % (num, 'Yi', suffix)
 
 
-json_files = [pos_json for pos_json in os.listdir(captures_dir) if pos_json.endswith("_" + capture_version +'.json')]
+json_files = [pos_json for pos_json in os.listdir(captures_dir) if pos_json.endswith("_" + capture_version + '.json')]
+
+json_files = sorted(json_files)
 
 sizePerFile = {}
 

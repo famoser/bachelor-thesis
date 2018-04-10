@@ -44,3 +44,17 @@ a packet definition looks like this:
   "uiVersion": "akira"
 }
 ````
+
+bitrates for the specific profiles:
+    E.V.ida:
+        100, 175, 250, 500, 1350
+    E.V.hB:
+        120, 235, 375, 560, 750, 1050, 1750
+    E.V.iB:
+        2350, 3000
+    E.V.vI:
+        4300, 5800
+
+further resources:
+includes handshake & crypto, may be able to directly save streams
+https://github.com/asciidisco/plugin.video.netflix/blob/master/resources/lib/MSL.py

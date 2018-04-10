@@ -7,12 +7,17 @@ jumpToNext = function seekToNext() {
     seek(currentSecond * 1000);
     lastTimeAccessed = Date.now();
     console.log("skipped");
-    fasterPlayback(stepSize);
+    fasterPlayback();
 }
 
-function fasterPlayback(step) {
-    stepSize = parseInt(step);
+function fasterPlayback() {
     setTimeout(jumpToNext, 3000);
+}
+
+function startFasterPlayback(startSecond, newStepSize) {
+    currentSecond = parseInt(startSecond);
+    stepSize = parseInt(newStepSize);
+    jumpToNext();
 }
 
 function setSeconds(seconds) {
@@ -23,7 +28,7 @@ function stillActive() {
     return (lastTimeAccessed + 10000) > Date.now();
 }
 
-window.faster_playback = fasterPlayback;
+window.start_faster_playback = startFasterPlayback;
 window.still_active = stillActive;
 
 var W1d = {
@@ -41337,6 +41342,7 @@ var W1d = {
             f.ULa = f.Dha.concat(f.jda);
             f.WLa = f.tia;
             f.VLa = f.uia;
+            console.log(f.tia);
             b.V = f;
             h.VV = "heaac-2-dash";
             h.aMa = "heaac-sbr-2-dash";
@@ -46923,6 +46929,7 @@ var W1d = {
                 this.Lna = this.ex = u.ev.wW;
                 this.kn = [E.vm.VV];
                 this.Fo = [];
+                //#force bitrate
                 if (window.location.href.endsWith("rate=1")) {
                     this.Fo = [E.V.ida];
                 } else if (window.location.href.endsWith("rate=2")) {
@@ -47308,8 +47315,6 @@ var W1d = {
             };
             f.prototype.Rf = function (a) {
                 //# this may be interesting for the start point
-                a.startPosition = 0;
-                a.startEpoch = 0;
                 a && (this.nH = a.startPosition, this.g9 = a.startEpoch, this.oG = new k(a.playTimes));
             };
             f.prototype.oc = function () {
