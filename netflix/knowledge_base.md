@@ -1,0 +1,42 @@
+property playTimes describes the current packet (length of audio, video and its bitrates)
+
+a packet definition looks like this:
+
+``` json
+{
+  "method": "stop",
+  "playbackContextId": "E1-BQFRAAELEJaDwkfSC7pblMQjCCufs2qAplVLWYoXiFQdtwnlrRgiqo_rtJB53vfP7RfhnSVQeoxe12V1YW7uhiCypGx2Fe7Ts96YDnma_77GjaezgBonvxFXGGOWmbLaqxIsf6UAl9Jhdl-3Qkf17fGjT91pAD9BU3XmJ2A0nyYT00LuLy-8R16sHhh_efLl7GhVUvclezRaG6nLB7Z7EWhLpA9yIrMREad80pvkmhwSx0qVr2EXbqACAEIOhVo.",
+  "playbackSessionId": "BAwArYPMt8j2DACwtjpaN1YAAA3a0W4XTATGZ1kAAAAAABOL_AAAAWKuiyv6AgAAAQNFMS1CUUZSQUFFTEVKYUR3a2ZTQzdwYmxNUWpDQ3VmczJxQXBsVkxXWW9YaUZRZHR3bmxyUmdpcW9fcnRKQjUzdmZQN1JmaG5TVlFlb3hlMTJWMVlXN3VoaUN5cEd4MkZlN1RzOTZZRG5tYV83N0dqYWV6Z0JvbnZ4RlhHR09XbWJMYXF4SXNmNlVBbDlKaGRsLTNRa2YxN2ZHalQ5MXBBRDlCVTNYbUoyQTBueVlUMDBMdUx5LThSMTZzSGhoX2VmTGw3R2hWVXZjbGV6UmFHNm5MQjdaN0VXaExwQTl5SXJNUkVhZDgwcHZrbWh3U3gwcVZyMkVYYnFBQ0FFSU9oVm8u",
+  "xid": 15233467684684,
+  "mediaId": "A:1:1;2;en;1;|V:2:1;2;;1281020;2;CE3;0;|T:1:1;1;NONE;0;1;",
+  "type": "stop",
+  "position": 264320,
+  "playback": {
+    "playTimes": {
+      "total": 3319,
+      "audio": [
+        {
+          "downloadableId": "626203993",
+          "duration": 3319,
+          "bitrate": 96
+        }
+      ],
+      "video": [
+        {
+          "downloadableId": "625440750",
+          "duration": 3319,
+          "bitrate": 1100,
+          "vmaf": 79
+        }
+      ]
+    }
+  },
+  "timestamp": 1523346994006,
+  "uiProfileGuid": "K3UWUOENKVDE5CQ7GCCQ4YUABU",
+  "languages": [
+    "en-CH"
+  ],
+  "clientVersion": "5.0008.781.011",
+  "uiVersion": "akira"
+}
+````

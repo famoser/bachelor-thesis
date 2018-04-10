@@ -1,0 +1,1491 @@
+Version: 5.0008.781.011 
+Esn: NFCDCH-LX-EAEW31PFFY0PVV6A7HQ0FT2T0RK9M3
+JsSid: 15233471636538, Epoch: 1523347658, Start: 1523347163, TimeZone: -120
+Href: https://www.netflix.com/watch/80111449?trackId=250318489&tctx=0%2C1%2C062701a0-f041-4e9b-8762-02e8beef2d88-5373885%2C89db1ce2-6475-47d4-ac6d-c80160c15338_5388779%2C89db1ce2-6475-47d4-ac6d-c80160c15338_ROOT
+UserAgent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36
+--------------------------------------------------------------------------------
+0.269|0|I|Device| Esn source: storage_matched_esn_in_config
+0.372|0|I|Msl| Loading store state
+0.543|0|I|Nccp| Creating EDGE instance, Endpoint: https://www.netflix.com/api/msl/, Path: /cbp/cadmium-28
+0.709|0|W|ASEJS|media|asejs| nf-ase version:
+2.7.49
+DEBUG:, false
+0.852|0|I|VideoPreparer| instance created
+0.960|0|I|PlayerPredictionModel| ppm v2 initialized
+1.022|0|I|MessageQueue| No messages to load.
+1.133|0|I|VideoPlayer| Next episode added, movieId: 80111449, playbackParams: [object Object], uiLabel: standard, manifestData: undefined
+1.133|0|I|SegmentManager| Adding segment
+{"movieId":80111449,"uiLabel":"standard","params":{"trackingId":250318489,"authParams":{"pinCapableClient":false},"sessionParams":{"uiplaycontext":{"list_id":"89db1ce2-6475-47d4-ac6d-c80160c15338_5388779","lolomo_id":"89db1ce2-6475-47d4-ac6d-c80160c15338_ROOT","location":"WATCHNOW","rank":1,"request_id":"062701a0-f041-4e9b-8762-02e8beef2d88-5373885","row":0,"track_id":250318489,"video_id":80111449},"isUIAutoPlay":false,"supportsWatermark":true,"supportsPreReleasePin":true,"preferUnletterboxed":false},"disableTrackStickiness":false,"uiPlayStartTime":1523347163018,"loadImmediately":false}}
+1.134|0|I|SegmentManager| Loading the next episode, movieId: 80111449, uiLabel: standard
+1.302|1|I|Playback| Playback loading, MovieId: 80111449, TrackingId: 250318489, Xid: 15233471632580
+2.412|0|E|LifecycleProvider| BladeRunner command history
+[
+  {
+    "method": "stop",
+    "starttime": 1833,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 579,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1855
+  },
+  {
+    "method": "stop",
+    "starttime": 1872
+  },
+  {
+    "method": "stop",
+    "starttime": 1892
+  },
+  {
+    "method": "stop",
+    "starttime": 1915
+  },
+  {
+    "method": "stop",
+    "starttime": 1939
+  }
+]
+2.416|0|E|LifecycleProvider| Processing EDGE response failed, method: stop, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855},{"method":"stop","starttime":1872},{"method":"stop","starttime":1892},{"method":"stop","starttime":1915},{"method":"stop","starttime":1939}]
+2.418|0|E|PlaydataServices| Unble to complete the stop lifecycle event, code: 7123, fb: 1331, Qb: V0, vg: undefined, VQ: undefined, message: undefined, Jx: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855},{"method":"stop","starttime":1872},{"method":"stop","starttime":1892},{"method":"stop","starttime":1915},{"method":"stop","starttime":1939}], data: {"inputName":"playback[startPosition]"}, v: false
+2.420|1|I|Playback| Authorizing, MovieId: 80111449, TrackingId: 250318489, Xid: 15233471632580
+2.469|1|W|NccpPlayback| manifest not in cache
+unavailable
+2.506|0|E|LifecycleProvider| BladeRunner command history
+[
+  {
+    "method": "stop",
+    "starttime": 1833,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 579,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1855,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 651,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1872
+  },
+  {
+    "method": "stop",
+    "starttime": 1892
+  },
+  {
+    "method": "stop",
+    "starttime": 1915
+  },
+  {
+    "method": "stop",
+    "starttime": 1939
+  },
+  {
+    "method": "manifest",
+    "starttime": 2474
+  }
+]
+2.507|0|E|LifecycleProvider| Processing EDGE response failed, method: stop, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872},{"method":"stop","starttime":1892},{"method":"stop","starttime":1915},{"method":"stop","starttime":1939},{"method":"manifest","starttime":2474}]
+2.509|0|E|PlaydataServices| Unble to complete the stop lifecycle event, code: 7123, fb: 1331, Qb: V0, vg: undefined, VQ: undefined, message: undefined, Jx: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872},{"method":"stop","starttime":1892},{"method":"stop","starttime":1915},{"method":"stop","starttime":1939},{"method":"manifest","starttime":2474}], data: {"inputName":"playback[startPosition]"}, v: false
+2.515|0|E|LifecycleProvider| BladeRunner command history
+[
+  {
+    "method": "stop",
+    "starttime": 1833,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 579,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1855,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 651,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1872,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 643,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1892
+  },
+  {
+    "method": "stop",
+    "starttime": 1915
+  },
+  {
+    "method": "stop",
+    "starttime": 1939
+  },
+  {
+    "method": "manifest",
+    "starttime": 2474
+  }
+]
+2.516|0|E|LifecycleProvider| Processing EDGE response failed, method: stop, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1892},{"method":"stop","starttime":1915},{"method":"stop","starttime":1939},{"method":"manifest","starttime":2474}]
+2.516|0|E|PlaydataServices| Unble to complete the stop lifecycle event, code: 7123, fb: 1331, Qb: V0, vg: undefined, VQ: undefined, message: undefined, Jx: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1892},{"method":"stop","starttime":1915},{"method":"stop","starttime":1939},{"method":"manifest","starttime":2474}], data: {"inputName":"playback[startPosition]"}, v: false
+2.553|0|E|LifecycleProvider| BladeRunner command history
+[
+  {
+    "method": "stop",
+    "starttime": 1833,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 579,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1855,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 651,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1872,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 643,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1892,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 661,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1915
+  },
+  {
+    "method": "stop",
+    "starttime": 1939
+  },
+  {
+    "method": "manifest",
+    "starttime": 2474
+  }
+]
+2.556|0|E|LifecycleProvider| Processing EDGE response failed, method: stop, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1892,"success":false,"profileId":"browser","elapsedtime":661,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1915},{"method":"stop","starttime":1939},{"method":"manifest","starttime":2474}]
+2.557|0|E|PlaydataServices| Unble to complete the stop lifecycle event, code: 7123, fb: 1331, Qb: V0, vg: undefined, VQ: undefined, message: undefined, Jx: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1892,"success":false,"profileId":"browser","elapsedtime":661,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1915},{"method":"stop","starttime":1939},{"method":"manifest","starttime":2474}], data: {"inputName":"playback[startPosition]"}, v: false
+2.565|0|E|LifecycleProvider| BladeRunner command history
+[
+  {
+    "method": "stop",
+    "starttime": 1833,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 579,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1855,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 651,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1872,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 643,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1892,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 661,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1915,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 650,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1939
+  },
+  {
+    "method": "manifest",
+    "starttime": 2474
+  }
+]
+2.570|0|E|LifecycleProvider| Processing EDGE response failed, method: stop, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1892,"success":false,"profileId":"browser","elapsedtime":661,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1915,"success":false,"profileId":"browser","elapsedtime":650,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1939},{"method":"manifest","starttime":2474}]
+2.572|0|E|PlaydataServices| Unble to complete the stop lifecycle event, code: 7123, fb: 1331, Qb: V0, vg: undefined, VQ: undefined, message: undefined, Jx: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1892,"success":false,"profileId":"browser","elapsedtime":661,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1915,"success":false,"profileId":"browser","elapsedtime":650,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1939},{"method":"manifest","starttime":2474}], data: {"inputName":"playback[startPosition]"}, v: false
+2.582|0|E|LifecycleProvider| BladeRunner command history
+[
+  {
+    "method": "stop",
+    "starttime": 1833,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 579,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1855,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 651,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1872,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 643,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1892,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 661,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1915,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 650,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1939,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 643,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "manifest",
+    "starttime": 2474
+  }
+]
+2.582|0|E|LifecycleProvider| Processing EDGE response failed, method: stop, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1892,"success":false,"profileId":"browser","elapsedtime":661,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1915,"success":false,"profileId":"browser","elapsedtime":650,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1939,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"manifest","starttime":2474}]
+2.583|0|E|PlaydataServices| Unble to complete the stop lifecycle event, code: 7123, fb: 1331, Qb: V0, vg: undefined, VQ: undefined, message: undefined, Jx: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1892,"success":false,"profileId":"browser","elapsedtime":661,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1915,"success":false,"profileId":"browser","elapsedtime":650,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1939,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"manifest","starttime":2474}], data: {"inputName":"playback[startPosition]"}, v: false
+3.125|1|I|Playback| Processing post-authorize, MovieId: 80111449, TrackingId: 250318489, Xid: 15233471632580
+3.537|1|I|MediaPresenterASE| Seeking, Requested: 261.000, Actual: 261.001, Cause: 1
+3.657|1|W|MediaElementASE| eme not in cache
+unavailable
+3.681|1|I|MediaElementASE| Setting the license
+4.975|0|I|PlaydataServices| Starting to collect online playdata, active: true, type: online, Aa: [object Object], profileId: browser, nb: E1-BQFRAAELEPkkDrSUVAgsV9VZzcavgD6AprCzEH8T_HRuB0tLWPhURoB869R_bEkvSmHihFlneH5mNFY7uJeG3vdhWQxPa7Mb26_zjDaK1GQCRuCweQ_7v38KlQHuvr35D8jYrobKHAzf3oG_s9nLuLO7U-FEkSrla4QU2TZFJBseJ1IPZQ81n-sB3hKO2j42TSwByw2FNuXWM0XC8A-jUqG35q8WDNhH4xANT7edsm9ftrsQzt96voqvFZlNN7Q., me: undefined, ob: E1-BQFRAAELEPkkDrSUVAgsV9VZzcavgD6AprCzEH8T_HRuB0tLWPhURoB869R_bEkvSmHihFlneH5mNFY7uJeG3vdhWQxPa7Mb26_zjDaK1GQCRuCweQ_7v38KlQHuvr35D8jYrobKHAzf3oG_s9nLuLO7U-FEkSrla4QU2TZFJBseJ1IPZQ81n-sB3hKO2j42TSwByw2FNuXWM0XC8A-jUqG35q8WDNhH4xANT7edsm9ftrsQzt96voqvFZlNN7Q.;EDEF8BA9-79D6-4ACE-A3C8-27DCD51D21ED;STANDARD;1523347168545, Y: 15233471632580, J: 80111449, Yf: A:1:1;2;en;1;|V:2:1;2;;1281020;2;CE3;0;|T:1:1;1;NONE;0;1;, timestamp: 1523347168271
+5.395|1|W|Eme| output protection status
+output-restricted
+5.425|1|I|MediaElementASE| license set
+6.703|0|I|Ext| MDX Initialized - version: 4.3.14-420, flavor: RELEASE, platform: CADMIUM_CONTROLLER, role: controller
+6.708|0|I|Ext| Starting CAST-CHROME discovery component
+6.709|0|I|Ext| Initializing Cast SDK - Version: 1.2 - AppId: CA5E8412
+6.718|0|I|Ext| Discovery manager started state changed, {"isStarted":{"CAST-CHROME":true},"type":"startedStateChanged"}
+6.724|0|I|Ext| Discovery component CAST-CHROME reported a successful start
+6.725|0|I|Ext| MDX Started. Launch args: , undefined
+48.324|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "stop",
+    "starttime": 1892,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 661,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1915,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 650,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1939,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 643,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "manifest",
+    "starttime": 2474,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 525,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "license",
+    "starttime": 4056,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 892,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "bind",
+    "starttime": 4949,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1594,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "start",
+    "starttime": 5700,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1498,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "logblob",
+    "starttime": 10682,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1431,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 48066,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 257,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 48110
+  }
+]
+48.325|1|E|Nccp| Processing EDGE response failed, method: engage, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"stop","starttime":1892,"success":false,"profileId":"browser","elapsedtime":661,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1915,"success":false,"profileId":"browser","elapsedtime":650,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1939,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"manifest","starttime":2474,"success":true,"profileId":"browser","elapsedtime":525,"userTokens":"[\"browser\"]"},{"method":"license","starttime":4056,"success":true,"profileId":"browser","elapsedtime":892,"userTokens":"[\"browser\"]"},{"method":"bind","starttime":4949,"success":true,"profileId":"browser","elapsedtime":1594,"userTokens":"[\"browser\"]"},{"method":"start","starttime":5700,"success":true,"profileId":"browser","elapsedtime":1498,"userTokens":"[\"browser\"]"},{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110}]
+48.371|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "stop",
+    "starttime": 1892,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 661,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1915,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 650,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1939,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 643,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "manifest",
+    "starttime": 2474,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 525,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "license",
+    "starttime": 4056,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 892,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "bind",
+    "starttime": 4949,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1594,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "start",
+    "starttime": 5700,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1498,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "logblob",
+    "starttime": 10682,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1431,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 48066,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 257,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 48110,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 261,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  }
+]
+48.372|1|E|Nccp| Processing EDGE response failed, method: pblifecycle, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"stop","starttime":1892,"success":false,"profileId":"browser","elapsedtime":661,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1915,"success":false,"profileId":"browser","elapsedtime":650,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1939,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"manifest","starttime":2474,"success":true,"profileId":"browser","elapsedtime":525,"userTokens":"[\"browser\"]"},{"method":"license","starttime":4056,"success":true,"profileId":"browser","elapsedtime":892,"userTokens":"[\"browser\"]"},{"method":"bind","starttime":4949,"success":true,"profileId":"browser","elapsedtime":1594,"userTokens":"[\"browser\"]"},{"method":"start","starttime":5700,"success":true,"profileId":"browser","elapsedtime":1498,"userTokens":"[\"browser\"]"},{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+48.374|1|E|PlayDataManager| Heartbeat failed, Type: suspend, ErrorSubCode: 1331, ErrorExternalCode: V0, ErrorDetails: [inputName:playback[startPosition]] [{"method":"stop","starttime":1892,"success":false,"profileId":"browser","elapsedtime":661,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1915,"success":false,"profileId":"browser","elapsedtime":650,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1939,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"manifest","starttime":2474,"success":true,"profileId":"browser","elapsedtime":525,"userTokens":"[\"browser\"]"},{"method":"license","starttime":4056,"success":true,"profileId":"browser","elapsedtime":892,"userTokens":"[\"browser\"]"},{"method":"bind","starttime":4949,"success":true,"profileId":"browser","elapsedtime":1594,"userTokens":"[\"browser\"]"},{"method":"start","starttime":5700,"success":true,"profileId":"browser","elapsedtime":1498,"userTokens":"[\"browser\"]"},{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+98.385|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "manifest",
+    "starttime": 2474,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 525,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "license",
+    "starttime": 4056,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 892,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "bind",
+    "starttime": 4949,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1594,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "start",
+    "starttime": 5700,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1498,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "logblob",
+    "starttime": 10682,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1431,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 48066,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 257,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 48110,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 261,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 70719,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 425,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 98169,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 216,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 98203
+  }
+]
+98.387|1|E|Nccp| Processing EDGE response failed, method: engage, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"manifest","starttime":2474,"success":true,"profileId":"browser","elapsedtime":525,"userTokens":"[\"browser\"]"},{"method":"license","starttime":4056,"success":true,"profileId":"browser","elapsedtime":892,"userTokens":"[\"browser\"]"},{"method":"bind","starttime":4949,"success":true,"profileId":"browser","elapsedtime":1594,"userTokens":"[\"browser\"]"},{"method":"start","starttime":5700,"success":true,"profileId":"browser","elapsedtime":1498,"userTokens":"[\"browser\"]"},{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203}]
+98.428|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "manifest",
+    "starttime": 2474,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 525,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "license",
+    "starttime": 4056,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 892,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "bind",
+    "starttime": 4949,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1594,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "start",
+    "starttime": 5700,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1498,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "logblob",
+    "starttime": 10682,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1431,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 48066,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 257,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 48110,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 261,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 70719,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 425,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 98169,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 216,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 98203,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 225,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  }
+]
+98.429|1|E|Nccp| Processing EDGE response failed, method: pblifecycle, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"manifest","starttime":2474,"success":true,"profileId":"browser","elapsedtime":525,"userTokens":"[\"browser\"]"},{"method":"license","starttime":4056,"success":true,"profileId":"browser","elapsedtime":892,"userTokens":"[\"browser\"]"},{"method":"bind","starttime":4949,"success":true,"profileId":"browser","elapsedtime":1594,"userTokens":"[\"browser\"]"},{"method":"start","starttime":5700,"success":true,"profileId":"browser","elapsedtime":1498,"userTokens":"[\"browser\"]"},{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+98.431|1|E|PlayDataManager| Heartbeat failed, Type: resume, ErrorSubCode: 1331, ErrorExternalCode: V0, ErrorDetails: [inputName:playback[startPosition]] [{"method":"manifest","starttime":2474,"success":true,"profileId":"browser","elapsedtime":525,"userTokens":"[\"browser\"]"},{"method":"license","starttime":4056,"success":true,"profileId":"browser","elapsedtime":892,"userTokens":"[\"browser\"]"},{"method":"bind","starttime":4949,"success":true,"profileId":"browser","elapsedtime":1594,"userTokens":"[\"browser\"]"},{"method":"start","starttime":5700,"success":true,"profileId":"browser","elapsedtime":1498,"userTokens":"[\"browser\"]"},{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+113.288|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "bind",
+    "starttime": 4949,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1594,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "start",
+    "starttime": 5700,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1498,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "logblob",
+    "starttime": 10682,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1431,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 48066,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 257,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 48110,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 261,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 70719,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 425,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 98169,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 216,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 98203,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 225,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "engage",
+    "starttime": 113070,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 218,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 113098
+  }
+]
+113.288|1|E|Nccp| Processing EDGE response failed, method: engage, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"bind","starttime":4949,"success":true,"profileId":"browser","elapsedtime":1594,"userTokens":"[\"browser\"]"},{"method":"start","starttime":5700,"success":true,"profileId":"browser","elapsedtime":1498,"userTokens":"[\"browser\"]"},{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098}]
+113.304|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "bind",
+    "starttime": 4949,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1594,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "start",
+    "starttime": 5700,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1498,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "logblob",
+    "starttime": 10682,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1431,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 48066,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 257,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 48110,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 261,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 70719,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 425,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 98169,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 216,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 98203,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 225,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "engage",
+    "starttime": 113070,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 218,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 113098,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  }
+]
+113.308|1|E|Nccp| Processing EDGE response failed, method: pblifecycle, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"bind","starttime":4949,"success":true,"profileId":"browser","elapsedtime":1594,"userTokens":"[\"browser\"]"},{"method":"start","starttime":5700,"success":true,"profileId":"browser","elapsedtime":1498,"userTokens":"[\"browser\"]"},{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+113.310|1|E|PlayDataManager| Heartbeat failed, Type: suspend, ErrorSubCode: 1331, ErrorExternalCode: V0, ErrorDetails: [inputName:playback[startPosition]] [{"method":"bind","starttime":4949,"success":true,"profileId":"browser","elapsedtime":1594,"userTokens":"[\"browser\"]"},{"method":"start","starttime":5700,"success":true,"profileId":"browser","elapsedtime":1498,"userTokens":"[\"browser\"]"},{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+173.526|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "logblob",
+    "starttime": 10682,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1431,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 48066,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 257,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 48110,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 261,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 70719,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 425,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 98169,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 216,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 98203,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 225,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "engage",
+    "starttime": 113070,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 218,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 113098,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 130731,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 341,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 173315,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 211,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  }
+]
+173.527|1|E|Nccp| Processing EDGE response failed, method: pblifecycle, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+173.528|1|E|PlayDataManager| Heartbeat failed, Type: interval, ErrorSubCode: 1331, ErrorExternalCode: V0, ErrorDetails: [inputName:playback[startPosition]] [{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+233.693|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "pblifecycle",
+    "starttime": 48110,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 261,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 70719,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 425,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 98169,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 216,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 98203,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 225,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "engage",
+    "starttime": 113070,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 218,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 113098,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 130731,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 341,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 173315,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 211,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 190742,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 233556,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 137,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  }
+]
+233.693|1|E|Nccp| Processing EDGE response failed, method: pblifecycle, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+233.694|1|E|PlayDataManager| Heartbeat failed, Type: interval, ErrorSubCode: 1331, ErrorExternalCode: V0, ErrorDetails: [inputName:playback[startPosition]] [{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+293.844|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "engage",
+    "starttime": 98169,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 216,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 98203,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 225,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "engage",
+    "starttime": 113070,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 218,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 113098,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 130731,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 341,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 173315,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 211,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 190742,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 233556,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 137,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 250805,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 370,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 293702,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 142,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  }
+]
+293.848|1|E|Nccp| Processing EDGE response failed, method: pblifecycle, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":250805,"success":true,"profileId":"browser","elapsedtime":370,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":293702,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+293.849|1|E|PlayDataManager| Heartbeat failed, Type: interval, ErrorSubCode: 1331, ErrorExternalCode: V0, ErrorDetails: [inputName:playback[startPosition]] [{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":250805,"success":true,"profileId":"browser","elapsedtime":370,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":293702,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+354.111|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "engage",
+    "starttime": 113070,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 218,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 113098,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 130731,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 341,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 173315,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 211,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 190742,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 233556,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 137,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 250805,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 370,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 293702,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 142,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 305666,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 156,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 353885,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 226,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  }
+]
+354.112|1|E|Nccp| Processing EDGE response failed, method: pblifecycle, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":250805,"success":true,"profileId":"browser","elapsedtime":370,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":293702,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":305666,"success":true,"profileId":"browser","elapsedtime":156,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":353885,"success":false,"profileId":"browser","elapsedtime":226,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+354.112|1|E|PlayDataManager| Heartbeat failed, Type: interval, ErrorSubCode: 1331, ErrorExternalCode: V0, ErrorDetails: [inputName:playback[startPosition]] [{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":250805,"success":true,"profileId":"browser","elapsedtime":370,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":293702,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":305666,"success":true,"profileId":"browser","elapsedtime":156,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":353885,"success":false,"profileId":"browser","elapsedtime":226,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+415.441|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "logblob",
+    "starttime": 130731,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 341,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 173315,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 211,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 190742,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 233556,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 137,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 250805,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 370,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 293702,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 142,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 305666,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 156,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 353885,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 226,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 366531,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 2190,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 414453,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 988,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  }
+]
+415.442|1|E|Nccp| Processing EDGE response failed, method: pblifecycle, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":250805,"success":true,"profileId":"browser","elapsedtime":370,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":293702,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":305666,"success":true,"profileId":"browser","elapsedtime":156,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":353885,"success":false,"profileId":"browser","elapsedtime":226,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":366531,"success":true,"profileId":"browser","elapsedtime":2190,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":414453,"success":false,"profileId":"browser","elapsedtime":988,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+415.442|1|E|PlayDataManager| Heartbeat failed, Type: interval, ErrorSubCode: 1331, ErrorExternalCode: V0, ErrorDetails: [inputName:playback[startPosition]] [{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":250805,"success":true,"profileId":"browser","elapsedtime":370,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":293702,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":305666,"success":true,"profileId":"browser","elapsedtime":156,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":353885,"success":false,"profileId":"browser","elapsedtime":226,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":366531,"success":true,"profileId":"browser","elapsedtime":2190,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":414453,"success":false,"profileId":"browser","elapsedtime":988,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+475.600|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "logblob",
+    "starttime": 190742,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 233556,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 137,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 250805,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 370,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 293702,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 142,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 305666,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 156,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 353885,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 226,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 366531,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 2190,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 414453,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 988,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 427991,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 222,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 475458,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 142,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  }
+]
+475.601|1|E|Nccp| Processing EDGE response failed, method: pblifecycle, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":250805,"success":true,"profileId":"browser","elapsedtime":370,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":293702,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":305666,"success":true,"profileId":"browser","elapsedtime":156,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":353885,"success":false,"profileId":"browser","elapsedtime":226,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":366531,"success":true,"profileId":"browser","elapsedtime":2190,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":414453,"success":false,"profileId":"browser","elapsedtime":988,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":427991,"success":true,"profileId":"browser","elapsedtime":222,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":475458,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+475.601|1|E|PlayDataManager| Heartbeat failed, Type: interval, ErrorSubCode: 1331, ErrorExternalCode: V0, ErrorDetails: [inputName:playback[startPosition]] [{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":250805,"success":true,"profileId":"browser","elapsedtime":370,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":293702,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":305666,"success":true,"profileId":"browser","elapsedtime":156,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":353885,"success":false,"profileId":"browser","elapsedtime":226,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":366531,"success":true,"profileId":"browser","elapsedtime":2190,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":414453,"success":false,"profileId":"browser","elapsedtime":988,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":427991,"success":true,"profileId":"browser","elapsedtime":222,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":475458,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]

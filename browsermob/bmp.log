@@ -1,22 +1,13 @@
-[INFO  2018-03-27T08:11:10,666 net.lightbody.bmp.proxy.Main] (main) Starting BrowserMob Proxy version 2.1.4 
-[INFO  2018-03-27T08:11:10,716 org.eclipse.jetty.util.log] (main) jetty-7.x.y-SNAPSHOT 
-[INFO  2018-03-27T08:11:10,768 org.eclipse.jetty.util.log] (main) started o.e.j.s.ServletContextHandler{/,null} 
-[INFO  2018-03-27T08:11:10,959 org.eclipse.jetty.util.log] (main) Started SelectChannelConnector@0.0.0.0:8080 
-[INFO  2018-03-27T08:11:13,370 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-19) Starting proxy at address: 0.0.0.0/0.0.0.0:8081 
-[INFO  2018-03-27T08:11:13,397 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-19) Proxy listening with TCP transport 
-[INFO  2018-03-27T08:11:13,486 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-19) Proxy started at address: /0:0:0:0:0:0:0:0:8081 
-[INFO  2018-03-27T08:11:36,779 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-0-ProxyToServerWorker-3) (DISCONNECTED) [id: 0x6658240a, L:0.0.0.0/0.0.0.0:38392]: Connection to upstream server failed java.nio.channels.ClosedChannelException: null
+[INFO  2018-04-10T10:38:54,934 net.lightbody.bmp.proxy.Main] (main) Starting BrowserMob Proxy version 2.1.4 
+[INFO  2018-04-10T10:38:54,975 org.eclipse.jetty.util.log] (main) jetty-7.x.y-SNAPSHOT 
+[INFO  2018-04-10T10:38:55,010 org.eclipse.jetty.util.log] (main) started o.e.j.s.ServletContextHandler{/,null} 
+[INFO  2018-04-10T10:38:55,159 org.eclipse.jetty.util.log] (main) Started SelectChannelConnector@0.0.0.0:8080 
+[INFO  2018-04-10T10:38:57,610 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-20) Starting proxy at address: 0.0.0.0/0.0.0.0:8081 
+[INFO  2018-04-10T10:38:57,626 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-20) Proxy listening with TCP transport 
+[INFO  2018-04-10T10:38:57,672 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-20) Proxy started at address: /0:0:0:0:0:0:0:0:8081 
+[INFO  2018-04-10T10:39:30,810 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-0-ProxyToServerWorker-3) (DISCONNECTED) [id: 0x7479a608, L:0.0.0.0/0.0.0.0:33058 ! R:assets.nflxext.com/23.54.112.124:443]: Connection to upstream server failed java.nio.channels.ClosedChannelException: null
 	at io.netty.handler.ssl.SslHandler.channelInactive(...)(Unknown Source) ~[browsermob-dist-2.1.4.jar:?]
 
-[INFO  2018-03-27T08:11:48,987 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ProxyToServerWorker-1) (AWAITING_CHUNK) [id: 0x647d0e5f, L:/127.0.0.1:8081 - R:/127.0.0.1:60960]: Connection to server became saturated, stopping reading 
-[INFO  2018-03-27T08:11:49,120 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-0-ProxyToServerWorker-1) (AWAITING_CHUNK) [id: 0x647d0e5f, L:/127.0.0.1:8081 - R:/127.0.0.1:60960]: All server connections writeable, resuming reading 
-[INFO  2018-03-27T08:12:59,780 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-15) Shutting down proxy server gracefully 
-[INFO  2018-03-27T08:12:59,781 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-15) Closing all channels (graceful) 
-[INFO  2018-03-27T08:12:59,800 org.littleshoot.proxy.impl.ServerGroup] (qtp1489933928-15) Shutting down server group event loops (graceful) 
-[INFO  2018-03-27T08:13:02,016 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-15) Done shutting down proxy server 
-[INFO  2018-03-27T08:13:02,051 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-18) Starting proxy at address: 0.0.0.0/0.0.0.0:8082 
-[INFO  2018-03-27T08:13:02,053 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-18) Proxy listening with TCP transport 
-[INFO  2018-03-27T08:13:02,055 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-18) Proxy started at address: /0:0:0:0:0:0:0:0:8082 
-[INFO  2018-03-27T08:13:23,175 org.littleshoot.proxy.impl.ClientToProxyConnection] (LittleProxy-1-ClientToProxyWorker-4) (AWAITING_INITIAL) [id: 0x4bc7226f, L:/127.0.0.1:8082 - R:/127.0.0.1:59024]: An IOException occurred on ClientToProxyConnection: Connection reset by peer 
-[INFO  2018-03-27T08:13:37,695 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (LittleProxy-JVM-shutdown-hook) Shutting down proxy server immediately (non-graceful) 
-[INFO  2018-03-27T08:13:37,696 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (LittleProxy-JVM-shutdown-hook) Closing all channels (non-graceful) 
+[INFO  2018-04-10T10:39:30,810 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-0-ProxyToServerWorker-4) (HANDSHAKING) [id: 0x9cbc88fd, L:0.0.0.0/0.0.0.0:33060 ! R:assets.nflxext.com/23.54.112.124:443]: Connection to upstream server failed java.nio.channels.ClosedChannelException: null
+	at io.netty.handler.ssl.SslHandler.channelInactive(...)(Unknown Source) ~[browsermob-dist-2.1.4.jar:?]
+

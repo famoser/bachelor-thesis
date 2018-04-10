@@ -1,15 +1,17 @@
 currentSecond = 15;
 lastTimeAccessed = Date.now();
 timeout = 3000;
+stepSize = 60;
 jumpToNext = function seekToNext() {
-    currentSecond += 60;
+    currentSecond += stepSize;
     seek(currentSecond * 1000);
     lastTimeAccessed = Date.now();
     console.log("skipped");
     fasterPlayback();
 }
 
-function fasterPlayback() {
+function fasterPlayback(step) {
+    stepSize = step;
     setTimeout(jumpToNext, 3000);
 }
 
@@ -24256,11 +24258,7 @@ var W1d = {
                         a.cause !== vg && a.cause !== Pk && v.La.stop();
                     });
                     v.addEventListener(Ih, function (a) {
-                        if (a.cause == 1) {
-                            //ignore; this happens when the video starts playing, as it remembers the position you stopped playing
-                            console.log("started playing)");
-                        }
-                        //hi mom
+                        //# this is called when you seek to a certain video position
                         window.lastSeekInfo = a;
                         a.cause !== Pk && (y.Dua && a.cause === gj && v.mh.fM(), a.cause !== vg && (!v.bd.Uf && v.Ooa(a.Eq) ? (T.trace("Repositioned. Skipping from " + a.hz + " to " + a.Eq), v.La.BHa(a.Eq), v.La.play()) : (T.trace("Repositioned. Seeking from " + a.hz + " to " + a.Eq), v.La.seek(a.Eq))));
                     });
@@ -24493,8 +24491,10 @@ var W1d = {
                 b = h(v);
                 v.log = b;
                 console.v = v;
-                //hi mom
+        
+                //# T is the logger used by the main components
                 var T = v.log.Ira();
+                /*
                 replacement = function (text, args) {
                     console.log(text);
                     console.log(args);
@@ -24505,6 +24505,7 @@ var W1d = {
                 T.log = replacement;
                 T.trace = replacement;
                 T.warn = replacement;
+                */
                 window.T = T;
                 Mh || (Mh = b);
                 v.QT = 0;
@@ -27176,8 +27177,6 @@ var W1d = {
                         }), c && a.push(c);
                     } catch (ye) {
                     }
-                    //hi mom
-                    console.analytics = a;
                     return a;
                 }
 
@@ -27331,6 +27330,7 @@ var W1d = {
                     return a;
                 }
 
+                //# video/audio bitrate window is filled
                 function h() {
                     var a = b.Ib.value,
                         c = b.Ad.value,
@@ -27397,6 +27397,7 @@ var W1d = {
                     a.ctrlKey && a.altKey && a.shiftKey && 83 == a.keyCode && g();
                 }
 
+                //# video/audio selection window
                 var t = yb("DIV", "position:absolute;left:0;top:50%;right:0;bottom:0;text-align:center;color:#040;font-size:11px;font-family:monospace", void 0, {
                         "class": "player-streams"
                     }),
@@ -28860,7 +28861,7 @@ var W1d = {
                         return p().ko();
                     },
                     load: function () {
-                        //insert seek function
+                        //# inject seek function
                         window.seek = function (s) {
                             p().seek(s);
                         }
@@ -46199,6 +46200,7 @@ var W1d = {
                 }
 
                 function k() {
+                    //# this decrypts the video packet, and logs the result to the console
                     var g = "";
                     c && (g += (0 < g.length ? "&" : "") + "logs=true");
                     f && (g += (0 < g.length ? "&" : "") + "debug=true");
@@ -47305,6 +47307,9 @@ var W1d = {
                 return a;
             };
             f.prototype.Rf = function (a) {
+                //# this may be interesting for the start point
+                a.startPosition = 0;
+                a.startEpoch = 0;
                 a && (this.nH = a.startPosition, this.g9 = a.startEpoch, this.oG = new k(a.playTimes));
             };
             f.prototype.oc = function () {

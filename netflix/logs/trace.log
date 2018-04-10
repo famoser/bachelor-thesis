@@ -1,0 +1,2508 @@
+Version: 5.0008.781.011 
+Esn: NFCDCH-LX-EAEW31PFFY0PVV6A7HQ0FT2T0RK9M3
+JsSid: 15233471636538, Epoch: 1523347670, Start: 1523347163, TimeZone: -120
+Href: https://www.netflix.com/watch/80111449?trackId=250318489&tctx=0%2C1%2C062701a0-f041-4e9b-8762-02e8beef2d88-5373885%2C89db1ce2-6475-47d4-ac6d-c80160c15338_5388779%2C89db1ce2-6475-47d4-ac6d-c80160c15338_ROOT
+UserAgent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36
+--------------------------------------------------------------------------------
+0.262|0|T|AppStorage| component found for key, storageKey: deviceid, componentKey: idb
+0.269|0|I|Device| Esn source: storage_matched_esn_in_config
+0.333|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+0.372|0|I|Msl| Loading store state
+0.384|0|T|Msl| Adding MasterToken, SequenceNumber: 4, SerialNumber: 333560749535273, Expiration: 1524493818000
+0.389|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+0.495|0|T|AccountManager| Loading accounts from storage
+0.495|0|T|AppStorage| component found for key, storageKey: accounts, componentKey: idb
+0.538|0|T|LogBatcher| isOffline: false
+0.539|0|T|LogBatcher| Flushing
+0.542|0|T|AccountManager| No persisted account data, creating default profile
+0.543|0|I|Nccp| Creating EDGE instance, Endpoint: https://www.netflix.com/api/msl/, Path: /cbp/cadmium-28
+0.605|0|T|AppStorage| component found for key, storageKey: nh, componentKey: idb
+0.606|0|T|AppStorage| component found for key, storageKey: lh, componentKey: idb
+0.607|0|T|AppStorage| component found for key, storageKey: gh, componentKey: idb
+0.607|0|T|AppStorage| component found for key, storageKey: vb, componentKey: idb
+0.609|0|T|AppStorage| component found for key, storageKey: messages, componentKey: idb
+0.669|0|T|ASE| Config changed for 'minInitVideoBitrate' from -Infinity (number) to 560 (number)
+0.670|0|T|ASE| Config changed for 'minHCInitVideoBitrate' from -Infinity (number) to 560 (number)
+0.670|0|T|ASE| Config changed for 'minInitAudioBitrate' from -Infinity (number) to 0 (number)
+0.670|0|T|ASE| Config changed for 'maxInitAudioBitrate' from Infinity (number) to 65535 (number)
+0.670|0|T|ASE| Config changed for 'minHCInitAudioBitrate' from -Infinity (number) to 0 (number)
+0.670|0|T|ASE| Config changed for 'minAcceptableVideoBitrate' from -Infinity (number) to 235 (number)
+0.670|0|T|ASE| Config changed for 'minPrebufSize' from 5800 (number) to 7800 (number)
+0.670|0|T|ASE| Config changed for 'maxPrebufSize' from 40000 (number) to 45000 (number)
+0.670|0|T|ASE| Config changed for 'maxBufferingTime' from 2000 (number) to 2600 (number)
+0.671|0|T|ASE| Config changed for 'initSelectionLowerBound' from -Infinity (number) to 560 (number)
+0.671|0|T|ASE| Config changed for 'initSelectionUpperBound' from Infinity (number) to 1050 (number)
+0.671|0|T|ASE| Config changed for 'bandwidthMargin' from 0 (number) to 10 (number)
+0.671|0|T|ASE| Config changed for 'bandwidthMarginCurve' from [{"m":20,"b":15000},{"m":17,"b":30000},{"m":10,"b":60000},{"m":5,"b":120000}] (object) to [{"m":65,"b":8000},{"m":65,"b":30000},{"m":50,"b":60000},{"m":45,"b":90000},{"m":40,"b":120000},{"m":20,"b":180000},{"m":5,"b":240000}] (object)
+0.671|0|T|ASE| Config changed for 'switchConfigBasedOnInSessionTput' from true (boolean) to false (boolean)
+0.671|0|T|ASE| Config changed for 'conservBandwidthMarginTputThreshold' from 6000 (number) to 0 (number)
+0.671|0|T|ASE| Config changed for 'conservBandwidthMarginCurve' from [{"m":25,"b":15000},{"m":20,"b":30000},{"m":15,"b":60000},{"m":10,"b":120000},{"m":5,"b":240000}] (object) to [{"m":80,"b":8000},{"m":80,"b":30000},{"m":70,"b":60000},{"m":60,"b":90000},{"m":50,"b":120000},{"m":30,"b":180000},{"m":10,"b":240000}] (object)
+0.671|0|T|ASE| Config changed for 'switchConfigBasedOnThroughputHistory' from "iqr" (string) to "none" (string)
+0.671|0|T|ASE| Config changed for 'lowEndMarkingCriteria' from "iqr" (string) to "none" (string)
+0.671|0|T|ASE| Config changed for 'skipBitrateInUpswitch' from false (boolean) to true (boolean)
+0.672|0|T|ASE| Config changed for 'highStreamRetentionWindowUp' from 500000 (number) to 300000 (number)
+0.672|0|T|ASE| Config changed for 'lowStreamTransitionWindowUp' from 100000 (number) to 300000 (number)
+0.672|0|T|ASE| Config changed for 'lowestBufForUpswitch' from 9000 (number) to 15000 (number)
+0.673|0|T|ASE| Config changed for 'lowWatermarkLevel' from 15000 (number) to 25000 (number)
+0.673|0|T|ASE| Config changed for 'lowestWaterMarkLevel' from 30000 (number) to 20000 (number)
+0.673|0|T|ASE| Config changed for 'mediaRate' from 1.5 (number) to 1 (number)
+0.673|0|T|ASE| Config changed for 'maxTrailingBufferLen' from 15000 (number) to 10000 (number)
+0.673|0|T|ASE| Config changed for 'fastDownswitchFactor' from Infinity (number) to 1 (number)
+0.673|0|T|ASE| Config changed for 'maxMediaBufferAllowed' from 270000 (number) to 240000 (number)
+0.673|0|T|ASE| Config changed for 'considerConnectTime' from true (boolean) to false (boolean)
+0.673|0|T|ASE| Config changed for 'allowReissueMediaRequestAfterAbort' from false (boolean) to true (boolean)
+0.673|0|T|ASE| Config changed for 'bufferThresholdForAbort' from 20000 (number) to 10000 (number)
+0.673|0|T|ASE| Config changed for 'allowCallToStreamSelector' from false (boolean) to true (boolean)
+0.674|0|T|ASE| Config changed for 'minPendingBufferLen' from 3000 (number) to 6000 (number)
+0.674|0|T|ASE| Config changed for 'maxPendingBufferLen' from 6000 (number) to 12000 (number)
+0.674|0|T|ASE| Config changed for 'maxStreamingSkew' from 2000 (number) to 4000 (number)
+0.674|0|T|ASE| Config changed for 'maxRequestsInBuffer' from 120 (number) to 60 (number)
+0.674|0|T|ASE| Config changed for 'reserveForSkipbackBufferMs' from 15000 (number) to 10000 (number)
+0.674|0|T|ASE| Config changed for 'pipelineEnabled' from true (boolean) to false (boolean)
+0.674|0|T|ASE| Config changed for 'maxParallelConnections' from 3 (number) to 1 (number)
+0.674|0|T|ASE| Config changed for 'updatePtsIntervalMs' from 1000 (number) to 2002 (number)
+0.674|0|T|ASE| Config changed for 'bufferTraceDenominator' from 0 (number) to 100 (number)
+0.674|0|T|ASE| Config changed for 'bufferLevelNotifyIntervalMs' from 2000 (number) to 2002 (number)
+0.674|0|T|ASE| Config changed for 'prebufferTimeLimit' from 60000 (number) to 240000 (number)
+0.675|0|T|ASE| Config changed for 'updateDrmRequestOnNetworkFailure' from true (boolean) to false (boolean)
+0.675|0|T|ASE| Config changed for 'maxDiffAudioVideoEndPtsMs' from 1000 (number) to 16000 (number)
+0.675|0|T|ASE| Config changed for 'defaultHeaderCacheSize' from 4 (number) to 15 (number)
+0.675|0|T|ASE| Config changed for 'defaultHeaderCacheDataCount' from 4 (number) to 3 (number)
+0.675|0|T|ASE| Config changed for 'enableUsingHeaderCount' from false (boolean) to true (boolean)
+0.675|0|T|ASE| Config changed for 'abortUnsentBlocks' from true (boolean) to false (boolean)
+0.675|0|T|ASE| Config changed for 'requireAudioStreamToEncompassVideo' from false (boolean) to true (boolean)
+0.675|0|T|ASE| Config changed for 'allowAudioToStreamPastVideo' from false (boolean) to true (boolean)
+0.675|0|T|ASE| Config changed for 'bufferThresholdToSwitchToSingleConnMs' from 45000 (number) to 180000 (number)
+0.675|0|T|ASE| Config changed for 'bufferThresholdToSwitchToParallelConnMs' from 35000 (number) to 120000 (number)
+0.675|0|T|ASE| Config changed for 'expandDownloadTime' from true (boolean) to false (boolean)
+0.675|0|T|ASE| Config changed for 'throughputIQRMeasureWindow' from 1000 (number) to 5000 (number)
+0.675|0|T|ASE| Config changed for 'enableFilters' from ["throughput-ewma","throughput-sw","throughput-iqr","throughput-tdigest"] (object) to ["throughput-ewma","throughput-sw","throughput-iqr","throughput-tdigest"] (object)
+0.675|0|T|ASE| Config changed for 'filterDefinitionOverrides' from {} (object) to {} (object)
+0.675|0|T|ASE| Config changed for 'secondaryFilter' from "throughput-sw" (string) to "none" (string)
+0.675|0|T|ASE| Config changed for 'defaultFilterDefinitions' from {"throughput-ewma":{"type":"discontiguous-ewma","mw":5000,"wt":0},"throughput-sw":{"type":"slidingwindow","mw":300000},"throughput-iqr":{"type":"iqr","mx":100,"mn":5,"bw":15000,"iv":1000},"throughput-iqr-history":{"type":"iqr-history"},"throughput-location-history":{"type":"discrete-ewma","hl":14400,"in":0},"respconn-location-history":{"type":"discrete-ewma","hl":100,"in":0},"throughput-tdigest":{"type":"tdigest","maxc":25,"c":0.5,"b":1000,"w":15000,"mn":6},"throughput-tdigest-history":{"type":"tdigest-history","maxc":25,"rc":"ewma","c":0.5,"hl":7200},"respconn-ewma":{"type":"discrete-ewma","hl":10,"in":0}} (object) to {"throughput-ewma":{"type":"discontiguous-ewma","mw":5000,"wt":5000},"throughput-sw":{"type":"slidingwindow","mw":5000},"throughput-iqr":{"type":"iqr","mx":null,"mn":5,"bw":15000,"iv":1000},"throughput-iqr-history":{"type":"iqr-history"},"throughput-location-history":{"type":"discrete-ewma","hl":14400,"in":3600},"respconn-location-history":{"type":"discrete-ewma","hl":100,"in":25},"throughput-tdigest":{"type":"tdigest","maxc":25,"c":0.5,"b":1000,"w":15000,"mn":6},"throughput-tdigest-history":{"type":"tdigest-history","maxc":25,"rc":"ewma","c":0.5,"hl":7200},"respconn-ewma":{"type":"discrete-ewma","hl":10,"in":10}} (object)
+0.675|0|T|ASE| Config changed for 'secondThroughputEstimator' from "slidingwindow" (string) to "none" (string)
+0.675|0|T|ASE| Config changed for 'secondThroughputMeasureWindowInMs' from 300000 (number) to Infinity (number)
+0.676|0|T|ASE| Config changed for 'IQRBandwidthFactorConfig' from {"iur":true,"minr":8000,"maxr":20000,"rlaf":60,"flb":0.5,"fup":0.85,"fmind":0.75,"fmaxd":1,"fmintp":0.25,"fmindp":0.75} (object) to {"iur":true,"minr":8000,"maxr":20000,"rlaf":60,"flb":0.1,"fup":0.95,"fmind":0.2,"fmaxd":1,"fmintp":0.25,"fmindp":0.75} (object)
+0.676|0|T|ASE| Config changed for 'HistoricalTDigestConfig' from {"maxc":25,"rc":"ewma","c":0.5,"hl":7200} (object) to {"maxc":25,"rc":"ewma","c":0.5,"hl":7200} (object)
+0.677|0|T|ASE| Config changed for 'maxIQRSamples' from 100 (number) to Infinity (number)
+0.677|0|T|ASE| Config changed for 'bufferBased' from {"V5":12000,"MQ":6000,"$Aa":60000,"O5":90,"h8":60,"PHa":30,"Vt":240000,"QHa":true,"rta":true,"lza":true,"oJa":true,"RHa":true,"SHa":true,"NHa":false,"OHa":120,"eza":false,"PAa":90000,"E4":false,"J5":126000,"Yya":false,"kza":false} (object) to {"V5":120000,"MQ":8000,"$Aa":60000,"O5":90,"h8":60,"PHa":30,"Vt":219988,"QHa":true,"rta":true,"lza":true,"oJa":true,"RHa":true,"SHa":true,"NHa":false,"OHa":120,"eza":false,"PAa":90000,"E4":false,"J5":126000,"Yya":false,"kza":false} (object)
+0.677|0|T|ASE| Config changed for 'periodicHistoryPersistMs' from 0 (number) to 300000 (number)
+0.677|0|T|ASE| Config changed for 'saveVideoBitrateMs' from 0 (number) to 180000 (number)
+0.677|0|T|ASE| Config changed for 'biasTowardHistoricalThroughput' from false (boolean) to true (boolean)
+0.678|0|T|ASE| Config changed for 'maxFastPlayBufferInMs' from 20000 (number) to Infinity (number)
+0.678|0|T|ASE| Config changed for 'maxFastPlayBitThreshold' from 200000000 (number) to Infinity (number)
+0.678|0|T|ASE| Config changed for 'audioFragmentDurationMilliseconds' from null (object) to 16000 (number)
+0.678|0|T|ASE| Config changed for 'videoFragmentDurationMilliseconds' from null (object) to 4004 (number)
+0.678|0|T|ASE| Config changed for 'addHeaderDataToNetworkMonitor' from true (boolean) to false (boolean)
+0.678|0|T|ASE| Config changed for 'psdPredictor' from {"numB":240,"bSizeMs":1000,"fillS":"last","fillHl":1000,"bthresh":100,"freqave":5,"numfreq":26,"beta":[-2.57382621685251,1.00514098612371,-0.369357559975733,0.00999932810065489,0.142934270516382,0.162644679552085,-0.0566219452189998,0.022239120872481,-0.0668887810950692,-0.179565604901062,-0.164944450316777,-0.269160823754313,-0.353934286812968,0.127490861540904,-0.30639082364227,-0.21647101116447,-0.0842995352796247,-0.0103329141448779,-0.12855537458795,0.181738862222313,0.263672043403025,0.0755588656690725,0.400401204107367,-0.420677412792809,-1.09035458665828,1.27111376831522,0.561903634898845,-1.17759977644374],"thresh":0.22,"tol":1e-10,"tol2":0.0001} (object) to {"numB":240,"bSizeMs":1000,"fillS":"last","fillHl":1000,"bthresh":100,"freqave":5,"numfreq":26,"beta":[-2.57382621685251,1.00514098612371,-0.369357559975733,0.00999932810065489,0.142934270516382,0.162644679552085,-0.0566219452189998,0.022239120872481,-0.0668887810950692,-0.179565604901062,-0.164944450316777,-0.269160823754313,-0.353934286812968,0.127490861540904,-0.30639082364227,-0.21647101116447,-0.0842995352796247,-0.0103329141448779,-0.12855537458795,0.181738862222313,0.263672043403025,0.0755588656690725,0.400401204107367,-0.420677412792809,-1.09035458665828,1.27111376831522,0.561903634898845,-1.17759977644374],"thresh":0.22,"tol":1e-10,"tol2":0.0001} (object)
+0.678|0|T|ASE| Config changed for 'hindsightParam' from {"numB":null,"bSizeMs":1000,"fillS":"last","fillHl":1000} (object) to {"numB":null,"bSizeMs":1000,"fillS":"last","fillHl":1000} (object)
+0.678|0|T|ASE| Config changed for 'appendMediaRequestOnComplete' from false (boolean) to true (boolean)
+0.678|0|T|ASE| Config changed for 'reappendRequestsOnSkip' from false (boolean) to true (boolean)
+0.678|0|T|ASE| Config changed for 'maxActiveRequestsPerSession' from undefined (undefined) to 3 (number)
+0.678|0|T|ASE| Config changed for 'limitAudioDiscountByMaxAudioBitrate' from false (boolean) to true (boolean)
+0.678|0|T|ASE| Config changed for 'appendFirstHeaderOnComplete' from false (boolean) to true (boolean)
+0.678|0|T|ASE| Config changed for 'maxAudioFragmentOverlapMs' from 80 (number) to 0 (number)
+0.709|0|W|ASEJS|media|asejs| nf-ase version:
+2.7.49
+DEBUG:, false
+0.852|0|I|VideoPreparer| instance created
+0.960|0|T|PlayerPredictionModel| create model: modelone, 2, 5
+0.960|0|I|PlayerPredictionModel| ppm v2 initialized
+1.022|0|I|MessageQueue| No messages to load.
+1.126|0|T|General| Config applied for
+playableId=80111449
+episodeId=80111449
+uiLabel="standard"
+backToBrowsingUrl="/title/80111449"
+trackingId=250318489
+referrerIsNetflix=true
+assistiveAudioPreferred=false
+pinConfig={"adultVerificationUrl":"https://www.netflix.com/verifyage?videoid=80111449","isEnabled":false,"resetUrl":"https://www.netflix.com/player/pinreset","pinResetOnNonPinContent":false,"isAdultVerified":true,"apiEndpoint":"https://www.netflix.com/api/shakti/602b7934/pin/service"}
+preReleasePinRequiredById={}
+nccpAppId="152330076577502291"
+appId="152330076577502291"
+nccpSessionId="15233007651096276"
+sessionId="15233007651096276"
+browserInfo={"os":{"name":"Linux","version":"0.0.0"},"name":"Chrome","version":"65.0.3325.146"}
+environment="prod"
+preferredLanguages="en-CH"
+supportPhoneNumber="0800-561-554"
+errorSupportUrls={"F7031-1102":"25078","H7053-1803":"14452","H7111-1101":"14563","H7354":"12993","H7361-1253-80070005":"32876","M7355-1203":"22952","M7357-1003":"14759","C7357-1003":"14759","M7357-1269":"14759","C7357-1269":"14759","M7701-1003":"27451","M7702-1003":"30321","S7354":"25711","S7363-1266-0000230D":"25704","S7363-1266-00002E3F":"32701","F7053-1803":"32660","F7701-1003":"32661","S7363-1266-48444350":"22497","O7702-1003":"40838"}
+chromeVersion="Chrome 65.0.3325.146"
+windowScaling=true
+uimode="akira"
+apiUrl="https://www.netflix.com/api/shakti/602b7934"
+postPlayApiRevision=""
+preserveLastFrame=true
+mdx2Enabled=true
+hideSupportUrl=true
+uiTrackingEnabled=true
+uiTrackingEndpoint="/uitracking/users/presentationtracking"
+uiVersion="akira"
+enableTrickPlay=true
+breakOnError=false
+disableVideoRightClickMenu=false
+renderTimedText=true
+postPlayBaseUrl="https://www.netflix.com/api/shakti/602b7934/postplay"
+reportAProblemEndpoint="https://www.netflix.com/api/shakti/602b7934/reportproblem"
+reportProblemEnabled=true
+metadataBaseServer="https://www.netflix.com/api/shakti/602b7934"
+akiraMetadataStrategy="shakti"
+forceCCPaint=true
+requestFromNetflix=false
+timedTextStyleDefaults={"backgroundColor":null,"backgroundOpacity":"OPAQUE","characterColor":"WHITE","characterEdgeAttributes":"DROP_SHADOW","characterEdgeColor":"BLACK","characterOpacity":"OPAQUE","characterSize":"MEDIUM","characterStyle":"PROPORTIONAL_SANS_SERIF","windowColor":null,"windowOpacity":"OPAQUE"}
+timedTextStyleOverrides={"backgroundColor":null,"backgroundOpacity":null,"characterColor":null,"characterEdgeAttributes":null,"characterEdgeColor":null,"characterOpacity":null,"characterSize":null,"characterStyle":null,"windowColor":null,"windowOpacity":null}
+showRatings=true
+largeDisplayDimensionThreshold={"height":900,"width":1600}
+maxAutoPlaySeconds=15
+autoplayInterrupterTimestamp=120
+ignoreUserActivity=false
+webkitDecodedFrameCountIncorrectlyReported=true
+secureUrls=true
+playerUpsellEnabled=true
+skipCreditsEnabled=true
+skipCreditsDisplayDuration=6000
+bookmarkByMovieId={}
+preciseSeeking=true
+focusPlayerWrapperAfterControlClick=false
+limitedSVGSupport=false
+metadataRequestFormat="NOFALCOR"
+maxTrackLengthUI=7
+mdxInitTimeout=120000
+castSdkConnectTimeout=20000
+mdxConnectionTimeout=60000
+castSdkDisconnectTimeout=60000
+signoutUrl="/SignOut?lnkctr=mL"
+profileGuid="K3UWUOENKVDE5CQ7GCCQ4YUABU"
+ppmConfig={"maxNumberTitlesScheduled":1,"holdDuration":300000,"colEpisodeList":1,"rowFirst":1,"colFirst":1,"rowScroll":1,"colScroll":3,"rowScrollHorizontal":3,"searchTop":1,"cwFirst":2,"gridFirst":0,"gridScroll":0,"genre":2}
+playerPredictionModelV2=true
+failOnGuidMismatch=false
+uiContextConfig_motionBillboard={"preferredEngine":"cadmium"}
+uiContextConfig_bigRow={"preferredEngine":"cadmium"}
+feedback={"minChars":75,"maxChars":1000}
+resetControlFocusAfterClick=true
+prepare=true
+playdataPrepareRequest=false
+notifyOpenConnectBlackBox=true
+histAggregationTimeSpanInSeconds=600
+secureStopEnabled=false
+mslEndpoint="https://www.netflix.com/api/msl/"
+congestionServiceApiEndpoint="https://www.netflix.com/api/cbp/html5player/congestion"
+pingOnConnectTimeout=true
+endpoint=true
+enableCongestionService=false
+usePerformanceApi="false"
+ftlEnabled=true
+ftlEndpoint2="https://www.netflix.com/api/ftl/probe"
+maxParallelConnections=1
+parallelSafeBufferThreshhold=0.000001
+useTypescriptEme=false
+prepareStrategy="ppm"
+prepareManifestCacheMaxCount=50
+prepareLdlCacheMaxCount=30
+supportPreviewContent=true
+useSetServerCertificateApi=true
+esn="NFCDCH-LX-EAEW31PFFY0PVV6A7HQ0FT2T0RK9M3"
+endPtsByViewableId={"80111449":1262000}
+1.133|0|I|VideoPlayer| Next episode added, movieId: 80111449, playbackParams: [object Object], uiLabel: standard, manifestData: undefined
+1.133|0|I|SegmentManager| Adding segment
+{"movieId":80111449,"uiLabel":"standard","params":{"trackingId":250318489,"authParams":{"pinCapableClient":false},"sessionParams":{"uiplaycontext":{"list_id":"89db1ce2-6475-47d4-ac6d-c80160c15338_5388779","lolomo_id":"89db1ce2-6475-47d4-ac6d-c80160c15338_ROOT","location":"WATCHNOW","rank":1,"request_id":"062701a0-f041-4e9b-8762-02e8beef2d88-5373885","row":0,"track_id":250318489,"video_id":80111449},"isUIAutoPlay":false,"supportsWatermark":true,"supportsPreReleasePin":true,"preferUnletterboxed":false},"disableTrackStickiness":false,"uiPlayStartTime":1523347163018,"loadImmediately":false}}
+1.134|0|T|SegmentManager| First segment, loading, movieId: 80111449, uiLabel: standard
+1.134|0|I|SegmentManager| Loading the next episode, movieId: 80111449, uiLabel: standard
+1.136|0|T|SegmentManager| Found the next session, movieId: 80111449, uiLabel: standard
+1.137|0|T|SegmentManager| First playback transitioning immediately, movieId: 80111449, uiLabel: standard
+1.137|0|T|SegmentManager| Loading new segment, movieId: 80111449, uiLabel: standard
+1.221|0|T|VideoPreparer| task scheduler paused on playback created
+1.280|0|T|General| adding movieId to playback map, 80111449
+1.280|0|T|SegmentManager| Playing episode, movieId: 80111449, uiLabel: standard
+1.302|1|I|Playback| Playback loading, MovieId: 80111449, TrackingId: 250318489, Xid: 15233471632580
+1.478|0|T|StorageLock| Lock acquired, Name: lock-playback
+1.579|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+1.834|0|T|LifecycleProvider| Sending EDGE request, Method: stop
+1.835|0|T|Msl| Sending MSL request
+1.855|0|T|LifecycleProvider| Sending EDGE request, Method: stop
+1.855|0|T|Msl| Sending MSL request
+1.873|0|T|LifecycleProvider| Sending EDGE request, Method: stop
+1.874|0|T|Msl| Sending MSL request
+1.892|0|T|LifecycleProvider| Sending EDGE request, Method: stop
+1.892|0|T|Msl| Sending MSL request
+1.915|0|T|LifecycleProvider| Sending EDGE request, Method: stop
+1.916|0|T|Msl| Sending MSL request
+1.939|0|T|LifecycleProvider| Sending EDGE request, Method: stop
+1.940|0|T|Msl| Sending MSL request
+2.012|0|T|Msl| Sent MSL header, NccpMethod: stop, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+2.037|0|T|Msl| Sent MSL header, NccpMethod: stop, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+2.053|0|T|Msl| Sent MSL header, NccpMethod: stop, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+2.062|0|T|Msl| Sent MSL header, NccpMethod: stop, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+2.073|0|T|Msl| Sent MSL header, NccpMethod: stop, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+2.082|0|T|Msl| Sent MSL header, NccpMethod: stop, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+2.346|0|T|Msl| Received MSL header, NccpMethod: stop, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+2.347|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+2.348|0|T|Msl| Received MSL response, Method: stop
+2.373|0|T|Msl| Received MSL header, NccpMethod: stop, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+2.373|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+2.373|0|T|Msl| Received MSL response, Method: stop
+2.391|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+2.396|0|T|Msl| Received MSL header, NccpMethod: stop, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+2.396|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+2.396|0|T|Msl| Received MSL response, Method: stop
+2.411|0|T|LifecycleProvider| Received EDGE response, Method: stop
+2.412|0|E|LifecycleProvider| BladeRunner command history
+[
+  {
+    "method": "stop",
+    "starttime": 1833,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 579,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1855
+  },
+  {
+    "method": "stop",
+    "starttime": 1872
+  },
+  {
+    "method": "stop",
+    "starttime": 1892
+  },
+  {
+    "method": "stop",
+    "starttime": 1915
+  },
+  {
+    "method": "stop",
+    "starttime": 1939
+  }
+]
+2.416|0|E|LifecycleProvider| Processing EDGE response failed, method: stop, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855},{"method":"stop","starttime":1872},{"method":"stop","starttime":1892},{"method":"stop","starttime":1915},{"method":"stop","starttime":1939}]
+2.418|0|E|PlaydataServices| Unble to complete the stop lifecycle event, code: 7123, fb: 1331, Qb: V0, vg: undefined, VQ: undefined, message: undefined, Jx: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855},{"method":"stop","starttime":1872},{"method":"stop","starttime":1892},{"method":"stop","starttime":1915},{"method":"stop","starttime":1939}], data: {"inputName":"playback[startPosition]"}, v: false
+2.420|1|I|Playback| Authorizing, MovieId: 80111449, TrackingId: 250318489, Xid: 15233471632580
+2.447|0|T|VideoPreparer| cache miss: no data exists for field:manifest
+2.469|1|W|NccpPlayback| manifest not in cache
+unavailable
+2.474|1|T|Nccp| Sending EDGE request, Method: manifest
+2.476|0|T|Msl| Sending MSL request
+2.496|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+2.506|0|T|LifecycleProvider| Received EDGE response, Method: stop
+2.506|0|E|LifecycleProvider| BladeRunner command history
+[
+  {
+    "method": "stop",
+    "starttime": 1833,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 579,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1855,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 651,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1872
+  },
+  {
+    "method": "stop",
+    "starttime": 1892
+  },
+  {
+    "method": "stop",
+    "starttime": 1915
+  },
+  {
+    "method": "stop",
+    "starttime": 1939
+  },
+  {
+    "method": "manifest",
+    "starttime": 2474
+  }
+]
+2.507|0|E|LifecycleProvider| Processing EDGE response failed, method: stop, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872},{"method":"stop","starttime":1892},{"method":"stop","starttime":1915},{"method":"stop","starttime":1939},{"method":"manifest","starttime":2474}]
+2.509|0|E|PlaydataServices| Unble to complete the stop lifecycle event, code: 7123, fb: 1331, Qb: V0, vg: undefined, VQ: undefined, message: undefined, Jx: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872},{"method":"stop","starttime":1892},{"method":"stop","starttime":1915},{"method":"stop","starttime":1939},{"method":"manifest","starttime":2474}], data: {"inputName":"playback[startPosition]"}, v: false
+2.515|0|T|LifecycleProvider| Received EDGE response, Method: stop
+2.515|0|E|LifecycleProvider| BladeRunner command history
+[
+  {
+    "method": "stop",
+    "starttime": 1833,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 579,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1855,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 651,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1872,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 643,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1892
+  },
+  {
+    "method": "stop",
+    "starttime": 1915
+  },
+  {
+    "method": "stop",
+    "starttime": 1939
+  },
+  {
+    "method": "manifest",
+    "starttime": 2474
+  }
+]
+2.516|0|E|LifecycleProvider| Processing EDGE response failed, method: stop, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1892},{"method":"stop","starttime":1915},{"method":"stop","starttime":1939},{"method":"manifest","starttime":2474}]
+2.516|0|E|PlaydataServices| Unble to complete the stop lifecycle event, code: 7123, fb: 1331, Qb: V0, vg: undefined, VQ: undefined, message: undefined, Jx: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1892},{"method":"stop","starttime":1915},{"method":"stop","starttime":1939},{"method":"manifest","starttime":2474}], data: {"inputName":"playback[startPosition]"}, v: false
+2.527|0|T|Msl| Received MSL header, NccpMethod: stop, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+2.527|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+2.527|0|T|Msl| Received MSL response, Method: stop
+2.529|0|T|Msl| Sent MSL header, NccpMethod: manifest, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+2.532|0|T|Msl| Received MSL header, NccpMethod: stop, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+2.533|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+2.533|0|T|Msl| Received MSL response, Method: stop
+2.538|0|T|Msl| Received MSL header, NccpMethod: stop, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+2.538|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+2.538|0|T|Msl| Received MSL response, Method: stop
+2.552|0|T|LifecycleProvider| Received EDGE response, Method: stop
+2.553|0|E|LifecycleProvider| BladeRunner command history
+[
+  {
+    "method": "stop",
+    "starttime": 1833,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 579,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1855,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 651,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1872,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 643,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1892,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 661,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1915
+  },
+  {
+    "method": "stop",
+    "starttime": 1939
+  },
+  {
+    "method": "manifest",
+    "starttime": 2474
+  }
+]
+2.556|0|E|LifecycleProvider| Processing EDGE response failed, method: stop, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1892,"success":false,"profileId":"browser","elapsedtime":661,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1915},{"method":"stop","starttime":1939},{"method":"manifest","starttime":2474}]
+2.557|0|E|PlaydataServices| Unble to complete the stop lifecycle event, code: 7123, fb: 1331, Qb: V0, vg: undefined, VQ: undefined, message: undefined, Jx: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1892,"success":false,"profileId":"browser","elapsedtime":661,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1915},{"method":"stop","starttime":1939},{"method":"manifest","starttime":2474}], data: {"inputName":"playback[startPosition]"}, v: false
+2.565|0|T|LifecycleProvider| Received EDGE response, Method: stop
+2.565|0|E|LifecycleProvider| BladeRunner command history
+[
+  {
+    "method": "stop",
+    "starttime": 1833,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 579,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1855,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 651,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1872,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 643,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1892,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 661,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1915,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 650,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1939
+  },
+  {
+    "method": "manifest",
+    "starttime": 2474
+  }
+]
+2.570|0|E|LifecycleProvider| Processing EDGE response failed, method: stop, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1892,"success":false,"profileId":"browser","elapsedtime":661,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1915,"success":false,"profileId":"browser","elapsedtime":650,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1939},{"method":"manifest","starttime":2474}]
+2.572|0|E|PlaydataServices| Unble to complete the stop lifecycle event, code: 7123, fb: 1331, Qb: V0, vg: undefined, VQ: undefined, message: undefined, Jx: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1892,"success":false,"profileId":"browser","elapsedtime":661,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1915,"success":false,"profileId":"browser","elapsedtime":650,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1939},{"method":"manifest","starttime":2474}], data: {"inputName":"playback[startPosition]"}, v: false
+2.582|0|T|LifecycleProvider| Received EDGE response, Method: stop
+2.582|0|E|LifecycleProvider| BladeRunner command history
+[
+  {
+    "method": "stop",
+    "starttime": 1833,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 579,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1855,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 651,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1872,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 643,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1892,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 661,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1915,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 650,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1939,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 643,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "manifest",
+    "starttime": 2474
+  }
+]
+2.582|0|E|LifecycleProvider| Processing EDGE response failed, method: stop, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1892,"success":false,"profileId":"browser","elapsedtime":661,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1915,"success":false,"profileId":"browser","elapsedtime":650,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1939,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"manifest","starttime":2474}]
+2.583|0|E|PlaydataServices| Unble to complete the stop lifecycle event, code: 7123, fb: 1331, Qb: V0, vg: undefined, VQ: undefined, message: undefined, Jx: [inputName:playback[startPosition]] [{"method":"stop","starttime":1833,"success":false,"profileId":"browser","elapsedtime":579,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1855,"success":false,"profileId":"browser","elapsedtime":651,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1872,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1892,"success":false,"profileId":"browser","elapsedtime":661,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1915,"success":false,"profileId":"browser","elapsedtime":650,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1939,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"manifest","starttime":2474}], data: {"inputName":"playback[startPosition]"}, v: false
+2.613|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+2.913|0|T|Msl| Received MSL header, NccpMethod: manifest, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+2.914|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+2.914|0|T|Msl| Received MSL response, Method: manifest
+2.944|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+2.999|1|T|Nccp| Received EDGE response, Method: manifest
+3.000|1|T|NccpPlayback| Auth Delay: 555
+3.001|1|T|BladeRunnerParseManifest| Transformed locations, Count: 3
+3.001|1|T|BladeRunnerParseManifest| Transformed cdns, Count: 9
+3.002|1|T|BladeRunnerParseManifest| Transformed trick play tracks, Count: 2
+3.003|1|T|BladeRunnerParseManifest| Transformed timed text track, bcp47: undefined, trackId: T:1:1;1;NONE;0;1;, downloadableId: undefined
+3.004|1|T|BladeRunnerParseManifest| Transformed timed text track, bcp47: en, trackId: T:1:1;1;en;0;0;, downloadableId: 1858029803
+3.005|1|T|BladeRunnerParseManifest| Transformed timed text track, bcp47: de, trackId: T:1:0;1;de;0;0;, downloadableId: 1582837494
+3.006|1|T|BladeRunnerParseManifest| Transformed timed text track, bcp47: fr, trackId: T:1:0;1;fr;0;0;, downloadableId: 1195165059
+3.006|1|T|BladeRunnerParseManifest| Transformed timed text track, bcp47: fr, trackId: T:1:0;1;fr;1;1;, downloadableId: 1529277389
+3.006|1|T|BladeRunnerParseManifest| Transformed timed text tracks, Count: 5
+3.008|1|T|BladeRunnerParseManifest| Transformed audio track, type: audio, Eb: A:1:1;2;en;1;, RT: PRIMARY, VF: PRIMARY, hi: en, displayName: English [Original], pM: 2.0, nQa: 2.0, mQa: 2, lj: [object Object],[object Object],[object Object],[object Object], fTa: [object Object], $a: [object Object],[object Object], mpa: AAC, WR: [object Object], StreamCount: 2, AllowedTimedTextTracks: 4
+3.009|1|T|BladeRunnerParseManifest| Transformed audio track, type: audio, Eb: A:1:1;2;de;0;, RT: PRIMARY, VF: PRIMARY, hi: de, displayName: German, pM: 2.0, nQa: 2.0, mQa: 2, lj: [object Object],[object Object],[object Object],[object Object], fTa: [object Object], $a: [object Object],[object Object], mpa: AAC, WR: [object Object], StreamCount: 2, AllowedTimedTextTracks: 4
+3.009|1|T|BladeRunnerParseManifest| Transformed audio track, type: audio, Eb: A:1:1;2;fr;0;, RT: PRIMARY, VF: PRIMARY, hi: fr, displayName: French, pM: 2.0, nQa: 2.0, mQa: 2, lj: [object Object],[object Object],[object Object],[object Object], fTa: [object Object], $a: [object Object],[object Object], mpa: AAC, WR: [object Object], StreamCount: 2, AllowedTimedTextTracks: 4
+3.010|1|T|BladeRunnerParseManifest| Transformed audio tracks, Count: 3
+3.012|1|T|BladeRunnerParseManifest| Transformed video track, StreamCount: 7
+3.012|1|T|BladeRunnerParseManifest| Transformed video tracks, Count: 1
+3.121|0|T|General| importing milestones, pr_ats: 2420, pr_at: 3120
+3.125|1|I|Playback| Processing post-authorize, MovieId: 80111449, TrackingId: 250318489, Xid: 15233471632580
+3.134|1|T|MediaElementASE| Created Media Element
+3.152|0|T|ASEJS|media|asejs| creating branch:
+
+startPts:, 261000
+segment.endPts:, Infinity
+manifestIndex:, 0
+previousBranch:
+none
+3.316|1|T|MediaElementASE| Video element event: loadstart
+3.322|0|T|MediaSourceASE| Inside MediaSourceASE
+3.324|1|T|MediaElementASE| Adding source buffer, Type: 1, TypeId: video/mp4;codecs=avc1.640028
+3.326|1|T|MediaElementASE| Adding source buffer, Type: 0, TypeId: audio/mp4; codecs="mp4a.40.5"
+3.326|1|T|MediaPresenterASE| sourceBuffers have been created. Initialize MediaPresenter.
+3.326|1|T|MediaPresenterASE| Video element initializing
+3.326|1|T|MediaPresenterASE| Waiting for needkey
+3.326|1|T|MediaPresenterASE| Waiting for loadedmetadata
+3.330|1|T|MediaElementASE| Video element event:
+volumechange
+3.331|1|T|MediaPresenterASE| Video element initialization complete
+3.356|1|T|MediaPresenterASE| Timer update: stopTimer, presentingState: 1, playbackState: 2, avBufferingState: 2, textBufferingState: 1
+3.410|1|T|MediaPresenterASE| Calling pause on element
+3.507|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = e41f7029-c73c-344a-8c5b-ae90c7439a47
+3.508|0|T|MP4|media|asejs| MP4.1: pssh size = 0x2c
+3.508|0|T|MP4|media|asejs| MP4.1: Handling pssh type: nflxheader
+3.509|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = a98befed-d679-ce4a-a3c8-27dcd51d21ed
+3.509|0|T|MP4|media|asejs| MP4.1: pssh size = 0x14
+3.509|0|T|MP4|media|asejs| MP4.1: Unrecognized pssh systemID: a98befed-d679-ce4a-a3c8-27dcd51d21ed
+3.509|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = 79f0049a-4098-8642-ab92-e65be0885f95
+3.509|0|T|MP4|media|asejs| MP4.1: pssh size = 0x29e
+3.509|0|T|MP4|media|asejs| MP4.1: Handling pssh type: drmheader
+3.511|0|T|MP4|media|asejs| MP4.9: read KID: 00000000044dd67c0000000000000000
+3.525|0|T|MP4|media|asejs| MP4.9: read KID: 00000000044dd67c0000000000000000
+3.525|0|T|MP4|media|asejs| MP4.0: marking end of moov: 0x813
+3.526|0|T|MP4|media|asejs| MP4.0: required box moov found at offset: 0xf4
+3.527|0|T|MP4|media|asejs| MP4.0: referenceID = 2 timescale = 10000000 earliestPresentationTime = 0 firstOffset = 20591 referenceCount = 661
+3.534|0|T|MP4|media|asejs| MP4.0: required box sidx found at offset: 0x813
+3.534|0|T|MP4|media|asejs| MP4.0: leftover bytes after moov: 0x1fd8
+3.537|1|I|MediaPresenterASE| Seeking, Requested: 261.000, Actual: 261.001, Cause: 1
+3.570|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 2067
+3.619|0|T|MP4|media|asejs| MP4.0: marking end of moov: 0x383
+3.619|0|T|MP4|media|asejs| MP4.0: required box moov found at offset: 0xf0
+3.619|0|T|MP4|media|asejs| MP4.0: referenceID = 1 timescale = 24000 earliestPresentationTime = 0 firstOffset = 20591 referenceCount = 661
+3.626|0|T|MP4|media|asejs| MP4.0: required box sidx found at offset: 0x383
+3.626|0|T|MP4|media|asejs| MP4.0: leftover bytes after moov: 0x2468
+3.656|1|T|MediaElementASE| Received event: encrypted
+3.656|0|T|VideoPreparer| cache miss: no data exists for field:ldl
+3.657|1|W|MediaElementASE| eme not in cache
+unavailable
+3.681|1|I|MediaElementASE| Setting the license
+3.685|1|T|Eme| Creating the mediakeys: com.widevine.alpha
+3.689|1|T|Eme| keysystemaccess config
+{
+ "audioCapabilities": [
+  {
+   "contentType": "audio/mp4; codecs=\"mp4a.40.5\"",
+   "robustness": "SW_SECURE_CRYPTO"
+  }
+ ],
+ "distinctiveIdentifier": "not-allowed",
+ "initDataTypes": [
+  "cenc"
+ ],
+ "label": "",
+ "persistentState": "required",
+ "sessionTypes": [
+  "temporary"
+ ],
+ "videoCapabilities": [
+  {
+   "contentType": "video/mp4; codecs=\"avc1.640028\"",
+   "robustness": "SW_SECURE_DECODE"
+  },
+  {
+   "contentType": "video/mp4; codecs=\"avc1.640028\"",
+   "robustness": "SW_SECURE_CRYPTO"
+  }
+ ]
+}
+3.690|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 899
+3.814|1|T|Eme| calling setServerCertificate
+3.829|1|T|MediaPresenterASE| Video element event: loadedmetadata
+3.840|1|T|Eme| mediakeys resolved
+3.841|1|T|Eme| LICENSE: Creating the key session.
+3.844|1|T|Eme| LICENSE: Calling generateRequest, initDataType: cenc, initData: AAAANHBzc2gAAAAA7e+LqXnWSs6jyCfc1R0h7QAAABQIARIQAAAAAARN1nwAAAAAAAAAAA==
+4.030|1|T|Eme| LICENSE: Received event: message, sessionId: 7D319369779B0960E46EEF244D439693, messageType: license-request, isCertRequest: false
+4.052|1|T|Eme| Requesting license, drmType: widevine
+4.056|1|T|Nccp| Sending EDGE request, Method: license
+4.058|0|T|Msl| Sending MSL request
+4.125|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 441642
+4.133|0|T|Msl| Sent MSL header, NccpMethod: license, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+4.199|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 261015
+4.313|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 197822
+4.614|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 382049
+4.618|1|T|MediaElementASE| Setting video elements currentTime, From: 0.000, To: 261.001
+4.619|1|T|MediaPresenterASE| Timer update: stopTimer, presentingState: 1, playbackState: 2, avBufferingState: 1, textBufferingState: 1
+4.699|1|T|MediaElementASE| Video element event: seeking
+4.894|0|T|Msl| Received MSL header, NccpMethod: license, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+4.894|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+4.895|0|T|Msl| Received MSL response, Method: license
+4.933|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+4.946|1|T|Nccp| Received EDGE response, Method: license
+4.949|1|T|Nccp| Sending EDGE request, Method: bind
+4.949|0|T|Msl| Sending MSL request
+4.975|0|I|PlaydataServices| Starting to collect online playdata, active: true, type: online, Aa: [object Object], profileId: browser, nb: E1-BQFRAAELEPkkDrSUVAgsV9VZzcavgD6AprCzEH8T_HRuB0tLWPhURoB869R_bEkvSmHihFlneH5mNFY7uJeG3vdhWQxPa7Mb26_zjDaK1GQCRuCweQ_7v38KlQHuvr35D8jYrobKHAzf3oG_s9nLuLO7U-FEkSrla4QU2TZFJBseJ1IPZQ81n-sB3hKO2j42TSwByw2FNuXWM0XC8A-jUqG35q8WDNhH4xANT7edsm9ftrsQzt96voqvFZlNN7Q., me: undefined, ob: E1-BQFRAAELEPkkDrSUVAgsV9VZzcavgD6AprCzEH8T_HRuB0tLWPhURoB869R_bEkvSmHihFlneH5mNFY7uJeG3vdhWQxPa7Mb26_zjDaK1GQCRuCweQ_7v38KlQHuvr35D8jYrobKHAzf3oG_s9nLuLO7U-FEkSrla4QU2TZFJBseJ1IPZQ81n-sB3hKO2j42TSwByw2FNuXWM0XC8A-jUqG35q8WDNhH4xANT7edsm9ftrsQzt96voqvFZlNN7Q.;EDEF8BA9-79D6-4ACE-A3C8-27DCD51D21ED;STANDARD;1523347168545, Y: 15233471632580, J: 80111449, Yf: A:1:1;2;en;1;|V:2:1;2;;1281020;2;CE3;0;|T:1:1;1;NONE;0;1;, timestamp: 1523347168271
+4.978|0|T|PlaydataServices| Adding initial playdata
+{
+  "active": false,
+  "type": "online",
+  "Aa": {
+    "oG": {
+      "total": 0,
+      "audio": [],
+      "video": [],
+      "text": []
+    },
+    "nH": 0,
+    "g9": 0
+  },
+  "profileId": "browser",
+  "nb": "E1-BQFRAAELEPkkDrSUVAgsV9VZzcavgD6AprCzEH8T_HRuB0tLWPhURoB869R_bEkvSmHihFlneH5mNFY7uJeG3vdhWQxPa7Mb26_zjDaK1GQCRuCweQ_7v38KlQHuvr35D8jYrobKHAzf3oG_s9nLuLO7U-FEkSrla4QU2TZFJBseJ1IPZQ81n-sB3hKO2j42TSwByw2FNuXWM0XC8A-jUqG35q8WDNhH4xANT7edsm9ftrsQzt96voqvFZlNN7Q.",
+  "ob": "E1-BQFRAAELEPkkDrSUVAgsV9VZzcavgD6AprCzEH8T_HRuB0tLWPhURoB869R_bEkvSmHihFlneH5mNFY7uJeG3vdhWQxPa7Mb26_zjDaK1GQCRuCweQ_7v38KlQHuvr35D8jYrobKHAzf3oG_s9nLuLO7U-FEkSrla4QU2TZFJBseJ1IPZQ81n-sB3hKO2j42TSwByw2FNuXWM0XC8A-jUqG35q8WDNhH4xANT7edsm9ftrsQzt96voqvFZlNN7Q.;EDEF8BA9-79D6-4ACE-A3C8-27DCD51D21ED;STANDARD;1523347168545",
+  "Y": 15233471632580,
+  "J": 80111449,
+  "Yf": "A:1:1;2;en;1;|V:2:1;2;;1281020;2;CE3;0;|T:1:1;1;NONE;0;1;",
+  "timestamp": 1523347168271
+}
+5.098|0|T|AppStorage| component found for key, storageKey: unsentDrmData, componentKey: idb
+5.109|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+5.285|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = 79f0049a-4098-8642-ab92-e65be0885f95
+5.285|0|T|MP4|media|asejs| MP4.1: pssh size = 0x29e
+5.285|0|T|MP4|media|asejs| MP4.1: Handling pssh type: drmheader
+5.286|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = e41f7029-c73c-344a-8c5b-ae90c7439a47
+5.286|0|T|MP4|media|asejs| MP4.1: pssh size = 0x2c
+5.286|0|T|MP4|media|asejs| MP4.1: Handling pssh type: nflxheader
+5.287|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = a98befed-d679-ce4a-a3c8-27dcd51d21ed
+5.287|0|T|MP4|media|asejs| MP4.1: pssh size = 0x14
+5.287|0|T|MP4|media|asejs| MP4.1: Unrecognized pssh systemID: a98befed-d679-ce4a-a3c8-27dcd51d21ed
+5.290|0|T|MP4|media|asejs| MP4.9: read KID: 00000000044dd67c0000000000000000
+5.291|0|T|MP4|media|asejs| MP4.9: read KID: 00000000044dd67c0000000000000000
+5.294|0|T|MP4|media|asejs| MP4.0: marking end of moov: 0x80d
+5.294|0|T|MP4|media|asejs| MP4.0: required box moov found at offset: 0xf4
+5.294|0|T|MP4|media|asejs| MP4.0: referenceID = 2 timescale = 10000000 earliestPresentationTime = 0 firstOffset = 20591 referenceCount = 661
+5.307|0|T|MP4|media|asejs| MP4.0: required box sidx found at offset: 0x80d
+5.307|0|T|MP4|media|asejs| MP4.0: leftover bytes after moov: 0x1fde
+5.352|0|T|Msl| Sent MSL header, NccpMethod: bind, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+5.369|0|T|AppStorage| component found for key, storageKey: unsentDrmData, componentKey: idb
+5.371|0|T|PlaydataServices| Scheduling monitor, interval: 4000 ms
+5.395|1|T|Eme| Received event: keystatuseschange
+5.395|1|T|Eme| key status: output-restricted
+5.395|1|W|Eme| output protection status
+output-restricted
+5.425|1|I|MediaElementASE| license set
+5.453|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = e41f7029-c73c-344a-8c5b-ae90c7439a47
+5.453|0|T|MP4|media|asejs| MP4.1: pssh size = 0x2c
+5.453|0|T|MP4|media|asejs| MP4.1: Handling pssh type: nflxheader
+5.453|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = 79f0049a-4098-8642-ab92-e65be0885f95
+5.453|0|T|MP4|media|asejs| MP4.1: pssh size = 0x29e
+5.453|0|T|MP4|media|asejs| MP4.1: Handling pssh type: drmheader
+5.453|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = a98befed-d679-ce4a-a3c8-27dcd51d21ed
+5.453|0|T|MP4|media|asejs| MP4.1: pssh size = 0x14
+5.453|0|T|MP4|media|asejs| MP4.1: Unrecognized pssh systemID: a98befed-d679-ce4a-a3c8-27dcd51d21ed
+5.454|0|T|MP4|media|asejs| MP4.9: read KID: 00000000044dd67c0000000000000000
+5.454|0|T|MP4|media|asejs| MP4.9: read KID: 00000000044dd67c0000000000000000
+5.454|0|T|MP4|media|asejs| MP4.0: marking end of moov: 0x80d
+5.465|0|T|MP4|media|asejs| MP4.0: required box moov found at offset: 0xf4
+5.465|0|T|MP4|media|asejs| MP4.0: referenceID = 2 timescale = 10000000 earliestPresentationTime = 0 firstOffset = 20591 referenceCount = 661
+5.469|0|T|MP4|media|asejs| MP4.0: required box sidx found at offset: 0x80d
+5.469|0|T|MP4|media|asejs| MP4.0: leftover bytes after moov: 0x1fde
+5.635|1|T|MediaElementASE| Video element event: seeked
+5.635|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 197720
+5.635|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 389414
+5.635|1|T|MediaPresenterASE| Calling play on element
+5.636|1|T|MediaPresenterASE| Timer update: stopTimer, presentingState: 2, playbackState: 2, avBufferingState: 1, textBufferingState: 1
+5.652|1|T|NccpLogging| keystatuses, output-restricted: 4093
+5.652|1|T|NccpLogging| batterystatuses, level: 0.28, charging: false, statuses: [object Object]
+5.701|1|T|Nccp| Sending EDGE request, Method: start
+5.705|0|T|Msl| Sending MSL request
+5.721|0|T|PlaydataServices| Already collecting online playdata, ignoring, active: false, type: online, Aa: [object Object], profileId: browser, nb: E1-BQFRAAELEPkkDrSUVAgsV9VZzcavgD6AprCzEH8T_HRuB0tLWPhURoB869R_bEkvSmHihFlneH5mNFY7uJeG3vdhWQxPa7Mb26_zjDaK1GQCRuCweQ_7v38KlQHuvr35D8jYrobKHAzf3oG_s9nLuLO7U-FEkSrla4QU2TZFJBseJ1IPZQ81n-sB3hKO2j42TSwByw2FNuXWM0XC8A-jUqG35q8WDNhH4xANT7edsm9ftrsQzt96voqvFZlNN7Q., me: undefined, ob: E1-BQFRAAELEPkkDrSUVAgsV9VZzcavgD6AprCzEH8T_HRuB0tLWPhURoB869R_bEkvSmHihFlneH5mNFY7uJeG3vdhWQxPa7Mb26_zjDaK1GQCRuCweQ_7v38KlQHuvr35D8jYrobKHAzf3oG_s9nLuLO7U-FEkSrla4QU2TZFJBseJ1IPZQ81n-sB3hKO2j42TSwByw2FNuXWM0XC8A-jUqG35q8WDNhH4xANT7edsm9ftrsQzt96voqvFZlNN7Q.;EDEF8BA9-79D6-4ACE-A3C8-27DCD51D21ED;STANDARD;1523347168545, Y: 15233471632580, J: 80111449, Yf: A:1:1;2;en;1;|V:2:1;2;;1281020;2;CE3;0;|T:1:1;1;NONE;0;1;, timestamp: 1523347169018
+5.722|1|T|MediaPresenterASE| Calling play on element
+5.725|1|T|MediaPresenterASE| Video element event: play
+5.726|1|T|MediaPresenterASE| Calling play on element
+5.726|1|T|MediaPresenterASE| Video element event: playing
+5.726|1|T|MediaPresenterASE| Calling play on element
+5.934|0|T|Msl| Sent MSL header, NccpMethod: start, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+6.125|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 335759
+6.309|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = e41f7029-c73c-344a-8c5b-ae90c7439a47
+6.309|0|T|MP4|media|asejs| MP4.1: pssh size = 0x2c
+6.310|0|T|MP4|media|asejs| MP4.1: Handling pssh type: nflxheader
+6.310|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = 79f0049a-4098-8642-ab92-e65be0885f95
+6.310|0|T|MP4|media|asejs| MP4.1: pssh size = 0x29e
+6.310|0|T|MP4|media|asejs| MP4.1: Handling pssh type: drmheader
+6.310|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = a98befed-d679-ce4a-a3c8-27dcd51d21ed
+6.310|0|T|MP4|media|asejs| MP4.1: pssh size = 0x14
+6.310|0|T|MP4|media|asejs| MP4.1: Unrecognized pssh systemID: a98befed-d679-ce4a-a3c8-27dcd51d21ed
+6.310|0|T|MP4|media|asejs| MP4.9: read KID: 00000000044dd67c0000000000000000
+6.310|0|T|MP4|media|asejs| MP4.9: read KID: 00000000044dd67c0000000000000000
+6.310|0|T|MP4|media|asejs| MP4.0: marking end of moov: 0x80e
+6.310|0|T|MP4|media|asejs| MP4.0: required box moov found at offset: 0xf4
+6.311|0|T|MP4|media|asejs| MP4.0: referenceID = 2 timescale = 10000000 earliestPresentationTime = 0 firstOffset = 20591 referenceCount = 661
+6.314|0|T|MP4|media|asejs| MP4.0: required box sidx found at offset: 0x80e
+6.314|0|T|MP4|media|asejs| MP4.0: leftover bytes after moov: 0x1fdd
+6.375|1|T|TrickPlay| Downloading
+https://occ-0-1407-1348.1.nflxso.net/tp/tpa4/231/ce77a85b09af014e33f56018f8142d42.bif
+6.527|0|T|Msl| Received MSL header, NccpMethod: bind, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+6.527|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+6.527|0|T|Msl| Received MSL response, Method: bind
+6.540|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+6.543|1|T|Nccp| Received EDGE response, Method: bind
+6.544|1|T|NccpPlayback| Updated NetflixId
+6.692|0|T|General| Config applied for
+browserInfo={"os":{"name":"Linux","version":"0.0.0"},"name":"Chrome","version":"65.0.3325.146"}
+environment="prod"
+preferredLanguages="en-CH"
+supportPhoneNumber="0800-561-554"
+errorSupportUrls={"F7031-1102":"25078","H7053-1803":"14452","H7111-1101":"14563","H7354":"12993","H7361-1253-80070005":"32876","M7355-1203":"22952","M7357-1003":"14759","C7357-1003":"14759","M7357-1269":"14759","C7357-1269":"14759","M7701-1003":"27451","M7702-1003":"30321","S7354":"25711","S7363-1266-0000230D":"25704","S7363-1266-00002E3F":"32701","F7053-1803":"32660","F7701-1003":"32661","S7363-1266-48444350":"22497","O7702-1003":"40838"}
+chromeVersion="Chrome 65.0.3325.146"
+windowScaling=true
+uimode="akira"
+apiUrl="https://www.netflix.com/api/shakti/602b7934"
+postPlayApiRevision=""
+preserveLastFrame=true
+mdx2Enabled=true
+hideSupportUrl=true
+uiTrackingEnabled=true
+uiTrackingEndpoint="/uitracking/users/presentationtracking"
+uiVersion="akira"
+enableTrickPlay=true
+breakOnError=false
+disableVideoRightClickMenu=false
+renderTimedText=true
+postPlayBaseUrl="https://www.netflix.com/api/shakti/602b7934/postplay"
+reportAProblemEndpoint="https://www.netflix.com/api/shakti/602b7934/reportproblem"
+reportProblemEnabled=true
+metadataBaseServer="https://www.netflix.com/api/shakti/602b7934"
+akiraMetadataStrategy="shakti"
+forceCCPaint=true
+requestFromNetflix=false
+pinConfig={"isEnabled":false,"resetUrl":"https://www.netflix.com/player/pinreset","pinResetOnNonPinContent":false,"isAdultVerified":true,"apiEndpoint":"https://www.netflix.com/api/shakti/602b7934/pin/service"}
+timedTextStyleDefaults={"backgroundColor":null,"backgroundOpacity":"OPAQUE","characterColor":"WHITE","characterEdgeAttributes":"DROP_SHADOW","characterEdgeColor":"BLACK","characterOpacity":"OPAQUE","characterSize":"MEDIUM","characterStyle":"PROPORTIONAL_SANS_SERIF","windowColor":null,"windowOpacity":"OPAQUE"}
+timedTextStyleOverrides={"backgroundColor":null,"backgroundOpacity":null,"characterColor":null,"characterEdgeAttributes":null,"characterEdgeColor":null,"characterOpacity":null,"characterSize":null,"characterStyle":null,"windowColor":null,"windowOpacity":null}
+showRatings=true
+largeDisplayDimensionThreshold={"height":900,"width":1600}
+maxAutoPlaySeconds=15
+autoplayInterrupterTimestamp=120
+ignoreUserActivity=false
+webkitDecodedFrameCountIncorrectlyReported=true
+secureUrls=true
+playerUpsellEnabled=true
+skipCreditsEnabled=true
+skipCreditsDisplayDuration=6000
+bookmarkByMovieId={}
+preciseSeeking=true
+focusPlayerWrapperAfterControlClick=false
+limitedSVGSupport=false
+metadataRequestFormat="NOFALCOR"
+maxTrackLengthUI=7
+mdxInitTimeout=120000
+castSdkConnectTimeout=20000
+mdxConnectionTimeout=60000
+castSdkDisconnectTimeout=60000
+signoutUrl="/SignOut?lnkctr=mL"
+profileGuid="K3UWUOENKVDE5CQ7GCCQ4YUABU"
+ppmConfig={"maxNumberTitlesScheduled":1,"holdDuration":300000,"colEpisodeList":1,"rowFirst":1,"colFirst":1,"rowScroll":1,"colScroll":3,"rowScrollHorizontal":3,"searchTop":1,"cwFirst":2,"gridFirst":0,"gridScroll":0,"genre":2}
+playerPredictionModelV2=true
+failOnGuidMismatch=false
+uiContextConfig_motionBillboard={"preferredEngine":"cadmium"}
+uiContextConfig_bigRow={"preferredEngine":"cadmium"}
+feedback={"minChars":75,"maxChars":1000}
+resetControlFocusAfterClick=true
+prepare=true
+playdataPrepareRequest=false
+notifyOpenConnectBlackBox=true
+histAggregationTimeSpanInSeconds=600
+secureStopEnabled=false
+mslEndpoint="https://www.netflix.com/api/msl/"
+congestionServiceApiEndpoint="https://www.netflix.com/api/cbp/html5player/congestion"
+pingOnConnectTimeout=true
+endpoint=true
+enableCongestionService=false
+usePerformanceApi="false"
+ftlEnabled=true
+ftlEndpoint2="https://www.netflix.com/api/ftl/probe"
+maxParallelConnections=1
+parallelSafeBufferThreshhold=0.000001
+useTypescriptEme=false
+prepareStrategy="ppm"
+prepareManifestCacheMaxCount=50
+prepareLdlCacheMaxCount=30
+supportPreviewContent=true
+useSetServerCertificateApi=true
+esn="NFCDCH-LX-EAEW31PFFY0PVV6A7HQ0FT2T0RK9M3"
+6.703|0|I|Ext| MDX Initialized - version: 4.3.14-420, flavor: RELEASE, platform: CADMIUM_CONTROLLER, role: controller
+6.708|0|I|Ext| Starting CAST-CHROME discovery component
+6.709|0|I|Ext| Initializing Cast SDK - Version: 1.2 - AppId: CA5E8412
+6.718|0|I|Ext| Discovery manager started state changed, {"isStarted":{"CAST-CHROME":true},"type":"startedStateChanged"}
+6.724|0|I|Ext| Discovery component CAST-CHROME reported a successful start
+6.725|0|I|Ext| MDX Started. Launch args: , undefined
+6.778|1|T|TrickPlay| TrickPlay parsed, Images: 131
+6.791|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = 79f0049a-4098-8642-ab92-e65be0885f95
+6.791|0|T|MP4|media|asejs| MP4.1: pssh size = 0x29e
+6.791|0|T|MP4|media|asejs| MP4.1: Handling pssh type: drmheader
+6.791|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = a98befed-d679-ce4a-a3c8-27dcd51d21ed
+6.791|0|T|MP4|media|asejs| MP4.1: pssh size = 0x14
+6.791|0|T|MP4|media|asejs| MP4.1: Unrecognized pssh systemID: a98befed-d679-ce4a-a3c8-27dcd51d21ed
+6.791|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = e41f7029-c73c-344a-8c5b-ae90c7439a47
+6.791|0|T|MP4|media|asejs| MP4.1: pssh size = 0x2c
+6.791|0|T|MP4|media|asejs| MP4.1: Handling pssh type: nflxheader
+6.795|0|T|MP4|media|asejs| MP4.9: read KID: 00000000044dd67c0000000000000000
+6.795|0|T|MP4|media|asejs| MP4.9: read KID: 00000000044dd67c0000000000000000
+6.795|0|T|MP4|media|asejs| MP4.0: marking end of moov: 0x80e
+6.795|0|T|MP4|media|asejs| MP4.0: required box moov found at offset: 0xf4
+6.807|0|T|MP4|media|asejs| MP4.0: referenceID = 2 timescale = 10000000 earliestPresentationTime = 0 firstOffset = 20591 referenceCount = 661
+6.812|0|T|MP4|media|asejs| MP4.0: required box sidx found at offset: 0x80e
+6.812|0|T|MP4|media|asejs| MP4.0: leftover bytes after moov: 0x1fdd
+7.105|0|T|Msl| Received MSL header, NccpMethod: start, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+7.105|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+7.108|0|T|Msl| Received MSL response, Method: start
+7.128|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+7.198|1|T|Nccp| Received EDGE response, Method: start
+7.228|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = e41f7029-c73c-344a-8c5b-ae90c7439a47
+7.228|0|T|MP4|media|asejs| MP4.1: pssh size = 0x2c
+7.228|0|T|MP4|media|asejs| MP4.1: Handling pssh type: nflxheader
+7.229|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = a98befed-d679-ce4a-a3c8-27dcd51d21ed
+7.229|0|T|MP4|media|asejs| MP4.1: pssh size = 0x14
+7.229|0|T|MP4|media|asejs| MP4.1: Unrecognized pssh systemID: a98befed-d679-ce4a-a3c8-27dcd51d21ed
+7.229|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = 79f0049a-4098-8642-ab92-e65be0885f95
+7.229|0|T|MP4|media|asejs| MP4.1: pssh size = 0x29e
+7.229|0|T|MP4|media|asejs| MP4.1: Handling pssh type: drmheader
+7.231|0|T|MP4|media|asejs| MP4.9: read KID: 00000000044dd67c0000000000000000
+7.231|0|T|MP4|media|asejs| MP4.9: read KID: 00000000044dd67c0000000000000000
+7.232|0|T|MP4|media|asejs| MP4.0: marking end of moov: 0x813
+7.232|0|T|MP4|media|asejs| MP4.0: required box moov found at offset: 0xf4
+7.232|0|T|MP4|media|asejs| MP4.0: referenceID = 2 timescale = 10000000 earliestPresentationTime = 0 firstOffset = 20591 referenceCount = 661
+7.236|0|T|MP4|media|asejs| MP4.0: required box sidx found at offset: 0x813
+7.236|0|T|MP4|media|asejs| MP4.0: leftover bytes after moov: 0x1fd8
+7.573|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = 79f0049a-4098-8642-ab92-e65be0885f95
+7.573|0|T|MP4|media|asejs| MP4.1: pssh size = 0x29e
+7.573|0|T|MP4|media|asejs| MP4.1: Handling pssh type: drmheader
+7.573|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = a98befed-d679-ce4a-a3c8-27dcd51d21ed
+7.573|0|T|MP4|media|asejs| MP4.1: pssh size = 0x14
+7.573|0|T|MP4|media|asejs| MP4.1: Unrecognized pssh systemID: a98befed-d679-ce4a-a3c8-27dcd51d21ed
+7.573|0|T|MP4|media|asejs| MP4.1: parsing pssh box ID = e41f7029-c73c-344a-8c5b-ae90c7439a47
+7.573|0|T|MP4|media|asejs| MP4.1: pssh size = 0x2c
+7.573|0|T|MP4|media|asejs| MP4.1: Handling pssh type: nflxheader
+7.574|0|T|MP4|media|asejs| MP4.9: read KID: 00000000044dd67c0000000000000000
+7.574|0|T|MP4|media|asejs| MP4.9: read KID: 00000000044dd67c0000000000000000
+7.574|0|T|MP4|media|asejs| MP4.0: marking end of moov: 0x813
+7.574|0|T|MP4|media|asejs| MP4.0: required box moov found at offset: 0xf4
+7.574|0|T|MP4|media|asejs| MP4.0: referenceID = 2 timescale = 10000000 earliestPresentationTime = 0 firstOffset = 20591 referenceCount = 661
+7.576|0|T|MP4|media|asejs| MP4.0: required box sidx found at offset: 0x813
+7.576|0|T|MP4|media|asejs| MP4.0: leftover bytes after moov: 0x1fd8
+9.579|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+10.090|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 280991
+10.660|0|T|LogBatcher| Flushing
+10.663|0|T|MessageQueue| Batch_0: 25/263712 b
+10.676|0|T|LogBatcher| Sending batch: 263712 b
+10.682|0|T|LogblobSender| Sending EDGE request, Method: logblob
+10.684|0|T|Msl| Sending MSL request
+10.719|0|T|Msl| Sent MSL header, NccpMethod: logblob, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+12.111|0|T|Msl| Received MSL header, NccpMethod: logblob, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+12.111|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+12.111|0|T|Msl| Received MSL response, Method: logblob
+12.113|0|T|LogblobSender| Received EDGE response, Method: logblob
+12.124|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+13.406|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+14.390|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 450260
+17.413|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+18.136|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 198020
+18.141|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 665872
+21.431|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+22.175|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 588452
+25.475|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+26.166|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 793358
+29.411|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+30.636|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 230011
+33.466|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+34.136|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 197497
+34.160|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 382152
+37.413|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+38.647|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 369642
+41.414|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+42.885|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 332051
+45.417|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+46.387|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 299660
+48.066|1|T|Nccp| Sending EDGE request, Method: engage
+48.069|0|T|Msl| Sending MSL request
+48.087|1|T|MediaPresenterASE| Calling pause on element
+48.087|1|T|MediaPresenterASE| Timer update: stopTimer, presentingState: 3, playbackState: 2, avBufferingState: 1, textBufferingState: 1
+48.110|1|T|Nccp| Sending EDGE request, Method: pblifecycle
+48.110|0|T|Msl| Sending MSL request
+48.129|1|T|MediaPresenterASE| Video element event: pause
+48.195|0|T|Msl| Sent MSL header, NccpMethod: engage, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+48.207|0|T|Msl| Sent MSL header, NccpMethod: pblifecycle, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+48.322|0|T|Msl| Received MSL header, NccpMethod: engage, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+48.322|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+48.322|0|T|Msl| Received MSL response, Method: engage
+48.323|1|T|Nccp| Received EDGE response, Method: engage
+48.324|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "stop",
+    "starttime": 1892,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 661,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1915,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 650,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1939,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 643,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "manifest",
+    "starttime": 2474,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 525,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "license",
+    "starttime": 4056,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 892,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "bind",
+    "starttime": 4949,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1594,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "start",
+    "starttime": 5700,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1498,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "logblob",
+    "starttime": 10682,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1431,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 48066,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 257,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 48110
+  }
+]
+48.325|1|E|Nccp| Processing EDGE response failed, method: engage, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"stop","starttime":1892,"success":false,"profileId":"browser","elapsedtime":661,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1915,"success":false,"profileId":"browser","elapsedtime":650,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1939,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"manifest","starttime":2474,"success":true,"profileId":"browser","elapsedtime":525,"userTokens":"[\"browser\"]"},{"method":"license","starttime":4056,"success":true,"profileId":"browser","elapsedtime":892,"userTokens":"[\"browser\"]"},{"method":"bind","starttime":4949,"success":true,"profileId":"browser","elapsedtime":1594,"userTokens":"[\"browser\"]"},{"method":"start","starttime":5700,"success":true,"profileId":"browser","elapsedtime":1498,"userTokens":"[\"browser\"]"},{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110}]
+48.339|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+48.367|0|T|Msl| Received MSL header, NccpMethod: pblifecycle, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+48.367|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+48.367|0|T|Msl| Received MSL response, Method: pblifecycle
+48.371|1|T|Nccp| Received EDGE response, Method: pblifecycle
+48.371|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "stop",
+    "starttime": 1892,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 661,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1915,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 650,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "stop",
+    "starttime": 1939,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 643,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "manifest",
+    "starttime": 2474,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 525,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "license",
+    "starttime": 4056,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 892,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "bind",
+    "starttime": 4949,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1594,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "start",
+    "starttime": 5700,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1498,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "logblob",
+    "starttime": 10682,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1431,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 48066,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 257,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 48110,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 261,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  }
+]
+48.372|1|E|Nccp| Processing EDGE response failed, method: pblifecycle, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"stop","starttime":1892,"success":false,"profileId":"browser","elapsedtime":661,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1915,"success":false,"profileId":"browser","elapsedtime":650,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1939,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"manifest","starttime":2474,"success":true,"profileId":"browser","elapsedtime":525,"userTokens":"[\"browser\"]"},{"method":"license","starttime":4056,"success":true,"profileId":"browser","elapsedtime":892,"userTokens":"[\"browser\"]"},{"method":"bind","starttime":4949,"success":true,"profileId":"browser","elapsedtime":1594,"userTokens":"[\"browser\"]"},{"method":"start","starttime":5700,"success":true,"profileId":"browser","elapsedtime":1498,"userTokens":"[\"browser\"]"},{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+48.374|1|E|PlayDataManager| Heartbeat failed, Type: suspend, ErrorSubCode: 1331, ErrorExternalCode: V0, ErrorDetails: [inputName:playback[startPosition]] [{"method":"stop","starttime":1892,"success":false,"profileId":"browser","elapsedtime":661,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1915,"success":false,"profileId":"browser","elapsedtime":650,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"stop","starttime":1939,"success":false,"profileId":"browser","elapsedtime":643,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"manifest","starttime":2474,"success":true,"profileId":"browser","elapsedtime":525,"userTokens":"[\"browser\"]"},{"method":"license","starttime":4056,"success":true,"profileId":"browser","elapsedtime":892,"userTokens":"[\"browser\"]"},{"method":"bind","starttime":4949,"success":true,"profileId":"browser","elapsedtime":1594,"userTokens":"[\"browser\"]"},{"method":"start","starttime":5700,"success":true,"profileId":"browser","elapsedtime":1498,"userTokens":"[\"browser\"]"},{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+48.440|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+49.395|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+53.411|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+57.395|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+61.412|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+65.405|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+69.400|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+70.708|0|T|MessageQueue| Batch_0: 9/136184 b
+70.715|0|T|LogBatcher| Sending batch: 136184 b
+70.719|0|T|LogblobSender| Sending EDGE request, Method: logblob
+70.720|0|T|Msl| Sending MSL request
+70.727|0|T|Msl| Sent MSL header, NccpMethod: logblob, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+71.141|0|T|Msl| Received MSL header, NccpMethod: logblob, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+71.141|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+71.142|0|T|Msl| Received MSL response, Method: logblob
+71.143|0|T|LogblobSender| Received EDGE response, Method: logblob
+71.151|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+73.504|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+77.464|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+81.418|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+85.437|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+89.411|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+93.405|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+97.413|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+98.169|1|T|Nccp| Sending EDGE request, Method: engage
+98.169|0|T|Msl| Sending MSL request
+98.180|1|T|MediaPresenterASE| Calling play on element
+98.182|1|T|MediaPresenterASE| Timer update: stopTimer, presentingState: 2, playbackState: 2, avBufferingState: 1, textBufferingState: 1
+98.203|1|T|Nccp| Sending EDGE request, Method: pblifecycle
+98.204|0|T|Msl| Sending MSL request
+98.225|1|T|MediaPresenterASE| Video element event: play
+98.225|1|T|MediaPresenterASE| Calling play on element
+98.236|1|T|MediaPresenterASE| Video element event: playing
+98.236|1|T|MediaPresenterASE| Calling play on element
+98.265|0|T|Msl| Sent MSL header, NccpMethod: engage, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+98.273|0|T|Msl| Sent MSL header, NccpMethod: pblifecycle, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+98.383|0|T|Msl| Received MSL header, NccpMethod: engage, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+98.384|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+98.384|0|T|Msl| Received MSL response, Method: engage
+98.385|1|T|Nccp| Received EDGE response, Method: engage
+98.385|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "manifest",
+    "starttime": 2474,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 525,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "license",
+    "starttime": 4056,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 892,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "bind",
+    "starttime": 4949,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1594,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "start",
+    "starttime": 5700,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1498,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "logblob",
+    "starttime": 10682,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1431,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 48066,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 257,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 48110,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 261,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 70719,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 425,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 98169,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 216,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 98203
+  }
+]
+98.387|1|E|Nccp| Processing EDGE response failed, method: engage, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"manifest","starttime":2474,"success":true,"profileId":"browser","elapsedtime":525,"userTokens":"[\"browser\"]"},{"method":"license","starttime":4056,"success":true,"profileId":"browser","elapsedtime":892,"userTokens":"[\"browser\"]"},{"method":"bind","starttime":4949,"success":true,"profileId":"browser","elapsedtime":1594,"userTokens":"[\"browser\"]"},{"method":"start","starttime":5700,"success":true,"profileId":"browser","elapsedtime":1498,"userTokens":"[\"browser\"]"},{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203}]
+98.414|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+98.427|0|T|Msl| Received MSL header, NccpMethod: pblifecycle, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+98.427|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+98.427|0|T|Msl| Received MSL response, Method: pblifecycle
+98.428|1|T|Nccp| Received EDGE response, Method: pblifecycle
+98.428|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "manifest",
+    "starttime": 2474,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 525,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "license",
+    "starttime": 4056,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 892,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "bind",
+    "starttime": 4949,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1594,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "start",
+    "starttime": 5700,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1498,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "logblob",
+    "starttime": 10682,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1431,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 48066,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 257,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 48110,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 261,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 70719,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 425,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 98169,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 216,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 98203,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 225,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  }
+]
+98.429|1|E|Nccp| Processing EDGE response failed, method: pblifecycle, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"manifest","starttime":2474,"success":true,"profileId":"browser","elapsedtime":525,"userTokens":"[\"browser\"]"},{"method":"license","starttime":4056,"success":true,"profileId":"browser","elapsedtime":892,"userTokens":"[\"browser\"]"},{"method":"bind","starttime":4949,"success":true,"profileId":"browser","elapsedtime":1594,"userTokens":"[\"browser\"]"},{"method":"start","starttime":5700,"success":true,"profileId":"browser","elapsedtime":1498,"userTokens":"[\"browser\"]"},{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+98.431|1|E|PlayDataManager| Heartbeat failed, Type: resume, ErrorSubCode: 1331, ErrorExternalCode: V0, ErrorDetails: [inputName:playback[startPosition]] [{"method":"manifest","starttime":2474,"success":true,"profileId":"browser","elapsedtime":525,"userTokens":"[\"browser\"]"},{"method":"license","starttime":4056,"success":true,"profileId":"browser","elapsedtime":892,"userTokens":"[\"browser\"]"},{"method":"bind","starttime":4949,"success":true,"profileId":"browser","elapsedtime":1594,"userTokens":"[\"browser\"]"},{"method":"start","starttime":5700,"success":true,"profileId":"browser","elapsedtime":1498,"userTokens":"[\"browser\"]"},{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+98.513|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+100.683|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 197877
+100.683|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 441444
+101.418|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+104.684|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 450473
+105.446|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+108.683|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 417231
+109.417|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+112.933|1|T|MediaPresenterASE| Feeding media segment to decoder, Bytes: 329523
+113.070|1|T|Nccp| Sending EDGE request, Method: engage
+113.071|0|T|Msl| Sending MSL request
+113.077|1|T|MediaPresenterASE| Calling pause on element
+113.078|1|T|MediaPresenterASE| Timer update: stopTimer, presentingState: 3, playbackState: 2, avBufferingState: 1, textBufferingState: 1
+113.098|1|T|Nccp| Sending EDGE request, Method: pblifecycle
+113.099|0|T|Msl| Sending MSL request
+113.108|1|T|MediaPresenterASE| Video element event: pause
+113.139|0|T|Msl| Sent MSL header, NccpMethod: engage, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+113.146|0|T|Msl| Sent MSL header, NccpMethod: pblifecycle, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+113.263|0|T|Msl| Received MSL header, NccpMethod: engage, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+113.263|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+113.263|0|T|Msl| Received MSL response, Method: engage
+113.285|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+113.288|1|T|Nccp| Received EDGE response, Method: engage
+113.288|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "bind",
+    "starttime": 4949,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1594,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "start",
+    "starttime": 5700,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1498,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "logblob",
+    "starttime": 10682,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1431,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 48066,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 257,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 48110,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 261,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 70719,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 425,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 98169,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 216,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 98203,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 225,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "engage",
+    "starttime": 113070,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 218,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 113098
+  }
+]
+113.288|1|E|Nccp| Processing EDGE response failed, method: engage, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"bind","starttime":4949,"success":true,"profileId":"browser","elapsedtime":1594,"userTokens":"[\"browser\"]"},{"method":"start","starttime":5700,"success":true,"profileId":"browser","elapsedtime":1498,"userTokens":"[\"browser\"]"},{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098}]
+113.290|0|T|Msl| Received MSL header, NccpMethod: pblifecycle, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+113.290|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+113.291|0|T|Msl| Received MSL response, Method: pblifecycle
+113.303|1|T|Nccp| Received EDGE response, Method: pblifecycle
+113.304|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "bind",
+    "starttime": 4949,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1594,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "start",
+    "starttime": 5700,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1498,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "logblob",
+    "starttime": 10682,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1431,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 48066,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 257,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 48110,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 261,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 70719,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 425,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 98169,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 216,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 98203,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 225,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "engage",
+    "starttime": 113070,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 218,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 113098,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  }
+]
+113.308|1|E|Nccp| Processing EDGE response failed, method: pblifecycle, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"bind","starttime":4949,"success":true,"profileId":"browser","elapsedtime":1594,"userTokens":"[\"browser\"]"},{"method":"start","starttime":5700,"success":true,"profileId":"browser","elapsedtime":1498,"userTokens":"[\"browser\"]"},{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+113.310|1|E|PlayDataManager| Heartbeat failed, Type: suspend, ErrorSubCode: 1331, ErrorExternalCode: V0, ErrorDetails: [inputName:playback[startPosition]] [{"method":"bind","starttime":4949,"success":true,"profileId":"browser","elapsedtime":1594,"userTokens":"[\"browser\"]"},{"method":"start","starttime":5700,"success":true,"profileId":"browser","elapsedtime":1498,"userTokens":"[\"browser\"]"},{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+113.371|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+113.397|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+117.454|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+121.408|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+125.414|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+129.410|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+130.721|0|T|MessageQueue| Batch_0: 13/200240 b
+130.729|0|T|LogBatcher| Sending batch: 200240 b
+130.731|0|T|LogblobSender| Sending EDGE request, Method: logblob
+130.733|0|T|Msl| Sending MSL request
+130.800|0|T|Msl| Sent MSL header, NccpMethod: logblob, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+131.069|0|T|Msl| Received MSL header, NccpMethod: logblob, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+131.069|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+131.069|0|T|Msl| Received MSL response, Method: logblob
+131.072|0|T|LogblobSender| Received EDGE response, Method: logblob
+131.081|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+133.460|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+137.401|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+141.392|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+145.394|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+149.409|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+153.396|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+157.394|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+161.405|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+165.417|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+169.396|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+173.315|1|T|Nccp| Sending EDGE request, Method: pblifecycle
+173.315|0|T|Msl| Sending MSL request
+173.424|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+173.429|0|T|Msl| Sent MSL header, NccpMethod: pblifecycle, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+173.523|0|T|Msl| Received MSL header, NccpMethod: pblifecycle, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+173.523|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+173.523|0|T|Msl| Received MSL response, Method: pblifecycle
+173.526|1|T|Nccp| Received EDGE response, Method: pblifecycle
+173.526|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "logblob",
+    "starttime": 10682,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 1431,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 48066,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 257,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 48110,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 261,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 70719,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 425,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 98169,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 216,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 98203,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 225,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "engage",
+    "starttime": 113070,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 218,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 113098,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 130731,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 341,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 173315,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 211,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  }
+]
+173.527|1|E|Nccp| Processing EDGE response failed, method: pblifecycle, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+173.528|1|E|PlayDataManager| Heartbeat failed, Type: interval, ErrorSubCode: 1331, ErrorExternalCode: V0, ErrorDetails: [inputName:playback[startPosition]] [{"method":"logblob","starttime":10682,"success":true,"profileId":"browser","elapsedtime":1431,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":48066,"success":false,"profileId":"browser","elapsedtime":257,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+173.536|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+177.397|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+181.408|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+183.320|0|T|AppStorage| component found for key, storageKey: vb, componentKey: idb
+185.466|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+189.398|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+190.738|0|T|MessageQueue| Batch_0: 3/55728 b
+190.742|0|T|LogBatcher| Sending batch: 55728 b
+190.742|0|T|LogblobSender| Sending EDGE request, Method: logblob
+190.742|0|T|Msl| Sending MSL request
+190.801|0|T|Msl| Sent MSL header, NccpMethod: logblob, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+190.946|0|T|Msl| Received MSL header, NccpMethod: logblob, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+190.946|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+190.946|0|T|Msl| Received MSL response, Method: logblob
+190.948|0|T|LogblobSender| Received EDGE response, Method: logblob
+190.959|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+193.396|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+197.399|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+201.412|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+205.394|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+209.413|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+213.394|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+217.407|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+221.400|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+225.393|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+229.400|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+233.402|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+233.556|1|T|Nccp| Sending EDGE request, Method: pblifecycle
+233.557|0|T|Msl| Sending MSL request
+233.565|0|T|Msl| Sent MSL header, NccpMethod: pblifecycle, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+233.690|0|T|Msl| Received MSL header, NccpMethod: pblifecycle, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+233.690|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+233.690|0|T|Msl| Received MSL response, Method: pblifecycle
+233.693|1|T|Nccp| Received EDGE response, Method: pblifecycle
+233.693|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "pblifecycle",
+    "starttime": 48110,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 261,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 70719,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 425,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "engage",
+    "starttime": 98169,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 216,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 98203,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 225,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "engage",
+    "starttime": 113070,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 218,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 113098,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 130731,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 341,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 173315,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 211,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 190742,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 233556,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 137,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  }
+]
+233.693|1|E|Nccp| Processing EDGE response failed, method: pblifecycle, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+233.694|1|E|PlayDataManager| Heartbeat failed, Type: interval, ErrorSubCode: 1331, ErrorExternalCode: V0, ErrorDetails: [inputName:playback[startPosition]] [{"method":"pblifecycle","starttime":48110,"success":false,"profileId":"browser","elapsedtime":261,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":70719,"success":true,"profileId":"browser","elapsedtime":425,"userTokens":"[\"browser\"]"},{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+233.703|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+237.401|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+241.403|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+244.801|1|T|Playback| charging change event, level: 0.25, charging: true
+245.399|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+249.432|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+250.798|0|T|MessageQueue| Batch_0: 4/70880 b
+250.803|0|T|LogBatcher| Sending batch: 70880 b
+250.805|0|T|LogblobSender| Sending EDGE request, Method: logblob
+250.807|0|T|Msl| Sending MSL request
+250.942|0|T|Msl| Sent MSL header, NccpMethod: logblob, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+251.172|0|T|Msl| Received MSL header, NccpMethod: logblob, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+251.172|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+251.173|0|T|Msl| Received MSL response, Method: logblob
+251.175|0|T|LogblobSender| Received EDGE response, Method: logblob
+251.188|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+253.458|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+257.399|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+261.732|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+265.413|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+269.405|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+273.436|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+277.406|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+281.422|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+285.666|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+289.414|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+293.401|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+293.702|1|T|Nccp| Sending EDGE request, Method: pblifecycle
+293.703|0|T|Msl| Sending MSL request
+293.708|0|T|Msl| Sent MSL header, NccpMethod: pblifecycle, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+293.827|0|T|Msl| Received MSL header, NccpMethod: pblifecycle, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+293.828|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+293.828|0|T|Msl| Received MSL response, Method: pblifecycle
+293.839|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+293.844|1|T|Nccp| Received EDGE response, Method: pblifecycle
+293.844|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "engage",
+    "starttime": 98169,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 216,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 98203,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 225,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "engage",
+    "starttime": 113070,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 218,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 113098,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 130731,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 341,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 173315,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 211,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 190742,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 233556,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 137,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 250805,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 370,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 293702,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 142,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  }
+]
+293.848|1|E|Nccp| Processing EDGE response failed, method: pblifecycle, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":250805,"success":true,"profileId":"browser","elapsedtime":370,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":293702,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+293.849|1|E|PlayDataManager| Heartbeat failed, Type: interval, ErrorSubCode: 1331, ErrorExternalCode: V0, ErrorDetails: [inputName:playback[startPosition]] [{"method":"engage","starttime":98169,"success":false,"profileId":"browser","elapsedtime":216,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":98203,"success":false,"profileId":"browser","elapsedtime":225,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":250805,"success":true,"profileId":"browser","elapsedtime":370,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":293702,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+297.412|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+300.745|0|T|AppStorage| component found for key, storageKey: lh, componentKey: idb
+300.747|0|T|AppStorage| component found for key, storageKey: gh, componentKey: idb
+300.748|0|T|AppStorage| component found for key, storageKey: nh, componentKey: idb
+301.402|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+305.407|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+305.660|0|T|LogBatcher| Flushing
+305.662|0|T|MessageQueue| Batch_0: 3/55920 b
+305.666|0|T|LogBatcher| Sending batch: 55920 b
+305.666|0|T|LogblobSender| Sending EDGE request, Method: logblob
+305.667|0|T|Msl| Sending MSL request
+305.671|0|T|Msl| Sent MSL header, NccpMethod: logblob, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+305.820|0|T|Msl| Received MSL header, NccpMethod: logblob, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+305.820|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+305.820|0|T|Msl| Received MSL response, Method: logblob
+305.822|0|T|LogblobSender| Received EDGE response, Method: logblob
+305.834|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+309.397|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+313.412|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+317.404|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+321.403|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+325.421|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+329.408|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+333.432|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+337.413|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+341.466|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+345.407|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+349.422|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+353.478|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+353.885|1|T|Nccp| Sending EDGE request, Method: pblifecycle
+353.888|0|T|Msl| Sending MSL request
+353.899|0|T|Msl| Sent MSL header, NccpMethod: pblifecycle, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+354.109|0|T|Msl| Received MSL header, NccpMethod: pblifecycle, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+354.110|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+354.110|0|T|Msl| Received MSL response, Method: pblifecycle
+354.111|1|T|Nccp| Received EDGE response, Method: pblifecycle
+354.111|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "engage",
+    "starttime": 113070,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 218,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 113098,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 130731,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 341,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 173315,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 211,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 190742,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 233556,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 137,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 250805,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 370,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 293702,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 142,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 305666,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 156,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 353885,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 226,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  }
+]
+354.112|1|E|Nccp| Processing EDGE response failed, method: pblifecycle, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":250805,"success":true,"profileId":"browser","elapsedtime":370,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":293702,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":305666,"success":true,"profileId":"browser","elapsedtime":156,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":353885,"success":false,"profileId":"browser","elapsedtime":226,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+354.112|1|E|PlayDataManager| Heartbeat failed, Type: interval, ErrorSubCode: 1331, ErrorExternalCode: V0, ErrorDetails: [inputName:playback[startPosition]] [{"method":"engage","starttime":113070,"success":false,"profileId":"browser","elapsedtime":218,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"pblifecycle","starttime":113098,"success":false,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":250805,"success":true,"profileId":"browser","elapsedtime":370,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":293702,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":305666,"success":true,"profileId":"browser","elapsedtime":156,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":353885,"success":false,"profileId":"browser","elapsedtime":226,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+354.127|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+357.438|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+361.480|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+365.414|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+366.528|0|T|MessageQueue| Batch_0: 4/70064 b
+366.530|0|T|LogBatcher| Sending batch: 70064 b
+366.531|0|T|LogblobSender| Sending EDGE request, Method: logblob
+366.537|0|T|Msl| Sending MSL request
+366.553|0|T|Msl| Sent MSL header, NccpMethod: logblob, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+368.686|0|T|Msl| Received MSL header, NccpMethod: logblob, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+368.687|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+368.687|0|T|Msl| Received MSL response, Method: logblob
+368.718|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+368.721|0|T|LogblobSender| Received EDGE response, Method: logblob
+371.066|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+373.416|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+377.474|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+381.411|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+385.400|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+389.446|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+393.409|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+397.436|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+401.408|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+405.426|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+409.403|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+413.402|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+414.453|1|T|Nccp| Sending EDGE request, Method: pblifecycle
+414.455|0|T|Msl| Sending MSL request
+414.488|0|T|Msl| Sent MSL header, NccpMethod: pblifecycle, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+415.439|0|T|Msl| Received MSL header, NccpMethod: pblifecycle, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+415.439|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+415.439|0|T|Msl| Received MSL response, Method: pblifecycle
+415.441|1|T|Nccp| Received EDGE response, Method: pblifecycle
+415.441|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "logblob",
+    "starttime": 130731,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 341,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 173315,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 211,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 190742,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 233556,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 137,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 250805,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 370,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 293702,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 142,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 305666,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 156,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 353885,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 226,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 366531,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 2190,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 414453,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 988,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  }
+]
+415.442|1|E|Nccp| Processing EDGE response failed, method: pblifecycle, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":250805,"success":true,"profileId":"browser","elapsedtime":370,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":293702,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":305666,"success":true,"profileId":"browser","elapsedtime":156,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":353885,"success":false,"profileId":"browser","elapsedtime":226,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":366531,"success":true,"profileId":"browser","elapsedtime":2190,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":414453,"success":false,"profileId":"browser","elapsedtime":988,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+415.442|1|E|PlayDataManager| Heartbeat failed, Type: interval, ErrorSubCode: 1331, ErrorExternalCode: V0, ErrorDetails: [inputName:playback[startPosition]] [{"method":"logblob","starttime":130731,"success":true,"profileId":"browser","elapsedtime":341,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":173315,"success":false,"profileId":"browser","elapsedtime":211,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":250805,"success":true,"profileId":"browser","elapsedtime":370,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":293702,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":305666,"success":true,"profileId":"browser","elapsedtime":156,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":353885,"success":false,"profileId":"browser","elapsedtime":226,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":366531,"success":true,"profileId":"browser","elapsedtime":2190,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":414453,"success":false,"profileId":"browser","elapsedtime":988,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+415.448|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+417.399|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+421.485|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+425.422|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+427.984|0|T|MessageQueue| Batch_0: 3/54168 b
+427.991|0|T|LogBatcher| Sending batch: 54168 b
+427.991|0|T|LogblobSender| Sending EDGE request, Method: logblob
+427.992|0|T|Msl| Sending MSL request
+428.000|0|T|Msl| Sent MSL header, NccpMethod: logblob, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+428.211|0|T|Msl| Received MSL header, NccpMethod: logblob, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+428.211|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+428.211|0|T|Msl| Received MSL response, Method: logblob
+428.213|0|T|LogblobSender| Received EDGE response, Method: logblob
+428.228|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+429.414|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+433.395|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+437.401|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+441.402|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+445.394|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+449.425|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+453.420|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+457.410|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+461.393|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+465.417|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+469.399|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+473.453|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+475.458|1|T|Nccp| Sending EDGE request, Method: pblifecycle
+475.458|0|T|Msl| Sending MSL request
+475.464|0|T|Msl| Sent MSL header, NccpMethod: pblifecycle, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+475.578|0|T|Msl| Received MSL header, NccpMethod: pblifecycle, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+475.578|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+475.578|0|T|Msl| Received MSL response, Method: pblifecycle
+475.596|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+475.600|1|T|Nccp| Received EDGE response, Method: pblifecycle
+475.600|1|E|Nccp| BladeRunner command history
+[
+  {
+    "method": "logblob",
+    "starttime": 190742,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 206,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 233556,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 137,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 250805,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 370,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 293702,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 142,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 305666,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 156,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 353885,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 226,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 366531,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 2190,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 414453,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 988,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  },
+  {
+    "method": "logblob",
+    "starttime": 427991,
+    "success": true,
+    "profileId": "browser",
+    "elapsedtime": 222,
+    "userTokens": "[\"browser\"]"
+  },
+  {
+    "method": "pblifecycle",
+    "starttime": 475458,
+    "success": false,
+    "profileId": "browser",
+    "elapsedtime": 142,
+    "userTokens": "[\"browser\"]",
+    "subcode": 1331,
+    "extcode": "V0"
+  }
+]
+475.601|1|E|Nccp| Processing EDGE response failed, method: pblifecycle, success: false, errorData: "{\"inputName\":\"playback[startPosition]\"}", errorSubCode: 1331, errorExternalCode: V0, errorDetails: [inputName:playback[startPosition]] [{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":250805,"success":true,"profileId":"browser","elapsedtime":370,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":293702,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":305666,"success":true,"profileId":"browser","elapsedtime":156,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":353885,"success":false,"profileId":"browser","elapsedtime":226,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":366531,"success":true,"profileId":"browser","elapsedtime":2190,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":414453,"success":false,"profileId":"browser","elapsedtime":988,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":427991,"success":true,"profileId":"browser","elapsedtime":222,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":475458,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+475.601|1|E|PlayDataManager| Heartbeat failed, Type: interval, ErrorSubCode: 1331, ErrorExternalCode: V0, ErrorDetails: [inputName:playback[startPosition]] [{"method":"logblob","starttime":190742,"success":true,"profileId":"browser","elapsedtime":206,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":233556,"success":false,"profileId":"browser","elapsedtime":137,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":250805,"success":true,"profileId":"browser","elapsedtime":370,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":293702,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":305666,"success":true,"profileId":"browser","elapsedtime":156,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":353885,"success":false,"profileId":"browser","elapsedtime":226,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":366531,"success":true,"profileId":"browser","elapsedtime":2190,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":414453,"success":false,"profileId":"browser","elapsedtime":988,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"},{"method":"logblob","starttime":427991,"success":true,"profileId":"browser","elapsedtime":222,"userTokens":"[\"browser\"]"},{"method":"pblifecycle","starttime":475458,"success":false,"profileId":"browser","elapsedtime":142,"userTokens":"[\"browser\"]","subcode":1331,"extcode":"V0"}]
+477.437|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+481.587|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+485.421|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+488.936|0|T|MessageQueue| Batch_0: 4/69184 b
+488.938|0|T|LogBatcher| Sending batch: 69184 b
+488.939|0|T|LogblobSender| Sending EDGE request, Method: logblob
+488.939|0|T|Msl| Sending MSL request
+489.066|0|T|Msl| Sent MSL header, NccpMethod: logblob, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+CDMID_SERVICE_TOKEN_DATA:333560749535273:-1
+sf:333560749535273:6084823700042723
+489.328|0|T|Msl| Received MSL header, NccpMethod: logblob, UserId: browser, UT: 6084823700042723, MT: 333560749535273:4, STCount: 2
+489.328|0|T|Msl| Adding UserIdToken, UserId: browser, SerialNumber: 6084823700042723, MTSerialNumber: 333560749535273, Expiration: 1524552313000
+489.329|0|T|Msl| Received MSL response, Method: logblob
+489.332|0|T|LogblobSender| Received EDGE response, Method: logblob
+489.355|0|T|AppStorage| component found for key, storageKey: mslstore, componentKey: idb
+490.422|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+494.343|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+498.405|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+502.339|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb
+506.487|0|T|AppStorage| component found for key, storageKey: unsentplaydata, componentKey: idb

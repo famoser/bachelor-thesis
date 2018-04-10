@@ -4,7 +4,11 @@ import psutil
 import subprocess
 import time
 import json
+import pickle
+import os
 from selenium import webdriver
+
+cookie_path= "cookies.pkl"
 
 def start_browser_proxy():
     subprocess.Popen(["../libs/browsermob-proxy-2.1.4/bin/browsermob-proxy"])
@@ -65,13 +69,16 @@ def play_in_browser(netflix_id, rate, port):
 
     chrome = webdriver.Chrome(chrome_options=chrome_options)
 
+    chrome.get(video_url)
+
+    if cookies is None and os.path.isfile(cookie_path):
+        cookies = pickle.load(open(cookie_path, "rb"))
+
     if cookies is not None:
         for cookie in cookies:
             chrome.add_cookie(cookie)
 
     chrome.get(video_url)
-
-    input()
 
     trying_to_login = False
     try:
@@ -108,11 +115,9 @@ def play_in_browser(netflix_id, rate, port):
         time.sleep(5)
 
     cookies = chrome.get_cookies()
+    pickle.dump(cookies, open(cookie_path, "wb"))
 
-    print(cookies)
-    input()
-
-    chrome.execute_script("fasterPlayback()")
+    chrome.execute_script("fasterPlayback(30)")
     i = 200
     while i > 0:
         if not chrome.execute_script("return stillActive()"):
@@ -166,7 +171,7 @@ end_browser_proxy()
 start_browser_proxy()
 
 'testvideo 80018499'
-netflix_ids = [80111448]
+netflix_ids = [80111450, 80111451, 80111452]
 no_errors = True
 for netflix_id in netflix_ids:
     rate = 1
