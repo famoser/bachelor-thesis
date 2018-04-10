@@ -1,4 +1,8 @@
-property playTimes describes the current packet (length of audio, video and its bitrates)
+test links for videos, artists
+https://www.netflix.com/watch/70204286  
+https://www.netflix.com/browse/person/30154850  
+https://www.netflix.com/browse/person/30154847
+
 
 a packet definition looks like this:
 
