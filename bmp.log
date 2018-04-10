@@ -1,9 +1,16 @@
-[INFO  2018-03-18T18:57:31,486 net.lightbody.bmp.proxy.Main] (main) Starting BrowserMob Proxy version 2.1.4 
-[INFO  2018-03-18T18:57:31,527 org.eclipse.jetty.util.log] (main) jetty-7.x.y-SNAPSHOT 
-[INFO  2018-03-18T18:57:31,568 org.eclipse.jetty.util.log] (main) started o.e.j.s.ServletContextHandler{/,null} 
-[INFO  2018-03-18T18:57:31,728 org.eclipse.jetty.util.log] (main) Started SelectChannelConnector@0.0.0.0:8080 
-[INFO  2018-03-18T18:57:36,316 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-17) Starting proxy at address: 0.0.0.0/0.0.0.0:8081 
-[INFO  2018-03-18T18:57:36,340 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-17) Proxy listening with TCP transport 
-[INFO  2018-03-18T18:57:36,418 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-17) Proxy started at address: /0:0:0:0:0:0:0:0:8081 
-[INFO  2018-03-18T18:58:14,446 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (LittleProxy-JVM-shutdown-hook) Shutting down proxy server immediately (non-graceful) 
-[INFO  2018-03-18T18:58:14,446 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (LittleProxy-JVM-shutdown-hook) Closing all channels (non-graceful) 
+[INFO  2018-04-10T14:10:57,174 net.lightbody.bmp.proxy.Main] (main) Starting BrowserMob Proxy version 2.1.4 
+[INFO  2018-04-10T14:10:57,211 org.eclipse.jetty.util.log] (main) jetty-7.x.y-SNAPSHOT 
+[INFO  2018-04-10T14:10:57,247 org.eclipse.jetty.util.log] (main) started o.e.j.s.ServletContextHandler{/,null} 
+[WARN  2018-04-10T14:10:57,380 org.eclipse.jetty.util.log] (main) FAILED SelectChannelConnector@0.0.0.0:8080: java.net.BindException: Address already in use 
+[WARN  2018-04-10T14:10:57,380 org.eclipse.jetty.util.log] (main) FAILED org.eclipse.jetty.server.Server@2cc44ad: java.net.BindException: Address already in use 
+[ERROR 2018-04-10T14:10:57,381 net.lightbody.bmp.proxy.Main] (main) Failed to start Jetty server. Aborting. java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method) ~[?:1.8.0_162]
+	at sun.nio.ch.Net[INFO  2018-04-10T14:10:59,388 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-15) Starting proxy at address: 0.0.0.0/0.0.0.0:8082 
+[INFO  2018-04-10T14:10:59,390 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-15) Proxy listening with TCP transport 
+[INFO  2018-04-10T14:10:59,391 org.littleshoot.proxy.impl.DefaultHttpProxyServer] (qtp1489933928-15) Proxy started at address: /0:0:0:0:0:0:0:0:8082 
+[INFO  2018-04-10T14:11:33,535 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-1-ProxyToServerWorker-4) (DISCONNECTED) [id: 0x7ea2a55e, L:0.0.0.0/0.0.0.0:40422 ! R:assets.nflxext.com/23.54.112.124:443]: Connection to upstream server failed java.nio.channels.ClosedChannelException: null
+	at io.netty.handler.ssl.SslHandler.channelInactive(...)(Unknown Source) ~[browsermob-dist-2.1.4.jar:?]
+
+[INFO  2018-04-10T14:11:33,535 org.littleshoot.proxy.impl.ProxyToServerConnection] (LittleProxy-1-ProxyToServerWorker-3) (DISCONNECTED) [id: 0xf8d2ab3a, L:0.0.0.0/0.0.0.0:40420 ! R:assets.nflxext.com/23.54.112.124:443]: Connection to upstream server failed java.nio.channels.ClosedChannelException: null
+	at io.netty.handler.ssl.SslHandler.channelInactive(...)(Unknown Source) ~[browsermob-dist-2.1.4.jar:?]
+

@@ -11,6 +11,7 @@ from selenium import webdriver
 capture_dir = "capture"
 capture_version = "1"
 browsermob_dir = "tools/browsermob-proxy-2.1.4"
+netflix_extension_path = "tools/netflix-1080p-1.2.9.crx"
 config_dir = "."
 
 cookie_file_name= "cookies.pkl"
@@ -70,12 +71,13 @@ def play_in_browser(netflix_id, rate, port):
 
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument('--proxy-server=%s' % "127.0.0.1:" + str(port))
-    chrome_options.add_extension('../netflix-1080p-1.2.9.crx')
+    chrome_options.add_extension(netflix_extension_path)
 
     chrome = webdriver.Chrome(chrome_options=chrome_options)
 
     chrome.get(video_url)
 
+    cookie_path = config_dir + "/" + cookie_file_name
     if cookies is None and os.path.isfile(cookie_path):
         cookies = pickle.load(open(cookie_path, "rb"))
 
