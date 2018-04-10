@@ -1,6 +1,9 @@
 import os
 import json
 
+captures_dir = "capture"
+capture_version = "1"
+analyze_dir = "analyze"
 
 def sizeof_fmt(num, suffix='B'):
     for unit in ['', 'Ki', 'Mi', 'Gi', 'Ti', 'Pi', 'Ei', 'Zi']:
@@ -10,12 +13,12 @@ def sizeof_fmt(num, suffix='B'):
     return "%.1f%s%s" % (num, 'Yi', suffix)
 
 
-json_files = [pos_json for pos_json in os.listdir(".") if pos_json.endswith('.json')]
+json_files = [pos_json for pos_json in os.listdir(captures_dir) if pos_json.endswith("_" + capture_version +'.json')]
 
 sizePerFile = {}
 
 for file in json_files:
-    with open(file, 'r') as myfile:
+    with open(captures_dir + "/" + file, 'r') as myfile:
         data = myfile.read()
 
     content = json.loads(data)
@@ -30,5 +33,5 @@ result = ''
 for key in sizePerFile:
     result += key + ': ' + sizeof_fmt(sizePerFile[key]) + '\n'
 
-with open('analyze_result.txt', "w") as text_file:
+with open(analyze_dir + "/" + 'analyze_result.txt', "w") as text_file:
     print(result, file=text_file)

@@ -8,10 +8,15 @@ import pickle
 import os
 from selenium import webdriver
 
-cookie_path= "cookies.pkl"
+capture_dir = "capture"
+capture_version = "1"
+browsermob_dir = "tools/browsermob-proxy-2.1.4"
+config_dir = "."
+
+cookie_file_name= "cookies.pkl"
 
 def start_browser_proxy():
-    subprocess.Popen(["../libs/browsermob-proxy-2.1.4/bin/browsermob-proxy"])
+    subprocess.Popen([browsermob_dir + "/bin/browsermob-proxy"])
     i = 3
     while i > 0:
         print("waiting " + str(i))
@@ -87,7 +92,7 @@ def play_in_browser(netflix_id, rate, port):
         chrome.get(link)
         trying_to_login = True
 
-        credentials = json.load(open('../credentials.json'))
+        credentials = json.load(open(config_dir + '/credentials.json'))
 
         username_field = selenium_try_find_element_by_id(chrome, "email")
         username_field.send_keys(credentials["netflix"]["username"])
@@ -156,7 +161,7 @@ def end_capture(netflix_id, rate, port):
     saveUrl = 'http://localhost:8080/proxy/' + str(port) + '/har'
     response = request.get(saveUrl)
     fileName = str(netflix_id) + '_' + str(rate) + "_ " + datetime.datetime.now().isoformat()
-    with open(fileName + '.json', "w") as text_file:
+    with open(capture_dir + "/" + fileName + "_" + capture_version + '.json', "w") as text_file:
         print(response.content.decode(), file=text_file)
     assert (response.status_code == 200)
     print('saved capture')
