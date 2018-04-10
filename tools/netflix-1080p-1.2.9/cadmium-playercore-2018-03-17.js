@@ -7,11 +7,11 @@ jumpToNext = function seekToNext() {
     seek(currentSecond * 1000);
     lastTimeAccessed = Date.now();
     console.log("skipped");
-    fasterPlayback();
+    fasterPlayback(stepSize);
 }
 
 function fasterPlayback(step) {
-    stepSize = step;
+    stepSize = parseInt(step);
     setTimeout(jumpToNext, 3000);
 }
 
