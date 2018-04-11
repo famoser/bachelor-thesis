@@ -21,7 +21,8 @@ json_files = sorted(json_files)
 sizePerFile = {}
 
 for file in json_files:
-    with open(captures_dir + "/" + file, 'r') as myfile:
+    file_path = captures_dir + "/" + file
+    with open(file_path, 'r') as myfile:
         data = myfile.read()
 
     content = json.loads(data)
@@ -30,6 +31,8 @@ for file in json_files:
         if "video.net/range/" in entry["request"]["url"]:
             totalSize = totalSize + entry["response"]["bodySize"]
 
+    if totalSize == 0:
+        os.remove(file_path)
     sizePerFile[file] = totalSize
 
 result = ''
