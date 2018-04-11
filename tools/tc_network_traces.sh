@@ -1,5 +1,7 @@
 #!/bin/sh
 
+#written & copyright by melissa
+
 #Traffic shaper TC:
 #Read a trace .txt file in the form of:
 
