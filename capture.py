@@ -200,7 +200,8 @@ def selenium_try_find_element_by_class(driver, element_id, retries=5):
 def end_capture(netflix_id, rate, port):
     saveUrl = 'http://localhost:8080/proxy/' + str(port) + '/har'
     response = request.get(saveUrl)
-    fileName = str(netflix_id) + '_' + str(rate) + "_ " + datetime.datetime.now().isoformat()
+    fileName = str(netflix_id) + '_' + str(rate) + "_ " + 
+datetime.datetime.now().isoformat().replace(":", "_")
     with open(capture_dir + "/" + fileName + "_" + capture_version + '.json', "w") as text_file:
         print(response.content.decode(), file=text_file)
     assert (response.status_code == 200)
