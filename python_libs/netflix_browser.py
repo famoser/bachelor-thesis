@@ -127,12 +127,19 @@ class NetflixBrowser:
         # check for fatal error 3 times
         if self.__try_find_element_by_class("nfp-fatal-error-view", 3) is not None:
             title = self.__try_find_element_by_class("error-title", 3)
-            print(title.text)
-            if title is not None and title.text == "Multiple Netflix Tabs":
-                # this error is critical, netflix won't allow us to continue captureing
-                # user may needs to reboot the computer for it to work again
-                print("aborting; consider rebooting the computer for the error to go away")
-                return False
+            print("Netflix error occurred: " + title.text)
+            if title is not None:
+                if title.text == "Multiple Netflix Tabs":
+                    # this error is critical, netflix won't allow us to continue capturing
+                    # user may needs to reboot the computer for it to work again
+                    print("aborting; consider rebooting the computer for the error to go away")
+                    return False
+                if title.text == "Unexpected Error":
+                    # this error happens when javascript selects a profile unsupported by this video type
+                    # this happens often, and is no reason to stop capturing
+                    return True
+                print("halting; new error found!")
+                time.sleep(500000)
             else:
                 # unknown error occurred; per default we continue
                 return True
