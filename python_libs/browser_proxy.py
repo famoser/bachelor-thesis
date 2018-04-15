@@ -88,10 +88,10 @@ class BrowserProxy:
         """
         return self.__port
 
-    def save_capture_state(self, file_name: str) -> bool:
+    def save_capture_state(self, file_path: str) -> bool:
         """
         saves the current capture state to a file, and clears it afterwards
-        :param file_name: the name of the file to use
+        :param file_path: the path of the file to use, .json is appended
         :return: if the state was retrieved successfully
         """
 
@@ -100,7 +100,7 @@ class BrowserProxy:
 
         # check if request was successful
         if response.status_code == 200:
-            with open(config.captures_dir + "/" + file_name + '.json', "w") as text_file:
+            with open(file_path + '.json', "w") as text_file:
                 print(response.content.decode(), file=text_file)
 
             return True

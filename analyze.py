@@ -15,7 +15,7 @@ def sizeof_fmt(num, suffix='B'):
 
 
 json_files = [pos_json for pos_json in os.listdir(config.captures_dir) if
-              pos_json.endswith("_" + config.capture_version + '.json')]
+              pos_json.endswith("_" + str(config.capture_version) + '.json')]
 
 json_files = sorted(json_files)
 

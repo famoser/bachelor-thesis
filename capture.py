@@ -32,10 +32,10 @@ with BrowserProxy() as proxy:
                 fileName = str(netflix_id) + '_'
                 fileName += str(rate) + "_ "
                 fileName += datetime.datetime.now().isoformat().replace(":", "_") + "_"
-                fileName += config.capture_version
+                fileName += str(config.capture_version)
 
                 # save the capture
-                proxy.save_capture_state(fileName)
+                proxy.save_capture_state(config.captures_dir + "/" + fileName)
 
                 # increment counter
                 rate += 1

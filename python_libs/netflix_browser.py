@@ -7,8 +7,10 @@ from selenium.webdriver.remote.webelement import WebElement
 from typing import Optional
 
 from .config import StaticConfig
+from .config import Inventory
 
 config = StaticConfig()
+inventory = Inventory()
 
 
 class NetflixBrowser:
@@ -48,7 +50,7 @@ class NetflixBrowser:
         """
 
         # use the test video URl to try to login
-        video_url = self.__get_video_url(config.netflix_test_video)
+        video_url = self.__get_video_url(inventory.test_video)
 
         # create chrome config using a localhost proxy & the modified netflix extension
         chrome_options = webdriver.ChromeOptions()
