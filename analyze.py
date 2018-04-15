@@ -1,9 +1,9 @@
 import os
 import json
 
-captures_dir = "capture"
-capture_version = "1"
-analyze_dir = "analyze"
+from python_libs.config import StaticConfig
+
+config = StaticConfig()
 
 
 def sizeof_fmt(num, suffix='B'):
@@ -14,14 +14,15 @@ def sizeof_fmt(num, suffix='B'):
     return "%.1f%s%s" % (num, 'Yi', suffix)
 
 
-json_files = [pos_json for pos_json in os.listdir(captures_dir) if pos_json.endswith("_" + capture_version + '.json')]
+json_files = [pos_json for pos_json in os.listdir(config.captures_dir) if
+              pos_json.endswith("_" + config.capture_version + '.json')]
 
 json_files = sorted(json_files)
 
 sizePerFile = {}
 
 for file in json_files:
-    file_path = captures_dir + "/" + file
+    file_path = config.captures_dir + "/" + file
     with open(file_path, 'r') as myfile:
         data = myfile.read()
 
@@ -39,5 +40,5 @@ result = ''
 for key in sizePerFile:
     result += key + ': ' + sizeof_fmt(sizePerFile[key]) + '\n'
 
-with open(analyze_dir + "/" + 'analyze_result.txt', "w") as text_file:
+with open(config.analyze_dir + "/" + 'analyze_result.txt', "w") as text_file:
     print(result, file=text_file)
