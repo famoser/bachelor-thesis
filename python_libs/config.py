@@ -2,7 +2,7 @@ import os
 
 
 class StaticConfig:
-    root_dir = os.path.basename(os.path.dirname("."))
+    root_dir = os.path.abspath(os.path.dirname("."))
 
     captures_dir = root_dir + "/" + "capture"
     skip_seconds = 120
@@ -19,3 +19,5 @@ class StaticConfig:
 
     credentials_file_path = config_dir + "/" + "credentials.json"
     cookie_file_path = temp_dir + "/" + "cookies.pkl"
+
+    netflix_test_video = 80018499
