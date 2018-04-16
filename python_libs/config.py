@@ -2,31 +2,32 @@ import os
 
 
 class StaticConfig:
-    root_dir = os.path.abspath(os.path.dirname("."))
+    def __init__(self):
+        self.root_dir = os.path.abspath(os.path.dirname("."))
 
-    captures_dir = root_dir + "/" + "capture"
-    skip_seconds = 120
-    wait_seconds = 4
+        self.captures_dir = self.root_dir + "/" + "capture"
+        self.skip_seconds = 120
+        self.wait_seconds = 4
 
-    capture_version = 1
-    attack_version = 1
+        self.capture_version = 1
+        self.attack_version = 1
 
-    analyze_dir = root_dir + "/" + "analyze"
+        self.analyze_dir = self.root_dir + "/" + "analyze"
 
-    browsermob_dir = root_dir + "/" + "tools/browsermob-proxy-2.1.4"
-    netflix_extension_path = root_dir + "/" + "tools/netflix-1080p-1.2.9.crx"
+        self.browsermob_dir = self.root_dir + "/" + "tools/browsermob-proxy-2.1.4"
+        self.netflix_extension_path = self.root_dir + "/" + "tools/netflix-1080p-1.2.9.crx"
 
-    config_dir = root_dir + "/" + "config"
-    temp_dir = root_dir + "/" + "temp"
+        self.config_dir = self.root_dir + "/" + "config"
+        self.temp_dir = self.root_dir + "/" + "temp"
 
-    attack_dir = root_dir + "/" + "attack"
+        self.attack_dir = self.root_dir + "/" + "attack"
 
-    plot_dir = root_dir + "/" + "plot"
+        self.plot_dir = self.root_dir + "/" + "plot"
 
-    credentials_file_path = config_dir + "/" + "credentials.json"
-    cookie_file_path = temp_dir + "/" + "cookies.pkl"
+        self.credentials_file_path = self.config_dir + "/" + "credentials.json"
+        self.cookie_file_path = self.temp_dir + "/" + "cookies.pkl"
 
-    network_device = "wlp4s0"
+        self.network_device = "wlp4s0"
 
 
 class Inventory:

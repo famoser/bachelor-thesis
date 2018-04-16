@@ -22,6 +22,7 @@ burn_initially = 30
 
 # initialize the bandwidth
 with BandwidthManipulator() as bandwidth:
+
     # initialize the proxy
     with BrowserProxy() as proxy:
         proxy_port = proxy.get_port()

@@ -10,8 +10,10 @@ class HarAnalyzer:
 
     def __init__(self, dir, ending):
         file_names = sorted(
-            [pos_json for pos_json in os.listdir(dir) if
-             pos_json.endswith(ending)]
+            [
+                pos_json for pos_json in os.listdir(dir) if
+                pos_json.endswith(ending)
+            ]
         )
 
         for file_name in file_names:
@@ -28,27 +30,27 @@ class HarAnalyzer:
                 har_entry.body_size = int(entry["response"]["bodySize"])
 
                 # check if url ends like the CDN's of netflix
-                if "video.net/range/" in url:
+                if "video.net/range/" in har_entry.url:
                     har_entry.is_video = True
 
                     # cut of url at /range to parse it
-                    range_url = url.rindex("/range")
-                    end_of_url = url[(range_url + len("/range") + 1):]
+                    range_url = har_entry.url[(har_entry.url.rindex("/range") + len("/range") + 1):]
 
                     # remove query parameters
-                    if "?" in end_of_url:
-                        end_of_url = end_of_url[:end_of_url.index("?")]
+                    if "?" in range_url:
+                        range_url = range_url[:range_url.index("?")]
 
                     # parse range (of the form 7123-8723)
-                    range = end_of_url.split("-")
-                    har_entry.range_start = int(range[0])
-                    har_entry.range_end = int(range[1])
+                    ranges = range_url.split("-")
+                    har_entry.range_start = int(ranges[0])
+                    har_entry.range_end = int(ranges[1])
 
                 self.__har_entry_dict[file_name] = har_entry
 
             # count file size
             file_size = 0
-            for entry in self.__har_entry_dict:
+            for video_id in self.__har_entry_dict:
+                entry = self.__har_entry_dict[video_id]
                 if entry.is_video:
                     file_size += entry.body_size
 
