@@ -3,75 +3,64 @@ import json
 import os
 
 from python_libs.config import StaticConfig
+from python_libs.har_analyzer import HarAnalyzer
 
 config = StaticConfig()
+analyzer = HarAnalyzer(config.attack_dir, str(config.attack_version) + '.json')
 
-json_files = [pos_json for pos_json in os.listdir(config.attack_dir) if
-              pos_json.endswith("_" + str(config.attack_version) + '.json')]
+lookup = {}
 
-json_files = sorted(json_files)
-
-movieLookup = {}
-
-# calculate size per file
-for file in json_files:
-    # calculate size per file
-    with open(config.attack_dir + "/" + file, 'r') as myfile:
-        data = myfile.read()
-
-    content = json.loads(data)
-    file_size = 0
-    for entry in content["log"]["entries"]:
-        url = entry["request"]["url"]
-        size = entry["response"]["bodySize"]
-        if "video.net/range/" in url:
-            file_size += size
-
+# create lookup like lookup[movie_id][bandwidth] = video_size
+for file in analyzer.video_size_dict():
     # analyze file name
     splits = file.split("_")
-
-    movieId = int(splits[0])
+    movie_id = int(splits[0])
     bandwidth = int(splits[1])
 
     # add to big result dictionary
-    movieLookup.setdefault(movieId, {})
-    movieLookup[movieId].setdefault(bandwidth, [])
-    movieLookup[movieId][bandwidth].append(file_size)
+    lookup.setdefault(movie_id, {})
+    lookup[movie_id].setdefault(bandwidth, [])
+    lookup[movie_id][bandwidth].append(analyzer.video_size_dict()[file])
 
-# individual plots
-for movieId in movieLookup:
+# plot bandwidth, video_size per movie
+for movie_id in lookup:
     x = []
     y = []
 
-    for bandwidth in movieLookup[movieId]:
-        for entry in movieLookup[movieId][bandwidth]:
+    for bandwidth in lookup[movie_id]:
+        for entry in lookup[movie_id][bandwidth]:
             x.append(bandwidth)
             y.append(entry)
 
     # plot
     plt.plot(x, y, "ro")
-    plt.savefig(config.plot_dir + "/" + str(movieId) + "_attack.png")
+    plt.savefig(config.plot_dir + "/" + str(movie_id) + "_attack.png")
     plt.close()
 
 # all together
 legendIdentifier = []
 legendValue = []
 
-fig, axes = plt.subplots(1)
-for movieId in movieLookup:
+# plot bandwidth, video_size per movie in single plot
+# create single subplot
+fig, axes = plt.subplots(1, 1)
+for movie_id in lookup:
     x = []
     y = []
 
-    for bandwidth in movieLookup[movieId]:
-        for entry in movieLookup[movieId][bandwidth]:
+    for bandwidth in lookup[movie_id]:
+        for entry in lookup[movie_id][bandwidth]:
             x.append(bandwidth)
             y.append(entry)
 
-    # plot
-    axes.plot(x, y, label=str(movieId), marker='.', linewidth=0)
+    # plot with label = movie_id
+    axes.plot(x, y, label=str(movie_id), marker='.', linewidth=0)
 
+# place label to the right
 plt.legend(loc=(1.04, 0))
 plt.tight_layout()
 plt.subplots_adjust(right=0.75)
+
+# save
 plt.savefig(config.plot_dir + "/all_attack.png")
 plt.close()

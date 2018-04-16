@@ -3,56 +3,37 @@ import json
 import os
 
 from python_libs.config import StaticConfig
+from python_libs.har_analyzer import HarAnalyzer
 
 config = StaticConfig()
+analyzer = HarAnalyzer(config.capture_dir, str(config.capture_version) + '.json')
 
-captures_dir = "capture"
-capture_version = "1"
-plot_dir = "plot"
-
-json_files = [pos_json for pos_json in os.listdir(captures_dir) if pos_json.endswith("_" + capture_version + '.json')]
-
-json_files = sorted(json_files)
-
-sizePerFile = {}
-
-for file in json_files:
+# plot
+for file in analyzer.har_entry_dict():
     sizeX = [0]
     sizeY = [0]
     bandwidthY = []
     bandwidthX = []
 
-    with open(captures_dir + "/" + file, 'r') as myfile:
-        data = myfile.read()
-
-    content = json.loads(data)
-    for entry in content["log"]["entries"]:
-        url = entry["request"]["url"]
-        size = entry["response"]["bodySize"]
-        if "video.net/range/" in url:
-            lastIndex = url.rindex("/range")
-            lastPart = url[(lastIndex + len("/range") + 1):]
-            if "?" in lastPart:
-                lastPart = lastPart[:lastPart.index("?")]
-
-            range = lastPart.split("-")
-
+    for entry in analyzer.har_entry_dict()[file]:
+        if entry.is_video:
             # xAxis.append(int(range[0]))
-            sizeX.append(int(range[1]))
-            sizeY.append(size)
+            sizeX.append(entry.range_end)
+            sizeY.append(entry.body_size)
 
-            total_range = int(range[1]) - int(range[0])
-            bandwidth = size / total_range
+            bandwidth = entry.body_size / entry.get_length()
 
-            plt.plot([int(range[0]), int(range[1])], [bandwidth, bandwidth], 'ro-')
+            plt.plot([entry.range_start, entry.range_end], [bandwidth, bandwidth], 'ro-')
 
-    plt.savefig(plot_dir + "/" + file + "_bandwidth.png")
+    # parse movie id
+    splits = file.split("_")
+    movie_id = int(splits[0])
+
+    # save bandwidth analysis (plotted in loop)
+    plt.savefig(plot_dir + "/" + str(movie_id) + "_bandwidth.png")
     plt.close()
 
+    # save total sizes
     plt.plot(sizeX, sizeY, "ro")
-    # plt.grid(True)
-    # plt.figure(figsize=(10, 10))
-    # plt.annotate(..., fontsize='xx-small', ...)
-    # plt.axis([0, 6, 0, 20])
-    plt.savefig(plot_dir + "/" + file + "_size.png")
+    plt.savefig(plot_dir + "/" + str(movie_id) + "_size.png")
     plt.close()
