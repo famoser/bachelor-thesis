@@ -23,6 +23,7 @@ class StaticConfig:
         self.attack_dir = self.root_dir + "/" + "attack"
 
         self.plot_dir = self.root_dir + "/" + "plot"
+        self.log_dir = self.root_dir + "/" + "log"
 
         self.credentials_file_path = self.config_dir + "/" + "credentials.json"
         self.cookie_file_path = self.temp_dir + "/" + "cookies.pkl"
@@ -46,3 +47,13 @@ class Inventory:
         # documentaries
         self.minimalism = 80114460
         self.expedition_happiness = 80225528
+
+        # cartoon
+        self.family_guy = 80111454
+        self.bojack_horseman = 70298930
+
+    def full_capture(self):
+        return self.__dict__
+
+    def small_capture(self):
+        return {"bojack": self.bojack_horseman, "family": self.family_guy}

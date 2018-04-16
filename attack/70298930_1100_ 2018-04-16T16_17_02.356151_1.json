@@ -1,0 +1,1 @@
+{"configuration": {"capture_duration": 60, "increase_throughput_step_size": 100, "start_throughput": 800, "stop_throughput": 1200, "wait_after_page_load": 40, "wait_after_throughput_adjustment": 20, "current_amount": 1100}, "packets": [], "statistics": {"start_timestamp": 1523888162.3017182, "end_timestamp": 1523888222.45378}}

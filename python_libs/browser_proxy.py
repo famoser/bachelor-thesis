@@ -6,14 +6,25 @@ import json
 
 from .config import StaticConfig
 
-config = StaticConfig()
+static_config = StaticConfig()
+
+
+class CaptureStatistics:
+    def __init__(self):
+        self.start_timestamp = None
+        self.end_timestamp = None
 
 
 class BrowserProxy:
     __port = None
     __capture_url = None
+    __current_page_ref = None
+    __current_page_count = 0
+    __current_capture_start = None
+    __log_file = None
 
     def __enter__(self):
+        self.__log_file = open(static_config.log_dir + "/" + "browsermob-proxy.log", "w")
         self.__start_browsermob()
         self.__initialize_browsermob()
 
@@ -21,13 +32,20 @@ class BrowserProxy:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.__kill_browsermob()
+        self.__log_file.close()
 
-    @staticmethod
-    def __start_browsermob():
+    def __start_browsermob(self):
         """
         starts the browsermob executable
         """
-        subprocess.Popen([config.browsermob_dir + "/bin/browsermob-proxy"])
+
+        # start executable, and save logfile to
+        subprocess.Popen(
+            static_config.browsermob_dir + "/bin/browsermob-proxy",
+            shell=True, universal_newlines=True, stdout=self.__log_file
+        )
+
+        # wait three seconds for it to settle
         i = 3
         while i > 0:
             print("waiting " + str(i))
@@ -50,7 +68,17 @@ class BrowserProxy:
         # initialize capture
         response = request.put(self.__capture_url, '{}')
         assert (response.status_code == 204)
+
+        # start new capture
+        # we could also pass "{initialPageRef": "' + self.__set_next_page_ref() + '}" to the request before
+        self.start_new_capture()
+
         print('initialized capture at port ' + str(self.__port))
+
+    def __set_next_page_ref(self):
+        self.__current_page_count += 1
+        self.__current_page_ref = "page_" + str(self.__current_page_count)
+        return self.__current_page_ref
 
     @staticmethod
     def __kill_browsermob():
@@ -83,31 +111,52 @@ class BrowserProxy:
         """
         return self.__port
 
-    def save_capture_state(self, file_path: str) -> bool:
+    def save_active_capture(self, file_path: str, configuration: dict, start_new: bool = True) -> bool:
         """
         saves the current capture state to a file, and clears it afterwards
+        :param start_new: if to start a new capture immediately
+        :param configuration: the configuration of the capture for later reference
         :param file_path: the path of the file to use, .json is appended
         :return: if the state was retrieved successfully
         """
 
         # retrieve the state
         response = request.get(self.__capture_url)
+        if response.status_code != 200:
+            return False
 
-        # check if request was successful
-        if response.status_code == 200:
-            with open(file_path + '.json', "w") as text_file:
-                print(response.content.decode(), file=text_file)
+        # create statistics
+        statistics = CaptureStatistics()
+        statistics.start_timestamp = self.__current_capture_start
+        statistics.end_timestamp = time.time()
 
-            return True
+        # load json
+        content = json.loads(response.content.decode())
 
-        return False
+        # filter packets for current page ref
+        packets = []
+        for entry in content["log"]["entries"]:
+            if entry["pageref"] == self.__current_page_ref:
+                packets.append(entry)
 
-    def clear_capture_state(self):
+        # save packets & configuration
+        save = {"configuration": configuration, "packets": packets, "statistics": statistics.__dict__}
+        with open(file_path + '.json', "w") as file:
+            json.dump(save, file)
+
+        # start new capture
+        if start_new:
+            self.start_new_capture()
+
+        return True
+
+    def start_new_capture(self):
         """
         retrieves the current capture state, and discards it
         :return: if the state was retrieved successfully
         """
 
-        # discard current state by retrieving the state and not using it
-        response = request.get(self.__capture_url)
+        # set new state by starting a new capture page
+        self.__current_capture_start = time.time()
+        response = request.put(self.__capture_url + "/pageRef", '{"pageRef": "' + self.__set_next_page_ref() + '}')
         return response.status_code == 200

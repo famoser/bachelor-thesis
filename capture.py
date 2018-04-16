@@ -33,7 +33,7 @@ with BrowserProxy() as proxy:
                 fileName += str(config.capture_version)
 
                 # save the capture
-                proxy.save_capture_state(config.captures_dir + "/" + fileName)
+                proxy.save_active_capture(config.captures_dir + "/" + fileName)
 
                 # increment counter
                 rate += 1
