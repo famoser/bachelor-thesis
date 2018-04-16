@@ -1,9 +1,4 @@
-import pickle
-import os
-import json
-import time
 import requests as request
-import datetime
 import psutil
 import subprocess
 import time
