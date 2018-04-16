@@ -17,7 +17,7 @@ with BrowserProxy() as proxy:
 
         # capture netflix ids
         for video in inventory.__dict__:
-            video_id = inventory[video]
+            video_id = inventory.__dict__[video]
 
             # capture rate 1-4
             rate = 1
