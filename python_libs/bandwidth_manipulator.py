@@ -29,7 +29,7 @@ class BandwidthManipulator:
 
     @staticmethod
     def ensure_sudo():
-        os.system("sudo ls")
+        os.system("sudo ls > /dev/null")
 
     def set_rate(self, rate: str = "1M"):
         subprocess.Popen(
@@ -37,12 +37,12 @@ class BandwidthManipulator:
             " --direction incoming" +
             " --rate " + rate +
             " --overwrite",
-            shell=True, universal_newlines=True, stdout=self.__log_file
+            shell=True, universal_newlines=True, stdout=self.__log_file, stderr=self.__log_file
         )
 
     def clear_rate(self):
         subprocess.Popen(
             "sudo tcdel --device " + static_config.network_device +
             " --all",
-            shell=True, universal_newlines=True, stdout=self.__log_file
+            shell=True, universal_newlines=True, stdout=self.__log_file, stderr=self.__log_file
         )

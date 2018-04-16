@@ -3,28 +3,35 @@ import json
 
 
 class HarAnalyzer:
+    __file_names = []
     __json_dict = {}
-    __har_entry_dict = {}
-    __video_size_dict = {}
+    __har_entries_dict = {}
+    __capture_statistics = {}
     __dir = None
 
-    def __init__(self, dir, ending):
-        file_names = sorted(
+    def __init__(self, file_dir, ending):
+        # get sorted files
+        self.__file_names = sorted(
             [
-                pos_json for pos_json in os.listdir(dir) if
+                pos_json for pos_json in os.listdir(file_dir) if
                 pos_json.endswith(ending)
             ]
         )
 
-        for file_name in file_names:
+        # create json dict
+        for file_name in self.__file_names:
             # save the file content as json to our dict
-            with open(dir + "/" + file_name, 'r') as myfile:
-                data = myfile.read()
+            with open(file_dir + "/" + file_name, 'r') as file:
+                data = file.read()
                 content = json.loads(data)
             self.__json_dict[file_name] = content
 
+        # create har dict
+        for file_name in self.__file_names:
+            self.__har_entries_dict[file_name] = []
+
             # parse the log entries
-            for entry in content["log"]["entries"]:
+            for entry in self.__json_dict[file_name]["packets"]:
                 har_entry = HarEntry()
                 har_entry.url = entry["request"]["url"]
                 har_entry.body_size = int(entry["response"]["bodySize"])
@@ -45,34 +52,52 @@ class HarAnalyzer:
                     har_entry.range_start = int(ranges[0])
                     har_entry.range_end = int(ranges[1])
 
-                self.__har_entry_dict[file_name] = har_entry
+                self.__har_entries_dict[file_name].append(har_entry)
 
-            # count file size
-            file_size = 0
-            for video_id in self.__har_entry_dict:
-                entry = self.__har_entry_dict[video_id]
+        # create capture statistics dict
+        for file_name in self.__file_names:
+            video_size = 0
+            for entry in self.__har_entries_dict[file_name]:
                 if entry.is_video:
-                    file_size += entry.body_size
+                    video_size += entry.body_size
 
-            self.__video_size_dict[file_name] = file_size
+            capture_statistics = CaptureStatistics()
+            capture_statistics.video_size = video_size
+            capture_statistics.capture_length = self.__json_dict[file_name]["configuration"]["capture_duration"]
 
-    def get_har_entry_dict(self):
+            self.__capture_statistics[file_name] = capture_statistics
+
+    def get_json_dict(self):
         """
-        get filename => HarEntry dict
+        get filename => json dict
         :return:
         """
-        return self.__har_entry_dict
+        return self.__json_dict
 
-    def get_video_size_dict(self):
+    def get_har_entries_dict(self):
         """
-        get filename => int dict
+        get filename => HarEntry[] dict
         :return:
         """
-        return self.__video_size_dict
+        return self.__har_entries_dict
+
+    def get_file_names(self):
+        """
+        get list of filenames
+        :return:
+        """
+        return self.__file_names
+
+    def get_capture_statistics(self):
+        """
+        get filename => CaptureStatistics
+        :return:
+        """
+        return self.__capture_statistics
 
 
 class HarEntry:
-    '''
+    """
     {
         "pageref": "Page 0",
         "startedDateTime": "2018-04-15T14:38:42.662+02:00",
@@ -135,7 +160,7 @@ class HarEntry:
         "comment": "",
         "time": 225
     }
-    '''
+    """
 
     def __init__(self):
         self.url = None
@@ -144,5 +169,17 @@ class HarEntry:
         self.range_start = None
         self.range_end = None
 
+    def __repr__(self):
+        return self.__dict__.__repr__()
+
     def get_length(self):
         return self.range_end - self.range_start
+
+
+class CaptureStatistics:
+    def __init__(self):
+        self.video_size = 0
+        self.capture_length = 0
+
+    def get_throughput(self):
+        return self.video_size / self.capture_length

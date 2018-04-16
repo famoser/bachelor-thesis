@@ -11,16 +11,16 @@ analyzer = HarAnalyzer(config.attack_dir, str(config.attack_version) + '.json')
 lookup = {}
 
 # create lookup like lookup[movie_id][bandwidth] = video_size
-for file in analyzer.get_video_size_dict():
+for file_name in analyzer.get_file_names():
     # analyze file name
-    splits = file.split("_")
+    splits = file_name.split("_")
     movie_id = int(splits[0])
     bandwidth = int(splits[1])
 
     # add to big result dictionary
     lookup.setdefault(movie_id, {})
     lookup[movie_id].setdefault(bandwidth, [])
-    lookup[movie_id][bandwidth].append(analyzer.get_video_size_dict()[file])
+    lookup[movie_id][bandwidth].append(analyzer.get_capture_statistics()[file_name].get_throughput())
 
 # plot bandwidth, video_size per movie
 for movie_id in lookup:

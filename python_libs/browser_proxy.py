@@ -18,10 +18,12 @@ class CaptureStatistics:
 class BrowserProxy:
     __port = None
     __capture_url = None
-    __current_page_ref = None
     __current_page_count = 0
     __current_capture_start = None
     __log_file = None
+
+    def __init__(self, mode):
+        self.__mode = mode
 
     def __enter__(self):
         self.__log_file = open(static_config.log_dir + "/" + "browsermob-proxy.log", "w")
@@ -75,10 +77,8 @@ class BrowserProxy:
 
         print('initialized capture at port ' + str(self.__port))
 
-    def __set_next_page_ref(self):
-        self.__current_page_count += 1
-        self.__current_page_ref = "page_" + str(self.__current_page_count)
-        return self.__current_page_ref
+    def __get_current_page_title(self):
+        return "Page " + str(self.__current_page_count)
 
     @staticmethod
     def __kill_browsermob():
@@ -136,11 +136,16 @@ class BrowserProxy:
         # filter packets for current page ref
         packets = []
         for entry in content["log"]["entries"]:
-            if entry["pageref"] == self.__current_page_ref:
+            if entry["pageref"] == self.__get_current_page_title():
                 packets.append(entry)
 
         # save packets & configuration
-        save = {"configuration": configuration, "packets": packets, "statistics": statistics.__dict__}
+        save = {
+            "mode": self.__mode,
+            "configuration": configuration,
+            "packets": packets,
+            "statistics": statistics.__dict__
+        }
         with open(file_path + '.json', "w") as file:
             json.dump(save, file)
 
@@ -158,5 +163,6 @@ class BrowserProxy:
 
         # set new state by starting a new capture page
         self.__current_capture_start = time.time()
-        response = request.put(self.__capture_url + "/pageRef", '{"pageRef": "' + self.__set_next_page_ref() + '}')
+        self.__current_page_count += 1
+        response = request.put(self.__capture_url + "/pageRef")
         return response.status_code == 200

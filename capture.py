@@ -6,18 +6,18 @@ from python_libs.netflix_browser import NetflixBrowser
 from python_libs.browser_proxy import BrowserProxy
 
 config = StaticConfig()
-inventory = Inventory()
+video_ids = Inventory().small_capture()
 
 # initialize the proxy
-with BrowserProxy() as proxy:
+with BrowserProxy("capture") as proxy:
     proxy_port = proxy.get_port()
 
     # initialize the browser
     with NetflixBrowser(proxy_port) as browser:
 
         # capture netflix ids
-        for video in inventory.__dict__:
-            video_id = inventory.__dict__[video]
+        for video in video_ids:
+            video_id = video_ids[video]
 
             # capture rate 1-4
             rate = 1

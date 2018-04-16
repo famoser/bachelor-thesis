@@ -35,7 +35,7 @@ print("this capture will run for " + humanfriendly.format_timespan(full_length))
 # initialize the bandwidth
 with BandwidthManipulator() as bandwidth:
     # initialize the proxy
-    with BrowserProxy() as proxy:
+    with BrowserProxy("attack") as proxy:
         # initialize the browser
         with NetflixBrowser(proxy.get_port()) as browser:
 
@@ -80,7 +80,7 @@ with BandwidthManipulator() as bandwidth:
                     proxy.save_active_capture(static_config.attack_dir + "/" + fileName, configuration)
 
                     # break if finished
-                    if current_amount > config.stop_throughput:
+                    if current_amount >= config.stop_throughput:
                         break
 
                     # set new bandwidth and repeat
