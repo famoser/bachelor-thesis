@@ -9,13 +9,13 @@ config = StaticConfig()
 analyzer = HarAnalyzer(config.captures_dir, str(config.capture_version) + '.json')
 
 # plot
-for file in analyzer.get_har_entries_dict():
+for file_name in analyzer.get_file_names():
     sizeX = [0]
     sizeY = [0]
     bandwidthY = []
     bandwidthX = []
 
-    for entry in analyzer.get_har_entries_dict()[file]:
+    for entry in analyzer.get_har_entries_dict()[file_name]:
         if entry.is_video:
             # xAxis.append(int(range[0]))
             sizeX.append(entry.range_end)
@@ -26,7 +26,7 @@ for file in analyzer.get_har_entries_dict():
             plt.plot([entry.range_start, entry.range_end], [bandwidth, bandwidth], 'ro-')
 
     # parse movie id
-    splits = file.split("_")
+    splits = file_name.split("_")
     movie_id = int(splits[0])
 
     # save bandwidth analysis (plotted in loop)
