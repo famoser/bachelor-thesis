@@ -136,7 +136,7 @@ class BrowserProxy:
         # filter packets for current page ref
         packets = []
         for entry in content["log"]["entries"]:
-            if entry["pageref"] == self.__get_current_page_title():
+            if "pageref" in entry and entry["pageref"] == self.__get_current_page_title():
                 packets.append(entry)
 
         # save packets & configuration

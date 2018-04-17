@@ -11,16 +11,16 @@ from python_libs.bandwidth_manipulator import BandwidthManipulator
 
 class Configuration:
     def __init__(self):
-        self.capture_duration = 60
-        self.increase_throughput_step_size = 100
+        self.capture_duration = 100
+        self.increase_throughput_step_size = 60
         self.start_throughput = 800
-        self.stop_throughput = 1200
-        self.wait_after_page_load = 40
-        self.wait_after_throughput_adjustment = 20
+        self.stop_throughput = 2000
+        self.wait_after_page_load = 60
+        self.wait_after_throughput_adjustment = 60
 
 
 static_config = StaticConfig()
-video_ids = Inventory().small_capture()
+video_ids = Inventory().full_capture()
 
 # define the ids we want to capture
 config = Configuration()
