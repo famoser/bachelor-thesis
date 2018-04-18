@@ -56,11 +56,14 @@ class HarAnalyzer:
 
         # create capture statistics dict
         for file_name in self.__file_names:
+
+            # calculate video size
             video_size = 0
             for entry in self.__har_entries_dict[file_name]:
                 if entry.is_video:
                     video_size += entry.body_size
 
+            # create statistics object
             capture_statistics = CaptureStatistics()
             capture_statistics.video_size = video_size
             capture_statistics.capture_length = self.__json_dict[file_name]["configuration"]["capture_duration"]

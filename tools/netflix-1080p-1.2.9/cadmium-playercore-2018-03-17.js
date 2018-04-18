@@ -20424,7 +20424,7 @@ var W1d = {
                         SN: b(p, "fastDownswitchFactor", 1),
                         Py: b(l, "maxMediaBufferAllowed", 24E4),
                         eH: b(h, "simulatePartialBlocks", !0),
-                        a9: b(h, "simulateBufferFull", !0),
+                        a9: b(h, "simulateBufferFull", false),
                         JM: b(h, "considerConnectTime", !1),
                         FM: b(p, "connectTimeMultiplier", 1),
                         D5: b(l, "lowGradeModeEnterThreshold", 12E4),
@@ -24499,7 +24499,7 @@ var W1d = {
         
                 //# T is the logger used by the main components
                 var T = v.log.Ira();
-                /*
+                /* */
                 replacement = function (text, args) {
                     console.log(text);
                     console.log(args);
@@ -24510,7 +24510,7 @@ var W1d = {
                 T.log = replacement;
                 T.trace = replacement;
                 T.warn = replacement;
-                */
+            /**/
                 window.T = T;
                 Mh || (Mh = b);
                 v.QT = 0;
@@ -27118,6 +27118,10 @@ var W1d = {
                             E, w;
                         E = b.wa[A.I.VIDEO].value;
                         w = b.wa[A.I.AUDIO].value;
+                        //# attaching b object to window
+                        window.be = b;
+                        console.trace();
+                        b.Fp();
                         a.push({
                             "Playing bitrate (a/v)": p && d ? p.G + " / " + d.G + " (" + d.width + "x" + d.height + ")" : "?",
                             "Playing/Buffering vmaf": u + "/" + t,
@@ -54298,6 +54302,9 @@ var W1d = {
 
                 c(b, a);
                 b.prototype.Td = function (a) {
+                    //# buffer to console to see what it does
+                    console.log(this.buffer)
+                    console.log("buffer pushed")
                     this.active < this.Op ? this.$la(a) : this.buffer.push(a);
                 };
                 b.prototype.$la = function (a) {
@@ -59521,6 +59528,7 @@ var W1d = {
                 a.aE && (this.OK = !W1d.b5A);
             };
             b.prototype.jP = function (a) {
+                //# b returns an object decsribing the curretn buffer state (including properties cuh as abuflmsec, abuflbytes, ...)
                 var b = {},
                     c = this.ka.vc,
                     d = this.ce;
