@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import hashlib
-import base64
 
 from python_libs.config import StaticConfig
 from python_libs.har_analyzer import HarAnalyzer
@@ -67,7 +66,6 @@ for movie_id in lookup:
 plt.legend(loc=(1.04, 0))
 plt.tight_layout()
 plt.subplots_adjust(right=0.75)
-plt.figure(figsize=(7, 7))
 
 # save
 filename = hashlib.md5(movie_ids.encode()).hexdigest()
