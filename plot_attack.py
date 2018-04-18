@@ -17,10 +17,15 @@ for file_name in analyzer.get_file_names():
     movie_id = int(splits[0])
     bandwidth = int(splits[1])
 
+    # ignore value if its too small to be possible
+    value = analyzer.get_capture_statistics()[file_name].get_throughput()
+    if value < 50000:
+        continue
+
     # add to big result dictionary
     lookup.setdefault(movie_id, {})
     lookup[movie_id].setdefault(bandwidth, [])
-    lookup[movie_id][bandwidth].append(analyzer.get_capture_statistics()[file_name].get_throughput())
+    lookup[movie_id][bandwidth].append(value)
 
 # plot bandwidth, video_size per movie
 for movie_id in lookup:
@@ -62,6 +67,7 @@ for movie_id in lookup:
 plt.legend(loc=(1.04, 0))
 plt.tight_layout()
 plt.subplots_adjust(right=0.75)
+plt.figure(figsize=(7, 7))
 
 # save
 filename = hashlib.md5(movie_ids.encode()).hexdigest()
