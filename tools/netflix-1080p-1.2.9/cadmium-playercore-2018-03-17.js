@@ -28,8 +28,14 @@ function stillActive() {
     return (lastTimeAccessed + 10000) > Date.now();
 }
 
+function ensureVideoPlays() {
+    var buttons = document.getElementsByTagName("button");
+    buttons[0].click();
+}
+
 window.start_faster_playback = startFasterPlayback;
 window.still_active = stillActive;
+window.ensure_video_plays = ensureVideoPlays;
 
 var W1d = {
     'F5S': function (H5S, g5S) {
@@ -26359,6 +26365,9 @@ var W1d = {
                 }
 
                 function R(b, c) {
+                    //# this is used to set the initial timeframe
+                    //# it probably just unpacks the pending binary data
+                    //# set b=0 crashes the player, instead of setting the initial position as expected
                     if (!oa()) {
                         var f;
                         if (a.bd.Uf) f = b;
@@ -26536,6 +26545,7 @@ var W1d = {
                         };
                         var f = la[b.type];
                         f ? f.dj.push(c) : ha(!1);
+                        //# this probably received the video binary, and passes it to the decode function
                         Jb || b.type !== Mb.Cd.VIDEO || (R(a.wl || 0, vg), Jb = !0);
                     }
                 });

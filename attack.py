@@ -11,12 +11,46 @@ from python_libs.bandwidth_manipulator import BandwidthManipulator
 
 class Configuration:
     def __init__(self):
-        self.capture_duration = 100
+        # how long a capture captures packets
+        #
+        # video packets loaded in packets of length 3
+        # choosing 59 here to avoid one packet too much due to slightly offset timing
+        self.capture_duration = 59
+
+        # each capture increases by this amount
+        #
+        # because at the low spectrum bitrate changes fast, we need a relatively low value here
         self.increase_throughput_step_size = 60
+
+        # the throughput allowed when starting the capture
+        #
+        # start at 800 because lower the player something does not load at all
         self.start_throughput = 800
-        self.stop_throughput = 2000
-        self.wait_after_page_load = 60
-        self.wait_after_throughput_adjustment = 60
+
+        # the max throughput, after which the capture is stopped
+        #
+        # not much change is expected higher than this number
+        self.stop_throughput = 2400
+
+        # how long the process sleeps after video url load
+        #
+        # choosing 60 because at low bandwith it needs a lot of time to adapt (ca 50s)
+        self.wait_after_video_load = 60
+
+        # how long the process sleeps after video repositioning (done at the start of capture)
+        #
+        # choosing the same value like after video load
+        self.wait_after_repositioning = 60
+
+        # how long no capture happens after adjusting the bandwidth
+        #
+        # this should give the player enough time to adjust its bitrate
+        self.wait_after_throughput_adjustment = 60  #
+
+        # where the video capture starts
+        #
+        # choosing 0 to be able to capture as short videos as possible
+        self.initial_video_position = 0
 
 
 static_config = StaticConfig()
@@ -25,11 +59,17 @@ video_ids = Inventory().full_capture()
 # define the ids we want to capture
 config = Configuration()
 
+if True:
+    video_ids = Inventory().small_capture()
+    config.wait_after_video_load = 60
+    config.wait_after_repositioning = 10
+    config.start_throughput = 2000
+
 # calculate length of capture for user
 loop_count = (config.stop_throughput - config.start_throughput) / config.increase_throughput_step_size
 video_count = len(video_ids)
 loop_length = config.capture_duration + config.wait_after_throughput_adjustment
-full_length = video_count * (config.wait_after_page_load + loop_count * loop_length)
+full_length = video_count * (config.wait_after_video_load + config.wait_after_repositioning + loop_count * loop_length)
 print("this capture will run for " + humanfriendly.format_timespan(full_length))
 
 # initialize the bandwidth
@@ -46,19 +86,31 @@ with BandwidthManipulator() as bandwidth:
                 current_amount = config.start_throughput
 
                 # inform user
-                print("capturing " + video + " with id " + str(video_id))
-                print("starting capture at " + str(current_amount) + "k")
-                print("waiting for " + str(config.wait_after_page_load) + "s till capture starts")
+                print("## capturing " + video + " with id " + str(video_id) + " ###")
 
-                # set initial amount & navigate
+                # setting initial bandwidth
+                print("starting capture at " + str(current_amount) + "k")
                 bandwidth.set_rate(str(current_amount) + "k")
+
+                # navigate to video & prepare capture
                 if not browser.navigate(video_id):
                     print("could not navigate to video")
                     continue
 
-                # let netflix adjust after page load
-                time.sleep(config.wait_after_page_load)
+                # wait till player initializes
+                print("navigated to video, waiting to settle for " + str(config.wait_after_video_load) + "s")
+                time.sleep(config.wait_after_video_load)
 
+                # wait till repositioning is done
+                if not browser.set_video_time(config.initial_video_position):
+                    print("could not reposition video")
+                    continue
+
+                print(
+                    "repositioned video to start, waiting to settle for " + str(config.wait_after_repositioning) + "s")
+                time.sleep(config.wait_after_repositioning)
+
+                # now start the capture
                 proxy.start_new_capture()
 
                 while True:

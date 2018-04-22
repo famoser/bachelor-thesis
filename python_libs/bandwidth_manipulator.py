@@ -41,8 +41,7 @@ class BandwidthManipulator:
             " tcset --device " + static_config.network_device +  # set device
             " --direction incoming" +  # modify only incoming connections
             " --rate " + rate +  # set the target rate
-            " --overwrite" +  # overwrite existing configuration
-            " && sudo -k",  # reset sudo timeout
+            " --overwrite",  # overwrite existing configuration
             shell=True, universal_newlines=True, stdout=self.__log_file, stderr=self.__log_file
         )
 
@@ -53,7 +52,6 @@ class BandwidthManipulator:
         subprocess.Popen(
             "sudo"
             " tcdel --device " + static_config.network_device +  # set device
-            " --all" +  # clear all
-            " && sudo -k",  # reset sudo timeout
+            " --all",  # clear all
             shell=True, universal_newlines=True, stdout=self.__log_file, stderr=self.__log_file
         )

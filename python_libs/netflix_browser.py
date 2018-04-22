@@ -107,6 +107,10 @@ class NetflixBrowser:
         self.__chrome.get(video_url)
         return True
 
+    def set_video_time(self, video_time: int) -> bool:
+        self.__chrome.execute_script("seek(" + str(video_time) + ")")
+        return True
+
     def play_in_browser(self, netflix_id: int, rate: int) -> bool:
         """
         opens the netflix video and gets the javascript to limit the profiles according to the rate
