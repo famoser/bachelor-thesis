@@ -19846,6 +19846,8 @@ var W1d = {
                     "clearkey" != q("drmType") || V.keysystemid || (V.keysystemid = (z.WebKitMediaKeys || se.prototype.webkitGenerateKeyRequest ? "webkit-" : se.prototype.msSetMediaKeys ? "ms-" : "") + "org.w3.clearkey");
                 })();
                 y = {};
+                console.log(Ri)
+                console.log(lk)
                 var sa = {
                         Z1: function (a) {
                             return h(f("enableDDPlus20"), m(a, !0));
@@ -20036,6 +20038,7 @@ var W1d = {
                         sS: b(h, "reportThroughputInLogblobs", !0),
                         yDa: b(h, "pingOnConnectTimeout", !1),
                         xDa: b(l, "pingCDNTimeoutMilliseconds", 8E3),
+                        //# the following two have no influence to the buffer size
                         Vt: b(l, "maxBufferSizeMilliseconds", Ri, 1E4, 145152E5),
                         hQ: b(l, "maxBufferSizeBytes", lk),
                         JPa: b(l, "backToFrontBufferRatioPercent", 25, 0, 1E3),
@@ -20153,6 +20156,7 @@ var W1d = {
                             O5: b(l, "maxCushionSizeInBufferPercentage", 90),
                             h8: b(l, "reservoirLookAheadChunks", 60),
                             PHa: b(l, "startupPhaseInChunks", 30),
+                        //# the following two have no influence to the buffer size
                             Vt: b(l, "maxBufferSizeMilliseconds", Ri - 12012, 1E4, 145152E5),
                             QHa: b(h, "startupQualityOptimization", !0),
                             rta: b(h, "dynamicReservoir", !0),
@@ -20332,6 +20336,7 @@ var W1d = {
                         bu: b(l, "minRequiredBuffer", 3E4),
                         Eg: b(l, "minPrebufSize", 7800),
                         gS: b(p, "rebufferingFactor", 1),
+                        //# the following has no influence to the buffer size
                         vq: b(l, "maxBufferingTime", 2600),
                         bU: b(h, "useMaxPrebufSize", !0),
                         Xt: b(l, "maxPrebufSize", 45E3),
@@ -20422,7 +20427,8 @@ var W1d = {
                         M5: b(l, "maxAudioTrailingBufferSize", 393216),
                         AE: b(p, "fastUpswitchFactor", 3),
                         SN: b(p, "fastDownswitchFactor", 1),
-                        Py: b(l, "maxMediaBufferAllowed", 24E4),
+                        //# changed from 24E4 to 1E4 to force faster bandwidth adaptation
+                        Py: b(l, "maxMediaBufferAllowed", 1E4),
                         eH: b(h, "simulatePartialBlocks", !0),
                         a9: b(h, "simulateBufferFull", false),
                         JM: b(h, "considerConnectTime", !1),

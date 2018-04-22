@@ -54,6 +54,6 @@ class BandwidthManipulator:
             "sudo"
             " tcdel --device " + static_config.network_device +  # set device
             " --all" +  # clear all
-            " && sudo -k",  # reset sudo timeout"
+            " && sudo -k",  # reset sudo timeout
             shell=True, universal_newlines=True, stdout=self.__log_file, stderr=self.__log_file
         )
