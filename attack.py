@@ -59,8 +59,8 @@ video_ids = Inventory().full_capture()
 # define the ids we want to capture
 config = Configuration()
 
-if True:
-    video_ids = Inventory().small_capture()
+if False:
+    video_ids = Inventory().full_capture()
     config.wait_after_video_load = 60
     config.wait_after_repositioning = 10
     config.start_throughput = 2000
@@ -74,8 +74,10 @@ print("this capture will run for " + humanfriendly.format_timespan(full_length))
 
 # initialize the bandwidth
 with BandwidthManipulator() as bandwidth:
+
     # initialize the proxy
     with BrowserProxy("attack") as proxy:
+
         # initialize the browser
         with NetflixBrowser(proxy.get_port()) as browser:
 

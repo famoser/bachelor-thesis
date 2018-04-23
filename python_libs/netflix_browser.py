@@ -54,8 +54,10 @@ class NetflixBrowser:
 
         # create chrome config using a localhost proxy & the modified netflix extension
         chrome_options = webdriver.ChromeOptions()
-        chrome_options.add_argument('--proxy-server=%s' % "127.0.0.1:" + str(self.__port))
         chrome_options.add_extension(config.netflix_extension_path)
+
+        if self.__port != 0:
+            chrome_options.add_argument('--proxy-server=%s' % "127.0.0.1:" + str(self.__port))
 
         # construct chrome & request the test url
         self.__chrome = webdriver.Chrome(chrome_options=chrome_options)
