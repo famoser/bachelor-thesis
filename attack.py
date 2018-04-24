@@ -59,11 +59,13 @@ video_ids = Inventory().full_capture()
 # define the ids we want to capture
 config = Configuration()
 
-if False:
-    video_ids = Inventory().full_capture()
+# test settings
+if True:
+    video_ids = Inventory().small_capture()
     config.wait_after_video_load = 60
     config.wait_after_repositioning = 10
-    config.start_throughput = 2000
+    config.start_throughput = 4000
+    config.stop_throughput = 5000
 
 # calculate length of capture for user
 loop_count = (config.stop_throughput - config.start_throughput) / config.increase_throughput_step_size
