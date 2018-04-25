@@ -16,6 +16,10 @@ static_config = StaticConfig()
 
 class BandwidthManipulator:
     __log_file = None
+    __disable = None
+
+    def __init__(self, disable = False):
+        self.__disable = disable
 
     def __enter__(self):
         self.__log_file = open(static_config.log_dir + "/" + "tcset.log", "w")
@@ -36,6 +40,10 @@ class BandwidthManipulator:
         limit device from configuration to specified rate for incoming connections
         :param rate:
         """
+
+        if self.__disable:
+            return
+
         subprocess.Popen(
             "sudo"
             " tcset --device " + static_config.network_device +  # set device
@@ -49,6 +57,9 @@ class BandwidthManipulator:
         """
         clear any limitations set for the configured device
         """
+        if self.__disable:
+            return
+
         subprocess.Popen(
             "sudo"
             " tcdel --device " + static_config.network_device +  # set device
