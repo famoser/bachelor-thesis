@@ -76,7 +76,6 @@ print("this capture will run for " + humanfriendly.format_timespan(full_length))
 
 # initialize the bandwidth
 with BandwidthManipulator() as bandwidth:
-
     # initialize the proxy
     with BrowserProxy("attack") as proxy:
 
@@ -110,8 +109,7 @@ with BandwidthManipulator() as bandwidth:
                     print("could not reposition video")
                     continue
 
-                print(
-                    "repositioned video to start, waiting to settle for " + str(config.wait_after_repositioning) + "s")
+                print("repositioned video, waiting to settle for " + str(config.wait_after_repositioning) + "s")
                 time.sleep(config.wait_after_repositioning)
 
                 # now start the capture
