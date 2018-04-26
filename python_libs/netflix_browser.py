@@ -15,68 +15,94 @@ inventory = Inventory()
 
 class NetflixBrowser:
     __credentials = None
-    __cookies = None
-    __chrome = None
+    __browser = None
     __port = None
+    __use_chrome = None
 
-    def __init__(self, port: int):
+    def __init__(self, port: int, use_chrome: bool = True):
         """
         browser with netflix extension, using localhost:port as a proxy
         :param port: the port to use
         """
         self.__port = port
+        self.__use_chrome = use_chrome
 
     def __enter__(self):
         # resolve credentials if possible
         if os.path.isfile(config.credentials_file_path):
             self.__credentials = json.load(open(config.credentials_file_path))
 
-        # resolve cookies if possible
-        if os.path.isfile(config.cookie_file_path):
-            self.__cookies = pickle.load(open(config.cookie_file_path, "rb"))
+        # start chrome or firefox
+        if self.__use_chrome:
+            # finally start the browser
+            self.__browser = self.__try_create_chrome()
+            cookie_path = config.chrome_cookie_file_path
+        else:
+            self.__browser = self.__try_create_firefox()
+            cookie_path = config.firefox_cookie_file_path
 
-        # finally start chrome
-        self.__try_create_chrome()
+        # resolve cookies if possible
+        cookies = None
+        if cookie_path is not None and os.path.isfile(cookie_path):
+            cookies = pickle.load(open(cookie_path, "rb"))
+
+        # login & save cookies for next time
+        cookies = self.__try_login(cookies)
+        if cookies is not None:
+            pickle.dump(cookies, open(cookie_path, "wb"))
 
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         # closes the chrome browser
-        self.__chrome.quit()
+        self.__browser.quit()
+
+    def __try_create_firefox(self):
+        # create chrome config using a localhost proxy & the modified netflix extension
+        firefox_options = webdriver.FirefoxOptions()
+
+        # construct chrome & request the test url
+        return webdriver.Firefox(firefox_options=firefox_options)
 
     def __try_create_chrome(self):
         """
         construct the selenium chrome browser
         """
 
-        # use the test video URl to try to login
-        video_url = self.__get_video_url(inventory.test_video)
-
         # create chrome config using a localhost proxy & the modified netflix extension
         chrome_options = webdriver.ChromeOptions()
-        # chrome_options.add_extension(config.netflix_extension_path)
+        chrome_options.add_extension(config.netflix_extension_path)
+
+        # disable SSL checking & enforhrome ce redownload of everything
+        chrome_options.add_argument('--ignore-certificate-errors')
+        chrome_options.add_argument('--disable-application-cache')
 
         if self.__port != 0:
             chrome_options.add_argument('--proxy-server=%s' % "127.0.0.1:" + str(self.__port))
 
         # construct chrome & request the test url
-        self.__chrome = webdriver.Chrome(chrome_options=chrome_options)
-        self.__chrome.get(video_url)
+        return webdriver.Chrome(chrome_options=chrome_options)
+
+    def __try_login(self, cookies):
+        # use the test video URl to try to login
+        video_url = self.__get_video_url(inventory.test_video)
+
+        self.__browser.get(video_url)
 
         # if cookies set, add them to the browser
-        if self.__cookies is not None:
-            for cookie in self.__cookies:
-                self.__chrome.add_cookie(cookie)
+        if cookies is not None:
+            for cookie in cookies:
+                self.__browser.add_cookie(cookie)
 
         # request video URL again to check if we are logged in
-        self.__chrome.get(video_url)
+        self.__browser.get(video_url)
 
         # check for the login button
         login_link = self.__try_find_element_by_class("authLinks", 2)
         if login_link is not None:
             # login button found, so we need to perform a login
             link = login_link.get_attribute("href")
-            self.__chrome.get(link)
+            self.__browser.get(link)
 
             # get username & password field
             username_field = self.__try_find_element_by_id("email")
@@ -87,14 +113,14 @@ class NetflixBrowser:
             password_field.send_keys(self.__credentials["netflix"]["password"])
 
             # submit the form
-            password_field.submit()
+            username_field.submit()
 
             # click on the profile to be used
-            self.__chrome.get("https://www.netflix.com/SwitchProfile?tkn=" + self.__credentials["netflix"]["profile"])
+            self.__browser.get("https://www.netflix.com/SwitchProfile?tkn=" + self.__credentials["netflix"]["profile"])
 
             # save cookies for next time
-            cookies = self.__chrome.get_cookies()
-            pickle.dump(cookies, open(config.cookie_file_path, "wb"))
+            return self.__browser.get_cookies()
+        return None
 
     @staticmethod
     def __get_video_url(netflix_id: int, rate: int = None):
@@ -106,11 +132,11 @@ class NetflixBrowser:
 
     def navigate(self, netflix_id: int) -> bool:
         video_url = self.__get_video_url(netflix_id)
-        self.__chrome.get(video_url)
+        self.__browser.get(video_url)
         return True
 
     def set_video_time(self, video_time: int) -> bool:
-        self.__chrome.execute_script("seek(" + str(video_time) + ")")
+        self.__browser.execute_script("seek(" + str(video_time) + ")")
         return True
 
     def play_in_browser(self, netflix_id: int, rate: int) -> bool:
@@ -129,7 +155,7 @@ class NetflixBrowser:
         video_url = self.__get_video_url(netflix_id, rate)
 
         # load page & let video player initialize
-        self.__chrome.get(video_url)
+        self.__browser.get(video_url)
         time.sleep(5)
 
         # check for fatal error 3 times
@@ -153,10 +179,10 @@ class NetflixBrowser:
                 return True
 
         # start playback speedup from netflix extension
-        self.__chrome.execute_script("startFasterPlayback(10, " + str(config.skip_seconds) + ")")
+        self.__browser.execute_script("startFasterPlayback(10, " + str(config.skip_seconds) + ")")
         i = 200
         while i > 0:
-            if not self.__chrome.execute_script("return stillActive()"):
+            if not self.__browser.execute_script("return stillActive()"):
                 break
 
             time.sleep(config.wait_seconds)
@@ -175,7 +201,7 @@ class NetflixBrowser:
         """
         while retries > 0:
             try:
-                return self.__chrome.find_element_by_id(css_id)
+                return self.__browser.find_element_by_id(css_id)
             except:
                 # don't care, just retry
                 time.sleep(1)
@@ -195,7 +221,7 @@ class NetflixBrowser:
 
         while retries > 0:
             try:
-                return self.__chrome.find_element_by_class_name(css_class)
+                return self.__browser.find_element_by_class_name(css_class)
             except:
                 # don't care, just retry
                 time.sleep(1)

@@ -26,7 +26,8 @@ class StaticConfig:
         self.log_dir = self.root_dir + "/" + "log"
 
         self.credentials_file_path = self.config_dir + "/" + "credentials.json"
-        self.cookie_file_path = self.temp_dir + "/" + "cookies.pkl"
+        self.chrome_cookie_file_path = self.temp_dir + "/" + "chrome_cookies.pkl"
+        self.firefox_cookie_file_path = self.temp_dir + "/" + "firefox_cookies.pkl"
 
         self.network_device = "wlp4s0"
 
