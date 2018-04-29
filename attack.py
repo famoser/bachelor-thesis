@@ -4,6 +4,7 @@ import humanfriendly
 
 from python_libs.config import StaticConfig
 from python_libs.config import Inventory
+from python_libs.mouse import Mouse
 from python_libs.netflix_browser import NetflixBrowser
 from python_libs.browser_proxy import BrowserProxy
 from python_libs.bandwidth_manipulator import BandwidthManipulator
@@ -20,22 +21,34 @@ class Configuration:
         # each capture increases by this amount
         #
         # because at the low spectrum bitrate changes fast, we need a relatively low value here
-        self.increase_throughput_step_size = 60
+        self.throughput_step_size = 60
 
         # the throughput allowed when starting the capture
         #
         # start at 800 because lower the player something does not load at all
-        self.start_throughput = 800
+        self.min_throughput = 800
 
         # the max throughput, after which the capture is stopped
         #
         # not much change is expected higher than this number
-        self.stop_throughput = 2400
+        self.max_throughput = 2400
+
+        # if the capture should start with the low bandwidth and the increase
+        # or the other way around
+        #
+        # set to False because it is unclear how low bandwidth netflix can handle
+        self.low_to_high = False
 
         # how long the process sleeps after video url load
         #
-        # choosing 60 because at low bandwith it needs a lot of time to adapt (ca 50s)
+        # choosing 60 because at low bandwidth it needs a lot of time to adapt (ca 50s)
         self.wait_after_video_load = 60
+
+        # there are certain checks executed to ensure the video is playing
+        # after these checks, wait for another few seconds to again ensure the video is buffered etc
+        #
+        # choosing 60 for consistency
+        self.wait_after_ensured_video_load = 60
 
         # how long the process sleeps after video repositioning (done at the start of capture)
         #
@@ -62,13 +75,17 @@ config = Configuration()
 # test settings
 if True:
     video_ids = Inventory().small_capture()
-    config.wait_after_video_load = 300
-    config.wait_after_repositioning = 10
-    config.start_throughput = 4000
-    config.stop_throughput = 5000
+    config.wait_after_video_load = 20
+    config.wait_after_ensured_video_load = 20
+    config.wait_after_repositioning = 20
+    config.capture_duration = 20
+    config.wait_after_throughput_adjustment = 20
+    config.throughput_step_size = 500
+    config.min_throughput = 0
+    config.max_throughput = 3000
 
 # calculate length of capture for user
-loop_count = (config.stop_throughput - config.start_throughput) / config.increase_throughput_step_size
+loop_count = (config.max_throughput - config.min_throughput) / config.throughput_step_size
 video_count = len(video_ids)
 loop_length = config.capture_duration + config.wait_after_throughput_adjustment
 full_length = video_count * (config.wait_after_video_load + config.wait_after_repositioning + loop_count * loop_length)
@@ -76,18 +93,23 @@ print("this capture will run for " + humanfriendly.format_timespan(full_length))
 
 # initialize the bandwidth
 with BandwidthManipulator() as bandwidth:
-
     # initialize the proxy
     with BrowserProxy("attack") as proxy:
 
         # initialize the browser
         with NetflixBrowser(proxy.get_port()) as browser:
+            # advising user to reset his mouse pointer
+            print("please move your mouse to the center of the chromium window,"
+                  ", where the netflix play button will appear, and keep it there")
 
             # get all video ids from the inventory, and perform the "attack"
             video_ids = video_ids
             for video in video_ids:
                 video_id = video_ids[video]
-                current_amount = config.start_throughput
+                if config.low_to_high:
+                    current_amount = config.min_throughput
+                else:
+                    current_amount = config.max_throughput
 
                 # inform user
                 print("## capturing " + video + " with id " + str(video_id) + " ###")
@@ -104,6 +126,14 @@ with BandwidthManipulator() as bandwidth:
                 # wait till player initializes
                 print("navigated to video, waiting to settle for " + str(config.wait_after_video_load) + "s")
                 time.sleep(config.wait_after_video_load)
+
+                # ensure player has initialized by clicking on presumed underlying "play" button
+                # if there is no button (so the video is already playing) this has no effect
+                Mouse.click_at_current_position()
+                print("ensured video is playing, now waiting to settle for " +
+                      str(config.wait_after_ensured_video_load) + "s")
+
+                time.sleep(config.wait_after_ensured_video_load)
 
                 # wait till repositioning is done
                 if not browser.set_video_time(config.initial_video_position):
@@ -135,11 +165,15 @@ with BandwidthManipulator() as bandwidth:
                     proxy.save_active_capture(static_config.attack_dir + "/" + fileName, configuration)
 
                     # break if finished
-                    if current_amount >= config.stop_throughput:
-                        break
-
-                    # set new bandwidth and repeat
-                    current_amount += config.increase_throughput_step_size
+                    if config.low_to_high:
+                        # set new bandwidth and repeat
+                        if current_amount >= config.max_throughput:
+                            break
+                        current_amount += config.throughput_step_size
+                    else:
+                        if current_amount <= config.min_throughput:
+                            break
+                        current_amount -= config.throughput_step_size
 
                     # set new throughput & wait for it to settle
                     print("new bandwidth is " + str(current_amount) + "k")

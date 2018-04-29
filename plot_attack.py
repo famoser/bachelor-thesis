@@ -18,7 +18,7 @@ for file_name in analyzer.get_file_names():
 
     # ignore value if its too small to be possible
     value = analyzer.get_capture_statistics()[file_name].get_throughput()
-    if value < 50000:
+    if value < 1000:
         continue
 
     # add to big result dictionary
