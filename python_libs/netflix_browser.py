@@ -2,6 +2,7 @@ import pickle
 import os
 import json
 import time
+import uinput
 from selenium import webdriver
 from selenium.webdriver.remote.webelement import WebElement
 from typing import Optional
@@ -130,9 +131,24 @@ class NetflixBrowser:
 
         return url
 
-    def navigate(self, netflix_id: int) -> bool:
+    def navigate(self, netflix_id: int, ensure_video_playing: bool = True) -> bool:
         video_url = self.__get_video_url(netflix_id)
         self.__browser.get(video_url)
+
+        if ensure_video_playing:
+            time.sleep(10)
+
+            events = (
+                uinput.REL_X,
+                uinput.REL_Y,
+                uinput.BTN_LEFT,
+                uinput.BTN_RIGHT,
+            )
+            with uinput.Device(events) as device:
+                device.emit(uinput.BTN_LEFT, 1)
+
+            print("clicked")
+
         return True
 
     def set_video_time(self, video_time: int) -> bool:

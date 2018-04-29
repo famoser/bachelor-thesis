@@ -60,9 +60,9 @@ video_ids = Inventory().full_capture()
 config = Configuration()
 
 # test settings
-if False:
+if True:
     video_ids = Inventory().small_capture()
-    config.wait_after_video_load = 60
+    config.wait_after_video_load = 300
     config.wait_after_repositioning = 10
     config.start_throughput = 4000
     config.stop_throughput = 5000
@@ -76,6 +76,7 @@ print("this capture will run for " + humanfriendly.format_timespan(full_length))
 
 # initialize the bandwidth
 with BandwidthManipulator() as bandwidth:
+
     # initialize the proxy
     with BrowserProxy("attack") as proxy:
 
