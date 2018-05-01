@@ -16,7 +16,7 @@ class Configuration:
         #
         # video packets loaded in packets of length 3
         # choosing 59 here to avoid one packet too much due to slightly offset timing
-        self.capture_duration = 59
+        self.capture_duration = 119
 
         # each capture increases by this amount
         #
@@ -42,23 +42,23 @@ class Configuration:
         # how long the process sleeps after video url load
         #
         # choosing 60 because at low bandwidth it needs a lot of time to adapt (ca 50s)
-        self.wait_after_video_load = 60
+        self.wait_after_video_load = 30
 
         # there are certain checks executed to ensure the video is playing
         # after these checks, wait for another few seconds to again ensure the video is buffered etc
         #
         # choosing 60 for consistency
-        self.wait_after_ensured_video_load = 60
+        self.wait_after_ensured_video_load = 30
 
         # how long the process sleeps after video repositioning (done at the start of capture)
         #
         # choosing the same value like after video load
-        self.wait_after_repositioning = 60
+        self.wait_after_repositioning = 30
 
         # how long no capture happens after adjusting the bandwidth
         #
         # this should give the player enough time to adjust its bitrate
-        self.wait_after_throughput_adjustment = 60  #
+        self.wait_after_throughput_adjustment = 40  #
 
         # where the video capture starts
         #
@@ -73,7 +73,7 @@ video_ids = Inventory().full_capture()
 config = Configuration()
 
 # test settings
-if True:
+if False:
     video_ids = Inventory().small_capture()
     config.wait_after_video_load = 20
     config.wait_after_ensured_video_load = 20
