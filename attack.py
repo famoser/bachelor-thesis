@@ -95,7 +95,6 @@ print("this capture will run for " + humanfriendly.format_timespan(full_length))
 with BandwidthManipulator() as bandwidth:
     # initialize the proxy
     with BrowserProxy("attack") as proxy:
-
         # initialize the browser
         with NetflixBrowser(proxy.get_port()) as browser:
             # advising user to reset his mouse pointer
@@ -103,7 +102,6 @@ with BandwidthManipulator() as bandwidth:
                   ", where the netflix play button will appear, and keep it there")
 
             # get all video ids from the inventory, and perform the "attack"
-            video_ids = video_ids
             for video in video_ids:
                 video_id = video_ids[video]
                 if config.low_to_high:
