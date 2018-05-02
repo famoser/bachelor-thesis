@@ -59,13 +59,16 @@ class HarAnalyzer:
 
             # calculate video size
             video_size = 0
+            packet_count = 0
             for entry in self.__har_entries_dict[file_name]:
                 if entry.is_video:
                     video_size += entry.body_size
+                    packet_count += 1
 
             # create statistics object
             capture_statistics = CaptureStatistics()
             capture_statistics.video_size = video_size
+            capture_statistics.packet_count = packet_count
             capture_statistics.capture_length = self.__json_dict[file_name]["configuration"]["capture_duration"]
 
             self.__capture_statistics[file_name] = capture_statistics
@@ -183,6 +186,10 @@ class CaptureStatistics:
     def __init__(self):
         self.video_size = 0
         self.capture_length = 0
+        self.packet_count = 0
 
     def get_throughput(self):
         return self.video_size / self.capture_length
+
+    def get_packet_count(self):
+        return self.packet_count
