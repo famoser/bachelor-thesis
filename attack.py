@@ -117,7 +117,7 @@ with BandwidthManipulator() as bandwidth:
                 bandwidth.set_rate(str(current_amount) + "k")
 
                 # navigate to video & prepare capture
-                if not browser.navigate(video_id):
+                if not browser.navigate(video_id, None, True):
                     print("could not navigate to video")
                     continue
 
@@ -154,8 +154,7 @@ with BandwidthManipulator() as bandwidth:
                     # create the filename
                     fileName = str(video_id) + '_'
                     fileName += str(current_amount) + "_ "
-                    fileName += datetime.datetime.now().isoformat().replace(":", "_") + "_"
-                    fileName += str(static_config.attack_version)
+                    fileName += datetime.datetime.now().isoformat().replace(":", "_")
 
                     # save the capture with the active config
                     configuration = config.__dict__

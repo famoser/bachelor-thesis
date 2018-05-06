@@ -3,6 +3,7 @@ import os
 import json
 import time
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.remote.webelement import WebElement
 from typing import Optional
 
@@ -123,15 +124,36 @@ class NetflixBrowser:
         return None
 
     @staticmethod
-    def __get_video_url(netflix_id: int, rate: int = None):
+    def __get_video_url(netflix_id: int, profile: int = None, limit_buffer: bool = False):
         url = 'https://www.netflix.com/watch/' + str(netflix_id)
-        if rate is not None:
-            url += '?rate=' + str(rate)
+
+        # add modifications
+        appendix = []
+        if profile is not None:
+            appendix.append('profile=' + str(profile))
+        if limit_buffer is not None and limit_buffer:
+            appendix.append('limit_buffer=true')
+
+        # append to url
+        first_time = True
+        for entry in appendix:
+            if first_time:
+                first_time = False
+                url += "?" + entry
+            else:
+                url += "&" + entry
 
         return url
 
-    def navigate(self, netflix_id: int, ensure_video_playing: bool = True) -> bool:
-        video_url = self.__get_video_url(netflix_id)
+    def navigate(self, netflix_id: int, rate: int = None, limit_buffer: bool = False) -> bool:
+        """
+        opens the netflix video and gets the javascript to limit the profiles according to the rate
+        then plays the video, speeding up according to the config
+        it will return False if you can not continue to use this instance as a capture
+        (happen when "Multiple Netflix Tabs" error pops up)
+        """
+
+        video_url = self.__get_video_url(netflix_id, rate, limit_buffer)
         self.__browser.get(video_url)
         return True
 
@@ -139,25 +161,7 @@ class NetflixBrowser:
         self.__browser.execute_script("seek(" + str(video_time) + ")")
         return True
 
-    def play_in_browser(self, netflix_id: int, rate: int) -> bool:
-        """
-        opens the netflix video and gets the javascript to limit the profiles according to the rate
-        then plays the video, speeding up according to the config
-        it will return False if you can not continue to use this instance as a capture
-        (happen when "Multiple Netflix Tabs" error pops up)
-
-        :param netflix_id: the video id
-        :param rate: the amount it should be
-        :return: False if you cannot continue capture, else True
-        """
-        # construct url by appending the configured rate
-        # javascript will then read out, and limit the netflix video to this default
-        video_url = self.__get_video_url(netflix_id, rate)
-
-        # load page & let video player initialize
-        self.__browser.get(video_url)
-        time.sleep(5)
-
+    def check_for_errors(self):
         # check for fatal error 3 times
         if self.__try_find_element_by_class("nfp-fatal-error-view", 3) is not None:
             title = self.__try_find_element_by_class("error-title", 3)
@@ -167,28 +171,57 @@ class NetflixBrowser:
                     # this error is critical, netflix won't allow us to continue capturing
                     # user may needs to reboot the computer for it to work again
                     print("aborting; consider rebooting the computer for the error to go away")
-                    return False
+                    return True
                 if title.text == "Unexpected Error":
                     # this error happens when javascript selects a profile unsupported by this video type
-                    # this happens often, and is no reason to stop capturing
                     return True
                 print("halting; new error found!")
                 time.sleep(500000)
             else:
-                # unknown error occurred; per default we continue
+                # unknown error occurred
                 return True
 
+        return False
+
+    def speed_up_playback(self, current_video_time: int, skip_seconds: int, wait_seconds: int, max_iterations: int = 1000):
+        """
+        speeds up the netflix video playback by advancing the video as specified
+        it only returns after the video stopped playing
+
+        :param current_video_time: the estimated current video time
+        :param skip_seconds: the amount of seconds of the video which is jumped
+        :param wait_seconds: the amount of seconds we let the video buffer again
+        :param max_iterations: fail save to ensure the script does not run forever
+        :return:
+        """
         # start playback speedup from netflix extension
-        self.__browser.execute_script("startFasterPlayback(10, " + str(config.skip_seconds) + ")")
-        i = 200
+        self.__browser.execute_script("start_faster_playback(" + str(current_video_time) + ", " + str(skip_seconds) + ")")
+        i = max_iterations
         while i > 0:
-            if not self.__browser.execute_script("return stillActive()"):
+            if not self.__browser.execute_script("return faster_playback_still_active()"):
                 break
 
-            time.sleep(config.wait_seconds)
+            time.sleep(wait_seconds)
             i -= 1
 
         return True
+
+    def get_available_bitrates(self):
+        root_element = self.__try_find_element("html")
+        if root_element is not None:
+            # show & hide menu for bitrates
+            root_element.send_keys(Keys.SHIFT, Keys.CONTROL, Keys.ALT, 'S')
+            time.sleep(1)
+            root_element.send_keys(Keys.SHIFT, Keys.CONTROL, Keys.ALT, 'S')
+
+            bitrates = self.__browser.execute_script("get_bitrates()")
+            return bitrates
+
+        return None
+
+    def set_bitrate(self, bandwidth: int):
+        return self.__browser.execute_script("set_bandwidth(" + str(bandwidth) + ")")
+
 
     def __try_find_element_by_id(self, css_id: str, retries: int = 5) -> Optional[WebElement]:
         """
@@ -222,6 +255,26 @@ class NetflixBrowser:
         while retries > 0:
             try:
                 return self.__browser.find_element_by_class_name(css_class)
+            except:
+                # don't care, just retry
+                time.sleep(1)
+                retries -= 1
+
+        return None
+
+    def __try_find_element(self, name: str, retries: int = 5) -> Optional[WebElement]:
+        """
+        looks in the chrome instance if it can find that element
+        retries as long as specified, waits 1 seconds before trying again
+
+        :param css_class: the class of the css element
+        :param retries: the amount of retries to perform
+        :return: the selenium object if found, else None
+        """
+
+        while retries > 0:
+            try:
+                return self.__browser.find_element_by_tag_name(name)
             except:
                 # don't care, just retry
                 time.sleep(1)

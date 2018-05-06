@@ -15,16 +15,16 @@ def sizeof_fmt(num, suffix='B'):
 
 
 json_files = [pos_json for pos_json in os.listdir(config.captures_dir) if
-              pos_json.endswith("_" + str(config.capture_version) + '.json')]
+              pos_json.endswith('.json')]
 
 json_files = sorted(json_files)
 
 sizePerFile = {}
 
-for file in json_files:
-    file_path = config.captures_dir + "/" + file
-    with open(file_path, 'r') as myfile:
-        data = myfile.read()
+for json_file in json_files:
+    file_path = config.captures_dir + "/" + json_file
+    with open(file_path, 'r') as file:
+        data = file.read()
 
     content = json.loads(data)
     totalSize = 0
@@ -34,7 +34,7 @@ for file in json_files:
 
     if totalSize == 0:
         os.remove(file_path)
-    sizePerFile[file] = totalSize
+    sizePerFile[json_file] = totalSize
 
 result = ''
 for key in sizePerFile:

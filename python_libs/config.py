@@ -6,11 +6,6 @@ class StaticConfig:
         self.root_dir = os.path.abspath(os.path.dirname("."))
 
         self.captures_dir = self.root_dir + "/" + "capture"
-        self.skip_seconds = 120
-        self.wait_seconds = 4
-
-        self.capture_version = 1
-        self.attack_version = 1
 
         self.analyze_dir = self.root_dir + "/" + "analyze"
 

@@ -1,4 +1,5 @@
 import datetime
+import time
 
 from python_libs.config import StaticConfig
 from python_libs.config import Inventory
@@ -10,6 +11,10 @@ class Configuration:
     def __init__(self):
         self.min_rate = 1
         self.max_rate = 4
+        self.wait_after_video_load = 10
+        self.skip_seconds = 30
+        self.wait_seconds = 10
+        self.max_iterations = 1000
 
 
 config = Configuration()
@@ -32,13 +37,15 @@ with BrowserProxy("capture") as proxy:
             successful = True
             while current_rate <= config.max_rate and successful:
                 # continue only if no errors found
-                successful = browser.play_in_browser(video_id, current_rate)
+                successful = browser.navigate(video_id, current_rate)
+                successful = successful and not browser.check_for_errors()
+                time.sleep(config.wait_after_video_load)
+                successful = successful and browser.speed_up_playback(config.wait_after_video_load, config.skip_seconds, config.wait_seconds, config.max_iterations)
 
                 # create the filename
                 fileName = str(video_id) + '_'
                 fileName += str(current_rate) + "_ "
-                fileName += datetime.datetime.now().isoformat().replace(":", "_") + "_"
-                fileName += str(static_config.capture_version)
+                fileName += datetime.datetime.now().isoformat().replace(":", "_")
 
                 # save the capture
                 configuration = config.__dict__

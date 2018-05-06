@@ -6,7 +6,7 @@ from python_libs.config import StaticConfig
 from python_libs.har_analyzer import HarAnalyzer
 
 config = StaticConfig()
-analyzer = HarAnalyzer(config.captures_dir, str(config.capture_version) + '.json')
+analyzer = HarAnalyzer(config.captures_dir, '.json')
 
 # plot
 for file_name in analyzer.get_file_names():

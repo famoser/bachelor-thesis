@@ -5,7 +5,7 @@ from python_libs.config import StaticConfig
 from python_libs.har_analyzer import HarAnalyzer
 
 config = StaticConfig()
-analyzer = HarAnalyzer(config.attack_dir, str(config.attack_version) + '.json')
+analyzer = HarAnalyzer(config.attack_dir, '.json')
 
 thorughput_lookup = {}
 packet_count_lookup = {}

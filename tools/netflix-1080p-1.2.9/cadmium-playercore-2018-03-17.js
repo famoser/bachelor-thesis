@@ -34,7 +34,7 @@ function ensureVideoPlays() {
 }
 
 window.start_faster_playback = startFasterPlayback;
-window.still_active = stillActive;
+window.faster_playback_still_active = stillActive;
 window.ensure_video_plays = ensureVideoPlays;
 
 var W1d = {
@@ -19852,8 +19852,8 @@ var W1d = {
                     "clearkey" != q("drmType") || V.keysystemid || (V.keysystemid = (z.WebKitMediaKeys || se.prototype.webkitGenerateKeyRequest ? "webkit-" : se.prototype.msSetMediaKeys ? "ms-" : "") + "org.w3.clearkey");
                 })();
                 y = {};
-                console.log(Ri)
-                console.log(lk)
+
+                var maxMediaBuffer = 1E4;
                 var sa = {
                         Z1: function (a) {
                             return h(f("enableDDPlus20"), m(a, !0));
@@ -20433,8 +20433,8 @@ var W1d = {
                         M5: b(l, "maxAudioTrailingBufferSize", 393216),
                         AE: b(p, "fastUpswitchFactor", 3),
                         SN: b(p, "fastDownswitchFactor", 1),
-                        //# changed from 24E4 to 1E4 to force faster bandwidth adaptation
-                        Py: b(l, "maxMediaBufferAllowed", 1E4),
+                        //# changed from 24E4 to maxMediaBuffer to force faster bandwidth adaptation
+                        Py: b(l, "maxMediaBufferAllowed", maxMediaBuffer),
                         eH: b(h, "simulatePartialBlocks", !0),
                         a9: b(h, "simulateBufferFull", false),
                         JM: b(h, "considerConnectTime", !1),
@@ -27134,9 +27134,8 @@ var W1d = {
                             E, w;
                         E = b.wa[A.I.VIDEO].value;
                         w = b.wa[A.I.AUDIO].value;
-                        //# attaching b object to window
+                        //# attaching b ((video) object to window
                         window.be = b;
-                        console.trace();
                         b.Fp();
                         a.push({
                             "Playing bitrate (a/v)": p && d ? p.G + " / " + d.G + " (" + d.width + "x" + d.height + ")" : "?",
@@ -27443,6 +27442,8 @@ var W1d = {
                         var g = a[c];
                         g.selected && (D[g.value] = 1);
                     }
+                    console.log(F.options);
+                    console.log(a[0].value);
                     b.li = k;
                     l();
                     if (a = b.pf) {
@@ -27458,6 +27459,32 @@ var W1d = {
                     }
                     f();
                 }, !1);
+                window.get_bitrates = function() {
+                    var res = [];
+                    for (var a = F.options, c = a.length; c--;) {
+                        res.push(a[c].value);
+                    }
+                    return res;
+                }
+                window.set_bandwidth = function(value) {
+                    D = {};
+                    D[value] = 1;
+                    b.li = k;
+                    l();
+                    if (a = b.pf) {
+                        var h = G.value,
+                            a = a.filter(function (a) {
+                                return a.id == h;
+                            })[0],
+                            c = y.te ? b.wa[n.I.VIDEO].value : b.wa.value;
+                        a && a != c && (a.Yoa = {
+                            testreason: "streammanager",
+                            selreason: "userselection"
+                        }, y.te ? b.wa[n.I.VIDEO].set(a) : b.wa.set(a));
+                    }
+                    f();
+                    return true;
+                }
                 v.appendChild(P);
                 P = yb("BUTTON", void 0, "Reset");
                 P.addEventListener("click", function () {
@@ -46949,14 +46976,14 @@ var W1d = {
                 this.Lna = this.ex = u.ev.wW;
                 this.kn = [E.vm.VV];
                 this.Fo = [];
-                //#force bitrate
-                if (window.location.href.endsWith("rate=1")) {
+                //#force specifc profile (a profile includes specific bitrates)
+                if (window.location.href.indexOf("profile=1") !== -1) {
                     this.Fo = [E.V.ida];
-                } else if (window.location.href.endsWith("rate=2")) {
+                } else if (window.location.href.indexOf("profile=2") !== -1) {
                     this.Fo = [E.V.hB];
-                } else if (window.location.href.endsWith("rate=3")) {
+                } else if (window.location.href.indexOf("profile=3") !== -1) {
                     this.Fo = [E.V.iB];
-                } else if (window.location.href.endsWith("rate=4")) {
+                } else if (window.location.href.indexOf("profile=4") !== -1) {
                     this.Fo = [E.V.vI];
                 } else {
                     this.Fo = [E.V.hB, E.V.iB];
