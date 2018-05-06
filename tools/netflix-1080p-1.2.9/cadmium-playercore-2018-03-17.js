@@ -19853,7 +19853,11 @@ var W1d = {
                 })();
                 y = {};
 
-                var maxMediaBuffer = 1E4;
+                //# limit buffer size to about 20-30 seconds if requested
+                var maxMediaBuffer = 24E4
+                if (window.location.href.indexOf("limit_buffer=true") !== -1) {
+                    var maxMediaBuffer = 1E4;
+                }
                 var sa = {
                         Z1: function (a) {
                             return h(f("enableDDPlus20"), m(a, !0));

@@ -54,6 +54,15 @@ bitrates for the specific profiles:
     E.V.vI:
         4300, 5800
 
+
+shortcuts:
+ctrl-alt-shift+d (68),ctrl-alt-shift+q (81) -> list with all current properties of video, audio
+ctrl-alt-shift+s (83) -> menu allowing to choose video, audio, CDN
+ctrl-alt-shift+t (84) -> file upload???
+ctrl-alt-shift+i (73) ->
+ctrl-alt-shift+l (76) -> log console
+
 further resources:
 includes handshake & crypto, may be able to directly save streams
 https://github.com/asciidisco/plugin.video.netflix/blob/master/resources/lib/MSL.py
+

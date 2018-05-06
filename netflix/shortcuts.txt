@@ -1,5 +1,0 @@
-ctrl-alt-shift+d (68),ctrl-alt-shift+q (81) -> list with all current properties of video, audio
-ctrl-alt-shift+s (83) -> menu allowing to choose video, audio, CDN
-ctrl-alt-shift+t (84) -> file upload???
-ctrl-alt-shift+i (73) ->
-ctrl-alt-shift+l (76) -> log console
