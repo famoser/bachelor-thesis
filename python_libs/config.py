@@ -52,4 +52,4 @@ class Inventory:
         return self.__dict__
 
     def small_capture(self):
-        return {"bojack": self.bojack_horseman, "family": self.family_guy}
+        return {"family": self.family_guy, "bojack": self.bojack_horseman}

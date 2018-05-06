@@ -24,8 +24,8 @@ function setSeconds(seconds) {
     currentSecond = seconds;
 }
 
-function stillActive() {
-    return (lastTimeAccessed + 10000) > Date.now();
+function stillActive(interval) {
+    return (lastTimeAccessed + interval) > Date.now();
 }
 
 function ensureVideoPlays() {

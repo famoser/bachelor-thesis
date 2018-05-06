@@ -158,7 +158,7 @@ class NetflixBrowser:
         return True
 
     def set_video_time(self, video_time: int) -> bool:
-        self.__browser.execute_script("seek(" + str(video_time) + ")")
+        self.__browser.execute_script("seek(" + str(video_time * 1000) + ")")
         return True
 
     def check_for_errors(self):
@@ -183,7 +183,8 @@ class NetflixBrowser:
 
         return False
 
-    def speed_up_playback(self, current_video_time: int, skip_seconds: int, wait_seconds: int, max_iterations: int = 1000):
+    def speed_up_playback(self, current_video_time: int, skip_seconds: int, wait_seconds: int,
+                          max_iterations: int = 1000):
         """
         speeds up the netflix video playback by advancing the video as specified
         it only returns after the video stopped playing
@@ -195,11 +196,19 @@ class NetflixBrowser:
         :return:
         """
         # start playback speedup from netflix extension
-        self.__browser.execute_script("start_faster_playback(" + str(current_video_time) + ", " + str(skip_seconds) + ")")
+        self.__browser.execute_script(
+            "start_faster_playback(" + str(current_video_time) + ", " + str(skip_seconds) + ")")
         i = max_iterations
         while i > 0:
-            if not self.__browser.execute_script("return faster_playback_still_active()"):
+            # limit denotes the allowed time the last playback was.
+            # after invoking the second time, without invoking faster_playback, this should return false
+            limit = (max(wait_seconds * 1.2, wait_seconds + 2) * 1000)
+            if not self.__browser.execute_script("return faster_playback_still_active(" + str(limit) + ")"):
                 break
+            else:
+                print("skipped & video still playing, skipping again in " +
+                      str(wait_seconds) + "s for " +
+                      str(skip_seconds) + "s")
 
             time.sleep(wait_seconds)
             i -= 1
@@ -214,14 +223,14 @@ class NetflixBrowser:
             time.sleep(1)
             root_element.send_keys(Keys.SHIFT, Keys.CONTROL, Keys.ALT, 'S')
 
-            bitrates = self.__browser.execute_script("get_bitrates()")
+            bitrates = self.__browser.execute_script("return get_bitrates()")
+            print(bitrates)
             return bitrates
 
         return None
 
     def set_bitrate(self, bandwidth: int):
         return self.__browser.execute_script("set_bandwidth(" + str(bandwidth) + ")")
-
 
     def __try_find_element_by_id(self, css_id: str, retries: int = 5) -> Optional[WebElement]:
         """
