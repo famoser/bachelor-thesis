@@ -58,56 +58,60 @@ with BrowserProxy("attack") as proxy:
                 har_entries = HarAnalyzer.get_har_entries_from_json(capture)
 
                 # get info for all relevant packets
-                i = len(har_entries) - 1
-                matching_captures = []
+                result = {}
+                total_packets_found = 0
+                same_packets_different_bitrate = 0
+
                 cursor = connection.cursor()
+                i = len(har_entries) - 1
                 stop_i = len(har_entries) - config.packet_threshold - 1
                 while i > stop_i and i > 0:
                     # try to find specific packet, and save its capture id to the result set
-                    cursor.execute("SELECT capture_id, is_video FROM packets WHERE body_size = ?",
-                                   [har_entries[i].body_size])
-                    current = cursor.fetchone()
-                    if current is not None:
-                        # if is indeed a video add to log, else look at another packet
-                        if current[1] == 1:
-                            matching_captures.append(current[0])
-                        else:
-                            stop_i -= 1
+                    cursor.execute("SELECT DISTINCT c.movie_id, c.bitrate "
+                                   "FROM packets p "
+                                   "INNER JOIN captures c ON p.capture_id = c.id "
+                                   "WHERE body_size = ? AND is_video = ?",
+                                   [har_entries[i].body_size, 1])
+
+                    # add all results to set
+                    once = False
+                    twice = False
+                    for item in cursor.fetchall():
+                        result.setdefault(item[0], {})
+                        result[item[0]].setdefault(item[1], 0)
+                        result[item[0]][item[1]] += 1
+                        total_packets_found += 1
+
+                        if once and not twice:
+                            same_packets_different_bitrate += 1
+                            twice = True
+                        once = True
+
+                    # if no video was found
+                    if not once:
+                        stop_i -= 1
 
                     i -= 1
 
-                # aggregate all possible captures
-                capture_certanity = {}
-                for entry in matching_captures:
-                    capture_certanity.setdefault(entry, 0)
-                    capture_certanity[entry] += 1
-
-                # output captures
-                cursor = connection.cursor()
-                result = {}
-                for key in capture_certanity:
-                    # get the capture
-                    cursor.execute("SELECT movie_id, bitrate FROM captures WHERE id = ?",
-                                   [key])
-                    current = cursor.fetchone()
-
-                    # print if found
-                    if current is not None:
-                        result.setdefault(current[0], {})
-                        result[current[0]][current[1]] = capture_certanity[key]
-
                 for video_id in result:
-                    total_percentage = sum(result[video_id].values()) / config.packet_threshold * 100
+                    total_percentage = sum(result[video_id].values()) / \
+                                       max(config.packet_threshold, total_packets_found) * 100
+
                     print_out = str(total_percentage) + "% security: " + str(video_id) + " at "
 
                     first_time = True
                     for bitrate in result[video_id]:
-                        if not first_time:
+                        if first_time:
                             first_time = False
+                        else:
                             print_out += ", "
                         print_out += str(bitrate) + "k (" + str(result[video_id][bitrate]) + " packets found)"
 
                     print(print_out)
+
+                if same_packets_different_bitrate:
+                    print("in this analysis, " + str(same_packets_different_bitrate) +
+                          " packets were found which were identical for multiple bitrates")
 
                 # to avoid too much overhead, reset capture after some time
                 if len(har_entries) > config.packet_threshold * 20:
@@ -117,5 +121,3 @@ with BrowserProxy("attack") as proxy:
             # sleep and try again after some time
             print("waiting for " + str(config.sleep_before_retry) + "s before trying again")
             time.sleep(config.sleep_before_retry)
-
-print("finished")
