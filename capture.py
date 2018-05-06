@@ -28,10 +28,15 @@ class Configuration:
         # choosing the same value like after video load
         self.wait_after_repositioning = 20
 
+        # how long the process waits before initialing the play speedup
+        #
+        # choosing 20 to fill up buffer almost completely
+        self.wait_before_playback_speedup = 20
+
         # how many seconds are skipped to speed up the capture
         #
-        # choosing 20 as this is almost instantly in the cache
-        self.skip_seconds = 20
+        # choosing 30 as this is doable in 5 seconds
+        self.skip_seconds = 30
 
         # how many seconds the video is left alone before again some seconds are skipped
         #
@@ -111,8 +116,8 @@ with BrowserProxy("attack") as proxy:
                 print("capturing with bitrate " + str(bitrate) + "k")
 
                 # speed up capture after waiting for it to settle
-                print("starting with speed up in " + str(config.wait_after_repositioning) + "s")
-                time.sleep(config.wait_after_repositioning)
+                print("starting with speed up in " + str(config.wait_before_playback_speedup) + "s")
+                time.sleep(config.wait_before_playback_speedup)
                 browser.speed_up_playback(config.wait_after_repositioning, config.skip_seconds, config.wait_seconds,
                                           config.max_iterations)
 

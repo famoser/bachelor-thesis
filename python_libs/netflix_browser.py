@@ -204,6 +204,7 @@ class NetflixBrowser:
             # after invoking the second time, without invoking faster_playback, this should return false
             limit = (max(wait_seconds * 1.2, wait_seconds + 2) * 1000)
             if not self.__browser.execute_script("return faster_playback_still_active(" + str(limit) + ")"):
+                print("video stopped playing, stopping fast capture")
                 break
             else:
                 print("skipped & video still playing, skipping again in " +
