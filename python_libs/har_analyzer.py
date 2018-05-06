@@ -28,7 +28,7 @@ class HarAnalyzer:
 
         # create har dict
         for file_name in self.__file_names:
-            self.__har_entries_dict[file_name] = []
+            self.__har_entries_dict[file_name] = self.get_har_entries_from_json(self.__json_dict[file_name]["packets"])
 
             # parse the log entries
             for entry in self.__json_dict[file_name]["packets"]:
@@ -69,9 +69,40 @@ class HarAnalyzer:
             capture_statistics = CaptureStatistics()
             capture_statistics.video_size = video_size
             capture_statistics.packet_count = packet_count
-            capture_statistics.capture_length = self.__json_dict[file_name]["configuration"]["capture_duration"]
+            if "capture_duration" in self.__json_dict[file_name]["configuration"]:
+                capture_statistics.capture_length = self.__json_dict[file_name]["configuration"]["capture_duration"]
 
             self.__capture_statistics[file_name] = capture_statistics
+
+    @staticmethod
+    def get_har_entries_from_json(json):
+        res = []
+
+        # parse the log entries
+        for entry in json:
+            har_entry = HarEntry()
+            har_entry.url = entry["request"]["url"]
+            har_entry.body_size = int(entry["response"]["bodySize"])
+
+            # check if url ends like the CDN's of netflix
+            if "video.net/range/" in har_entry.url:
+                har_entry.is_video = True
+
+                # cut of url at /range to parse it
+                range_url = har_entry.url[(har_entry.url.rindex("/range") + len("/range") + 1):]
+
+                # remove query parameters
+                if "?" in range_url:
+                    range_url = range_url[:range_url.index("?")]
+
+                # parse range (of the form 7123-8723)
+                ranges = range_url.split("-")
+                har_entry.range_start = int(ranges[0])
+                har_entry.range_end = int(ranges[1])
+
+            res.append(har_entry)
+
+        return res
 
     def get_json_dict(self):
         """

@@ -120,24 +120,13 @@ class BrowserProxy:
         :return: if the state was retrieved successfully
         """
 
-        # retrieve the state
-        response = request.get(self.__capture_url)
-        if response.status_code != 200:
-            return False
-
         # create statistics
         statistics = CaptureStatistics()
         statistics.start_timestamp = self.__current_capture_start
         statistics.end_timestamp = time.time()
 
-        # load json
-        content = json.loads(response.content.decode())
-
         # filter packets for current page ref
-        packets = []
-        for entry in content["log"]["entries"]:
-            if "pageref" in entry and entry["pageref"] == self.__get_current_page_title():
-                packets.append(entry)
+        packets = self.get_active_capture()
 
         # save packets & configuration
         save = {
@@ -154,6 +143,23 @@ class BrowserProxy:
             self.start_new_capture()
 
         return True
+
+    def get_active_capture(self):
+        # retrieve the state
+        response = request.get(self.__capture_url)
+        if response.status_code != 200:
+            return False
+
+        # load json
+        content = json.loads(response.content.decode())
+
+        # filter packets for current page ref
+        packets = []
+        for entry in content["log"]["entries"]:
+            if "pageref" in entry and entry["pageref"] == self.__get_current_page_title():
+                packets.append(entry)
+
+        return packets
 
     def start_new_capture(self):
         """
