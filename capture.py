@@ -56,7 +56,7 @@ video_ids = Inventory().full_capture()
 config = Configuration()
 
 # test settings
-if True:
+if False:
     video_ids = Inventory().small_capture()
     config.wait_after_video_load = 10
     config.wait_after_ensured_video_load = 10
