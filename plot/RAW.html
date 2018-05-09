@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html ng-app="raw" class="ng-scope" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+  <title>RAW</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="Keywords" content="RAW,visualization,data,design,spreadsheet,interface,vector graphics,SVG,PNG,JSON">
+  <meta name="Description" content="RAW, missing link between spreadsheets and data visualization, by DensityDesign and Calibro, Giorgio Caviglia, Matteo Azzi, Michele Mauri, Giorgio Uboldi, Tommaso Elli">
+  <meta name="author" content="DensityDesign Research Lab and Studio Calibro">
+
+  <!-- Social Networks meta tags -->
+  <meta property="og:title" content="RAWGraphs">
+  <meta property="og:description" content="The missing link between spreadsheets and data visualization.">
+  <meta property="og:image" content="http://app.rawgraphs.io/imgs/cover-for-socials.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="http://app.rawgraphs.io/">
+  <meta property="og:type" content="article">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@rawgraphs">
+
+  <script>
+    document.write('<base href="' + document.location + '" />');
+  </script><!-- base href="http://app.rawgraphs.io/" -->
+
+  <link rel="stylesheet" href="RAW_files/css.css">
+
+  <link rel="stylesheet" href="RAW_files/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="RAW_files/colorpicker.css">
+  <link href="RAW_files/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="RAW_files/codemirror.css">
+
+  <link rel="stylesheet" href="RAW_files/raw.css">
+  <link rel="icon" href="http://app.rawgraphs.io/favicon.ico?v=2" type="image/x-icon">
+  <link rel="shortcut icon" href="http://app.rawgraphs.io/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body data-spy="scroll" data-target="#raw-nav" style="cursor: auto;">
+
+  <header class="navbar navbar-static-top" role="navigation" id="raw-nav">
+    <div class="container">
+     <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#raw-navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="http://rawgraphs.io/" target="_blank">
+          <img alt="RawGraphs" src="RAW_files/rawgraphslogo.png">
+        </a>
+      </div>
+
+      <nav class="collapse navbar-collapse" role="navigation" id="raw-navbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="http://rawgraphs.io/about/" target="_blank">About</a></li>
+          <li><a href="http://rawgraphs.io/gallery/" target="_blank">Gallery</a></li>
+          <li><a href="http://rawgraphs.io/learning/" target="_blank">Learning</a></li>
+          <li><a href="https://github.com/densitydesign/raw/wiki/FAQs" target="_blank">FAQs</a></li>
+          <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdfbS0TsyQEXdNfYp9XkiDx5pzwEYfKCmplDJTz1VPAm1R6VA/viewform" target="_blank">User survey</a></li>
+          <li><a href="https://github.com/densitydesign/raw/wiki/Developer-Guide" target="_blank">Developer Guide</a></li>
+          <li><a href="https://github.com/densitydesign/raw" target="_blank" style="font-size:23px"><i class="fa fa-github"></i></a></li>
+        </ul>
+      </nav>
+
+      <!--<span class="pull-left">The missing link between spreadsheets and vector graphics</span class="pull-left">-->
+
+    </div>
+  </header>
+
+  <!-- ngView: --><div ng-view="" class="wrap ng-scope" style=""><div class="wrapper ng-scope">
+
+	<section class="" id="load-data">
+
+		<div class="container">
+
+			<div class="row">
+
+					<div class="col-lg-2">
+
+						<h3 id="data">Load your data
+							<!--<button type="button"
+								class="choose btn btn-default"
+								ng-model="sample"
+								placeholder="or choose one of our samples"
+								ng-options="s as s.title for s in samples" bs-select>
+							</button>-->
+
+						</h3>
+
+					</div>
+
+					<div class="col-lg-10">
+						<h3><span ng-show="parsed &amp;&amp; text.length" class="small text-mono ng-binding" style=""></span>
+							<span class="list-type pull-right" ng-show="data.length" style="">
+								<i class="type fa fa-align-left breath-left selected" data-toggle="tooltip" data-title="View as Text" ng-click="dataView='text'" ng-class="{selected:dataView!='table'}" data-original-title="" title=""></i>
+								<i class="type fa fa-table breath-left" data-toggle="tooltip" data-title="View as Table" ng-click="dataView='table'" ng-class="{selected:dataView=='table'}" data-original-title="" title=""></i>
+							</span>
+							<span class="clearfix"></span>
+						</h3>
+					</div>
+
+				</div>
+
+
+			<div class="row">
+
+					<div class="col-lg-2">
+
+						<ul class="nav nav-pills nav-stacked nav-pills-stacked-example">
+							<li role="presentation" ng-class="{active:!parsed &amp;&amp; importMode=='clipboard'}" class="" style=""><a href="#" ng-click="parsed=false;importMode='clipboard'"><i class="fa fa-clipboard breath-right"></i>Paste</a></li>
+				      <li role="presentation" ng-class="{active:!parsed &amp;&amp; importMode=='file'}"><a href="#" ng-click="parsed=false;importMode='file'"><i class="fa fa-file-text breath-right"></i>Upload a file</a></li>
+				      <li role="presentation" ng-class="{active:!parsed &amp;&amp; importMode=='url'}"><a href="#" ng-click="parsed=false;importMode='url'"><i class="fa fa-cloud breath-right"></i>From URL</a></li>
+							<li role="presentation" ng-class="{active:!parsed &amp;&amp; importMode=='sample'}"><a href="#" ng-click="parsed=false;importMode='sample'"><i class="fa fa-gift breath-right"></i>Try our samples</a></li>
+				    </ul>
+
+					</div>
+
+					<div class="col-lg-10">
+
+						<!-- Clipboard -->
+						<div ng-show="importMode=='clipboard' &amp;&amp; !json &amp;&amp; !parsed" class="ng-hide" style="">
+							<textarea ui-codemirror="{lineWrapping : true,   dragDrop : false}" class="text-clipboard margin-bottom ng-untouched ng-valid ng-not-empty ng-dirty ng-valid-parse" ng-model="clipboardText" placeholder="Paste your data here from other applications" style="display: none;"></textarea><div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 265px; left: 235px;"><textarea style="position: absolute; bottom: -1em; padding: 0px; width: 1px; height: 1em; outline: medium none currentcolor;" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" wrap="off"></textarea></div><div class="CodeMirror-vscrollbar" cm-not-content="true" style="display: block; bottom: 0px;"><div style="min-width: 1px; height: 404px;"></div></div><div class="CodeMirror-hscrollbar" cm-not-content="true"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: -12px; border-right-width: 18px; min-height: 404px; padding-right: 12px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div style="position: relative; outline: medium none currentcolor;" role="presentation"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 235px; top: 378px; height: 18px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation"><pre class=" CodeMirror-line " role="presentation"><span role="presentation">[{"x": 100, "y": 120490791, "video_id": 70103763}, {"x": 160, "y": 187783170, "video_id": 70103763}, {"x": 320, "y": 366166400, "video_id": 70103763}, {"x": 460, "y": 522161552, "video_id": 70103763}, {"x": 560, "y": 635623394, "video_id": 70103763}, {"x": 680, "y": 770573548, "video_id": 70103763}, {"x": 1050, "y": 1183832535, "video_id": 70103763}, {"x": 1540, "y": 1730543101, "video_id": 70103763}, {"x": 2260, "y": 2533199586, "video_id": 70103763}, {"x": 130, "y": 95412502, "video_id": 70105699}, {"x": 250, "y": 179081331, "video_id": 70105699}, {"x": 330, "y": 234755513, "video_id": 70105699}, {"x": 510, "y": 360191141, "video_id": 70105699}, {"x": 750, "y": 527228487, "video_id": 70105699}, {"x": 1050, "y": 736522747, "video_id": 70105699}, {"x": 1470, "y": 1028720181, "video_id": 70105699}, {"x": 1960, "y": 1370018357, "video_id": 70105699}, {"x": 2610, "y": 1821934766, "video_id": 70105699}, {"x": 650, "y": 455666273, "video_id": 70276596}, {"x": 830, "y": 580111901, "video_id": 70276596}, {"x": 1000, "y": 697261072, "video_id": 70276596}, {"x": 1400, "y": 974677086, "video_id": 70276596}, {"x": 1960, "y": 1363535216, "video_id": 70276596}, {"x": 100, "y": 20301831, "video_id": 70298930}, {"x": 160, "y": 31567730, "video_id": 70298930}, {"x": 210, "y": 40964001, "video_id": 70298930}, {"x": 320, "y": 61690864, "video_id": 70298930}, {"x": 490, "y": 93657565, "video_id": 70298930}, {"x": 680, "y": 128916534, "video_id": 70298930}, {"x": 950, "y": 180293929, "video_id": 70298930}, {"x": 1330, "y": 250688696, "video_id": 70298930}, {"x": 1870, "y": 350721210, "video_id": 70298930}, {"x": 120, "y": 114913718, "video_id": 80018499}, {"x": 235, "y": 194159941, "video_id": 80018499}, {"x": 375, "y": 242711560, "video_id": 80018499}, {"x": 560, "y": 359783532, "video_id": 80018499}, {"x": 750, "y": 365231039, "video_id": 80018499}, {"x": 1050, "y": 509550056, "video_id": 80018499}, {"x": 1750, "y": 556408883, "video_id": 80018499}, {"x": 2350, "y": 1360361942, "video_id": 80018499}, {"x": 3000, "y": 1359538396, "video_id": 80018499}, {"x": 100, "y": 118992141, "video_id": 80088567}, {"x": 200, "y": 229552853, "video_id": 80088567}, {"x": 260, "y": 296150500, "video_id": 80088567}, {"x": 400, "y": 451456477, "video_id": 80088567}, {"x": 560, "y": 628244701, "video_id": 80088567}, {"x": 870, "y": 971558244, "video_id": 80088567}, {"x": 1210, "y": 1347353899, "video_id": 80088567}, {"x": 110, "y": 19113894, "video_id": 80111454}, {"x": 210, "y": 34985887, "video_id": 80111454}, {"x": 270, "y": 44529273, "video_id": 80111454}, {"x": 420, "y": 68318483, "video_id": 80111454}, {"x": 620, "y": 100314632, "video_id": 80111454}, {"x": 830, "y": 128677204, "video_id": 80111454}, {"x": 1100, "y": 160457341, "video_id": 80111454}]</span></pre></div></div></div></div></div><div style="position: absolute; height: 18px; width: 1px; border-bottom: 0px solid transparent; top: 404px;"></div><div class="CodeMirror-gutters" style="display: none; height: 422px;"></div></div></div>
+							<p class="help-block">Copy and paste your data from other applications or websites. You can use tabular (TSV, CSV, DSV) or JSON data</p><p>
+
+						</p></div>
+
+						<!-- File -->
+						<div ng-show="importMode=='file'&amp;&amp; !json &amp;&amp; !parsed" class="ng-hide">
+
+							<div ngf-drop="" ngf-select="" ng-model="files" class="drop-box margin-bottom ng-pristine ng-untouched ng-valid ng-not-empty" ngf-drag-over-class="dragover" ngf-multiple="false" ngf-allow-dir="false" ng-show="!worksheets.length">
+								<a>Drag a file here or click to select a file from your computer</a>
+							</div>
+
+							<p ng-show="!worksheets.length" class="help-block">You can upload TSV, CSV, DSV, JSON and Excel files (.xls, .xlsx). Spreadsheet files with multiple sheets are fine too.</p>
+
+							<div class="row">
+								<!-- ngRepeat: worksheet in worksheets -->
+							</div>
+
+							<p ng-show="worksheets.length" class="help-block ng-hide">Your file contains multiple sheets. Please choose one from above.</p>
+
+						</div>
+
+						<!-- URl -->
+						<div ng-show="importMode=='url' &amp;&amp; !json &amp;&amp; !parsed" class="ng-hide">
+							<input class="form-control margin-bottom ng-pristine ng-untouched ng-valid ng-empty" ng-model="url" placeholder="http://" ng-show="!worksheets.length" type="text">
+							<p class="help-block">Enter a web address (URL) pointing to the 
+data (e.g. a public Dropbox file, a public API, ...). Please, be sure 
+the server is CORS-enabled.</p><p>
+
+							</p><div data-ng-show="loading" class="alert alert-loading ng-hide" style=""><i class="fa breath-right fa-refresh fa-spin"></i>Loading your data. Please wait.</div>
+
+							<div class="row">
+								<!-- ngRepeat: worksheet in worksheets -->
+							</div>
+
+							<p ng-show="worksheets.length" class="help-block ng-hide">Your file contains multiple sheets. Please choose one from above.</p>
+
+						</div>
+
+						<!-- Default -->
+						<div ng-show="parsed" class="" style="">
+
+							<div data-ng-show="dataView != 'table'" class="">
+								<div class="parsed">
+									<textarea ui-codemirror="codeMirrorOptions" ng-model="text" class="ng-pristine ng-untouched ng-valid ng-not-empty" style="display: none;"></textarea><div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 34px;"><textarea style="position: absolute; bottom: -1em; padding: 0px; width: 1px; height: 1em; outline: medium none currentcolor;" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" wrap="off"></textarea></div><div class="CodeMirror-vscrollbar" cm-not-content="true" style="display: block; bottom: 0px;"><div style="min-width: 1px; height: 1016px;"></div></div><div class="CodeMirror-hscrollbar" cm-not-content="true"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1" draggable="true"><div class="CodeMirror-sizer" style="margin-left: 30px; padding-right: 12px; padding-bottom: 0px; margin-bottom: -12px; border-right-width: 18px; min-height: 1016px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div style="position: relative; outline: medium none currentcolor;" role="presentation"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>56</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 18px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">x<span class="cm-tab" role="presentation" cm-text="	">   </span>y<span class="cm-tab" role="presentation" cm-text="	">   </span>video_id</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">100<span class="cm-tab" role="presentation" cm-text="	"> </span>120490791<span class="cm-tab" role="presentation" cm-text="	">   </span>70103763</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">160<span class="cm-tab" role="presentation" cm-text="	"> </span>187783170<span class="cm-tab" role="presentation" cm-text="	">   </span>70103763</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">320<span class="cm-tab" role="presentation" cm-text="	"> </span>366166400<span class="cm-tab" role="presentation" cm-text="	">   </span>70103763</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">460<span class="cm-tab" role="presentation" cm-text="	"> </span>522161552<span class="cm-tab" role="presentation" cm-text="	">   </span>70103763</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">560<span class="cm-tab" role="presentation" cm-text="	"> </span>635623394<span class="cm-tab" role="presentation" cm-text="	">   </span>70103763</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">680<span class="cm-tab" role="presentation" cm-text="	"> </span>770573548<span class="cm-tab" role="presentation" cm-text="	">   </span>70103763</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">1050<span class="cm-tab" role="presentation" cm-text="	">    </span>1183832535<span class="cm-tab" role="presentation" cm-text="	">  </span>70103763</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">1540<span class="cm-tab" role="presentation" cm-text="	">    </span>1730543101<span class="cm-tab" role="presentation" cm-text="	">  </span>70103763</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">2260<span class="cm-tab" role="presentation" cm-text="	">    </span>2533199586<span class="cm-tab" role="presentation" cm-text="	">  </span>70103763</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">130<span class="cm-tab" role="presentation" cm-text="	"> </span>95412502<span class="cm-tab" role="presentation" cm-text="	">    </span>70105699</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">250<span class="cm-tab" role="presentation" cm-text="	"> </span>179081331<span class="cm-tab" role="presentation" cm-text="	">   </span>70105699</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">330<span class="cm-tab" role="presentation" cm-text="	"> </span>234755513<span class="cm-tab" role="presentation" cm-text="	">   </span>70105699</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">510<span class="cm-tab" role="presentation" cm-text="	"> </span>360191141<span class="cm-tab" role="presentation" cm-text="	">   </span>70105699</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">15</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">750<span class="cm-tab" role="presentation" cm-text="	"> </span>527228487<span class="cm-tab" role="presentation" cm-text="	">   </span>70105699</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">16</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">1050<span class="cm-tab" role="presentation" cm-text="	">    </span>736522747<span class="cm-tab" role="presentation" cm-text="	">   </span>70105699</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">17</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">1470<span class="cm-tab" role="presentation" cm-text="	">    </span>1028720181<span class="cm-tab" role="presentation" cm-text="	">  </span>70105699</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">18</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">1960<span class="cm-tab" role="presentation" cm-text="	">    </span>1370018357<span class="cm-tab" role="presentation" cm-text="	">  </span>70105699</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">19</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">2610<span class="cm-tab" role="presentation" cm-text="	">    </span>1821934766<span class="cm-tab" role="presentation" cm-text="	">  </span>70105699</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">20</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">650<span class="cm-tab" role="presentation" cm-text="	"> </span>455666273<span class="cm-tab" role="presentation" cm-text="	">   </span>70276596</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">21</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">830<span class="cm-tab" role="presentation" cm-text="	"> </span>580111901<span class="cm-tab" role="presentation" cm-text="	">   </span>70276596</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">22</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">1000<span class="cm-tab" role="presentation" cm-text="	">    </span>697261072<span class="cm-tab" role="presentation" cm-text="	">   </span>70276596</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">23</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">1400<span class="cm-tab" role="presentation" cm-text="	">    </span>974677086<span class="cm-tab" role="presentation" cm-text="	">   </span>70276596</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">24</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">1960<span class="cm-tab" role="presentation" cm-text="	">    </span>1363535216<span class="cm-tab" role="presentation" cm-text="	">  </span>70276596</span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -30px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">25</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">100<span class="cm-tab" role="presentation" cm-text="	"> </span>20301831<span class="cm-tab" role="presentation" cm-text="	">    </span>70298930</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 18px; width: 1px; border-bottom: 0px solid transparent; top: 1016px;"></div><div class="CodeMirror-gutters" style="left: 0px; height: 1034px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div></div></div></div>
+								</div>
+							</div>
+
+							<div raw-table="" class="data-table ng-hide" data-ng-show="dataView == 'table'"><table class="table table-striped table-condensed"><thead><tr><th>x<i class="fa fa-sort-desc pull-right" style="opacity: 1;"></i></th><th>y<i class="fa fa-sort-desc pull-right" style="opacity: 0;"></i></th><th>video_id<i class="fa fa-sort-desc pull-right" style="opacity: 0;"></i></th></tr></thead><tbody><tr><td>100</td><td>120490791</td><td>70103763</td></tr><tr><td>100</td><td>20301831</td><td>70298930</td></tr><tr><td>100</td><td>118992141</td><td>80088567</td></tr><tr><td>110</td><td>19113894</td><td>80111454</td></tr><tr><td>120</td><td>114913718</td><td>80018499</td></tr><tr><td>130</td><td>95412502</td><td>70105699</td></tr><tr><td>160</td><td>187783170</td><td>70103763</td></tr><tr><td>160</td><td>31567730</td><td>70298930</td></tr><tr><td>200</td><td>229552853</td><td>80088567</td></tr><tr><td>210</td><td>40964001</td><td>70298930</td></tr><tr><td>210</td><td>34985887</td><td>80111454</td></tr><tr><td>235</td><td>194159941</td><td>80018499</td></tr><tr><td>250</td><td>179081331</td><td>70105699</td></tr><tr><td>260</td><td>296150500</td><td>80088567</td></tr><tr><td>270</td><td>44529273</td><td>80111454</td></tr><tr><td>320</td><td>366166400</td><td>70103763</td></tr><tr><td>320</td><td>61690864</td><td>70298930</td></tr><tr><td>330</td><td>234755513</td><td>70105699</td></tr><tr><td>375</td><td>242711560</td><td>80018499</td></tr><tr><td>400</td><td>451456477</td><td>80088567</td></tr><tr><td>420</td><td>68318483</td><td>80111454</td></tr><tr><td>460</td><td>522161552</td><td>70103763</td></tr><tr><td>490</td><td>93657565</td><td>70298930</td></tr><tr><td>510</td><td>360191141</td><td>70105699</td></tr><tr><td>560</td><td>635623394</td><td>70103763</td></tr><tr><td>560</td><td>359783532</td><td>80018499</td></tr><tr><td>560</td><td>628244701</td><td>80088567</td></tr><tr><td>620</td><td>100314632</td><td>80111454</td></tr><tr><td>650</td><td>455666273</td><td>70276596</td></tr><tr><td>680</td><td>770573548</td><td>70103763</td></tr><tr><td>680</td><td>128916534</td><td>70298930</td></tr><tr><td>750</td><td>527228487</td><td>70105699</td></tr><tr><td>750</td><td>365231039</td><td>80018499</td></tr><tr><td>830</td><td>580111901</td><td>70276596</td></tr><tr><td>830</td><td>128677204</td><td>80111454</td></tr><tr><td>870</td><td>971558244</td><td>80088567</td></tr><tr><td>950</td><td>180293929</td><td>70298930</td></tr><tr><td>1000</td><td>697261072</td><td>70276596</td></tr><tr><td>1050</td><td>1183832535</td><td>70103763</td></tr><tr><td>1050</td><td>736522747</td><td>70105699</td></tr><tr><td>1050</td><td>509550056</td><td>80018499</td></tr><tr><td>1100</td><td>160457341</td><td>80111454</td></tr><tr><td>1210</td><td>1347353899</td><td>80088567</td></tr><tr><td>1330</td><td>250688696</td><td>70298930</td></tr><tr><td>1400</td><td>974677086</td><td>70276596</td></tr><tr><td>1470</td><td>1028720181</td><td>70105699</td></tr><tr><td>1540</td><td>1730543101</td><td>70103763</td></tr><tr><td>1750</td><td>556408883</td><td>80018499</td></tr><tr><td>1870</td><td>350721210</td><td>70298930</td></tr><tr><td>1960</td><td>1370018357</td><td>70105699</td></tr><tr><td>1960</td><td>1363535216</td><td>70276596</td></tr><tr><td>2260</td><td>2533199586</td><td>70103763</td></tr><tr><td>2350</td><td>1360361942</td><td>80018499</td></tr><tr><td>2610</td><td>1821934766</td><td>70105699</td></tr><tr><td>3000</td><td>1359538396</td><td>80018499</td></tr></tbody></table></div>
+
+
+						</div>
+
+						<div class="json-viewer margin-bottom ng-isolate-scope ng-hide" json-viewer="" json="json" ng-show="json" on-select="antani" style=""><div class="json-node"></div></div>
+
+						<p ng-show="json" class="help-block ng-hide" style="">Please select the array <strong>[ ]</strong> containing the records you want to load from the JSON above.</p>
+
+						<!-- Sample -->
+						<div ng-show="importMode=='sample' &amp;&amp; !parsed" class="ng-hide">
+							<div class="row">
+								<!-- ngRepeat: s in samples | orderBy : 'type' --><div class="col-lg-3 ng-scope" ng-repeat="s in samples | orderBy : 'type'" ng-click="selectSample(s)">
+									<div class="layout">
+										<div class="layout-inner">
+											<span class="ng-binding">Movies</span>
+											<span class="text-muted layout-category ng-binding">Dispersions</span>
+										</div>
+									</div>
+								</div><!-- end ngRepeat: s in samples | orderBy : 'type' --><div class="col-lg-3 ng-scope" ng-repeat="s in samples | orderBy : 'type'" ng-click="selectSample(s)">
+									<div class="layout">
+										<div class="layout-inner">
+											<span class="ng-binding">Biggest cities per continent</span>
+											<span class="text-muted layout-category ng-binding">Distributions</span>
+										</div>
+									</div>
+								</div><!-- end ngRepeat: s in samples | orderBy : 'type' --><div class="col-lg-3 ng-scope" ng-repeat="s in samples | orderBy : 'type'" ng-click="selectSample(s)">
+									<div class="layout">
+										<div class="layout-inner">
+											<span class="ng-binding">Animal kingdom</span>
+											<span class="text-muted layout-category ng-binding">Hierarchies</span>
+										</div>
+									</div>
+								</div><!-- end ngRepeat: s in samples | orderBy : 'type' --><div class="col-lg-3 ng-scope" ng-repeat="s in samples | orderBy : 'type'" ng-click="selectSample(s)">
+									<div class="layout">
+										<div class="layout-inner">
+											<span class="ng-binding">Orchestras</span>
+											<span class="text-muted layout-category ng-binding">Hierarchies (weighted)</span>
+										</div>
+									</div>
+								</div><!-- end ngRepeat: s in samples | orderBy : 'type' --><div class="col-lg-3 ng-scope" ng-repeat="s in samples | orderBy : 'type'" ng-click="selectSample(s)">
+									<div class="layout">
+										<div class="layout-inner">
+											<span class="ng-binding">Most frequent letters</span>
+											<span class="text-muted layout-category ng-binding">Matrix (narrow)</span>
+										</div>
+									</div>
+								</div><!-- end ngRepeat: s in samples | orderBy : 'type' --><div class="col-lg-3 ng-scope" ng-repeat="s in samples | orderBy : 'type'" ng-click="selectSample(s)">
+									<div class="layout">
+										<div class="layout-inner">
+											<span class="ng-binding">Titanic's passengers</span>
+											<span class="text-muted layout-category ng-binding">Multi categorical</span>
+										</div>
+									</div>
+								</div><!-- end ngRepeat: s in samples | orderBy : 'type' --><div class="col-lg-3 ng-scope" ng-repeat="s in samples | orderBy : 'type'" ng-click="selectSample(s)">
+									<div class="layout">
+										<div class="layout-inner">
+											<span class="ng-binding">Cars</span>
+											<span class="text-muted layout-category ng-binding">Multivariate</span>
+										</div>
+									</div>
+								</div><!-- end ngRepeat: s in samples | orderBy : 'type' --><div class="col-lg-3 ng-scope" ng-repeat="s in samples | orderBy : 'type'" ng-click="selectSample(s)">
+									<div class="layout">
+										<div class="layout-inner">
+											<span class="ng-binding">Countries GDP</span>
+											<span class="text-muted layout-category ng-binding">Other</span>
+										</div>
+									</div>
+								</div><!-- end ngRepeat: s in samples | orderBy : 'type' --><div class="col-lg-3 ng-scope" ng-repeat="s in samples | orderBy : 'type'" ng-click="selectSample(s)">
+									<div class="layout">
+										<div class="layout-inner">
+											<span class="ng-binding">Lineup</span>
+											<span class="text-muted layout-category ng-binding">Time chunks</span>
+										</div>
+									</div>
+								</div><!-- end ngRepeat: s in samples | orderBy : 'type' --><div class="col-lg-3 ng-scope" ng-repeat="s in samples | orderBy : 'type'" ng-click="selectSample(s)">
+									<div class="layout">
+										<div class="layout-inner">
+											<span class="ng-binding">Music industry</span>
+											<span class="text-muted layout-category ng-binding">Time Series</span>
+										</div>
+									</div>
+								</div><!-- end ngRepeat: s in samples | orderBy : 'type' -->
+							</div>
+						</div>
+
+						<div>
+							<!--<div data-ng-show="!loading && !data.length && !error" class="alert"><i class="fa fa-hand-o-right breath-right"></i> Not sure how this works? <a href="http://raw.densitydesign.org/how-it-works/">Take a look at this video</a> or <a href="https://github.com/densitydesign/raw/wiki/FAQs">visit our FAQs</a></div>-->
+							<div data-ng-show="!loading &amp;&amp; !error &amp;&amp; data.length &amp;&amp; parsed" class="alert alert-success" style=""><i class="fa fa-thumbs-up breath-right"></i><strong class="ng-binding">55</strong> records in your data have been successfully parsed!</div>
+							<div data-ng-show="!loading &amp;&amp; error" class="alert alert-warning ng-binding ng-hide"><i class="fa fa-thumbs-down breath-right"></i><strong>Whoops! </strong>false</div>
+							<div data-ng-show="loading &amp;&amp; text.length" class="alert alert-loading ng-hide" style=""><i class="fa breath-right fa-refresh fa-spin"></i>Loading your data. Please wait.</div>
+						</div>
+
+						<div ng-show="parsed" class="">
+
+							<div class="pull-right">
+
+								<p ng-show="pivot&lt;=0 &amp;&amp; !unstacked" class="ng-hide">Your data seems unstacked. <a ng-click="unstacking=true">Click here to stack it</a></p>
+								<p class="text-muted" ng-show="pivot&gt;0 &amp;&amp; !unstacked" style="">Your data seems ready to go. But if you want to stack it anyway, <a ng-click="unstacking=true">click here</a></p>
+								<p ng-show="unstacked" class="ng-hide">Data is stacked now. <a ng-click="stack()">Click here to revert to your original data</a></p>
+								<div ng-show="unstacking" class="pull-right ng-hide">
+									<button class="btn btn-default ng-pristine ng-untouched ng-valid ng-empty" ng-model="stackDimension" ng-change="unstack();unstacking=false" placeholder="Select a dimension to stack on" bs-options="dimension.key for dimension in metadata" bs-select="">Select a dimension to stack on&nbsp;<span class="caret"></span></button>
+								</div>
+
+							</div>
+
+							<!--<a ng-show="!unstacked" ng-click="unstack()" class="btn btn-default">Stack data</a>
+							<a ng-show="unstacked" ng-click="stack()" class="pull-right">Unstack data<i class="fa fa-toggle-on breath-left"></i></a>-->
+
+
+
+						</div>
+
+
+
+
+					</div>
+
+			</div>
+
+
+
+		</div>
+
+		</section>
+
+		<section data-ng-show="error" class="ng-hide">
+
+			<div class="container">
+				<h2><strong>Ouch.</strong> It seems like RAW encountered some 
+problems while parsing your data. Please, be sure everything is ok with 
+your data. Often this is due to some missing delimiters. If you want to 
+use a <a href="http://en.wikipedia.org/wiki/Delimiter">delimiter char</a> as string literal, please include it in double quotes. See our <a href="https://github.com/densitydesign/raw/wiki/FAQs#raw-says-there-is-something-wrong-with-my-data">FAQs</a> for more information.</h2>
+			</div>
+
+		</section>
+
+
+		<section class="dark" data-ng-show="!error &amp;&amp; data.length &amp;&amp; parsed" style="">
+
+			<div class="container">
+
+				<div>
+
+					<h3 id="layout">
+						Choose a Chart
+					</h3>
+
+
+					<div class="row">
+
+						<div class="col-lg-3 col-md-4">
+							<div class="row">
+								<div class="col-lg-12 col-md-12">
+									<div class="chart-description">
+										<h4 class="ng-binding">Box plot</h4>
+										<span class="text-muted ng-binding">Distribution</span>
+										<div class="row">
+											<div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+												<div class="chart-thumb" ng-style="{'background-image':'url(' + chart.thumbnail() + ')'}" style="background-image: url(&quot;imgs/boxplot.png&quot;);"></div>
+											</div>
+											<div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+												<p class="light ng-binding" ng-bind-html="chart.description()">A
+ box-and-whisker plot uses simple glyphs that summarize a quantitative 
+distribution with five standard statistics: the smallest value, lower 
+quartile, median, upper quartile, and largest value.<br>Based on <a href="https://bl.ocks.org/mbostock/4061502">https://bl.ocks.org/mbostock/4061502</a></p>
+												<p class="light ng-hide" data-ng-show="!chart.description()" style="">No description given</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-9 col-md-8">
+								<div class="row">
+									<!-- ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts" style="">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/multipleConvexHull.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Convex Hull</span>
+												<span class="text-muted layout-category ng-binding">Dispersion</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/delaunay.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Delaunay Triangulation</span>
+												<span class="text-muted layout-category ng-binding">Dispersion</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/binning.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Hexagonal Binning</span>
+												<span class="text-muted layout-category ng-binding">Dispersion</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)" style="">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/scatterPlot.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Scatter Plot</span>
+												<span class="text-muted layout-category ng-binding">Dispersion</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/voronoi.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Voronoi Tessellation</span>
+												<span class="text-muted layout-category ng-binding">Dispersion</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout selected" ng-click="selectChart(c)" style="">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/boxplot.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Box plot</span>
+												<span class="text-muted layout-category ng-binding">Distribution</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/circularDendrogram.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Circular Dendrogram</span>
+												<span class="text-muted layout-category ng-binding">Hierarchy</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/dendrogram.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Cluster Dendrogram</span>
+												<span class="text-muted layout-category ng-binding">Hierarchy</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/circlePacking.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Circle Packing</span>
+												<span class="text-muted layout-category ng-binding">Hierarchy (weighted)</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/clusterForce.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Clustered Force Layout</span>
+												<span class="text-muted layout-category ng-binding">Hierarchy (weighted)</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/sunburst.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Sunburst</span>
+												<span class="text-muted layout-category ng-binding">Hierarchy (weighted)</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/treemap.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Treemap</span>
+												<span class="text-muted layout-category ng-binding">Hierarchy (weighted)</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/alluvial.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Alluvial Diagram</span>
+												<span class="text-muted layout-category ng-binding">Multi categorical</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/parallelCoordinates.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Parallel Coordinates</span>
+												<span class="text-muted layout-category ng-binding">Multivariate</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/barChart.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Bar chart</span>
+												<span class="text-muted layout-category ng-binding">Other</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/pieChart.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Pie chart</span>
+												<span class="text-muted layout-category ng-binding">Other</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/gantt.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Gantt Chart</span>
+												<span class="text-muted layout-category ng-binding">Time chunks</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/smallMultiples.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Area graph</span>
+												<span class="text-muted layout-category ng-binding">Time series</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/bumpChart.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Bump Chart</span>
+												<span class="text-muted layout-category ng-binding">Time series</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/horizon.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Horizon graph</span>
+												<span class="text-muted layout-category ng-binding">Time series</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts --><div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 ng-scope" ng-repeat="c in charts">
+										<div ng-class="{selected: c == chart}" class="layout" ng-click="selectChart(c)">
+											<div class="layout-thumb" ng-style="{'background-image':'url(' + c.thumbnail() + ')'}" style="background-image: url(&quot;imgs/streamgraph.png&quot;);"></div>
+											<p class="layout-inner">
+												<span class="layout-title ng-binding">Streamgraph</span>
+												<span class="text-muted layout-category ng-binding">Time series</span>
+											</p>
+											<div class="layout-check">
+													<i class="fa fa-check"></i>
+												</div>
+										</div>
+									</div><!-- end ngRepeat: c in charts -->
+
+									<div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
+										<a href="https://github.com/densitydesign/raw/wiki/Adding-New-Charts" target="_blank">
+											<div class="layout yours">
+												<div class="layout-thumb">
+													<i class="fa fa-plus"></i>
+												</div>
+
+												<p class="layout-inner">
+													<span class="layout-title">Custom</span>
+													<span class="text-muted layout-category">Add your charts!</span>
+												</p>
+											</div>
+										</a>
+
+								</div><!-- end of group -->
+
+							</div>
+
+
+
+						</div>
+
+					</div>
+
+
+				</div>
+
+			</div>
+
+		</section>
+
+		<section class="" data-ng-show="!error &amp;&amp; data.length &amp;&amp; parsed" style="">
+
+			<div class="container">
+
+				<div id="mapping" class="row-fluid">
+
+					<div>
+						<h3>Map your Dimensions
+							<a data-toggle="tooltip" data-title="Clear all" ng-click="model.clear()" class="pull-right light" data-original-title="" title=""><i class="fa fa-trash-o"></i></a>
+							<span class="clearfix"></span>
+						</h3>
+						<!--<p class="help-block">Drag your into </p>-->
+					</div>
+
+
+					<div class="row">
+
+						<div class="col-lg-3 col-md-3 col-sm-6">
+							<div draggable="">
+								<ul class="list-unstyled dimensions-list">
+									<!-- ngRepeat: dimension in metadata track by $index --><li class="dimension ng-scope ui-draggable ui-draggable-handle" data-dimension="{&quot;key&quot;:&quot;x&quot;,&quot;type&quot;:&quot;Number&quot;}" ng-repeat="dimension in metadata track by $index" style="">
+										<span class="dimension-key ng-binding">x</span>
+										<span class="dimension-type ng-binding">Number</span>
+										<span class="dimension-icon pull-right"><i class="fa fa-arrow-right"></i></span>
+									</li><!-- end ngRepeat: dimension in metadata track by $index --><li class="dimension ng-scope ui-draggable ui-draggable-handle" data-dimension="{&quot;key&quot;:&quot;y&quot;,&quot;type&quot;:&quot;Number&quot;}" ng-repeat="dimension in metadata track by $index" style="">
+										<span class="dimension-key ng-binding">y</span>
+										<span class="dimension-type ng-binding">Number</span>
+										<span class="dimension-icon pull-right"><i class="fa fa-arrow-right"></i></span>
+									</li><!-- end ngRepeat: dimension in metadata track by $index --><li class="dimension ng-scope ui-draggable ui-draggable-handle" data-dimension="{&quot;key&quot;:&quot;video_id&quot;,&quot;type&quot;:&quot;Number&quot;}" ng-repeat="dimension in metadata track by $index" style="">
+										<span class="dimension-key ng-binding">video_id</span>
+										<span class="dimension-type ng-binding">Number</span>
+										<span class="dimension-icon pull-right"><i class="fa fa-arrow-right"></i></span>
+									</li><!-- end ngRepeat: dimension in metadata track by $index -->
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-lg-9 col-md-9 col-sm-6 mapping">
+							<div class="sticky">
+								<div class="row" group="" every="3" watch="model">
+
+								<!-- ngRepeat: dimension in model.dimensions().values() track by $index --><!-- end ngRepeat: dimension in model.dimensions().values() track by $index --><!-- end ngRepeat: dimension in model.dimensions().values() track by $index --><!-- end ngRepeat: dimension in model.dimensions().values() track by $index -->
+
+				<div class="col-lg-4 col-md-4 dimensions-wrapper ng-scope" ng-repeat="dimension in model.dimensions().values() track by $index" ng-init="open=false" style="">
+
+								<div class="dimensions-model" style="overflow: hidden;">
+
+									<!--<div class="dimension-multiple">
+
+										<i class="fa fa-tag"
+										data-toggle="tooltip"
+										data-title="You can drag only one dimension here"
+										data-ng-show="!dimension.multiple()"></i>
+
+										<i class="fa fa-tags"
+										data-toggle="tooltip"
+										data-title="You can drag more than one dimension here"
+										data-ng-show="dimension.multiple()"></i>
+									</div>-->
+
+									<i class="fa fa-tags ng-hide" data-toggle="tooltip" data-title="You can drag more than one dimension here" data-ng-show="dimension.multiple()" data-original-title="" title=""></i>
+
+									<i class="fa fa-asterisk dimension-required" data-toggle="tooltip" data-title="Required" data-ng-show="dimension.required()" data-original-title="" title=""></i>
+
+									<!--<a class="dimension-info"
+									data-toggle="tooltip"
+									data-title="Show description"
+									ng-click="open = !open" ng-show="dimension.description()">
+									<i class="fa fa-info dimension-info-toggle"></i>
+									</a>-->
+
+								<p class="dimension-title ng-binding">Group</p>
+								<ul sortable="" title="dimension.title()" value="dimension.value" multiple="dimension.multiple()" types="dimension.types()" class="dimensions-container list-unstyled ng-isolate-scope ui-sortable"><div class="msg ng-binding">You should only use strings here</div><li class="dimension ng-scope ui-draggable ui-draggable-handle dropped invalid" data-dimension="{&quot;key&quot;:&quot;video_id&quot;,&quot;type&quot;:&quot;Number&quot;}" ng-repeat="dimension in metadata track by $index" style="z-index: 100000; width: 263px; height: 36px;">
+										<span class="dimension-key ng-binding">video_id</span>
+										<span class="dimension-type ng-binding">Number</span>
+										
+									<span class="remove pull-right">×</span></li></ul>
+
+						</div>
+
+					</div><div class="col-lg-4 col-md-4 dimensions-wrapper ng-scope" ng-repeat="dimension in model.dimensions().values() track by $index" ng-init="open=false">
+
+								<div class="dimensions-model" style="overflow: hidden;">
+
+									<!--<div class="dimension-multiple">
+
+										<i class="fa fa-tag"
+										data-toggle="tooltip"
+										data-title="You can drag only one dimension here"
+										data-ng-show="!dimension.multiple()"></i>
+
+										<i class="fa fa-tags"
+										data-toggle="tooltip"
+										data-title="You can drag more than one dimension here"
+										data-ng-show="dimension.multiple()"></i>
+									</div>-->
+
+									<i class="fa fa-tags ng-hide" data-toggle="tooltip" data-title="You can drag more than one dimension here" data-ng-show="dimension.multiple()" data-original-title="" title=""></i>
+
+									<i class="fa fa-asterisk dimension-required" data-toggle="tooltip" data-title="Required" data-ng-show="dimension.required()" data-original-title="" title=""></i>
+
+									<!--<a class="dimension-info"
+									data-toggle="tooltip"
+									data-title="Show description"
+									ng-click="open = !open" ng-show="dimension.description()">
+									<i class="fa fa-info dimension-info-toggle"></i>
+									</a>-->
+
+								<p class="dimension-title ng-binding">Size</p>
+								<ul sortable="" title="dimension.title()" value="dimension.value" multiple="dimension.multiple()" types="dimension.types()" class="dimensions-container list-unstyled ng-isolate-scope ui-sortable"><div class="msg ng-binding">Drag numbers here</div><li class="dimension ng-scope ui-draggable ui-draggable-handle dropped" data-dimension="{&quot;key&quot;:&quot;y&quot;,&quot;type&quot;:&quot;Number&quot;}" ng-repeat="dimension in metadata track by $index" style="z-index: 100000; width: 263px; height: 36px;">
+										<span class="dimension-key ng-binding">y</span>
+										<span class="dimension-type ng-binding">Number</span>
+										
+									<span class="remove pull-right">×</span></li></ul>
+
+						</div>
+
+					</div></div><div class="row" group="" every="3" watch="model"></div>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+<section class="dark" data-ng-show="!error &amp;&amp; data.length &amp;&amp; parsed">
+
+	<div class="container">
+
+		<h3 id="options">
+			Customize your Visualization
+		</h3>
+
+		<div class="row">
+
+			<div class="col-lg-3">
+				<ul class="list-unstyled">
+					<!-- ngRepeat: option in chart.options() track by $index --><li ng-repeat="option in chart.options() track by $index" chart-option="" class="ng-scope" style="">
+						<p class="option-title text-capitalize ng-binding">
+							Width
+							<a data-ng-show="option.fitToWidth()" data-toggle="tooltip" data-title="Fit to width" class="option-fit pull-right ng-hide" data-original-title="" title="" style=""><i class="fa fa-expand"></i></a>
+						</p>
+
+						<div ng-switch="" on="option.type()">
+							<!-- ngSwitchWhen: number --><input min="0" class="form-control ng-pristine ng-untouched ng-valid ng-scope ng-not-empty ng-valid-min" ng-model="option.value" ng-switch-when="number" value="900" type="number"><!-- end ngSwitchWhen: -->
+
+							<!-- ngSwitchWhen: checkbox -->
+
+							<!-- ngSwitchWhen: color -->
+
+							<!-- ngSwitchWhen: list -->
+
+						<!-- ngSwitchDefault: ng-switch-default -->
+
+					</div>
+
+				</li><!-- end ngRepeat: option in chart.options() track by $index --><li ng-repeat="option in chart.options() track by $index" chart-option="" class="ng-scope">
+						<p class="option-title text-capitalize ng-binding">
+							Height
+							<a data-ng-show="option.fitToWidth()" data-toggle="tooltip" data-title="Fit to width" class="option-fit pull-right ng-hide" data-original-title="" title=""><i class="fa fa-expand"></i></a>
+						</p>
+
+						<div ng-switch="" on="option.type()">
+							<!-- ngSwitchWhen: number --><input min="0" class="form-control ng-pristine ng-untouched ng-valid ng-scope ng-not-empty ng-valid-min" ng-model="option.value" ng-switch-when="number" value="600" type="number"><!-- end ngSwitchWhen: -->
+
+							<!-- ngSwitchWhen: checkbox -->
+
+							<!-- ngSwitchWhen: color -->
+
+							<!-- ngSwitchWhen: list -->
+
+						<!-- ngSwitchDefault: ng-switch-default -->
+
+					</div>
+
+				</li><!-- end ngRepeat: option in chart.options() track by $index --><li ng-repeat="option in chart.options() track by $index" chart-option="" class="ng-scope">
+						<p class="option-title text-capitalize ng-binding">
+							Margin
+							<a data-ng-show="option.fitToWidth()" data-toggle="tooltip" data-title="Fit to width" class="option-fit pull-right ng-hide" data-original-title="" title=""><i class="fa fa-expand"></i></a>
+						</p>
+
+						<div ng-switch="" on="option.type()">
+							<!-- ngSwitchWhen: number --><input min="0" class="form-control ng-pristine ng-untouched ng-valid ng-scope ng-not-empty ng-valid-min" ng-model="option.value" ng-switch-when="number" value="20" type="number"><!-- end ngSwitchWhen: -->
+
+							<!-- ngSwitchWhen: checkbox -->
+
+							<!-- ngSwitchWhen: color -->
+
+							<!-- ngSwitchWhen: list -->
+
+						<!-- ngSwitchDefault: ng-switch-default -->
+
+					</div>
+
+				</li><!-- end ngRepeat: option in chart.options() track by $index --><li ng-repeat="option in chart.options() track by $index" chart-option="" class="ng-scope">
+						<p class="option-title text-capitalize ng-binding">
+							Iqr
+							<a data-ng-show="option.fitToWidth()" data-toggle="tooltip" data-title="Fit to width" class="option-fit pull-right ng-hide" data-original-title="" title=""><i class="fa fa-expand"></i></a>
+						</p>
+
+						<div ng-switch="" on="option.type()">
+							<!-- ngSwitchWhen: number --><input min="0" class="form-control ng-pristine ng-untouched ng-valid ng-scope ng-not-empty ng-valid-min" ng-model="option.value" ng-switch-when="number" style="" value="1.5" type="number"><!-- end ngSwitchWhen: -->
+
+							<!-- ngSwitchWhen: checkbox -->
+
+							<!-- ngSwitchWhen: color -->
+
+							<!-- ngSwitchWhen: list -->
+
+						<!-- ngSwitchDefault: ng-switch-default -->
+
+					</div>
+
+				</li><!-- end ngRepeat: option in chart.options() track by $index -->
+			</ul>
+		</div>
+
+		<div class="col-lg-9">
+			<div class="chart-resize">
+				<div ng-show="model.isValid()" id="chart" chart="" class="" style=""><svg width="900" height="600" xmlns="http://www.w3.org/2000/svg" version="1.1"><g transform="translate(20,20)"><g class="x axis" style="stroke-width: 1px; font-size: 10px; font-family: Arial, Helvetica;" transform="translate(0,560)"><g class="tick" style="opacity: 1;" transform="translate(76,0)"><line y2="6" x2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></line><text dy=".71em" style="text-anchor: middle;" y="9" x="0">70103763</text></g><g class="tick" style="opacity: 1;" transform="translate(194,0)"><line y2="6" x2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></line><text dy=".71em" style="text-anchor: middle;" y="9" x="0">70105699</text></g><g class="tick" style="opacity: 1;" transform="translate(312,0)"><line y2="6" x2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></line><text dy=".71em" style="text-anchor: middle;" y="9" x="0">70276596</text></g><g class="tick" style="opacity: 1;" transform="translate(430,0)"><line y2="6" x2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></line><text dy=".71em" style="text-anchor: middle;" y="9" x="0">70298930</text></g><g class="tick" style="opacity: 1;" transform="translate(548,0)"><line y2="6" x2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></line><text dy=".71em" style="text-anchor: middle;" y="9" x="0">80018499</text></g><g class="tick" style="opacity: 1;" transform="translate(666,0)"><line y2="6" x2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></line><text dy=".71em" style="text-anchor: middle;" y="9" x="0">80088567</text></g><g class="tick" style="opacity: 1;" transform="translate(784,0)"><line y2="6" x2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></line><text dy=".71em" style="text-anchor: middle;" y="9" x="0">80111454</text></g><path class="domain" d="M0,6V0H860V6" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></path></g><g class="y axis" style="stroke-width: 1px; font-size: 10px; font-family: Arial, Helvetica;"><g class="tick" style="opacity: 1;" transform="translate(0,519.7085255755873)"><line x2="860" y2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></line><text dy=".32em" style="text-anchor: end;" x="-3" y="0">200,000,000</text></g><g class="tick" style="opacity: 1;" transform="translate(0,475.1595269649226)"><line x2="860" y2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></line><text dy=".32em" style="text-anchor: end;" x="-3" y="0">400,000,000</text></g><g class="tick" style="opacity: 1;" transform="translate(0,430.6105283542579)"><line x2="860" y2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></line><text dy=".32em" style="text-anchor: end;" x="-3" y="0">600,000,000</text></g><g class="tick" style="opacity: 1;" transform="translate(0,386.06152974359316)"><line x2="860" y2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></line><text dy=".32em" style="text-anchor: end;" x="-3" y="0">800,000,000</text></g><g class="tick" style="opacity: 1;" transform="translate(0,341.5125311329285)"><line x2="860" y2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></line><text dy=".32em" style="text-anchor: end;" x="-3" y="0">1,000,000,000</text></g><g class="tick" style="opacity: 1;" transform="translate(0,296.9635325222638)"><line x2="860" y2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></line><text dy=".32em" style="text-anchor: end;" x="-3" y="0">1,200,000,000</text></g><g class="tick" style="opacity: 1;" transform="translate(0,252.41453391159905)"><line x2="860" y2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></line><text dy=".32em" style="text-anchor: end;" x="-3" y="0">1,400,000,000</text></g><g class="tick" style="opacity: 1;" transform="translate(0,207.86553530093437)"><line x2="860" y2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></line><text dy=".32em" style="text-anchor: end;" x="-3" y="0">1,600,000,000</text></g><g class="tick" style="opacity: 1;" transform="translate(0,163.3165366902697)"><line x2="860" y2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></line><text dy=".32em" style="text-anchor: end;" x="-3" y="0">1,800,000,000</text></g><g class="tick" style="opacity: 1;" transform="translate(0,118.76753807960495)"><line x2="860" y2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></line><text dy=".32em" style="text-anchor: end;" x="-3" y="0">2,000,000,000</text></g><g class="tick" style="opacity: 1;" transform="translate(0,74.21853946894026)"><line x2="860" y2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></line><text dy=".32em" style="text-anchor: end;" x="-3" y="0">2,200,000,000</text></g><g class="tick" style="opacity: 1;" transform="translate(0,29.669540858275578)"><line x2="860" y2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></line><text dy=".32em" style="text-anchor: end;" x="-3" y="0">2,400,000,000</text></g><path class="domain" d="M860,0H0V560H860" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 204);"></path></g><g class="box" transform="translate(61,0)" style="font-size: 10px; font-family: Arial, Helvetica;"><line class="center" x1="15" y1="537.4188037819675" x2="15" y2="178.7877131755301" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0); stroke-dasharray: 3, 3;"></line><rect class="box" x="0" y="300.5647544013786" width="30" height="182.13103756051288" style="fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></rect><line class="median" x1="0" y1="422.6755957051921" x2="30" y2="422.6755957051921" style="fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><line class="whisker" x1="0" y1="537.4188037819675" x2="30" y2="537.4188037819675" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><line class="whisker" x1="0" y1="178.7877131755301" x2="30" y2="178.7877131755301" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><circle class="outlier" r="5" cx="15" cy="0" style="opacity: 1; fill: none; stroke: rgb(0, 0, 0);"></circle><text class="box" dy=".3em" dx="-6" x="0" y="482.6957919618915" text-anchor="end">366,166,400</text><text class="box" dy=".3em" dx="6" x="30" y="422.6755957051921" text-anchor="start">635,623,394</text><text class="box" dy=".3em" dx="-6" x="0" y="300.5647544013786" text-anchor="end">1,183,832,535</text><text class="whisker" dy=".3em" dx="6" x="30" y="537.4188037819675" style="opacity: 1;">120,490,791</text><text class="whisker" dy=".3em" dx="6" x="30" y="178.7877131755301" style="opacity: 1;">1,730,543,101</text></g><g class="box" transform="translate(179,0)" style="font-size: 10px; font-family: Arial, Helvetica;"><line class="center" x1="15" y1="543.0048670910617" x2="15" y2="158.4306773899734" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0); stroke-dasharray: 3, 3;"></line><rect class="box" x="0" y="335.11525461559324" width="30" height="176.8516544582443" style="fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></rect><line class="median" x1="0" y1="446.8200185119227" x2="30" y2="446.8200185119227" style="fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><line class="whisker" x1="0" y1="543.0048670910617" x2="30" y2="543.0048670910617" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><line class="whisker" x1="0" y1="158.4306773899734" x2="30" y2="158.4306773899734" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><text class="box" dy=".3em" dx="-6" x="0" y="511.96690907383754" text-anchor="end">234,755,513</text><text class="box" dy=".3em" dx="6" x="30" y="446.8200185119227" text-anchor="start">527,228,487</text><text class="box" dy=".3em" dx="-6" x="0" y="335.11525461559324" text-anchor="end">1,028,720,181</text><text class="whisker" dy=".3em" dx="6" x="30" y="543.0048670910617" style="opacity: 1;">95,412,502</text><text class="whisker" dy=".3em" dx="6" x="30" y="158.4306773899734" style="opacity: 1;">1,821,934,766</text></g><g class="box" transform="translate(297,0)" style="font-size: 10px; font-family: Arial, Helvetica;"><line class="center" x1="15" y1="462.76014337223313" x2="15" y2="260.53688197037" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0); stroke-dasharray: 3, 3;"></line><rect class="box" x="0" y="347.1530834359484" width="30" height="87.88741939190822" style="fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></rect><line class="median" x1="0" y1="408.9461115472591" x2="30" y2="408.9461115472591" style="fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><line class="whisker" x1="0" y1="462.76014337223313" x2="30" y2="462.76014337223313" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><line class="whisker" x1="0" y1="260.53688197037" x2="30" y2="260.53688197037" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><text class="box" dy=".3em" dx="-6" x="0" y="435.04050282785664" text-anchor="end">580,111,901</text><text class="box" dy=".3em" dx="6" x="30" y="408.9461115472591" text-anchor="start">697,261,072</text><text class="box" dy=".3em" dx="-6" x="0" y="347.1530834359484" text-anchor="end">974,677,086</text><text class="whisker" dy=".3em" dx="6" x="30" y="462.76014337223313" style="opacity: 1;">455,666,273</text><text class="whisker" dy=".3em" dx="6" x="30" y="260.53688197037" style="opacity: 1;">1,363,535,216</text></g><g class="box" transform="translate(415,0)" style="font-size: 10px; font-family: Arial, Helvetica;"><line class="center" x1="15" y1="559.7353929811873" x2="15" y2="486.1361307011488" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0); stroke-dasharray: 3, 3;"></line><rect class="box" x="0" y="524.0979542235906" width="30" height="31.035043844480015" style="fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></rect><line class="median" x1="0" y1="543.3957705209357" x2="30" y2="543.3957705209357" style="fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><line class="whisker" x1="0" y1="559.7353929811873" x2="30" y2="559.7353929811873" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><line class="whisker" x1="0" y1="486.1361307011488" x2="30" y2="486.1361307011488" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><text class="box" dy=".3em" dx="-6" x="0" y="555.1329980680706" text-anchor="end">40,964,001</text><text class="box" dy=".3em" dx="6" x="30" y="543.3957705209357" text-anchor="start">93,657,565</text><text class="box" dy=".3em" dx="-6" x="0" y="524.0979542235906" text-anchor="end">180,293,929</text><text class="whisker" dy=".3em" dx="6" x="30" y="559.7353929811873" style="opacity: 1;">20,301,831</text><text class="whisker" dy=".3em" dx="6" x="30" y="486.1361307011488" style="opacity: 1;">350,721,210</text></g><g class="box" transform="translate(533,0)" style="font-size: 10px; font-family: Arial, Helvetica;"><line class="center" x1="15" y1="538.6610688686104" x2="15" y2="440.3202314076095" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0); stroke-dasharray: 3, 3;"></line><rect class="box" x="0" y="440.3202314076095" width="30" height="69.87450803248112" style="fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></rect><line class="median" x1="0" y1="482.90413894133883" x2="30" y2="482.90413894133883" style="fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><line class="whisker" x1="0" y1="538.6610688686104" x2="30" y2="538.6610688686104" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><line class="whisker" x1="0" y1="440.3202314076095" x2="30" y2="440.3202314076095" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><circle class="outlier" r="5" cx="15" cy="261.4271536135054" style="opacity: 1; fill: none; stroke: rgb(0, 0, 0);"></circle><circle class="outlier" r="5" cx="15" cy="261.24371286545625" style="opacity: 1; fill: none; stroke: rgb(0, 0, 0);"></circle><text class="box" dy=".3em" dx="-6" x="0" y="510.19473944009064" text-anchor="end">242,711,560</text><text class="box" dy=".3em" dx="6" x="30" y="482.90413894133883" text-anchor="start">365,231,039</text><text class="box" dy=".3em" dx="-6" x="0" y="440.3202314076095" text-anchor="end">556,408,883</text><text class="whisker" dy=".3em" dx="6" x="30" y="538.6610688686104" style="opacity: 1;">114,913,718</text><text class="whisker" dy=".3em" dx="6" x="30" y="440.3202314076095" style="opacity: 1;">556,408,883</text></g><g class="box" transform="translate(651,0)" style="font-size: 10px; font-family: Arial, Helvetica;"><line class="center" x1="15" y1="537.7526205658069" x2="15" y2="264.1411893131286" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0); stroke-dasharray: 3, 3;"></line><rect class="box" x="0" y="386.0834762508962" width="30" height="119.62515307930886" style="fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></rect><line class="median" x1="0" y1="463.69785435300906" x2="30" y2="463.69785435300906" style="fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><line class="whisker" x1="0" y1="537.7526205658069" x2="30" y2="537.7526205658069" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><line class="whisker" x1="0" y1="264.1411893131286" x2="30" y2="264.1411893131286" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><text class="box" dy=".3em" dx="-6" x="0" y="505.70862933020504" text-anchor="end">262,851,677</text><text class="box" dy=".3em" dx="6" x="30" y="463.69785435300906" text-anchor="start">451,456,477</text><text class="box" dy=".3em" dx="-6" x="0" y="386.0834762508962" text-anchor="end">799,901,473</text><text class="whisker" dy=".3em" dx="6" x="30" y="537.7526205658069" style="opacity: 1;">118,992,141</text><text class="whisker" dy=".3em" dx="6" x="30" y="264.1411893131286" style="opacity: 1;">1,347,353,899</text></g><g class="box" transform="translate(769,0)" style="font-size: 10px; font-family: Arial, Helvetica;"><line class="center" x1="15" y1="560" x2="15" y2="528.5164548798522" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0); stroke-dasharray: 3, 3;"></line><rect class="box" x="0" y="538.7541317267081" width="30" height="16.647590578626932" style="fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></rect><line class="median" x1="0" y1="549.0399241650034" x2="30" y2="549.0399241650034" style="fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><line class="whisker" x1="0" y1="560" x2="30" y2="560" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><line class="whisker" x1="0" y1="528.5164548798522" x2="30" y2="528.5164548798522" style="opacity: 1; fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0);"></line><text class="box" dy=".3em" dx="-6" x="0" y="555.401722305335" text-anchor="end">39,757,580</text><text class="box" dy=".3em" dx="6" x="30" y="549.0399241650034" text-anchor="start">68,318,483</text><text class="box" dy=".3em" dx="-6" x="0" y="538.7541317267081" text-anchor="end">114,495,918</text><text class="whisker" dy=".3em" dx="6" x="30" y="560" style="opacity: 1;">19,113,894</text><text class="whisker" dy=".3em" dx="6" x="30" y="528.5164548798522" style="opacity: 1;">160,457,341</text></g></g></svg></div>
+			</div>
+			<div class="text-muted text-center ng-hide" ng-show="!model.isValid()" style="">
+				<!--<i class="fa fa-hand-o-up breath-right"></i>-->
+				<h4><span ng-bind-html="model.instruction()" class="ng-binding"></span></h4>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+</section>
+
+<section class="dark" ng-show="model.isValid()" style="padding-bottom: 50px;">
+
+	<div class="container">
+
+		<div>
+
+			<div id="export" class="row">
+
+				<div class="col-lg-3">
+					<h3><i class="fa fa-download breath-right"></i>Download</h3>
+					<div class="row"><form class="form-search col-lg-12 ng-pristine ng-valid"><button bs-select="" class="btn btn-default ng-pristine ng-untouched ng-valid ng-empty" placeholder="Choose type" ng-model="mode" bs-options="m.label for m in modes">Choose type&nbsp;<span class="caret"></span></button><input class="form-control col-lg-12 ng-pristine ng-untouched ng-valid ng-empty" placeholder="Filename" ng-model="filename" type="text"><button class="btn btn-success form-control disabled" ng-class="{disabled:!mode.label}" ng-click="mode.download()">Download</button></form></div>
+				</div>
+
+				<div class="col-lg-9">
+					<h3 ng-show="!chart.isDrawing()" id="data" class=""><i class="fa fa-code breath-right"></i>Embed SVG Code</h3>
+					<h3 ng-show="chart.isDrawing()" class="ng-hide">loading <span class="glyphicon glyphicon-refresh spinning"></span></h3>
+					<coder ng-show="!chart.isDrawing()" class=""><textarea id="source" readonly="readonly" class="source-area ng-pristine ng-untouched ng-valid ng-not-empty" rows="4" ng-model="svgCode" style="">&lt;svg
+ width="900" height="600" xmlns="http://www.w3.org/2000/svg"&gt;&lt;g 
+transform="translate(20,20)"&gt;&lt;g class="x axis" 
+style="stroke-width: 1px; font-size: 10px; font-family: Arial, 
+Helvetica;" transform="translate(0,560)"&gt;&lt;g class="tick" 
+style="opacity: 1;" transform="translate(76,0)"&gt;&lt;line y2="6" 
+x2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 
+204, 204);"&gt;&lt;/line&gt;&lt;text dy=".71em" style="text-anchor: 
+middle;" y="9" x="0"&gt;70103763&lt;/text&gt;&lt;/g&gt;&lt;g 
+class="tick" style="opacity: 1;" 
+transform="translate(194,0)"&gt;&lt;line y2="6" x2="0" 
+style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 
+204);"&gt;&lt;/line&gt;&lt;text dy=".71em" style="text-anchor: middle;" 
+y="9" x="0"&gt;70105699&lt;/text&gt;&lt;/g&gt;&lt;g class="tick" 
+style="opacity: 1;" transform="translate(312,0)"&gt;&lt;line y2="6" 
+x2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 
+204, 204);"&gt;&lt;/line&gt;&lt;text dy=".71em" style="text-anchor: 
+middle;" y="9" x="0"&gt;70276596&lt;/text&gt;&lt;/g&gt;&lt;g 
+class="tick" style="opacity: 1;" 
+transform="translate(430,0)"&gt;&lt;line y2="6" x2="0" 
+style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 
+204);"&gt;&lt;/line&gt;&lt;text dy=".71em" style="text-anchor: middle;" 
+y="9" x="0"&gt;70298930&lt;/text&gt;&lt;/g&gt;&lt;g class="tick" 
+style="opacity: 1;" transform="translate(548,0)"&gt;&lt;line y2="6" 
+x2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 
+204, 204);"&gt;&lt;/line&gt;&lt;text dy=".71em" style="text-anchor: 
+middle;" y="9" x="0"&gt;80018499&lt;/text&gt;&lt;/g&gt;&lt;g 
+class="tick" style="opacity: 1;" 
+transform="translate(666,0)"&gt;&lt;line y2="6" x2="0" 
+style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 
+204);"&gt;&lt;/line&gt;&lt;text dy=".71em" style="text-anchor: middle;" 
+y="9" x="0"&gt;80088567&lt;/text&gt;&lt;/g&gt;&lt;g class="tick" 
+style="opacity: 1;" transform="translate(784,0)"&gt;&lt;line y2="6" 
+x2="0" style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 
+204, 204);"&gt;&lt;/line&gt;&lt;text dy=".71em" style="text-anchor: 
+middle;" y="9" x="0"&gt;80111454&lt;/text&gt;&lt;/g&gt;&lt;path 
+class="domain" d="M0,6V0H860V6" style="shape-rendering: crispedges; 
+fill: none; stroke: rgb(204, 204, 204);"&gt;&lt;/path&gt;&lt;/g&gt;&lt;g
+ class="y axis" style="stroke-width: 1px; font-size: 10px; font-family: 
+Arial, Helvetica;"&gt;&lt;g class="tick" style="opacity: 1;" 
+transform="translate(0,519.7085255755873)"&gt;&lt;line x2="860" y2="0" 
+style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 
+204);"&gt;&lt;/line&gt;&lt;text dy=".32em" style="text-anchor: end;" 
+x="-3" y="0"&gt;200,000,000&lt;/text&gt;&lt;/g&gt;&lt;g class="tick" 
+style="opacity: 1;" 
+transform="translate(0,475.1595269649226)"&gt;&lt;line x2="860" y2="0" 
+style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 
+204);"&gt;&lt;/line&gt;&lt;text dy=".32em" style="text-anchor: end;" 
+x="-3" y="0"&gt;400,000,000&lt;/text&gt;&lt;/g&gt;&lt;g class="tick" 
+style="opacity: 1;" 
+transform="translate(0,430.6105283542579)"&gt;&lt;line x2="860" y2="0" 
+style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 
+204);"&gt;&lt;/line&gt;&lt;text dy=".32em" style="text-anchor: end;" 
+x="-3" y="0"&gt;600,000,000&lt;/text&gt;&lt;/g&gt;&lt;g class="tick" 
+style="opacity: 1;" 
+transform="translate(0,386.06152974359316)"&gt;&lt;line x2="860" y2="0" 
+style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 
+204);"&gt;&lt;/line&gt;&lt;text dy=".32em" style="text-anchor: end;" 
+x="-3" y="0"&gt;800,000,000&lt;/text&gt;&lt;/g&gt;&lt;g class="tick" 
+style="opacity: 1;" 
+transform="translate(0,341.5125311329285)"&gt;&lt;line x2="860" y2="0" 
+style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 
+204);"&gt;&lt;/line&gt;&lt;text dy=".32em" style="text-anchor: end;" 
+x="-3" y="0"&gt;1,000,000,000&lt;/text&gt;&lt;/g&gt;&lt;g class="tick" 
+style="opacity: 1;" 
+transform="translate(0,296.9635325222638)"&gt;&lt;line x2="860" y2="0" 
+style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 
+204);"&gt;&lt;/line&gt;&lt;text dy=".32em" style="text-anchor: end;" 
+x="-3" y="0"&gt;1,200,000,000&lt;/text&gt;&lt;/g&gt;&lt;g class="tick" 
+style="opacity: 1;" 
+transform="translate(0,252.41453391159905)"&gt;&lt;line x2="860" y2="0" 
+style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 
+204);"&gt;&lt;/line&gt;&lt;text dy=".32em" style="text-anchor: end;" 
+x="-3" y="0"&gt;1,400,000,000&lt;/text&gt;&lt;/g&gt;&lt;g class="tick" 
+style="opacity: 1;" 
+transform="translate(0,207.86553530093437)"&gt;&lt;line x2="860" y2="0" 
+style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 
+204);"&gt;&lt;/line&gt;&lt;text dy=".32em" style="text-anchor: end;" 
+x="-3" y="0"&gt;1,600,000,000&lt;/text&gt;&lt;/g&gt;&lt;g class="tick" 
+style="opacity: 1;" 
+transform="translate(0,163.3165366902697)"&gt;&lt;line x2="860" y2="0" 
+style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 
+204);"&gt;&lt;/line&gt;&lt;text dy=".32em" style="text-anchor: end;" 
+x="-3" y="0"&gt;1,800,000,000&lt;/text&gt;&lt;/g&gt;&lt;g class="tick" 
+style="opacity: 1;" 
+transform="translate(0,118.76753807960495)"&gt;&lt;line x2="860" y2="0" 
+style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 
+204);"&gt;&lt;/line&gt;&lt;text dy=".32em" style="text-anchor: end;" 
+x="-3" y="0"&gt;2,000,000,000&lt;/text&gt;&lt;/g&gt;&lt;g class="tick" 
+style="opacity: 1;" 
+transform="translate(0,74.21853946894026)"&gt;&lt;line x2="860" y2="0" 
+style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 
+204);"&gt;&lt;/line&gt;&lt;text dy=".32em" style="text-anchor: end;" 
+x="-3" y="0"&gt;2,200,000,000&lt;/text&gt;&lt;/g&gt;&lt;g class="tick" 
+style="opacity: 1;" 
+transform="translate(0,29.669540858275578)"&gt;&lt;line x2="860" y2="0" 
+style="shape-rendering: crispedges; fill: none; stroke: rgb(204, 204, 
+204);"&gt;&lt;/line&gt;&lt;text dy=".32em" style="text-anchor: end;" 
+x="-3" y="0"&gt;2,400,000,000&lt;/text&gt;&lt;/g&gt;&lt;path 
+class="domain" d="M860,0H0V560H860" style="shape-rendering: crispedges; 
+fill: none; stroke: rgb(204, 204, 204);"&gt;&lt;/path&gt;&lt;/g&gt;&lt;g
+ class="box" transform="translate(61,0)" style="font-size: 10px; 
+font-family: Arial, Helvetica;"&gt;&lt;line class="center" x1="15" 
+y1="537.4188037819675" x2="15" y2="178.7877131755301" style="opacity: 1;
+ fill: rgb(204, 204, 204); stroke: rgb(0, 0, 0); stroke-dasharray: 3, 
+3;"&gt;&lt;/line&gt;&lt;rect class="box" x="0" y="300.5647544013786" 
+width="30" height="182.13103756051288" style="fill: rgb(204, 204, 204); 
+stroke: rgb(0, 0, 0);"&gt;&lt;/rect&gt;&lt;line class="median" x1="0" 
+y1="422.6755957051921" x2="30" y2="422.6755957051921" style="fill: 
+rgb(204, 204, 204); stroke: rgb(0, 0, 0);"&gt;&lt;/line&gt;&lt;line 
+class="whisker" x1="0" y1="537.4188037819675" x2="30" 
+y2="537.4188037819675" style="opacity: 1; fill: rgb(204, 204, 204); 
+stroke: rgb(0, 0, 0);"&gt;&lt;/line&gt;&lt;line class="whisker" x1="0" 
+y1="178.7877131755301" x2="30" y2="178.7877131755301" style="opacity: 1;
+ fill: rgb(204, 204, 204); stroke: rgb(0, 0, 
+0);"&gt;&lt;/line&gt;&lt;circle class="outlier" r="5" cx="15" cy="0" 
+style="opacity: 1; fill: none; stroke: rgb(0, 0, 
+0);"&gt;&lt;/circle&gt;&lt;text class="box" dy=".3em" dx="-6" x="0" 
+y="482.6957919618915" 
+text-anchor="end"&gt;366,166,400&lt;/text&gt;&lt;text class="box" 
+dy=".3em" dx="6" x="30" y="422.6755957051921" 
+text-anchor="start"&gt;635,623,394&lt;/text&gt;&lt;text class="box" 
+dy=".3em" dx="-6" x="0" y="300.5647544013786" 
+text-anchor="end"&gt;1,183,832,535&lt;/text&gt;&lt;text class="whisker" 
+dy=".3em" dx="6" x="30" y="537.4188037819675" style="opacity: 
+1;"&gt;120,490,791&lt;/text&gt;&lt;text class="whisker" dy=".3em" dx="6"
+ x="30" y="178.7877131755301" style="opacity: 
+1;"&gt;1,730,543,101&lt;/text&gt;&lt;/g&gt;&lt;g class="box" 
+transform="translate(179,0)" style="font-size: 10px; font-family: Arial,
+ Helvetica;"&gt;&lt;line class="center" x1="15" y1="543.0048670910617" 
+x2="15" y2="158.4306773899734" style="opacity: 1; fill: rgb(204, 204, 
+204); stroke: rgb(0, 0, 0); stroke-dasharray: 3, 
+3;"&gt;&lt;/line&gt;&lt;rect class="box" x="0" y="335.11525461559324" 
+width="30" height="176.8516544582443" style="fill: rgb(204, 204, 204); 
+stroke: rgb(0, 0, 0);"&gt;&lt;/rect&gt;&lt;line class="median" x1="0" 
+y1="446.8200185119227" x2="30" y2="446.8200185119227" style="fill: 
+rgb(204, 204, 204); stroke: rgb(0, 0, 0);"&gt;&lt;/line&gt;&lt;line 
+class="whisker" x1="0" y1="543.0048670910617" x2="30" 
+y2="543.0048670910617" style="opacity: 1; fill: rgb(204, 204, 204); 
+stroke: rgb(0, 0, 0);"&gt;&lt;/line&gt;&lt;line class="whisker" x1="0" 
+y1="158.4306773899734" x2="30" y2="158.4306773899734" style="opacity: 1;
+ fill: rgb(204, 204, 204); stroke: rgb(0, 0, 
+0);"&gt;&lt;/line&gt;&lt;text class="box" dy=".3em" dx="-6" x="0" 
+y="511.96690907383754" 
+text-anchor="end"&gt;234,755,513&lt;/text&gt;&lt;text class="box" 
+dy=".3em" dx="6" x="30" y="446.8200185119227" 
+text-anchor="start"&gt;527,228,487&lt;/text&gt;&lt;text class="box" 
+dy=".3em" dx="-6" x="0" y="335.11525461559324" 
+text-anchor="end"&gt;1,028,720,181&lt;/text&gt;&lt;text class="whisker" 
+dy=".3em" dx="6" x="30" y="543.0048670910617" style="opacity: 
+1;"&gt;95,412,502&lt;/text&gt;&lt;text class="whisker" dy=".3em" dx="6" 
+x="30" y="158.4306773899734" style="opacity: 
+1;"&gt;1,821,934,766&lt;/text&gt;&lt;/g&gt;&lt;g class="box" 
+transform="translate(297,0)" style="font-size: 10px; font-family: Arial,
+ Helvetica;"&gt;&lt;line class="center" x1="15" y1="462.76014337223313" 
+x2="15" y2="260.53688197037" style="opacity: 1; fill: rgb(204, 204, 
+204); stroke: rgb(0, 0, 0); stroke-dasharray: 3, 
+3;"&gt;&lt;/line&gt;&lt;rect class="box" x="0" y="347.1530834359484" 
+width="30" height="87.88741939190822" style="fill: rgb(204, 204, 204); 
+stroke: rgb(0, 0, 0);"&gt;&lt;/rect&gt;&lt;line class="median" x1="0" 
+y1="408.9461115472591" x2="30" y2="408.9461115472591" style="fill: 
+rgb(204, 204, 204); stroke: rgb(0, 0, 0);"&gt;&lt;/line&gt;&lt;line 
+class="whisker" x1="0" y1="462.76014337223313" x2="30" 
+y2="462.76014337223313" style="opacity: 1; fill: rgb(204, 204, 204); 
+stroke: rgb(0, 0, 0);"&gt;&lt;/line&gt;&lt;line class="whisker" x1="0" 
+y1="260.53688197037" x2="30" y2="260.53688197037" style="opacity: 1; 
+fill: rgb(204, 204, 204); stroke: rgb(0, 0, 
+0);"&gt;&lt;/line&gt;&lt;text class="box" dy=".3em" dx="-6" x="0" 
+y="435.04050282785664" 
+text-anchor="end"&gt;580,111,901&lt;/text&gt;&lt;text class="box" 
+dy=".3em" dx="6" x="30" y="408.9461115472591" 
+text-anchor="start"&gt;697,261,072&lt;/text&gt;&lt;text class="box" 
+dy=".3em" dx="-6" x="0" y="347.1530834359484" 
+text-anchor="end"&gt;974,677,086&lt;/text&gt;&lt;text class="whisker" 
+dy=".3em" dx="6" x="30" y="462.76014337223313" style="opacity: 
+1;"&gt;455,666,273&lt;/text&gt;&lt;text class="whisker" dy=".3em" dx="6"
+ x="30" y="260.53688197037" style="opacity: 
+1;"&gt;1,363,535,216&lt;/text&gt;&lt;/g&gt;&lt;g class="box" 
+transform="translate(415,0)" style="font-size: 10px; font-family: Arial,
+ Helvetica;"&gt;&lt;line class="center" x1="15" y1="559.7353929811873" 
+x2="15" y2="486.1361307011488" style="opacity: 1; fill: rgb(204, 204, 
+204); stroke: rgb(0, 0, 0); stroke-dasharray: 3, 
+3;"&gt;&lt;/line&gt;&lt;rect class="box" x="0" y="524.0979542235906" 
+width="30" height="31.035043844480015" style="fill: rgb(204, 204, 204); 
+stroke: rgb(0, 0, 0);"&gt;&lt;/rect&gt;&lt;line class="median" x1="0" 
+y1="543.3957705209357" x2="30" y2="543.3957705209357" style="fill: 
+rgb(204, 204, 204); stroke: rgb(0, 0, 0);"&gt;&lt;/line&gt;&lt;line 
+class="whisker" x1="0" y1="559.7353929811873" x2="30" 
+y2="559.7353929811873" style="opacity: 1; fill: rgb(204, 204, 204); 
+stroke: rgb(0, 0, 0);"&gt;&lt;/line&gt;&lt;line class="whisker" x1="0" 
+y1="486.1361307011488" x2="30" y2="486.1361307011488" style="opacity: 1;
+ fill: rgb(204, 204, 204); stroke: rgb(0, 0, 
+0);"&gt;&lt;/line&gt;&lt;text class="box" dy=".3em" dx="-6" x="0" 
+y="555.1329980680706" 
+text-anchor="end"&gt;40,964,001&lt;/text&gt;&lt;text class="box" 
+dy=".3em" dx="6" x="30" y="543.3957705209357" 
+text-anchor="start"&gt;93,657,565&lt;/text&gt;&lt;text class="box" 
+dy=".3em" dx="-6" x="0" y="524.0979542235906" 
+text-anchor="end"&gt;180,293,929&lt;/text&gt;&lt;text class="whisker" 
+dy=".3em" dx="6" x="30" y="559.7353929811873" style="opacity: 
+1;"&gt;20,301,831&lt;/text&gt;&lt;text class="whisker" dy=".3em" dx="6" 
+x="30" y="486.1361307011488" style="opacity: 
+1;"&gt;350,721,210&lt;/text&gt;&lt;/g&gt;&lt;g class="box" 
+transform="translate(533,0)" style="font-size: 10px; font-family: Arial,
+ Helvetica;"&gt;&lt;line class="center" x1="15" y1="538.6610688686104" 
+x2="15" y2="440.3202314076095" style="opacity: 1; fill: rgb(204, 204, 
+204); stroke: rgb(0, 0, 0); stroke-dasharray: 3, 
+3;"&gt;&lt;/line&gt;&lt;rect class="box" x="0" y="440.3202314076095" 
+width="30" height="69.87450803248112" style="fill: rgb(204, 204, 204); 
+stroke: rgb(0, 0, 0);"&gt;&lt;/rect&gt;&lt;line class="median" x1="0" 
+y1="482.90413894133883" x2="30" y2="482.90413894133883" style="fill: 
+rgb(204, 204, 204); stroke: rgb(0, 0, 0);"&gt;&lt;/line&gt;&lt;line 
+class="whisker" x1="0" y1="538.6610688686104" x2="30" 
+y2="538.6610688686104" style="opacity: 1; fill: rgb(204, 204, 204); 
+stroke: rgb(0, 0, 0);"&gt;&lt;/line&gt;&lt;line class="whisker" x1="0" 
+y1="440.3202314076095" x2="30" y2="440.3202314076095" style="opacity: 1;
+ fill: rgb(204, 204, 204); stroke: rgb(0, 0, 
+0);"&gt;&lt;/line&gt;&lt;circle class="outlier" r="5" cx="15" 
+cy="261.4271536135054" style="opacity: 1; fill: none; stroke: rgb(0, 0, 
+0);"&gt;&lt;/circle&gt;&lt;circle class="outlier" r="5" cx="15" 
+cy="261.24371286545625" style="opacity: 1; fill: none; stroke: rgb(0, 0,
+ 0);"&gt;&lt;/circle&gt;&lt;text class="box" dy=".3em" dx="-6" x="0" 
+y="510.19473944009064" 
+text-anchor="end"&gt;242,711,560&lt;/text&gt;&lt;text class="box" 
+dy=".3em" dx="6" x="30" y="482.90413894133883" 
+text-anchor="start"&gt;365,231,039&lt;/text&gt;&lt;text class="box" 
+dy=".3em" dx="-6" x="0" y="440.3202314076095" 
+text-anchor="end"&gt;556,408,883&lt;/text&gt;&lt;text class="whisker" 
+dy=".3em" dx="6" x="30" y="538.6610688686104" style="opacity: 
+1;"&gt;114,913,718&lt;/text&gt;&lt;text class="whisker" dy=".3em" dx="6"
+ x="30" y="440.3202314076095" style="opacity: 
+1;"&gt;556,408,883&lt;/text&gt;&lt;/g&gt;&lt;g class="box" 
+transform="translate(651,0)" style="font-size: 10px; font-family: Arial,
+ Helvetica;"&gt;&lt;line class="center" x1="15" y1="537.7526205658069" 
+x2="15" y2="264.1411893131286" style="opacity: 1; fill: rgb(204, 204, 
+204); stroke: rgb(0, 0, 0); stroke-dasharray: 3, 
+3;"&gt;&lt;/line&gt;&lt;rect class="box" x="0" y="386.0834762508962" 
+width="30" height="119.62515307930886" style="fill: rgb(204, 204, 204); 
+stroke: rgb(0, 0, 0);"&gt;&lt;/rect&gt;&lt;line class="median" x1="0" 
+y1="463.69785435300906" x2="30" y2="463.69785435300906" style="fill: 
+rgb(204, 204, 204); stroke: rgb(0, 0, 0);"&gt;&lt;/line&gt;&lt;line 
+class="whisker" x1="0" y1="537.7526205658069" x2="30" 
+y2="537.7526205658069" style="opacity: 1; fill: rgb(204, 204, 204); 
+stroke: rgb(0, 0, 0);"&gt;&lt;/line&gt;&lt;line class="whisker" x1="0" 
+y1="264.1411893131286" x2="30" y2="264.1411893131286" style="opacity: 1;
+ fill: rgb(204, 204, 204); stroke: rgb(0, 0, 
+0);"&gt;&lt;/line&gt;&lt;text class="box" dy=".3em" dx="-6" x="0" 
+y="505.70862933020504" 
+text-anchor="end"&gt;262,851,677&lt;/text&gt;&lt;text class="box" 
+dy=".3em" dx="6" x="30" y="463.69785435300906" 
+text-anchor="start"&gt;451,456,477&lt;/text&gt;&lt;text class="box" 
+dy=".3em" dx="-6" x="0" y="386.0834762508962" 
+text-anchor="end"&gt;799,901,473&lt;/text&gt;&lt;text class="whisker" 
+dy=".3em" dx="6" x="30" y="537.7526205658069" style="opacity: 
+1;"&gt;118,992,141&lt;/text&gt;&lt;text class="whisker" dy=".3em" dx="6"
+ x="30" y="264.1411893131286" style="opacity: 
+1;"&gt;1,347,353,899&lt;/text&gt;&lt;/g&gt;&lt;g class="box" 
+transform="translate(769,0)" style="font-size: 10px; font-family: Arial,
+ Helvetica;"&gt;&lt;line class="center" x1="15" y1="560" x2="15" 
+y2="528.5164548798522" style="opacity: 1; fill: rgb(204, 204, 204); 
+stroke: rgb(0, 0, 0); stroke-dasharray: 3, 3;"&gt;&lt;/line&gt;&lt;rect 
+class="box" x="0" y="538.7541317267081" width="30" 
+height="16.647590578626932" style="fill: rgb(204, 204, 204); stroke: 
+rgb(0, 0, 0);"&gt;&lt;/rect&gt;&lt;line class="median" x1="0" 
+y1="549.0399241650034" x2="30" y2="549.0399241650034" style="fill: 
+rgb(204, 204, 204); stroke: rgb(0, 0, 0);"&gt;&lt;/line&gt;&lt;line 
+class="whisker" x1="0" y1="560" x2="30" y2="560" style="opacity: 1; 
+fill: rgb(204, 204, 204); stroke: rgb(0, 0, 
+0);"&gt;&lt;/line&gt;&lt;line class="whisker" x1="0" 
+y1="528.5164548798522" x2="30" y2="528.5164548798522" style="opacity: 1;
+ fill: rgb(204, 204, 204); stroke: rgb(0, 0, 
+0);"&gt;&lt;/line&gt;&lt;text class="box" dy=".3em" dx="-6" x="0" 
+y="555.401722305335" 
+text-anchor="end"&gt;39,757,580&lt;/text&gt;&lt;text class="box" 
+dy=".3em" dx="6" x="30" y="549.0399241650034" 
+text-anchor="start"&gt;68,318,483&lt;/text&gt;&lt;text class="box" 
+dy=".3em" dx="-6" x="0" y="538.7541317267081" 
+text-anchor="end"&gt;114,495,918&lt;/text&gt;&lt;text class="whisker" 
+dy=".3em" dx="6" x="30" y="560" style="opacity: 
+1;"&gt;19,113,894&lt;/text&gt;&lt;text class="whisker" dy=".3em" dx="6" 
+x="30" y="528.5164548798522" style="opacity: 
+1;"&gt;160,457,341&lt;/text&gt;&lt;/g&gt;&lt;/g&gt;&lt;/svg&gt;</textarea></coder>
+					<p ng-show="!chart.isDrawing()" class="light">Copy the snippet above into your HTML code to embed the visualization
+						<a class="pull-right" id="copy-button" copy-button="" data-clipboard-target="source" data-container="body"><i class="fa fa-clipboard"></i></a>
+					</p>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</section>
+</div>
+</div>
+
+  <div id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <p><strong>RAW</strong> is an open source project by <a href="http://www.densitydesign.org/">DensityDesign Lab</a> and <a href="http://calib.ro/">Calibro</a></p>
+          <p><a href="https://www.giorgiocaviglia.com/" target="_blank">Giorgio Caviglia,</a> <a href="http://www.densitydesign.org/person/michele-mauri/" target="_blank">Michele Mauri</a>, <a href="http://calib.ro/" target="_blank">Giorgio Uboldi</a>, <a href="http://calib.ro/" target="_blank">Matteo Azzi</a></p>
+          <p>© 2013-2017 (<a href="https://raw.github.com/densitydesign/raw/master/LICENSE">Apache License 2.0</a>)</p>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
+          <p><a href="mailto:hello@rawgraphs.io"><i class="fa fa-envelope breath-right"></i>hello@rawgraphs.io</a></p>
+          <p><a href="http://twitter.com/rawgraphs"><i class="fa fa-twitter breath-right"></i>rawgraphs</a></p>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
+          <p><a href="http://github.com/densitydesign/raw"><i class="fa fa-github breath-right"></i>GitHub</a></p>
+          <p><a href="https://groups.google.com/forum/?hl=en#!forum/densitydesign-raw"><i class="fa fa-google breath-right"></i>Google group</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jquery -->
+  <script type="text/javascript" src="RAW_files/jquery.js"></script>
+  <script type="text/javascript" src="RAW_files/jquery-ui.js"></script>
+  <script type="text/javascript" src="RAW_files/jquery_002.js"></script>
+  <!-- bootstrap -->
+  <script type="text/javascript" src="RAW_files/bootstrap.js"></script>
+  <script type="text/javascript" src="RAW_files/bootstrap-colorpicker.js"></script>
+  <!-- d3 -->
+  <script type="text/javascript" src="RAW_files/d3.js"></script>
+  <script type="text/javascript" src="RAW_files/sankey.js"></script>
+  <script type="text/javascript" src="RAW_files/hexbin.js"></script>
+  <script type="text/javascript" src="RAW_files/horizon.js"></script>
+  <script type="text/javascript" src="RAW_files/box.js"></script>
+  <!-- codemirror -->
+  <script type="text/javascript" src="RAW_files/codemirror.js"></script>
+  <script type="text/javascript" src="RAW_files/placeholder.js"></script>
+  <!-- canvastoblob -->
+  <script type="text/javascript" src="RAW_files/canvas-toBlob.js"></script>
+  <!-- filesaver -->
+  <script type="text/javascript" src="RAW_files/FileSaver.js"></script>
+  <!-- zeroclipboard -->
+  <script type="text/javascript" src="RAW_files/ZeroClipboard.js"></script>
+  <!-- raw -->
+  <script type="text/javascript" src="RAW_files/raw.js"></script>
+
+  <!-- charts -->
+  <script src="RAW_files/treemap.js"></script>
+  <script src="RAW_files/streamgraph.js"></script>
+  <script src="RAW_files/scatterPlot.js"></script>
+  <script src="RAW_files/packing.js"></script>
+  <script src="RAW_files/clusterDendrogram.js"></script>
+  <script src="RAW_files/voronoi.js"></script>
+  <script src="RAW_files/delaunay.js"></script>
+  <script src="RAW_files/alluvial.js"></script>
+  <script src="RAW_files/clusterForce.js"></script>
+  <script src="RAW_files/convexHullMultiple.js"></script>
+  <script src="RAW_files/hexagonalBinning.js"></script>
+  <script src="RAW_files/parallelCoordinates.js"></script>
+  <script src="RAW_files/circularDendrogram.js"></script>
+  <script src="RAW_files/smallMultiplesArea.js"></script>
+  <script src="RAW_files/bumpChart.js"></script>
+  <script src="RAW_files/sunburst.js"></script>
+  <script src="RAW_files/gantt.js"></script>
+  <script src="RAW_files/horizon_002.js"></script>
+  <script src="RAW_files/boxPlot.js"></script>
+  <script src="RAW_files/barChart.js"></script>
+  <script src="RAW_files/pieChart.js"></script>
+
+  <!-- angular -->
+  <script type="text/javascript" src="RAW_files/angular.js"></script>
+  <script type="text/javascript" src="RAW_files/angular-route.js"></script>
+  <script type="text/javascript" src="RAW_files/angular-animate.js"></script>
+  <script type="text/javascript" src="RAW_files/angular-sanitize.js"></script>
+  <script type="text/javascript" src="RAW_files/angular-strap.js"></script>
+  <script type="text/javascript" src="RAW_files/angular-strap_002.js"></script>
+  <script type="text/javascript" src="RAW_files/angular-ui.js"></script>
+  <script type="text/javascript" src="RAW_files/bootstrap-colorpicker-module.js"></script>
+  <script type="text/javascript" src="RAW_files/ng-file-upload.js"></script>
+  <script type="text/javascript" src="RAW_files/is.js"></script>
+  <script type="text/javascript" src="RAW_files/xlsx.js"></script>
+
+
+  <script src="RAW_files/app.js"></script>
+  <script src="RAW_files/services.js"></script>
+  <script src="RAW_files/controllers.js"></script>
+  <script src="RAW_files/filters.js"></script>
+  <script src="RAW_files/directives.js"></script>
+
+  <!-- google analytics -->
+  <script src="RAW_files/analytics.html"></script>
+
+
+
+
+<label style="visibility: hidden; position: absolute; overflow: hidden; width: 0px; height: 0px; border: medium none; margin: 0px; padding: 0px;" tabindex="-1">upload<input ngf-drop="" ngf-select="" ng-model="files" ngf-drag-over-class="dragover" ngf-multiple="false" ngf-allow-dir="false" ng-show="!worksheets.length" type="file"></label></body></html>
