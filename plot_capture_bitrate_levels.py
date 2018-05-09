@@ -23,13 +23,12 @@ for db_movie in db_movies:
     movie_id = db_movie[0]
     print("checking " + str(movie_id))
 
-    cursor.execute("SELECT size, bitrate FROM "
-                   "(SELECT DISTINCT MAX(p.range_end) as size, c.bitrate as bitrate "
+    # fetch accumulated packet sizes per video
+    cursor.execute("SELECT SUM(p.range_end- p.range_start) as size, c.bitrate as bitrate "
                    "FROM packets p "
                    "INNER JOIN captures c ON c.id = p.capture_id "
                    "WHERE c.movie_id = ? AND p.body_size > 0 AND p.is_video = 1 "
-                   "GROUP BY c.bitrate) "
-                   "ORDER BY bitrate",
+                   "GROUP BY c.bitrate",
                    [movie_id])
     db_bitrate_levels = cursor.fetchall()
 
@@ -52,6 +51,7 @@ for db_movie in db_movies:
     with open(config.plot_dir + "/capture_bitrate_levels_" + str(movie_id) + ".json", 'w') as outfile:
         json.dump(local_library, outfile)
 
+    # fetch packet sizes per video
     cursor.execute("SELECT p.range_end - p.range_start as size, c.bitrate as bitrate "
                    "FROM packets p "
                    "INNER JOIN captures c ON c.id = p.capture_id "
