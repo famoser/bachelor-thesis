@@ -51,5 +51,9 @@ class Inventory:
     def full_capture(self):
         return self.__dict__
 
+    def get_name_of(self, id):
+        inv_map = {v: k for k, v in self.__dict__.items()}
+        return inv_map[id]
+
     def small_capture(self):
         return {"family": self.family_guy, "bojack": self.bojack_horseman}
