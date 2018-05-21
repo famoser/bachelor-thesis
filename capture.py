@@ -48,6 +48,11 @@ class Configuration:
         # allow 5h videos, plus reserve consisting of the self.wait_seconds
         self.max_iterations = int(60 * 60 * 5 / self.skip_seconds)
 
+        # if the capture should be sped up
+        #
+        # false because we want to see differences
+        self.speed_up_capture = False
+
 
 static_config = StaticConfig()
 video_ids = Inventory().full_capture()
@@ -115,11 +120,12 @@ with BrowserProxy("attack") as proxy:
 
                 print("capturing with bitrate " + str(bitrate) + "k")
 
-                # speed up capture after waiting for it to settle
-                print("starting with speed up in " + str(config.wait_before_playback_speedup) + "s")
-                time.sleep(config.wait_before_playback_speedup)
-                browser.speed_up_playback(config.wait_after_repositioning, config.skip_seconds, config.wait_seconds,
-                                          config.max_iterations)
+                if config.speed_up_capture:
+                    # speed up capture after waiting for it to settle
+                    print("starting with speed up in " + str(config.wait_before_playback_speedup) + "s")
+                    time.sleep(config.wait_before_playback_speedup)
+                    browser.speed_up_playback(config.wait_after_repositioning, config.skip_seconds, config.wait_seconds,
+                                              config.max_iterations)
 
                 # create the filename
                 fileName = str(video_id) + '_'
