@@ -16,7 +16,7 @@ connection = sqlite3.connect(db_file_name)
 connection.execute(
     "CREATE TABLE captures (id INTEGER PRIMARY KEY AUTOINCREMENT, movie_id INTEGER, bitrate INTEGER, created_at TEXT)")
 connection.execute(
-    "CREATE TABLE packets (id INTEGER PRIMARY KEY AUTOINCREMENT, capture_id INTEGER, url text, body_size INTEGER, is_video INTEGER, range_start INTEGER, range_end INTEGER)")
+    "CREATE TABLE packets (id INTEGER PRIMARY KEY AUTOINCREMENT, capture_id INTEGER, url text, body_size INTEGER, is_video INTEGER, range_start INTEGER, range_end INTEGER, start_date_time TEXT, end_date_time TEXT)")
 
 connection.commit()
 
@@ -40,11 +40,19 @@ for file_name in analyzer.get_file_names():
     insert_array = []
     har_entries = analyzer.get_har_entries_dict()[file_name]
     for entry in har_entries:
-        row_array = [capture_id, entry.url, entry.body_size, entry.is_video, entry.range_start, entry.range_end]
+        start_date_time = None
+        if entry.start_date_time is not None:
+            start_date_time = entry.start_date_time.isoformat()
+
+        end_date_time = None
+        if entry.end_date_time is not None:
+            end_date_time = entry.end_date_time.isoformat()
+        row_array = [capture_id, entry.url, entry.body_size, entry.is_video, entry.range_start, entry.range_end,
+                     start_date_time, end_date_time]
         insert_array.append(row_array)
 
     # insert har entries to db
     connection.executemany(
-        "INSERT INTO packets (capture_id, url, body_size, is_video, range_start, range_end) VALUES (?, ?, ?, ?, ?, ?)",
+        "INSERT INTO packets (capture_id, url, body_size, is_video, range_start, range_end, start_date_time, end_date_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
         insert_array)
     connection.commit()

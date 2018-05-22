@@ -1,6 +1,7 @@
 import os
 import json
-
+import dateutil.parser
+from datetime import timedelta
 
 class HarAnalyzer:
     __file_names = []
@@ -29,30 +30,6 @@ class HarAnalyzer:
         # create har dict
         for file_name in self.__file_names:
             self.__har_entries_dict[file_name] = self.get_har_entries_from_json(self.__json_dict[file_name]["packets"])
-
-            # parse the log entries
-            for entry in self.__json_dict[file_name]["packets"]:
-                har_entry = HarEntry()
-                har_entry.url = entry["request"]["url"]
-                har_entry.body_size = int(entry["response"]["bodySize"])
-
-                # check if url ends like the CDN's of netflix
-                if "video.net/range/" in har_entry.url:
-                    har_entry.is_video = True
-
-                    # cut of url at /range to parse it
-                    range_url = har_entry.url[(har_entry.url.rindex("/range") + len("/range") + 1):]
-
-                    # remove query parameters
-                    if "?" in range_url:
-                        range_url = range_url[:range_url.index("?")]
-
-                    # parse range (of the form 7123-8723)
-                    ranges = range_url.split("-")
-                    har_entry.range_start = int(ranges[0])
-                    har_entry.range_end = int(ranges[1])
-
-                self.__har_entries_dict[file_name].append(har_entry)
 
         # create capture statistics dict
         for file_name in self.__file_names:
@@ -99,6 +76,10 @@ class HarAnalyzer:
                 ranges = range_url.split("-")
                 har_entry.range_start = int(ranges[0])
                 har_entry.range_end = int(ranges[1])
+
+                # datetime handling
+                har_entry.start_date_time = dateutil.parser.parse(entry["startedDateTime"])
+                har_entry.end_date_time = har_entry.start_date_time + timedelta(milliseconds=entry["time"])
 
             res.append(har_entry)
 
@@ -205,6 +186,8 @@ class HarEntry:
         self.is_video = False
         self.range_start = None
         self.range_end = None
+        self.start_date_time = None
+        self.end_date_time = None
 
     def __repr__(self):
         return self.__dict__.__repr__()
