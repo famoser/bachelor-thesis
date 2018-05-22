@@ -216,6 +216,20 @@ class NetflixBrowser:
 
         return True
 
+    def wait_for_video_to_stop(self, wait_seconds: int, max_iterations: int = 1000):
+        i = max_iterations
+        while i > 0:
+            if not self.__browser.execute_script("return is_still_playing()"):
+                print("video stopped playing, returning")
+                break
+            else:
+                print("checked & video still playing, checking again in " + str(wait_seconds) + "s")
+
+            time.sleep(wait_seconds)
+            i -= 1
+
+        return True
+
     def get_available_bitrates(self):
         root_element = self.__try_find_element("html")
         if root_element is not None:

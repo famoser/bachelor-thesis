@@ -29,8 +29,9 @@ class StaticConfig:
 
 class Inventory:
     def __init__(self):
-        # netflix test video
-        self.test_video = 80018499
+        # cartoon
+        self.family_guy = 80111454
+        self.bojack_horseman = 70298930
 
         # action
         self.transformers = 70103763
@@ -44,9 +45,8 @@ class Inventory:
         self.minimalism = 80114460
         self.expedition_happiness = 80225528
 
-        # cartoon
-        self.family_guy = 80111454
-        self.bojack_horseman = 70298930
+        # netflix test video
+        self.test_video = 80018499
 
     def full_capture(self):
         return self.__dict__

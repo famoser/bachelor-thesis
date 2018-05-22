@@ -33,9 +33,14 @@ function ensureVideoPlays() {
     buttons[0].click();
 }
 
+function isStillPlaying() {
+    return document.getElementsByClassName("nfp nf-player-container NFPlayer ended").length == 0;
+}
+
 window.start_faster_playback = startFasterPlayback;
 window.faster_playback_still_active = stillActive;
 window.ensure_video_plays = ensureVideoPlays;
+window.is_still_playing = isStillPlaying;
 
 var W1d = {
     'F5S': function (H5S, g5S) {

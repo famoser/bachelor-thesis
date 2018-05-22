@@ -126,6 +126,10 @@ with BrowserProxy("attack") as proxy:
                     time.sleep(config.wait_before_playback_speedup)
                     browser.speed_up_playback(config.wait_after_repositioning, config.skip_seconds, config.wait_seconds,
                                               config.max_iterations)
+                else:
+                    print("checking video if its still playing in " + str(config.wait_before_playback_speedup) + "s")
+                    time.sleep(config.wait_before_playback_speedup)
+                    browser.wait_for_video_to_stop(config.wait_seconds, config.max_iterations)
 
                 # create the filename
                 fileName = str(video_id) + '_'
@@ -136,5 +140,30 @@ with BrowserProxy("attack") as proxy:
                 configuration = config.__dict__
                 configuration["bitrate"] = bitrate
                 proxy.save_active_capture(static_config.captures_dir + "/" + fileName, configuration)
+
+                if not config.speed_up_capture:
+                    # need to reinitialize browser completely
+                    if not browser.navigate(video_id):
+                        print("could not navigate to video")
+                        continue
+
+                    # wait till player initializes
+                    print("navigated to video, waiting to settle for " + str(config.wait_after_video_load) + "s")
+                    time.sleep(config.wait_after_video_load)
+
+                    # ensure player has initialized by clicking on presumed underlying "play" button
+                    # if there is no button (so the video is already playing) this has no effect
+                    Mouse.click_at_current_position()
+                    print("ensured video is playing, now waiting to settle for " +
+                          str(config.wait_after_ensured_video_load) + "s")
+                    time.sleep(config.wait_after_ensured_video_load)
+
+                    # go to middle of video to have a clean capture when starting at 0
+                    if not browser.set_video_time(100):
+                        print("could not reposition video")
+                        continue
+
+                    print("repositioned video, waiting to settle for " + str(config.wait_after_repositioning) + "s")
+                    time.sleep(config.wait_after_repositioning)
 
 print("finished")
