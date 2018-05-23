@@ -8,6 +8,8 @@ import time
 from python_libs.config import StaticConfig, Inventory
 
 RESOLUTION = 10
+SKIP_FIRST = 100
+MIN_Y = 20
 
 config = StaticConfig()
 inventory = Inventory()
@@ -74,30 +76,46 @@ for db_movie in db_movies:
 
         db_packets = cursor.fetchall()
 
-        sum = 0
+        current_resolution = RESOLUTION
+        current_skip = SKIP_FIRST
         full_sum = 0
-        counter = 0
+        current_sum = 0
         start = 0
         normalize_point = db_packets[0][1]
         for db_packet in db_packets:
-            # create line from x1 to x2, depending on size of packet
-            start = get_adapted_time(db_packet[1], normalize_point)
-            end = get_adapted_time(db_packet[2], normalize_point)
-            if end - start == 0:
-                print("0 size")
-            else:
-                y = db_packet[0] / (end - start)
-                axes_bitrate.plot([start, end], [y, y], marker='.', linewidth=1)
+            current_skip -= 1
+            if current_skip > 0:
+                continue
 
-            # for full analyis
-            counter += 1
-            sum += db_packet[0]
+            if current_skip == 0:
+                normalize_point = db_packet[1]
+
+            if current_resolution == RESOLUTION:
+                start = get_adapted_time(db_packet[1], normalize_point)
+
+            current_sum += db_packet[0]
+            current_resolution -= 1
+
+            if current_resolution == 0:
+                current_resolution = RESOLUTION
+                end = get_adapted_time(db_packet[2], normalize_point)
+
+                if end - start == 0:
+                    print("0 size")
+                else:
+                    y = current_sum / (end - start)
+                    if y > MIN_Y:
+                        axes_bitrate.plot([start, end], [y, y], marker='.', linewidth=1)
+
+                full_sum += current_sum
+                current_sum = 0
 
         total_time = get_adapted_time(db_packets[len(db_packets) - 1][2], normalize_point)
-        y = sum / total_time
+        y = full_sum / total_time
         axes_full.plot([0, total_time], [y, y], label=str(bitrate), marker='.', linewidth=1)
         axes_full.legend()
 
     # save
-    plt.savefig(config.plot_dir + "/capture_flow_per_time_" + str(movie_id) + ".png", dpi=300)
+    plt.savefig(config.plot_dir + "/capture_aggregated_" + str(RESOLUTION) + "_flow_per_time_" + str(movie_id) + ".png",
+                dpi=300)
     plt.close()
