@@ -54,6 +54,9 @@ bitrates for the specific profiles:
     E.V.vI:
         4300, 5800
 
+video encoding:
+  size of packets is always 4 seconds
+  sound is longer, and always of the same size
 
 shortcuts:
 ctrl-alt-shift+d (68),ctrl-alt-shift+q (81) -> list with all current properties of video, audio

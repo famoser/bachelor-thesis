@@ -7,7 +7,7 @@ import time
 
 from python_libs.config import StaticConfig, Inventory
 
-RESOLUTION = 10
+RESOLUTION = 100
 SKIP_FIRST = 100
 MIN_Y = 20
 
