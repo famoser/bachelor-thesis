@@ -1,5 +1,5 @@
-import matplotlib.pyplot as plt
-import json
+# removed irrelevant files
+
 import os
 
 from python_libs.config import StaticConfig

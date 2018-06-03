@@ -1,7 +1,8 @@
-import matplotlib.pyplot as plt
-import hashlib
+# this scans the db and tries to find the encoding length used
+# so the time slot netflix uses to get to the target bitrate
+# based on this script this seems to be the full movie
+
 import sqlite3
-import json
 import dateutil
 import time
 

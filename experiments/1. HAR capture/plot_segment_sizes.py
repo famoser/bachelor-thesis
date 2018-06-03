@@ -1,6 +1,6 @@
+# plots the video size per segment
+
 import matplotlib.pyplot as plt
-import json
-import os
 
 from python_libs.config import StaticConfig
 from python_libs.har_analyzer import HarAnalyzer

@@ -1,3 +1,5 @@
+# this script sums up the video size per video
+
 import os
 import json
 

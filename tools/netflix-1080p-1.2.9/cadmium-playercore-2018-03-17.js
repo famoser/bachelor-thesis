@@ -16276,6 +16276,8 @@ var W1d = {
         cg.ACTION = Oc.ACTION;
         var a = function (a, b, c, h, f) {
             m(f, function () {
+                console.log("xml parsed")
+                console.log(hb(c, "utf-8"))
                 var k = a.getMslStore().getCryptoContext(b),
                     p = k ? k : new Ub(a, b),
                     k = hb(c, "utf-8"),
@@ -16287,6 +16289,7 @@ var W1d = {
                     u = g && 1 == g.length && g[0].firstChild ? parseInt(g[0].firstChild.nodeValue) : null,
                     t = l && 1 == l.length && l[0].firstChild ? l[0].firstChild.nodeValue : null;
                 if (!q || !u || !t) throw new ga(d.XML_PARSE_ERROR, "MDX authdata " + ia(c));
+                //# probably where xml is passed after decryption
                 k = "action=" + H(q) + "&nonce=" + H(u.toString()) + "&pin=" + H(t);
                 p.verify(db(k, "utf-8"), h, {
                     result: function (a) {
@@ -20843,8 +20846,13 @@ var W1d = {
                     case Ud:
                         return a.response || new ArrayBuffer(0);
                     case zk:
+                        console.log("response switcher xml")
+                        console.log(a.reponseText)
                         return a.responseXML;
                     default:
+                        console.log("response switcher text")
+                        console.log(a.reponseText)
+                        console.trace()
                         return a.responseText;
                 }
             }
@@ -20941,6 +20949,8 @@ var W1d = {
 
             function Ic(a) {
                 if (gd(a)) {
+                    console.log("xml parsing")
+                    console.log(a)
                     var b = (new kh).parseFromString(a, "text/xml"),
                         c = b.getElementsByTagName("parsererror");
                     if (c && c[0]) {
@@ -20993,6 +21003,8 @@ var W1d = {
 
             function Jc(a, b) {
                 var c, f;
+                console.log("xml2xml")
+                console.log(a)
                 try {
                     c = Ic(a);
                 } catch (ed) {
@@ -24520,7 +24532,7 @@ var W1d = {
         
                 //# T is the logger used by the main components
                 var T = v.log.Ira();
-                /* */
+                /* 
                 replacement = function (text, args) {
                     console.log(text);
                     console.log(args);
@@ -24531,7 +24543,7 @@ var W1d = {
                 T.log = replacement;
                 T.trace = replacement;
                 T.warn = replacement;
-            /**/
+            */
                 window.T = T;
                 Mh || (Mh = b);
                 v.QT = 0;
@@ -27451,8 +27463,6 @@ var W1d = {
                         var g = a[c];
                         g.selected && (D[g.value] = 1);
                     }
-                    console.log(F.options);
-                    console.log(a[0].value);
                     b.li = k;
                     l();
                     if (a = b.pf) {
@@ -34252,6 +34262,7 @@ var W1d = {
                                 sb.lq(g, aa).then(function (b) {
                                     var g = b.NL.viewables[0];
                                     m.trace("manifest response for:" + a + ", status: " + b.v);
+                                    console.log("manifest response")
                                     g && g.success ? c(g) : f(g);
                                 })["catch"](function (a) {
                                     f(a);
@@ -41398,7 +41409,6 @@ var W1d = {
             f.ULa = f.Dha.concat(f.jda);
             f.WLa = f.tia;
             f.VLa = f.uia;
-            console.log(f.tia);
             b.V = f;
             h.VV = "heaac-2-dash";
             h.aMa = "heaac-sbr-2-dash";
@@ -46284,6 +46294,8 @@ var W1d = {
                     }, p.Qu.uT(d)), q.debug("Request parameters", {
                         Method: a.method
                     }, p.Qu.uT(a)));
+
+                    //# manifest requested here
                     var g = b,
                         l = a.method,
                         k = "" + (p.AL.endpoint + p.config().Ug.p6) + p.platform.Vj + "/cadmium/" + a.method,
@@ -54354,9 +54366,6 @@ var W1d = {
 
                 c(b, a);
                 b.prototype.Td = function (a) {
-                    //# buffer to console to see what it does
-                    console.log(this.buffer)
-                    console.log("buffer pushed")
                     this.active < this.Op ? this.$la(a) : this.buffer.push(a);
                 };
                 b.prototype.$la = function (a) {
@@ -75055,6 +75064,9 @@ var W1d = {
                     key: d.key,
                     GQ: d.GQ
                 };
+                //# subtitles print
+                console.log("subtitles")
+                console.log(a)
                 if ("nflx-cmisc" === l.Nw) a.offset = d.e6, a.size = d.f6, l.ei = new g(a);
                 else if ("nflx-cmisc-enc" === l.Nw) a.version = 2, a.offset = d.e6, a.size = d.f6, l.ei = new g(a);
                 else throw ["simplesdh", "dfxp-ls-sdh"].indexOf(l.Nw), Error("SubtitleManager: " + l.Nw + " is an unsupported profile");
