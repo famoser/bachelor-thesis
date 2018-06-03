@@ -41,16 +41,10 @@ video_ids = Inventory().full_capture()
 # define the ids we want to capture
 config = Configuration()
 
-# test settings
-if True:
-    video_ids = Inventory().small_capture()
-    config.wait_after_video_load = 10
-    config.wait_after_ensured_video_load = 10
-
 done_videos = []
 file_name = "capture_videos_done.json"
 if os.path.exists(file_name):
-    with open(file_name) as file:
+    with open(file_name, "r") as file:
         done_videos = json.load(file)
 
 # initialize the proxy
@@ -129,7 +123,7 @@ with BrowserProxy("attack") as proxy:
                 time.sleep(config.wait_after_ensured_video_load)
 
             done_videos.append(video_id)
-            with open(file_name) as file:
+            with open(file_name, "w+") as file:
                 json.dump(done_videos, file)
 
 print("finished")
