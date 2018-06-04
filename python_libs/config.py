@@ -48,6 +48,27 @@ class Inventory:
         # netflix test video
         self.test_video = 80018499
 
+        # further test videos
+        self.reasons_why = 80117471
+        self.classroom = 80045949
+        self.classroom = 70047101
+        self.transformers_dark = 70153859
+        self.captain_america = 70293704
+        self.bayblade = 70172977
+        self.edge_of_tomorrow = 70298735
+        self.drugs_inc = 70307424
+        self.overlord = 80131661
+        self.suits = 70283145
+        self.mission_impossible = 70041961
+        self.thor = 70276333
+        self.avicii = 80097519
+        self.flash = 80057443
+        self.simpsons_movie = 70058029
+        self.arto_of_design = 80093803
+        self.cloverfiled = 80134431
+        self.narcos = 80025313
+        self.kein_mann = 80175421
+
     def full_capture(self):
         return self.__dict__
 
