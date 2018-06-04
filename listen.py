@@ -7,6 +7,7 @@ from python_libs.netflix_browser import NetflixBrowser
 from python_libs.browser_proxy import BrowserProxy
 from python_libs.har_analyzer import HarAnalyzer
 
+AGGREGATE = 2
 
 class Configuration:
     def __init__(self):
@@ -66,17 +67,25 @@ with BrowserProxy("attack") as proxy:
                 i = len(har_entries) - 1
                 stop_i = len(har_entries) - config.packet_threshold - 1
                 while i > stop_i and i > 0:
+                    size = har_entries[i].body_size
+                    if i <= AGGREGATE:
+                        break
+
+                    for j in range(1, AGGREGATE):
+                        size += har_entries[i - j].body_size
+
                     # try to find specific packet, and save its capture id to the result set
-                    cursor.execute("SELECT DISTINCT c.movie_id, c.bitrate "
+                    cursor.execute("SELECT DISTINCT c.movie_id, c.bitrate, p.aggregation "
                                    "FROM packets p "
                                    "INNER JOIN captures c ON p.capture_id = c.id "
-                                   "WHERE body_size = ? AND is_video = ?",
-                                   [har_entries[i].body_size, 1])
+                                   "WHERE body_size = ?",
+                                   [size])
 
                     # add all results to set
                     once = False
                     twice = False
                     for item in cursor.fetchall():
+                        print(item[2])
                         result.setdefault(item[0], {})
                         result[item[0]].setdefault(item[1], 0)
                         result[item[0]][item[1]] += 1

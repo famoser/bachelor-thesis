@@ -68,7 +68,24 @@ class Inventory:
         self.cloverfiled = 80134431
         self.narcos = 80025313
         self.kein_mann = 80175421
-
+        self.fantastic_4 = 70047104
+        self.babylon = 70098331
+        self.gone_too_soon = 80213148
+        self.godzilla = 70297757
+        self.ninja_turtle = 80005628
+        self.catch_me_if_you_can = 60024942
+        self.star_trek = 70101276
+        self.defiant_ones = 80227519
+        self.nothing_left = 80141340
+        self.pacific_rim = 70267241
+        self.spy_game = 60021779
+        self.how_to_be_single = 80075563
+        self.jack_the_giant_slayer = 70213512
+        self.ibiza = 80195049
+        self.lang_of_the_lost = 70104316
+        self.django = 70230640
+        self.top_gear = 70253790
+        self.the_rain = 80154735
     def full_capture(self):
         return self.__dict__
 
