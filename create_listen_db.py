@@ -7,7 +7,7 @@ config = StaticConfig()
 analyzer = HarAnalyzer(config.captures_dir, '.json')
 
 START_AGGREGATION = 0
-END_AGGREGATION = 3
+END_AGGREGATION = 20
 
 # get sqlite connection
 db_file_name = config.captures_dir + "/data.sqlite"
@@ -55,15 +55,23 @@ for file_name in analyzer.get_file_names():
     # remove all non video entries
     har_entries = [entry for entry in har_entries if entry.is_video]
 
+    # sort by request order
+    har_entries = sorted(har_entries, key=lambda x: x.range_start)
+
+    # keep only size
+    sizes = [entry.body_size for entry in har_entries]
+
+    # aggregate
     for aggregation in range(START_AGGREGATION, END_AGGREGATION):
-        for i in range(0, len(har_entries)):
-            start_entry = har_entries[i]
-            if i + aggregation >= len(har_entries):
+        for i in range(0, len(sizes)):
+            if i + aggregation >= len(sizes):
                 continue
 
-            end_entry = har_entries[i + aggregation]
+            size = 0
+            for j in range(0, aggregation):
+                size += sizes[i + j]
 
-            row_array = [capture_id, end_entry.range_end - start_entry.range_start, aggregation]
+            row_array = [capture_id, size, aggregation]
             insert_array.append(row_array)
 
         # insert har entries to db
@@ -74,3 +82,5 @@ for file_name in analyzer.get_file_names():
             "(?, ?, ?)",
             insert_array)
         connection.commit()
+
+        print("done for " + str(movie_id) + " at bitrate " + str(bitrate) + " (" + str(aggregation) + ")")

@@ -7,19 +7,15 @@ from python_libs.netflix_browser import NetflixBrowser
 from python_libs.browser_proxy import BrowserProxy
 from python_libs.har_analyzer import HarAnalyzer
 
-AGGREGATE = 2
+AGGREGATE = 10
+
 
 class Configuration:
     def __init__(self):
-        # the amount of packets needed before giving a result
+        # the amount of searches performed
         #
         # 5 because I feel like it
-        self.packet_threshold = 5
-
-        # how long the process sleeps before trying again
-        #
-        # choosing 5 before packet length is about 6 seconds
-        self.sleep_before_retry = 5
+        self.searches_performed = 5
 
 
 static_config = StaticConfig()
@@ -30,22 +26,16 @@ config = Configuration()
 db_file_name = static_config.captures_dir + "/data.sqlite"
 connection = sqlite3.connect(db_file_name)
 
-# test settings
-if True:
-    config.packet_threshold = 15
-
-print("will tests for the last " + str(config.packet_threshold) + " packets and try to find match")
+print("will tests for the last " + str(config.searches_performed) + " packets and try to find match")
 
 cursor = connection.cursor()
 # try to find specific packet, and save its capture id to the result set
 cursor.execute("SELECT DISTINCT movie_id FROM captures")
 movie_ids = []
 for item in cursor.fetchall():
-    if len(movie_ids) > 10:
-        break
     movie_ids.append(str(item[0]))
 
-print("current in DB are " + str(len(movie_ids)) + " movies. The first 10 are " + ", ".join(movie_ids))
+print("current in DB are " + str(len(movie_ids)) + " movies. They are " + ", ".join(movie_ids))
 
 # initialize the proxy
 with BrowserProxy("attack") as proxy:
@@ -58,75 +48,64 @@ with BrowserProxy("attack") as proxy:
             if len(capture) > 0:
                 har_entries = HarAnalyzer.get_har_entries_from_json(capture)
 
-                # get info for all relevant packets
-                result = {}
-                total_packets_found = 0
-                same_packets_different_bitrate = 0
+                for aggregation in range(0, AGGREGATE):
+                    # check if enough packets for aggregation
+                    if len(har_entries) - aggregation < 0:
+                        continue
 
-                cursor = connection.cursor()
-                i = len(har_entries) - 1
-                stop_i = len(har_entries) - config.packet_threshold - 1
-                while i > stop_i and i > 0:
-                    size = har_entries[i].body_size
-                    if i <= AGGREGATE:
-                        break
+                    # aggregate
+                    size = 0
+                    current_entry = len(har_entries) - 1
+                    aggregations_done = 0
+                    while current_entry >= 0 and aggregations_done <= aggregation:
+                        if har_entries[current_entry].is_video and har_entries[current_entry].body_size > 0:
+                            size += har_entries[current_entry].body_size
+                            aggregations_done += 1
+                        current_entry -= 1
 
-                    for j in range(1, AGGREGATE):
-                        size += har_entries[i - j].body_size
+                    # skip if not successfully aggregated
+                    if current_entry == 0 and aggregations_done < aggregation:
+                        continue
 
-                    # try to find specific packet, and save its capture id to the result set
-                    cursor.execute("SELECT DISTINCT c.movie_id, c.bitrate, p.aggregation "
+                    print("checking for packet of size " + str(size) + " for aggregation " + str(aggregation + 1))
+
+                    # look up matches
+                    cursor = connection.cursor()
+                    cursor.execute("SELECT DISTINCT c.movie_id, c.bitrate "
                                    "FROM packets p "
                                    "INNER JOIN captures c ON p.capture_id = c.id "
-                                   "WHERE body_size = ?",
-                                   [size])
+                                   "WHERE body_size = ? and aggregation = ?",
+                                   [size, aggregation + 1])
 
-                    # add all results to set
-                    once = False
-                    twice = False
+                    bitrates_by_movie = {}
                     for item in cursor.fetchall():
-                        print(item[2])
-                        result.setdefault(item[0], {})
-                        result[item[0]].setdefault(item[1], 0)
-                        result[item[0]][item[1]] += 1
-                        total_packets_found += 1
+                        if item[0] not in bitrates_by_movie:
+                            bitrates_by_movie[item[0]] = []
+                        bitrates_by_movie[item[0]].append(item[1])
 
-                        if once and not twice:
-                            same_packets_different_bitrate += 1
-                            twice = True
-                        once = True
+                    if len(bitrates_by_movie) == 1:
+                        for movie_id in bitrates_by_movie:
+                            bitrate_text = "bitrate"
+                            if len(bitrates_by_movie[movie_id]) > 1:
+                                bitrate_text += "s"
+                            print("\tfound results for one movie: " + str(movie_id) +
+                                  " at " + bitrate_text + " " + ", ".join(map(str, bitrates_by_movie[movie_id])))
 
-                    # if no video was found
-                    if not once:
-                        stop_i -= 1
+                    if len(bitrates_by_movie) > 0:
+                        print("\tfound results for " + str(len(bitrates_by_movie)) + " movies")
+                        for movie_id in bitrates_by_movie:
+                            bitrate_text = "bitrate"
+                            if len(bitrates_by_movie[movie_id]) > 1:
+                                bitrate_text += "s"
+                            print("\t\t" + str(movie_id) + " found at " + bitrate_text + " " + ", ".join(
+                                map(str, bitrates_by_movie[movie_id])))
 
-                    i -= 1
-
-                for video_id in result:
-                    total_percentage = sum(result[video_id].values()) / \
-                                       max(config.packet_threshold, total_packets_found) * 100
-
-                    print_out = str(total_percentage) + "% security: " + str(video_id) + " at "
-
-                    first_time = True
-                    for bitrate in result[video_id]:
-                        if first_time:
-                            first_time = False
-                        else:
-                            print_out += ", "
-                        print_out += str(bitrate) + "k (" + str(result[video_id][bitrate]) + " packets found)"
-
-                    print(print_out)
-
-                if same_packets_different_bitrate:
-                    print("in this analysis, " + str(same_packets_different_bitrate) +
-                          " packets were found which were identical for multiple bitrates")
 
                 # to avoid too much overhead, reset capture after some time
-                if len(har_entries) > config.packet_threshold * 20:
+                if len(har_entries) > config.searches_performed * 20:
                     print("reset capture; the next few results may be imprecise")
                     proxy.start_new_capture()
 
-            # sleep and try again after some time
-            print("waiting for " + str(config.sleep_before_retry) + "s before trying again")
-            time.sleep(config.sleep_before_retry)
+                # visual break & start over
+                print()
+                print()
