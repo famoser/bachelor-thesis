@@ -85,6 +85,20 @@ class HarAnalyzer:
 
         return res
 
+    @staticmethod
+    def get_ordered_sizes(har_entries):
+        # remove all non video entries
+        har_entries = [entry for entry in har_entries if entry.is_video]
+
+        # sort by request order
+        har_entries = sorted(har_entries, key=lambda x: x.range_start)
+
+        # keep only size
+        sizes = [entry.body_size for entry in har_entries]
+
+        # keep only over 0 sizes
+        return list(filter(lambda s: s > 0, sizes))
+
     def get_json_dict(self):
         """
         get filename => json dict

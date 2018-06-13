@@ -61,19 +61,7 @@ for file_name in analyzer.get_file_names():
 
     # transform har entries to sqlite entry
     insert_array = []
-    har_entries = analyzer.get_har_entries_dict()[file_name]
-
-    # remove all non video entries
-    har_entries = [entry for entry in har_entries if entry.is_video]
-
-    # sort by request order
-    har_entries = sorted(har_entries, key=lambda x: x.range_start)
-
-    # keep only size
-    sizes = [entry.body_size for entry in har_entries]
-
-    # keep only over 0 sizes
-    sizes = list(filter(lambda s: s > 0, sizes))
+    sizes = analyzer.get_ordered_sizes(analyzer.get_har_entries_dict()[file_name])
 
     # aggregate
     for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
@@ -85,15 +73,15 @@ for file_name in analyzer.get_file_names():
             for j in range(0, aggregation):
                 size += sizes[i + j]
 
-            row_array = [capture_id, size, aggregation]
+            row_array = [capture_id, size, aggregation, i]
             insert_array.append(row_array)
 
         # insert har entries to db
         connection.executemany(
             "INSERT INTO packets "
-            "(capture_id, body_size, aggregation) "
+            "(capture_id, body_size, aggregation, index) "
             "VALUES "
-            "(?, ?, ?)",
+            "(?, ?, ?, ?)",
             insert_array)
         connection.commit()
 

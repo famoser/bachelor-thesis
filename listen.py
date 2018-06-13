@@ -7,26 +7,22 @@ from python_libs.netflix_browser import NetflixBrowser
 from python_libs.browser_proxy import BrowserProxy
 from python_libs.har_analyzer import HarAnalyzer
 
-AGGREGATE = 10
-
 
 class Configuration:
     def __init__(self):
         # the amount of searches performed
         #
         # 5 because I feel like it
-        self.searches_performed = 5
+        self.aggregate = 10
 
 
+# create the config
 static_config = StaticConfig()
-
-# define the ids we want to capture
 config = Configuration()
 
+# open connection
 db_file_name = static_config.captures_dir + "/data.sqlite"
 connection = sqlite3.connect(db_file_name)
-
-print("will tests for the last " + str(config.searches_performed) + " packets and try to find match")
 
 cursor = connection.cursor()
 # try to find specific packet, and save its capture id to the result set
@@ -43,31 +39,34 @@ with BrowserProxy("attack") as proxy:
     with NetflixBrowser(proxy.get_port()) as browser:
 
         while True:
+            action = input("[enter] to continue, (c) to clean up, (q) to quit:\n")
+            if action == "q":
+                exit()
+
+            if action == "c":
+                proxy.start_new_capture()
+
             # get active capture & analyze it
             capture = proxy.get_active_capture()
             if len(capture) > 0:
-                har_entries = HarAnalyzer.get_har_entries_from_json(capture)
+                sizes = HarAnalyzer.get_ordered_sizes(HarAnalyzer.get_har_entries_from_json(capture))
 
-                for aggregation in range(0, AGGREGATE):
-                    # check if enough packets for aggregation
-                    if len(har_entries) - aggregation < 0:
+                print("found " + str(len(sizes)) + " valid video sizes in " + str(len(capture)) + " packets")
+
+                for aggregation in range(1, config.aggregate):
+                    # skip if not enough packets for aggregation
+                    if len(sizes) - aggregation + 1 < 0:
                         continue
 
                     # aggregate
                     size = 0
-                    current_entry = len(har_entries) - 1
+                    current_entry = len(sizes) - 1
                     aggregations_done = 0
-                    while current_entry >= 0 and aggregations_done <= aggregation:
-                        if har_entries[current_entry].is_video and har_entries[current_entry].body_size > 0:
-                            size += har_entries[current_entry].body_size
-                            aggregations_done += 1
-                        current_entry -= 1
+                    while current_entry >= 0 and aggregations_done < aggregation:
+                        size += sizes[current_entry]
+                        aggregations_done += 1
 
-                    # skip if not successfully aggregated
-                    if current_entry == 0 and aggregations_done < aggregation:
-                        continue
-
-                    print("checking for packet of size " + str(size) + " for aggregation " + str(aggregation + 1))
+                    print("checking for packet of size " + str(size) + " for aggregation " + str(aggregation))
 
                     # look up matches
                     cursor = connection.cursor()
@@ -75,7 +74,7 @@ with BrowserProxy("attack") as proxy:
                                    "FROM packets p "
                                    "INNER JOIN captures c ON p.capture_id = c.id "
                                    "WHERE body_size = ? and aggregation = ?",
-                                   [size, aggregation + 1])
+                                   [size, aggregation])
 
                     bitrates_by_movie = {}
                     for item in cursor.fetchall():
@@ -99,12 +98,6 @@ with BrowserProxy("attack") as proxy:
                                 bitrate_text += "s"
                             print("\t\t" + str(movie_id) + " found at " + bitrate_text + " " + ", ".join(
                                 map(str, bitrates_by_movie[movie_id])))
-
-
-                # to avoid too much overhead, reset capture after some time
-                if len(har_entries) > config.searches_performed * 20:
-                    print("reset capture; the next few results may be imprecise")
-                    proxy.start_new_capture()
 
                 # visual break & start over
                 print()
