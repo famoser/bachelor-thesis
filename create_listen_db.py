@@ -7,7 +7,7 @@ config = StaticConfig()
 analyzer = HarAnalyzer(config.captures_dir, '.json')
 
 START_AGGREGATION = 1
-LAST_AGGREGATION = 1
+LAST_AGGREGATION = 10
 
 # get sqlite connection
 db_file_name = config.captures_dir + "/data.sqlite"
@@ -73,15 +73,15 @@ for file_name in analyzer.get_file_names():
             for j in range(0, aggregation):
                 size += sizes[i + j]
 
-            row_array = [capture_id, size, aggregation, i]
+            row_array = [capture_id, size, aggregation]
             insert_array.append(row_array)
 
         # insert har entries to db
         connection.executemany(
             "INSERT INTO packets "
-            "(capture_id, body_size, aggregation, index) "
+            "(capture_id, body_size, aggregation) "
             "VALUES "
-            "(?, ?, ?, ?)",
+            "(?, ?, ?)",
             insert_array)
         connection.commit()
 

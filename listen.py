@@ -65,6 +65,7 @@ with BrowserProxy("attack") as proxy:
                     while current_entry >= 0 and aggregations_done < aggregation:
                         size += sizes[current_entry]
                         aggregations_done += 1
+                        current_entry -= 1
 
                     print("checking for packet of size " + str(size) + " for aggregation " + str(aggregation))
 
