@@ -6,8 +6,8 @@ from python_libs.har_analyzer import HarAnalyzer
 config = StaticConfig()
 analyzer = HarAnalyzer(config.captures_dir, '.json')
 
-START_AGGREGATION = 0
-END_AGGREGATION = 20
+START_AGGREGATION = 1
+LAST_AGGREGATION = 1
 
 # get sqlite connection
 db_file_name = config.captures_dir + "/data.sqlite"
@@ -32,6 +32,8 @@ connection.execute(
 
 connection.commit()
 
+burned = {}
+
 # create lookup like lookup[movie_id][bandwidth] = video_size
 for file_name in analyzer.get_file_names():
     # analyze file name
@@ -39,6 +41,15 @@ for file_name in analyzer.get_file_names():
     movie_id = int(splits[0])
     bitrate = int(splits[1])
     created_at = splits[2] + ":" + splits[3] + ":" + splits[4].replace(".json", "")
+
+    # do not insert two times
+    if movie_id in burned and bitrate in burned[movie_id]:
+        continue
+
+    # add to burned to avoid double insertion
+    if movie_id not in burned:
+        burned[movie_id] = []
+    burned[movie_id].append(bitrate)
 
     # insert capture info & get id
     cursor = connection.cursor()
@@ -61,10 +72,13 @@ for file_name in analyzer.get_file_names():
     # keep only size
     sizes = [entry.body_size for entry in har_entries]
 
+    # keep only over 0 sizes
+    sizes = list(filter(lambda s: s > 0, sizes))
+
     # aggregate
-    for aggregation in range(START_AGGREGATION, END_AGGREGATION):
+    for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
         for i in range(0, len(sizes)):
-            if i + aggregation >= len(sizes):
+            if i + aggregation > len(sizes):
                 continue
 
             size = 0
