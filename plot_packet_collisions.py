@@ -116,7 +116,7 @@ for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
 
         # use percentage & correct order in graph
         figure_collisions = {}
-        for i in range(2, max(collisions.keys())):
+        for i in range(2, max(collisions.keys()) + 1):
             if i in collisions:
                 figure_collisions[i] = collisions[i] / total_packet_count * 100
             else:
@@ -126,7 +126,7 @@ for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
         fig = plt.figure(figsize=(10, 10))
         plt.xlabel("equal packet sizes over different movies")
         plt.ylabel("packet collision percentage")
-        plt.plot(collisions.keys(), collisions.values(), label=str(aggregation), marker='.', linewidth=1)
+        plt.plot(figure_collisions.keys(), figure_collisions.values(), label=str(aggregation), marker='.', linewidth=1)
 
         # save
         plt.savefig(config.plot_dir + "/collisions_" + str(aggregation) + "_" + str(epsilon) + ".png", dpi=300)
