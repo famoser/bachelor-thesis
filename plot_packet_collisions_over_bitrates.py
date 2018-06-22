@@ -166,7 +166,9 @@ for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
                     res = body_sizes_tree.search(start, end)
                     temp_results = set()
                     for re in res:
-                        temp_results |= re.data.movie_ids
+                        for re_id in re.data.movie_ids:
+                            temp_results.add(re_id)
+
                     results.append(temp_results)
 
             possible_movies = set.intersection(*results)
