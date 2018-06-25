@@ -10,12 +10,11 @@ inventory = Inventory()
 START_AGGREGATION = 1
 LAST_AGGREGATION = 10
 
-EPSILON_STEP = 0.05
-EPSILON_MAX = 0.3
+EPSILON_STEP = 0.001
+EPSILON_MAX = 0.9
 
-MAX_MOVIES = 5
+MAX_MOVIES = 100
 
-CONTINUOUS = True
 MAX_PACKAGES_PER_BITRATE = 50
 
 
@@ -34,6 +33,8 @@ cursor = connection.cursor()
 
 for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
     epsilon = 0
+
+    epsilon_collisions = {}
 
     while epsilon < EPSILON_MAX:
         print("building tree for aggregation " + str(aggregation) + " & epsilon " + str(epsilon))
@@ -62,45 +63,61 @@ for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
             db_bitrates = cursor.fetchall()
 
             # create sql to get all packets we "sniffed"
-            sql = ""
+            sql = "SELECT body_size, bitrate FROM ("
+            middle_sql = ""
             parameters = []
             for db_bitrate in db_bitrates:
-                if len(sql) > 0:
-                    sql += " UNION "
-                sql += "SELECT body_size FROM (SELECT DISTINCT p.body_size as body_size, p.id " \
-                       "FROM packets p " \
-                       "INNER JOIN captures c ON c.id = p.capture_id " \
-                       "WHERE p.aggregation = ? AND p.continuous = ? AND c.id = ? " \
-                       "ORDER BY p.id " \
-                       "LIMIT ?)"
-                parameters.append(aggregation)
-                parameters.append(CONTINUOUS)
+                if len(middle_sql) > 0:
+                    middle_sql += " UNION "
+                middle_sql += "SELECT body_size, bitrate FROM (" \
+                              "SELECT DISTINCT c.bitrate as bitrate, p.body_size as body_size, p.id " \
+                              "FROM packets_" + str(aggregation) + "_continuous p " \
+                              "INNER JOIN captures c ON c.id = p.capture_id " \
+                              "WHERE c.id = ? " \
+                              "ORDER BY p.id " \
+                              "LIMIT ?)"
                 parameters.append(db_bitrate[0])
                 parameters.append(MAX_PACKAGES_PER_BITRATE)
+            sql += middle_sql + ") ORDER BY bitrate"
 
             # get available packets
             cursor.execute(sql, parameters)
             db_packets = cursor.fetchall()
 
+            # ensure we have found some packets
+            if len(db_packets) == 0:
+                continue
+
             # query matching movies
-            sql = "SELECT DISTINCT c.movie_id " \
-                  "FROM packets p " \
-                  "INNER JOIN captures c ON p.capture_id = c.id " \
-                  "WHERE p.aggregation = ? AND p.continuous = ?"
-            parameters = [aggregation, CONTINUOUS]
+            sql = ""
+            parameters = []
+            current_bitrate = 0
             middle_sql = ""
+            body_size_sql = ""
+            body_size_added = False
             for db_packet in db_packets:
-                if len(middle_sql) > 0:
+                if current_bitrate != db_packet[0]:
+                    current_bitrate = db_packet[0]
+                    if len(middle_sql) > 0:
+                        middle_sql += " INTERSECT "
+
+                    middle_sql += "SELECT DISTINCT c.movie_id " \
+                                  "FROM packets_" + str(aggregation) +"_continuous p " \
+                                  "INNER JOIN captures c ON c.id = p.capture_id " \
+                                  "WHERE "
+
+                    body_size_sql = ""
+                    body_size_added = False
+
+                if body_size_added:
                     middle_sql += " OR "
+                body_size_added = True
+
                 middle_sql += "(p.body_size >= ? AND p.body_size <= ?)"
                 parameters.append((1 - epsilon) * db_packet[0])
                 parameters.append((1 + epsilon) * db_packet[0])
 
-            if len(middle_sql) > 0:
-                if middle_sql.endswith("OR "):
-                    middle_sql = middle_sql[:-3]
-                sql += " AND (" + middle_sql + ")"
-
+            sql += middle_sql
             cursor.execute(sql, parameters)
             db_possible_movies = cursor.fetchall()
 
@@ -117,26 +134,59 @@ for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
                 collisions[result_count] = 0
             collisions[result_count] += 1
 
+            # log collisions
+            conflict_movies = filter(lambda e: e != movie_id, possible_movies)
+            if result_count > 1:
+                print("collision found for " + str(movie_id) + " with " + ', '.join(str(x) for x in conflict_movies))
+            else:
+                print("no collisions found for " + str(movie_id))
+
         # use percentage & correct order in graph
         figure_collisions = {}
+        total_collisions = 0
         for i in range(2, max(collisions.keys()) + 1):
             if i in collisions:
                 figure_collisions[i] = collisions[i] / checked * 100
+                total_collisions += collisions[i]
             else:
                 figure_collisions[i] = 0
 
+        epsilon_collisions[epsilon] = total_collisions / checked * 100
+
         # prepare plot
-        fig = plt.figure(figsize=(10, 10))
-        plt.xlabel("movies in result set")
+        plt.figure(figsize=(10, 10))
+        plt.xlabel("number of movies matching the signature >= 2")
         plt.ylabel("packet collision percentage")
         plt.plot(figure_collisions.keys(), figure_collisions.values(), label=str(aggregation), marker='.', linewidth=1)
 
         # save
-        plt.savefig(config.plot_dir + "/collisions_" + str(aggregation) + "_" + str(epsilon) + "_" + str(
-            MAX_PACKAGES_PER_BITRATE) + ".png", dpi=300)
+        plt.savefig(config.plot_dir + "/collisions_" +
+                    str(aggregation) + "_" +
+                    str(epsilon) + "_" +
+                    str(MAX_PACKAGES_PER_BITRATE) + ".png",
+                    dpi=300)
         plt.close()
         print("generated plot")
         print()
         print()
 
-        epsilon += EPSILON_STEP
+        if epsilon > 0:
+            epsilon *= 2
+        else:
+            epsilon = EPSILON_STEP
+
+    # prepare plot
+    plt.figure(figsize=(10, 10))
+    plt.xlabel("epsilon value used")
+    plt.ylabel("package collision percentage")
+    plt.plot(epsilon_collisions.keys(), epsilon_collisions.values(), label=str(aggregation), marker='.', linewidth=1)
+
+    # save
+    plt.savefig(config.plot_dir + "/collisions_" +
+                str(aggregation) + "_" +
+                str(MAX_PACKAGES_PER_BITRATE) + ".png",
+                dpi=300)
+    plt.close()
+    print("generated plot")
+    print()
+    print()

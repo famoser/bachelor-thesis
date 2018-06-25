@@ -28,10 +28,17 @@ connection.execute(
     "id INTEGER PRIMARY KEY AUTOINCREMENT, "
     "capture_id INTEGER, "
     "body_size INTEGER, "
-    "aggregation INTEGER,"
-    "continuous BOOLEAN)")
+    "aggregation INTEGER)")
 
 connection.commit()
+
+for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
+    connection.execute(
+        "CREATE TABLE packets_" + str(aggregation) + "_continuous " +
+        "("
+        "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+        "capture_id INTEGER, "
+        "body_size INTEGER)")
 
 burned = {}
 
@@ -61,12 +68,13 @@ for file_name in analyzer.get_file_names():
     connection.commit()
 
     # transform har entries to sqlite entry
-    insert_array = []
     sizes = analyzer.get_ordered_sizes(analyzer.get_har_entries_dict()[file_name])
 
     # aggregate
     for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
-        # all aggregations
+
+        # all possible aggregations
+        insert_array = []
         for i in range(0, len(sizes)):
             if i + aggregation > len(sizes):
                 continue
@@ -75,28 +83,41 @@ for file_name in analyzer.get_file_names():
             for j in range(0, aggregation):
                 size += sizes[i + j]
 
-            insert_array.append([capture_id, size, aggregation, False])
+            insert_array.append([capture_id, size, aggregation])
+
+        # insert har entries to db
+        connection.executemany(
+            "INSERT INTO packets "
+            "(capture_id, body_size, aggregation) "
+            "VALUES "
+            "(?, ?, ?)",
+            insert_array)
+        connection.commit()
 
         # continuous aggregation
         current_aggregation = 0
         current_value = 0
+        insert_array = []
         for size in sizes:
             current_aggregation += 1
             current_value += size
             if current_aggregation == aggregation:
-                insert_array.append([capture_id, current_value, aggregation, True])
+                insert_array.append([capture_id, current_value])
                 current_aggregation = 0
                 current_value = 0
 
         # insert har entries to db
         connection.executemany(
-            "INSERT INTO packets "
-            "(capture_id, body_size, aggregation, continuous) "
+            "INSERT INTO packets_" + str(aggregation) + "_continuous " +
+            "(capture_id, body_size) "
             "VALUES "
-            "(?, ?, ?, ?)",
+            "(?, ?)",
             insert_array)
         connection.commit()
 
         print("done for " + str(movie_id) + " at bitrate " + str(bitrate) + " (" + str(aggregation) + ")")
 
-connection.execute("CREATE INDEX packet_body_size ON packets (body_size)")
+for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
+    connection.execute(
+        "CREATE INDEX packets_" + str(aggregation) + "_continuous_index ON packets_" + str(
+            aggregation) + "_continuous (body_size)")
