@@ -28,7 +28,8 @@ connection.execute(
     "id INTEGER PRIMARY KEY AUTOINCREMENT, "
     "capture_id INTEGER, "
     "body_size INTEGER, "
-    "aggregation INTEGER)")
+    "aggregation INTEGER,"
+    "continuous BOOLEAN)")
 
 connection.commit()
 
@@ -65,6 +66,7 @@ for file_name in analyzer.get_file_names():
 
     # aggregate
     for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
+        # all aggregations
         for i in range(0, len(sizes)):
             if i + aggregation > len(sizes):
                 continue
@@ -73,16 +75,28 @@ for file_name in analyzer.get_file_names():
             for j in range(0, aggregation):
                 size += sizes[i + j]
 
-            row_array = [capture_id, size, aggregation]
-            insert_array.append(row_array)
+            insert_array.append([capture_id, size, aggregation, False])
+
+        # continuous aggregation
+        current_aggregation = 0
+        current_value = 0
+        for size in sizes:
+            current_aggregation += 1
+            current_value += size
+            if current_aggregation == aggregation:
+                insert_array.append([capture_id, current_value, aggregation, True])
+                current_aggregation = 0
+                current_value = 0
 
         # insert har entries to db
         connection.executemany(
             "INSERT INTO packets "
-            "(capture_id, body_size, aggregation) "
+            "(capture_id, body_size, aggregation, continuous) "
             "VALUES "
-            "(?, ?, ?)",
+            "(?, ?, ?, ?)",
             insert_array)
         connection.commit()
 
         print("done for " + str(movie_id) + " at bitrate " + str(bitrate) + " (" + str(aggregation) + ")")
+
+connection.execute("CREATE INDEX packet_body_size ON packets (body_size)")
