@@ -1,1 +1,0 @@
-{"mode": "attack", "configuration": {"capture_duration": 100, "increase_throughput_step_size": 60, "start_throughput": 800, "stop_throughput": 2000, "wait_after_page_load": 60, "wait_after_throughput_adjustment": 60, "current_amount": 1040}, "packets": [], "statistics": {"start_timestamp": 1524018452.1199796, "end_timestamp": 1524018552.2096157}}

@@ -1,7 +1,5 @@
 import matplotlib.pyplot as plt
-import hashlib
 import sqlite3
-import json
 
 from python_libs.config import StaticConfig, Inventory
 

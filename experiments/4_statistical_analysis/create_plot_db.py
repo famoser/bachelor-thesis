@@ -10,7 +10,7 @@ START_AGGREGATION = 1
 LAST_AGGREGATION = 10
 
 # get sqlite connection
-db_file_name = config.captures_dir + "/data.sqlite"
+db_file_name = "plot_data.sqlite"
 if os.path.exists(db_file_name):
     os.remove(db_file_name)
 connection = sqlite3.connect(db_file_name)
