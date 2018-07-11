@@ -1,3 +1,5 @@
+# this script is able to enforce machine-wide bandwith limitations using tc
+
 import pickle
 import os
 import json

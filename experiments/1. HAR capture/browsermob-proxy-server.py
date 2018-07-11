@@ -5,7 +5,7 @@
 # - /start/capture to begin a new capture
 # - /stop/capture to stop the capture and save the result to a json file
 # 
-# it was created to be able to control the brwsermob-proxy from within chrome with javascript
+# it was created to be able to control the browsermob-proxy from within chrome with javascript
 
 import flask
 import subprocess

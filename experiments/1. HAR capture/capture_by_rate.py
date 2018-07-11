@@ -1,3 +1,6 @@
+# this script captures for given videos all bitrates fully
+# it has been replaced by further experiments and should only serve as a reference
+
 import datetime
 import time
 

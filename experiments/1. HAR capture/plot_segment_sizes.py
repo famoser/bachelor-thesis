@@ -1,4 +1,5 @@
 # plots the video size per segment
+# it has been replaced by further experiments and should only serve as a reference
 
 import matplotlib.pyplot as plt
 
@@ -17,7 +18,6 @@ for file_name in analyzer.get_file_names():
 
     for entry in analyzer.get_har_entries_dict()[file_name]:
         if entry.is_video:
-            # xAxis.append(int(range[0]))
             sizeX.append(entry.range_end)
             sizeY.append(entry.body_size)
 
