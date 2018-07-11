@@ -38,6 +38,9 @@ for movie_id in lookup:
 
     # plot
     plt.plot(x, y, "ro")
+    plt.xlabel("bandwidth enforced by tc in kilobytes/s")
+    plt.ylabel("total downloaded video size in bytes")
+    plt.subplots_adjust(right=0.9, left=0.2)
     plt.savefig(config.plot_dir + "/" + str(movie_id) + "_attack_bandwidth.png")
     plt.close()
 
@@ -65,7 +68,9 @@ for movie_id in lookup:
 # place label to the right
 plt.legend(loc=(1.04, 0))
 plt.tight_layout()
-plt.subplots_adjust(right=0.75)
+plt.subplots_adjust(right=0.75, left=0.15, bottom=0.1)
+plt.xlabel("bandwidth enforced by tc in kilobytes/s")
+plt.ylabel("total downloaded video size in bytes")
 
 # save
 filename = hashlib.md5(movie_ids.encode()).hexdigest()
