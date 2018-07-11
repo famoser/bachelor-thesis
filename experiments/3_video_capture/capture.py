@@ -8,7 +8,6 @@ from python_libs.config import Inventory
 from python_libs.mouse import Mouse
 from python_libs.netflix_browser import NetflixBrowser
 from python_libs.browser_proxy import BrowserProxy
-from python_libs.bandwidth_manipulator import BandwidthManipulator
 
 
 class Configuration:
@@ -95,6 +94,8 @@ with BrowserProxy("attack") as proxy:
 
                 print("capturing with bitrate " + str(bitrate) + "k")
                 browser.wait_for_video_to_stop(config.capture_length, 1)
+                # HINT: alternatively you could speed up playback with this command
+                # browser.speed_up_playback()
 
                 # create the filename
                 fileName = str(video_id) + '_'
