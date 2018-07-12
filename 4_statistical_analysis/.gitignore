@@ -1,8 +1,0 @@
-credentials.json
-cookies.pkl
-bmp.log
-geckodriver.log
-.idea/*
-config/*
-temp/*
-__pycache__
