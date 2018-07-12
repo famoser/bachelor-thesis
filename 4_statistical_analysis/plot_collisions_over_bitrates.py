@@ -12,10 +12,10 @@ config = StaticConfig()
 inventory = Inventory()
 
 START_AGGREGATION = 1
-LAST_AGGREGATION = 10
+LAST_AGGREGATION = 1
 
-EPSILON_STEP = 0.02
-EPSILON_MAX = 0.3
+EPSILON_STEP = 0.005
+EPSILON_MAX = 0.1
 
 MAX_MOVIES = 100
 
@@ -35,8 +35,8 @@ db_file_name = "plot_data.sqlite"
 connection = sqlite3.connect(db_file_name)
 cursor = connection.cursor()
 
-current_epsilon_multiplication = 1
 for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
+    current_epsilon_multiplication = 1
     epsilon = current_epsilon_multiplication * EPSILON_STEP
 
     epsilon_collisions = {}
@@ -148,15 +148,11 @@ for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
 
         # use percentage & correct order in graph
         figure_collisions = {}
-        total_collisions = 0
         for i in range(1, max(collisions.keys()) + 1):
             if i in collisions:
                 figure_collisions[i] = collisions[i]
-                total_collisions += collisions[i]
             else:
                 figure_collisions[i] = 0
-
-        epsilon_collisions[epsilon] = total_collisions
 
         # prepare plot
         plt.figure(figsize=(10, 10))
@@ -176,13 +172,21 @@ for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
         print()
         print()
 
+        # remember collisions for overall plot
+        total_collisions = 0
+        for i in range(2, max(collisions.keys()) + 1):
+            if i in collisions:
+                total_collisions += collisions[i]
+        epsilon_collisions[epsilon] = total_collisions
+
+        # prepare next iteration
         current_epsilon_multiplication += 1
         epsilon = current_epsilon_multiplication * EPSILON_STEP
 
     # prepare plot
     plt.figure(figsize=(10, 10))
     plt.xlabel("epsilon value used")
-    plt.ylabel("package collision percentage")
+    plt.ylabel("movies with fingerprint collisions")
     plt.plot(epsilon_collisions.keys(), epsilon_collisions.values(), label=str(aggregation), marker='.', linewidth=1)
 
     # save
