@@ -11,11 +11,11 @@ from python_libs.config import StaticConfig, Inventory
 config = StaticConfig()
 inventory = Inventory()
 
-START_AGGREGATION = 1
-LAST_AGGREGATION = 1
+START_AGGREGATION = 10
+LAST_AGGREGATION = 10
 
-EPSILON_STEP = 0.005
-EPSILON_MAX = 0.1
+EPSILON_STEP = 0.002
+EPSILON_MAX = 0.13
 
 MAX_MOVIES = 100
 
@@ -36,7 +36,7 @@ connection = sqlite3.connect(db_file_name)
 cursor = connection.cursor()
 
 for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
-    current_epsilon_multiplication = 1
+    current_epsilon_multiplication = 0
     epsilon = current_epsilon_multiplication * EPSILON_STEP
 
     epsilon_collisions = {}
