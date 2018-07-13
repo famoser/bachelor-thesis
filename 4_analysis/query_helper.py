@@ -100,7 +100,7 @@ class QueryHelper:
                                                    "INNER JOIN captures c ON c.id = p.capture_id " \
                                                    "WHERE c.id = ? " \
                                                    "ORDER BY p.id " \
-                                                   "LIMIT ?))"
+                                                   "LIMIT ?)"
         parameters.append(chosen_bitrate_id)
         parameters.append(sniffed_packets_count)
 

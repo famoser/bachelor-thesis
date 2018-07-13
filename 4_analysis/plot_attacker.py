@@ -17,8 +17,8 @@ LAST_AGGREGATION = 1
 START_PACKAGE_PER_BITRATE = 3
 LAST_PACKAGE_PER_BITRATE = 3
 
-EPSILON_STEP = 0.005
-LAST_EPSILON = 0.05
+EPSILON_STEP = 0.0003
+LAST_EPSILON = 0.006
 
 PACKAGE_PER_BITRATE = 3
 
@@ -118,7 +118,7 @@ for package_per_bitrate in range(START_PACKAGE_PER_BITRATE, LAST_PACKAGE_PER_BIT
                      linewidth=1)
 
             # save
-            plt.savefig(config.plot_dir + "/collisions_over_bitrates_" +
+            plt.savefig(config.plot_dir + "/" + MODE + "_collisions_over_bitrates_" +
                         str(aggregation) + "_" +
                         str(epsilon) + "_" +
                         str(package_per_bitrate) + ".png",
@@ -147,7 +147,7 @@ for package_per_bitrate in range(START_PACKAGE_PER_BITRATE, LAST_PACKAGE_PER_BIT
                  linewidth=1)
 
         # save
-        plt.savefig(config.plot_dir + "/collisions_over_bitrates_over_epsilons_" +
+        plt.savefig(config.plot_dir + "/" + MODE + "_collisions_over_bitrates_over_epsilons_" +
                     str(aggregation) + "_" +
                     str(package_per_bitrate) + ".png",
                     dpi=300)
@@ -171,7 +171,7 @@ for package_per_bitrate in range(START_PACKAGE_PER_BITRATE, LAST_PACKAGE_PER_BIT
     # save
     plt.legend()
     plt.savefig(
-        config.plot_dir + "/collisions_over_bitrates_over_epsilons_over_aggregations_" + str(
+        config.plot_dir + "/" + MODE + "_collisions_over_bitrates_over_epsilons_over_aggregations_" + str(
             package_per_bitrate) + ".png",
         dpi=300)
     plt.close()
@@ -197,7 +197,7 @@ for aggregation in total_package_per_bitrate_plot.keys():
     # save
     plt.legend()
     plt.savefig(
-        config.plot_dir + "/collisions_over_bitrates_over_epsilons_over_package_per_bitrate_" + str(
+        config.plot_dir + "/" + MODE + "_collisions_over_bitrates_over_epsilons_over_package_per_bitrate_" + str(
             aggregation
         ) + ".png",
         dpi=300)
