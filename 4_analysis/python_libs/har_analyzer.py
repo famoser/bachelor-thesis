@@ -3,6 +3,7 @@ import json
 import dateutil.parser
 from datetime import timedelta
 
+
 class HarAnalyzer:
     __file_names = []
     __json_dict = {}
