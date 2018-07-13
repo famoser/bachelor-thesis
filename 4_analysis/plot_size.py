@@ -38,7 +38,7 @@ for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
     plt.xlabel("packet")
     plt.plot(sizes)
 
-    # save
+    # save.
     plt.savefig(config.plot_dir + "/size_" + str(aggregation) + ".png", dpi=300)
     plt.close()
 

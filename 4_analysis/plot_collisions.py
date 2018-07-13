@@ -12,9 +12,6 @@ inventory = Inventory()
 START_AGGREGATION = 1
 LAST_AGGREGATION = 10
 
-EPSILON_STEP = 0.05
-EPSILON_MAX = 0.05
-
 
 # int container because can't override attribute
 class IntContainer:
@@ -29,115 +26,100 @@ db_file_name = "plot_data.sqlite"
 connection = sqlite3.connect(db_file_name)
 cursor = connection.cursor()
 
-current_epsilon_multiplication = 1
+total_plot = {}
 for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
-    epsilon = current_epsilon_multiplication * EPSILON_STEP
+    print("starting for aggregation " + str(aggregation))
 
-    while epsilon <= EPSILON_MAX:
-        print("starting for aggregation " + str(aggregation) + " & epsilon " + str(epsilon))
+    # get count of all indexes packets
+    cursor.execute("SELECT COUNT(*) "
+                   "FROM packets p "
+                   "WHERE aggregation = ?",
+                   [aggregation])
+    total_packet_count_db = cursor.fetchall()
+    total_packet_count = total_packet_count_db[0][0]
 
-        # get count of all indexes packets
-        cursor.execute("SELECT COUNT(*) "
-                       "FROM packets p "
-                       "WHERE aggregation = ?",
-                       [aggregation])
-        total_packet_count_db = cursor.fetchall()
-        total_packet_count = total_packet_count_db[0][0]
+    cursor.execute("SELECT DISTINCT movie_id FROM captures")
+    db_movies = cursor.fetchall()
+    body_sizes_dict = {}
 
-        cursor.execute("SELECT DISTINCT movie_id FROM captures")
-        db_movies = cursor.fetchall()
-        body_sizes_tree = IntervalTree()
-        body_sizes_dict = {}
+    movie_counter = 1
+    for db_movie in db_movies:
+        movie_id = db_movie[0]
+        print("checking " + str(movie_id) + " (" + str(movie_counter) + "/" + str(len(db_movies)) + ")")
+        movie_counter += 1
 
-        movie_counter = 1
-        for db_movie in db_movies:
-            movie_id = db_movie[0]
-            print("checking " + str(movie_id) + " (" + str(movie_counter) + "/" + str(len(db_movies)) + ")")
-            movie_counter += 1
+        movie_body_sizes = set()
+        cursor.execute("SELECT bitrate, id FROM captures WHERE movie_id = ? ORDER BY bitrate", [movie_id])
+        db_bitrates = cursor.fetchall()
 
-            movie_body_sizes = set()
-            cursor.execute("SELECT bitrate, id FROM captures WHERE movie_id = ? ORDER BY bitrate", [movie_id])
-            db_bitrates = cursor.fetchall()
+        for db_bitrate in db_bitrates:
+            bitrate = db_bitrate[0]
+            capture_id = db_bitrate[1]
 
-            for db_bitrate in db_bitrates:
-                bitrate = db_bitrate[0]
-                capture_id = db_bitrate[1]
+            print("accumulating " + str(bitrate))
 
-                print("accumulating " + str(bitrate))
+            # get all video package sizes
+            cursor.execute("SELECT p.body_size "
+                           "FROM packets p "
+                           "WHERE p.capture_id = ? AND p.body_size > 0 AND aggregation = ? "
+                           "ORDER BY p.body_size",
+                           [capture_id, aggregation])
 
-                # get all video package sizes
-                cursor.execute("SELECT p.body_size "
-                               "FROM packets p "
-                               "WHERE p.capture_id = ? AND p.body_size > 0 AND aggregation = ? "
-                               "ORDER BY p.body_size",
-                               [capture_id, aggregation])
+            db_packets = cursor.fetchall()
 
-                db_packets = cursor.fetchall()
+            # create packet ranges
+            for db_packet in db_packets:
+                movie_body_sizes.add(db_packet[0])
 
-                # create packet ranges
-                for db_packet in db_packets:
-                    movie_body_sizes.add(db_packet[0])
+        # aggregate
+        for body_size in movie_body_sizes:
+            if body_size not in body_sizes_dict:
+                body_sizes_dict[body_size] = 0
+            body_sizes_dict[body_size] += 1
 
-            # aggregate
-            for body_size in movie_body_sizes:
-                start = (1 - epsilon) * body_size
-                end = (1 + epsilon) * body_size
+    # prepare collision dict
+    collisions = {}
 
-                if start == end:
-                    if start not in body_sizes_dict:
-                        body_sizes_dict[start] = 0
-                    body_sizes_dict[start] += 1
-                else:
-                    res = body_sizes_tree.search(3, 5, strict=True)
-                    elem = None
-                    if len(res) == 0:
-                        elem = Interval(start, end, IntContainer())
-                        body_sizes_tree.add(elem)
-                    else:
-                        for entry in res:
-                            elem = entry.data
+    # sum up collisions in dictionary
+    for entry in body_sizes_dict:
+        collision_count = body_sizes_dict[entry]
+        if collision_count not in collisions:
+            collisions[collision_count] = 0
+        collisions[collision_count] += 1
 
-                    elem.data.private += 1
+    # use percentage & correct order in graph
+    figure_collisions = {}
+    for i in range(2, max(collisions.keys()) + 1):
+        if i in collisions:
+            figure_collisions[i] = collisions[i] / total_packet_count * 100
+        else:
+            figure_collisions[i] = 0
 
-        # prepare collision dict
-        collisions = {}
+    # prepare plot
+    fig = plt.figure(figsize=(10, 10))
+    plt.xlabel("equal packet sizes over different movies")
+    plt.ylabel("packet collision percentage")
+    plt.plot(figure_collisions.keys(), figure_collisions.values(), label=str(aggregation), marker='.', linewidth=1)
 
-        # sum up collisions in tree
-        for interval in body_sizes_tree:
-            res = body_sizes_tree.search(interval.begin, interval.end)
-            collision_count = len(res) - 1
-            if collision_count not in collisions:
-                collisions[collision_count] = 0
-            collisions[collision_count] += 1
+    # save
+    plt.savefig(config.plot_dir + "/collisions_" + str(aggregation) + ".png", dpi=300)
+    plt.close()
 
-        # sum up collisions in dictionary
-        for entry in body_sizes_dict:
-            collision_count = body_sizes_dict[entry]
-            if collision_count not in collisions:
-                collisions[collision_count] = 0
-            collisions[collision_count] += 1
+    total_plot[aggregation] = {}
+    total_plot[aggregation][0] = figure_collisions.keys()
+    total_plot[aggregation][1] = figure_collisions.values()
 
-        # use percentage & correct order in graph
-        figure_collisions = {}
-        for i in range(2, max(collisions.keys()) + 1):
-            if i in collisions:
-                figure_collisions[i] = collisions[i] / total_packet_count * 100
-            else:
-                figure_collisions[i] = 0
+    print("generated plot")
+    print()
+    print()
 
-        # prepare plot
-        fig = plt.figure(figsize=(10, 10))
-        plt.xlabel("equal packet sizes over different movies")
-        plt.ylabel("packet collision percentage")
-        plt.plot(figure_collisions.keys(), figure_collisions.values(), label=str(aggregation), marker='.', linewidth=1)
-
-        # save
-        plt.savefig(config.plot_dir + "/collisions_" + str(aggregation) + "_" + str(epsilon) + ".png", dpi=300)
-        plt.close()
-        print("generated plot")
-        print()
-        print()
-
-
-        current_epsilon_multiplication += 1
-        epsilon = current_epsilon_multiplication * EPSILON_STEP
+fig = plt.figure(figsize=(10, 10))
+plt.xlabel("equal packet sizes over different movies")
+plt.ylabel("packet collision percentage")
+for aggregation in total_plot.keys():
+    plt.plot(total_plot[aggregation][0], total_plot[aggregation][1], label=str(aggregation), marker='.', linewidth=1)
+plt.legend()
+# save
+plt.savefig(config.plot_dir + "/collisions.png", dpi=300)
+plt.close()
+print("generated plot")

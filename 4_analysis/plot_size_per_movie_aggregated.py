@@ -11,7 +11,6 @@ START_AGGREGATION = 1
 AGGREGATION_STEP = 9
 END_AGGREGATION = 29
 
-SKIP_FIRST = 100
 MIN_Y = 20
 
 SIZE_ADAPT = 6000000
@@ -85,19 +84,11 @@ for db_movie in db_movies:
             db_packets = cursor.fetchall()
 
             current_resolution = aggregation
-            current_skip = SKIP_FIRST
             full_sum = 0
             current_sum = 0
             start = 0
             normalize_point = db_packets[0][1]
             for db_packet in db_packets:
-                current_skip -= 1
-                if current_skip > 0:
-                    continue
-
-                if current_skip == 0:
-                    normalize_point = db_packet[1]
-
                 if current_resolution == aggregation:
                     start = get_adapted_time(db_packet[1], normalize_point)
 

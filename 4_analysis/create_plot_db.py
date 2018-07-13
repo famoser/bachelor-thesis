@@ -76,14 +76,27 @@ for file_name in analyzer.get_file_names():
         # all possible aggregations
         insert_array = []
         for i in range(0, len(sizes)):
-            if i + aggregation > len(sizes):
-                continue
 
             size = 0
-            for j in range(0, aggregation):
-                size += sizes[i + j]
+            current_aggregation = 0
+            j = 0
+            while current_aggregation < aggregation:
+                if i + j >= len(sizes):
+                    break
 
-            insert_array.append([capture_id, size, aggregation])
+                new_size = sizes[i + j]
+
+                # skip possible audio packet
+                if new_size <= 0.185 * (1024 * 1024) or 0.195 * (1024 * 1024) <= new_size:
+                    size += new_size
+                    current_aggregation += 1
+                j += 1
+
+            # only add if aggregation was successful
+            if current_aggregation == aggregation:
+                insert_array.append([capture_id, size, aggregation])
+            else:
+                break
 
         # insert har entries to db
         connection.executemany(
@@ -99,12 +112,13 @@ for file_name in analyzer.get_file_names():
         current_value = 0
         insert_array = []
         for size in sizes:
-            current_aggregation += 1
-            current_value += size
-            if current_aggregation == aggregation:
-                insert_array.append([capture_id, current_value])
-                current_aggregation = 0
-                current_value = 0
+            if size <= 0.185 * (1024 * 1024) or 0.195 * (1024 * 1024) <= size:
+                current_aggregation += 1
+                current_value += size
+                if current_aggregation == aggregation:
+                    insert_array.append([capture_id, current_value])
+                    current_aggregation = 0
+                    current_value = 0
 
         # insert har entries to db
         connection.executemany(

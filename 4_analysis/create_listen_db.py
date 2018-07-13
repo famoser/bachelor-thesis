@@ -6,6 +6,8 @@ from python_libs.har_analyzer import HarAnalyzer
 config = StaticConfig()
 analyzer = HarAnalyzer(config.captures_dir, '.json')
 
+SKIP_FIRST = 50
+
 # get sqlite connection
 db_file_name = "listen_data.sqlite"
 if os.path.exists(db_file_name):
@@ -51,6 +53,10 @@ for file_name in analyzer.get_file_names():
     insert_array = []
     har_entries = analyzer.get_har_entries_dict()[file_name]
     for entry in har_entries:
+        # exclude audio segments
+        if 0.185 * (1024 * 1024) < entry.body_size < 0.195 * (1024 * 1024):
+            continue
+
         start_date_time = None
         if entry.start_date_time is not None:
             start_date_time = entry.start_date_time.isoformat()
