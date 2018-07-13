@@ -14,13 +14,11 @@ inventory = Inventory()
 START_AGGREGATION = 1
 LAST_AGGREGATION = 1
 
-START_PACKAGE_PER_BITRATE = 3
-LAST_PACKAGE_PER_BITRATE = 3
+START_PACKAGE_PER_BITRATE = 1
+LAST_PACKAGE_PER_BITRATE = 10
 
 EPSILON_STEP = 0.0003
 LAST_EPSILON = 0.006
-
-PACKAGE_PER_BITRATE = 3
 
 MAX_MOVIES = 100
 
@@ -64,7 +62,8 @@ for package_per_bitrate in range(START_PACKAGE_PER_BITRATE, LAST_PACKAGE_PER_BIT
                     continue
 
                 print("checking " + str(checked) + " of " + str(len(db_movies)) +
-                      " for (package_per_bitrate=" + str(package_per_bitrate) + ", aggregation=" + str(aggregation) + ", epsilon=" + str(epsilon) + ")")
+                      " for (package_per_bitrate=" + str(package_per_bitrate) + ", aggregation=" + str(
+                    aggregation) + ", epsilon=" + str(epsilon) + ")")
 
                 # get bitrates
                 cursor.execute("SELECT id FROM captures WHERE movie_id = ?", [movie_id])
@@ -72,13 +71,16 @@ for package_per_bitrate in range(START_PACKAGE_PER_BITRATE, LAST_PACKAGE_PER_BIT
 
                 matching_movies = False
                 if MODE == "bitrate":
-                    matching_movies = query_helper.bitrate_attack(db_bitrates, db_movies, aggregation, epsilon, packet_table_name, package_per_bitrate)
-                elif MODE == "naive":
-                    matching_movies = query_helper.naive_attack(db_bitrates, db_bitrates[0][0], db_movies, aggregation, epsilon,
+                    matching_movies = query_helper.bitrate_attack(db_bitrates, db_movies, aggregation, epsilon,
                                                                   packet_table_name, package_per_bitrate)
+                elif MODE == "naive":
+                    matching_movies = query_helper.naive_attack(db_bitrates, db_bitrates[0][0], db_movies, aggregation,
+                                                                epsilon,
+                                                                packet_table_name, package_per_bitrate)
 
                 if matching_movies is False:
                     print("skipping " + str(movie_id))
+                    continue
 
                 # sanity check
                 assert movie_id in matching_movies
@@ -182,7 +184,6 @@ for package_per_bitrate in range(START_PACKAGE_PER_BITRATE, LAST_PACKAGE_PER_BIT
             total_package_per_bitrate_plot[aggregation] = {}
         total_package_per_bitrate_plot[aggregation][package_per_bitrate] = total_plot[aggregation]
 
-
 print("generating package bitrate plots")
 
 # plot influence of package per bitrate
@@ -192,7 +193,9 @@ for aggregation in total_package_per_bitrate_plot.keys():
     plt.xlabel("epsilon value used")
     plt.ylabel("percentage of movies with fingerprint collisions")
     for package_per_bitrate in total_package_per_bitrate_plot[aggregation]:
-        plt.plot(total_package_per_bitrate_plot[aggregation][package_per_bitrate][0], total_package_per_bitrate_plot[aggregation][package_per_bitrate][1], label=str(package_per_bitrate), marker='.', linewidth=1)
+        plt.plot(total_package_per_bitrate_plot[aggregation][package_per_bitrate][0],
+                 total_package_per_bitrate_plot[aggregation][package_per_bitrate][1], label=str(package_per_bitrate),
+                 marker='.', linewidth=1)
 
     # save
     plt.legend()
