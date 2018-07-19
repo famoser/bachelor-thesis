@@ -143,7 +143,7 @@ for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
                 figure_collisions[i] = 0
 
         # prepare plot
-        plt.figure(figsize=(10, 10))
+        plt.figure()
         plt.xlabel("amount of different movies matching fingerprint")
         plt.ylabel("how often this happened")
         assert sum(figure_collisions.values()) == len(db_movies)
@@ -171,7 +171,7 @@ for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
         epsilon = current_epsilon_multiplication * EPSILON_STEP
 
     # prepare plot
-    plt.figure(figsize=(10, 10))
+    plt.figure()
     plt.xlabel("epsilon value used")
     plt.ylabel("movies with fingerprint collisions")
     plt.plot(epsilon_collisions.keys(), epsilon_collisions.values(), label=str(aggregation), marker='.', linewidth=1)
@@ -191,7 +191,7 @@ for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
 
 
 # prepare overall plot
-plt.figure(figsize=(10, 10))
+plt.figure()
 plt.xlabel("epsilon value used")
 plt.ylabel("movies with fingerprint collisions")
 for aggregation in total_plot.keys():

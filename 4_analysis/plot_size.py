@@ -26,27 +26,26 @@ for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
     sizes = []
     db_packets = cursor.fetchall()
     for db_packet in db_packets:
-        sizes.append(db_packet[0])
+        sizes.append(db_packet[0] / (1024 * 1024))
 
     box_plot_data.append(sizes)
 
     sizes = sorted(sizes)
 
     # prepare plot
-    fig = plt.figure(figsize=(10, 10))
-    plt.ylabel("size of packet in bytes")
-    plt.xlabel("packet")
+    fig = plt.figure()
+    plt.ylabel("size of " + str(aggregation) + "-package in megabytes")
+    plt.xlabel(str(aggregation) + "-packages ordered by size")
     plt.plot(sizes)
 
     # save.
     plt.savefig(config.plot_dir + "/size_" + str(aggregation) + ".png", dpi=300)
     plt.close()
 
-
 # prepare plot
-fig = plt.figure(figsize=(10, 10))
-plt.ylabel("size of packet in bytes")
-plt.xlabel("aggregation")
+fig = plt.figure()
+plt.ylabel("size of n-packages in megabytes")
+plt.xlabel("aggregation level n of packages")
 plt.boxplot(box_plot_data)
 
 # save

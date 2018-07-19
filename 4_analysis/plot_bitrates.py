@@ -7,7 +7,7 @@ config = StaticConfig()
 inventory = Inventory()
 
 # get sqlite connection
-db_file_name = config.captures_dir + "/data.sqlite"
+db_file_name = "listen_data.sqlite"
 connection = sqlite3.connect(db_file_name)
 cursor = connection.cursor()
 
@@ -40,9 +40,9 @@ for db_movie in db_movies:
     sql.append("SELECT movie_id FROM captures c WHERE c.bitrate = " + str(bitrate))
 
 # prepare plot
-fig = plt.figure(figsize=(10, 10))
+fig = plt.figure()
 plt.xlabel("movies")
-plt.ylabel("bitrates in bits/second")
+plt.ylabel("bitrates in kilobits/second")
 plt.plot(x, y, label=str("bitrates per movie"), marker='.', linewidth=0)
 
 # save

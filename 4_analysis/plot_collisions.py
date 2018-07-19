@@ -2,7 +2,7 @@
 
 import matplotlib.pyplot as plt
 import sqlite3
-from intervaltree import IntervalTree, Interval
+from matplotlib.ticker import MaxNLocator
 
 from python_libs.config import StaticConfig, Inventory
 
@@ -96,12 +96,13 @@ for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
             figure_collisions[i] = 0
 
     # prepare plot
-    fig = plt.figure(figsize=(10, 10))
-    plt.xlabel("equal packet sizes over different movies")
-    plt.ylabel("packet collision percentage")
+    ax = plt.figure().gca()
+    plt.xlabel("equal " + str(aggregation) + "-package sizes over different movies")
+    plt.ylabel("frequency of occurrence in percentage")
     plt.plot(figure_collisions.keys(), figure_collisions.values(), label=str(aggregation), marker='.', linewidth=1)
 
     # save
+    ax.xaxis.set_major_locator(MaxNLocator(integer=True))
     plt.savefig(config.plot_dir + "/collisions_" + str(aggregation) + ".png", dpi=300)
     plt.close()
 
@@ -113,13 +114,15 @@ for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
     print()
     print()
 
-fig = plt.figure(figsize=(10, 10))
-plt.xlabel("equal packet sizes over different movies")
-plt.ylabel("packet collision percentage")
+ax = plt.figure().gca()
+plt.xlabel("equal n-packages over different movies")
+plt.ylabel("frequency of occurrence in percentage")
 for aggregation in total_plot.keys():
-    plt.plot(total_plot[aggregation][0], total_plot[aggregation][1], label=str(aggregation), marker='.', linewidth=1)
+    ax.plot(total_plot[aggregation][0], total_plot[aggregation][1], label=str(aggregation), marker='.', linewidth=1)
 plt.legend()
+
 # save
+ax.xaxis.set_major_locator(MaxNLocator(integer=True))
 plt.savefig(config.plot_dir + "/collisions.png", dpi=300)
 plt.close()
 print("generated plot")

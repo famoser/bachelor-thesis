@@ -48,7 +48,7 @@ for db_movie in db_movies:
     db_bitrates = cursor.fetchall()
 
     # prepare plots
-    fig = plt.figure(figsize=(10, 10))
+    fig = plt.figure()
     axes_full = fig.add_subplot(1, 3, 1)
     plt.xlabel("packets ordered by time")
     plt.ylabel("size of packet over time")

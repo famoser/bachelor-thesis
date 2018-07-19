@@ -13,32 +13,33 @@ db_file_name = "listen_data.sqlite"
 connection = sqlite3.connect(db_file_name)
 cursor = connection.cursor()
 
+colors = ["blue", "green", "red", "cyan", "magenta", "yellow", "coral", "lime", "orchid"]
+
 cursor.execute("SELECT DISTINCT movie_id FROM captures")
 db_movies = cursor.fetchall()
 for db_movie in db_movies:
     movie_id = db_movie[0]
     print("checking " + str(movie_id))
+    if movie_id != 70101276:
+        continue
 
     cursor.execute("SELECT DISTINCT bitrate FROM captures WHERE movie_id = ? ORDER BY bitrate", [movie_id])
     db_bitrates = cursor.fetchall()
 
     # prepare plots
-    fig = plt.figure(figsize=(10, 10))
-    axes_full = fig.add_subplot(1, 3, 1)
-    plt.xlabel("packets in correct ordering")
-    plt.ylabel("size of packet in megabytes")
+    fig = plt.figure(figsize=(10, 14))
+    plt.axis('off')
+    plt.xlabel("packages in correct ordering")
+    plt.ylabel("size of packages in megabytes")
     plt.title(str(movie_id) + " - " + inventory.get_name_of(movie_id))
 
-    grid_entry = 2
+    overall_plot_data = {}
+    index = 0
     max_rows = int((len(db_bitrates) + 1) / 2)
     for db_bitrate in db_bitrates:
         bitrate = db_bitrate[0]
-        axes_bitrate = fig.add_subplot(max_rows, 3, grid_entry)
+        axes_bitrate = fig.add_subplot(max_rows, 2, index + 1)
         axes_bitrate.set_title(str(bitrate))
-
-        grid_entry += 1
-        if grid_entry % 3 == 1:
-            grid_entry += 1
 
         # show video package accumulation
         cursor.execute("SELECT DISTINCT p.range_start as start, p.range_end as end "
@@ -80,10 +81,10 @@ for db_movie in db_movies:
             points_y = []
             for i in range(0, len(packet_sizes) - 1):
                 points_x.append(i + 1)
-                points_y.append(packet_sizes[i]/(1024*1024))
+                points_y.append(packet_sizes[i] / (1024 * 1024))
             axes_bitrate.plot(points_x, points_y,
                               label=str(start_point_of_start_point[packet_sizes_per_start_point_counter]),
-                              marker='.', linewidth=0)
+                              marker='.', linewidth=0, color=colors[index])
 
             if len(points_x) > len(before_points_x):
                 before_points_x = points_x
@@ -91,9 +92,27 @@ for db_movie in db_movies:
 
             packet_sizes_per_start_point_counter += 1
 
-        axes_full.plot(before_points_x, before_points_y, label=str(bitrate), marker='.', linewidth=0)
-        axes_full.legend()
+        overall_plot_data[index] = {}
+        overall_plot_data[index][0] = before_points_x
+        overall_plot_data[index][1] = before_points_y
+        overall_plot_data[index][2] = bitrate
+
+        index += 1
 
     # save
     plt.savefig(config.plot_dir + "/size_per_movie_" + str(movie_id) + ".png", dpi=300)
+    plt.close()
+
+    # prepare overall plot
+    plt.figure()
+    plt.xlabel("packages in correct ordering")
+    plt.ylabel("size of packages in megabytes")
+    plt.title(str(movie_id) + " - " + inventory.get_name_of(movie_id))
+    for index in overall_plot_data.keys():
+        plt.plot(overall_plot_data[index][0], overall_plot_data[index][1],
+                 label=str(overall_plot_data[index][2]),
+                 marker='.', linewidth=0, color=colors[index])
+
+    plt.legend()
+    plt.savefig(config.plot_dir + "/size_per_movie_" + str(movie_id) + "_overall.png", dpi=300)
     plt.close()
