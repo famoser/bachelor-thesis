@@ -20,8 +20,6 @@ db_movies = cursor.fetchall()
 for db_movie in db_movies:
     movie_id = db_movie[0]
     print("checking " + str(movie_id))
-    if movie_id != 70101276:
-        continue
 
     cursor.execute("SELECT DISTINCT bitrate FROM captures WHERE movie_id = ? ORDER BY bitrate", [movie_id])
     db_bitrates = cursor.fetchall()

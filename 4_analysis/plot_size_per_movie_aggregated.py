@@ -50,8 +50,6 @@ db_movies = cursor.fetchall()
 
 for db_movie in db_movies:
     movie_id = db_movie[0]
-    if movie_id != 70101276:
-        continue
 
     aggregation = START_AGGREGATION
     while aggregation < END_AGGREGATION:
