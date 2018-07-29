@@ -13,14 +13,15 @@ from query_helper import QueryHelper
 config = StaticConfig()
 inventory = Inventory()
 
-START_AGGREGATION = 1
-LAST_AGGREGATION = 1
+START_AGGREGATION = 10
+LAST_AGGREGATION = 115
+AGGREGATION_STEP = 15
 
-START_PACKAGE_PER_BITRATE = 3
-LAST_PACKAGE_PER_BITRATE = 3
+START_PACKAGE_PER_BITRATE = 1
+LAST_PACKAGE_PER_BITRATE = 1
 
-EPSILON_STEP = 0.0006
-LAST_EPSILON = 0.006
+EPSILON_STEP = 0.012
+LAST_EPSILON = 0.24
 
 MAX_MOVIES = 100
 
@@ -38,7 +39,9 @@ total_package_per_bitrate_plot = {}
 for package_per_bitrate in range(START_PACKAGE_PER_BITRATE, LAST_PACKAGE_PER_BITRATE + 1):
 
     total_plot = {}
-    for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
+    movies_per_aggregation = {}
+    aggregation = START_AGGREGATION
+    while aggregation <= LAST_AGGREGATION:
         packet_table_name = "packets_" + str(aggregation) + "_continuous"
 
         current_delta_multiplication = 0
@@ -56,8 +59,11 @@ for package_per_bitrate in range(START_PACKAGE_PER_BITRATE, LAST_PACKAGE_PER_BIT
             check_print_interval = 1000
 
             # get movies
-            cursor.execute("SELECT DISTINCT movie_id FROM captures ORDER BY movie_id")
+            cursor.execute(
+                "SELECT DISTINCT movie_id FROM captures WHERE max_continuous_aggregation >= ? ORDER BY movie_id",
+                [aggregation])
             db_movies = cursor.fetchall()
+            movies_per_aggregation[aggregation] = len(db_movies)
 
             # for each movie; get its packages then query and count the resulting movies
             for db_movie in db_movies:
@@ -77,7 +83,7 @@ for package_per_bitrate in range(START_PACKAGE_PER_BITRATE, LAST_PACKAGE_PER_BIT
 
                 # perform attacks
                 bitrate_matching_movies = query_helper.bitrate_attack(db_bitrates, db_movies, aggregation, delta,
-                                                              packet_table_name, package_per_bitrate)
+                                                                      packet_table_name, package_per_bitrate)
                 naive_matching_movies = query_helper.naive_attack(db_bitrates, db_bitrates[0][0], db_movies,
                                                                   aggregation,
                                                                   delta,
@@ -166,10 +172,11 @@ for package_per_bitrate in range(START_PACKAGE_PER_BITRATE, LAST_PACKAGE_PER_BIT
 
             # remember collisions for secondary plot
             total_collisions = 0
-            for i in range(2, max(other_collisions.keys()) + 1):
-                if i in other_collisions:
-                    total_collisions += other_collisions[i]
-            other_delta_collisions[delta] = total_collisions / movies_checked * 100
+            if len(other_collisions) > 0:
+                for i in range(2, max(other_collisions.keys()) + 1):
+                    if i in other_collisions:
+                        total_collisions += other_collisions[i]
+                other_delta_collisions[delta] = total_collisions / movies_checked * 100
 
             # prepare next iteration
             current_delta_multiplication += 1
@@ -196,10 +203,8 @@ for package_per_bitrate in range(START_PACKAGE_PER_BITRATE, LAST_PACKAGE_PER_BIT
         plt.figure()
         plt.xlabel("delta value used")
         plt.ylabel("percentage of movies with collisions")
-        plt.plot(delta_collisions.keys(), delta_collisions.values(), label=str(MODE), marker='.',
-                 linewidth=1)
-        plt.plot(other_delta_collisions.keys(), other_delta_collisions.values(), label=str(OTHER_MODE), marker='.',
-                 linewidth=1)
+        plt.plot(delta_collisions.keys(), delta_collisions.values(), label=str(MODE), marker='.', linewidth=1)
+        plt.plot(other_delta_collisions.keys(), other_delta_collisions.values(), label=str(OTHER_MODE), marker='.', linewidth=1)
         plt.legend()
 
         # save
@@ -216,12 +221,16 @@ for package_per_bitrate in range(START_PACKAGE_PER_BITRATE, LAST_PACKAGE_PER_BIT
         print()
         print()
 
+        aggregation += AGGREGATION_STEP
+
     # prepare overall plot
     plt.figure()
     plt.xlabel("delta value used")
     plt.ylabel("percentage of movies with collisions")
     for aggregation in total_plot.keys():
-        plt.plot(total_plot[aggregation][0], total_plot[aggregation][1], label=str(aggregation), marker='.',
+        plt.plot(total_plot[aggregation][0], total_plot[aggregation][1],
+                 label=str(aggregation) + " (#" + str(movies_per_aggregation[aggregation]) + ")",
+                 marker='.',
                  linewidth=1)
 
     # save

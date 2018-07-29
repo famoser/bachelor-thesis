@@ -6,8 +6,9 @@ from python_libs.har_analyzer import HarAnalyzer
 config = StaticConfig()
 analyzer = HarAnalyzer(config.captures_dir, '.json')
 
-START_AGGREGATION = 1
-LAST_AGGREGATION = 10
+START_AGGREGATION = 10
+LAST_AGGREGATION = 115
+AGGREGATION_STEP = 15
 
 # get sqlite connection
 db_file_name = "plot_data.sqlite"
@@ -21,6 +22,8 @@ connection.execute(
     "id INTEGER PRIMARY KEY AUTOINCREMENT, "
     "movie_id INTEGER, "
     "bitrate INTEGER, "
+    "max_aggregation INTEGER, "
+    "max_continuous_aggregation INTEGER, "
     "created_at TEXT)")
 
 connection.execute(
@@ -71,7 +74,8 @@ for file_name in analyzer.get_file_names():
     sizes = analyzer.get_ordered_sizes(analyzer.get_har_entries_dict()[file_name])
 
     # aggregate
-    for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
+    aggregation = START_AGGREGATION
+    while aggregation <= LAST_AGGREGATION:
 
         # all possible aggregations
         insert_array = []
@@ -98,14 +102,22 @@ for file_name in analyzer.get_file_names():
             else:
                 break
 
-        # insert har entries to db
-        connection.executemany(
-            "INSERT INTO packets "
-            "(capture_id, body_size, aggregation) "
-            "VALUES "
-            "(?, ?, ?)",
-            insert_array)
-        connection.commit()
+        if len(insert_array) == 0:
+            print("can't aggregate anymore for " + str(movie_id) + " " + str(bitrate) + " " + str(aggregation))
+            max_aggregation = aggregation - AGGREGATION_STEP
+            break
+        else:
+            # insert har entries to db
+            connection.executemany(
+                "INSERT INTO packets "
+                "(capture_id, body_size, aggregation) "
+                "VALUES "
+                "(?, ?, ?)",
+                insert_array)
+
+            connection.execute("UPDATE captures SET max_aggregation = ? WHERE id = ?",
+                               [aggregation, capture_id])
+            connection.commit()
 
         # continuous aggregation
         current_aggregation = 0
@@ -120,16 +132,24 @@ for file_name in analyzer.get_file_names():
                     current_aggregation = 0
                     current_value = 0
 
-        # insert har entries to db
-        connection.executemany(
-            "INSERT INTO packets_" + str(aggregation) + "_continuous " +
-            "(capture_id, body_size) "
-            "VALUES "
-            "(?, ?)",
-            insert_array)
-        connection.commit()
+        if len(insert_array) == 0:
+            print("can't aggregate anymore for " + str(movie_id) + " " + str(bitrate) + " " + str(aggregation))
+            max_aggregation = aggregation - AGGREGATION_STEP
+            break
+        else:
+            # insert har entries to db
+            connection.executemany(
+                "INSERT INTO packets_" + str(aggregation) + "_continuous " +
+                "(capture_id, body_size) "
+                "VALUES "
+                "(?, ?)",
+                insert_array)
+            connection.execute("UPDATE captures SET max_continuous_aggregation = ? WHERE id = ?",
+                               [aggregation, capture_id])
+            connection.commit()
 
         print("done for " + str(movie_id) + " at bitrate " + str(bitrate) + " (" + str(aggregation) + ")")
+        aggregation += AGGREGATION_STEP
 
 for aggregation in range(START_AGGREGATION, LAST_AGGREGATION + 1):
     connection.execute(
